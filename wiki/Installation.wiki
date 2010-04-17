@@ -1,5 +1,5 @@
 #labels Featured
-===Installation: Simple 5 minute installation===
+===Simple 5 minute installation===
 
 1. [http://www.seopanel.in/download/ Download] and Unzip the package.
 
@@ -32,7 +32,7 @@
 
     In linux/unix change permission by following command.
 
-    chmod -R 777 tmp
+    *chmod -R 777 tmp*
 
 6. Open *index.php* in your browser. This should setup the tables needed for seo panel. If there is an error, double check your *config/sp-config.php* file,     and try again. If it fails again, please go to the support or help forums in next section or take *"readme.php"* in your browser.
 
