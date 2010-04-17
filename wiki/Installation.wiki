@@ -1,0 +1,45 @@
+=Installation: Simple 5 minute installation=
+
+1. Download and Unzip the package.
+
+2. Open up config/sp-config.php with a text editor like notepad or similar editor.
+    Then modify the following sections with your server and database settings.
+
+# The web path or url to access seo panel through browser.
+define('SP_WEBPATH', 'http://localhost/seopanel');
+
+# DB settings - You can get this info from your web hosting provider.
+# The name of the database for seo panel
+define('DB_NAME', 'seopanel');
+
+# DB database username.
+define('DB_USER', 'root');
+
+# DB database password.
+define('DB_PASSWORD', '');
+
+# DB hostname.
+define('DB_HOST', 'localhost');
+
+3. Save the contents of file config/sp-config.php.
+
+4. Upload everything to your document root.
+
+5. Chage permission of "tmp" folder of seo panel directory. Your "tmp" directory should be writable.
+
+    In linux/unix change permission by following command.
+
+    chmod -R 777 tmp
+
+6. Open index.php in your browser. This should setup the tables needed for seo panel. If there is an error, double check your config/sp-config.php file,     and try again. If it fails again, please go to the support or help forums in next section or take "readme.php" in your browser.
+
+7. Please use following login details to access Admin Section.
+
+Admin Section:
+
+  Username: spadmin
+  Password: spadmin
+
+Note: Please change password of admin section from 'My Account' link on right top of seo panel, after first login to prevent from security threats.
+
+If any issues found during installation, Please open a ticket in Seopanel Support System.
