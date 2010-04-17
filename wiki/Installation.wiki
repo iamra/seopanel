@@ -1,4 +1,4 @@
-#labels Featured
+#labels seo,panel,installation,steps,Featured
 ===Simple 5 minute installation===
 
 1. [http://www.seopanel.in/download/ Download] and Unzip the package.
