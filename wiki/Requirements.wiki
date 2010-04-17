@@ -1,0 +1,19 @@
+#labels seo,panel,installation,requirements,Featured
+= Introduction =
+
+Seo Panel Installation Requirements
+
+
+= Details =
+
+
+
+1. *PHP, MYSQL*
+
+2. *CURL installed with PHP*, Refer following link to install CURL with php if it is not installed.
+
+http://php.net/manual/en/curl.setup.php
+
+or
+
+Please contact your Web Hosting Provider to install it.
