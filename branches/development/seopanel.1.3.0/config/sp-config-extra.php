@@ -48,4 +48,8 @@ define('SP_PLUGINSITE', 'http://www.seopanel.in/seo-plugins/');
 # The seo panel plugin upgrade db file
 define('SP_PLUGINUPGRADEFILE', 'upgrade.sql');
 
+# The seo panel pagination default
+define('SP_PAGINGNO_DEFAULT', 10);
+
+
 ?>

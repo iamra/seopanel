@@ -384,7 +384,7 @@ div#Tabs a:link,div#Tabs a:visited {
 }
 
 #Tabs ul#MainTabs a:link.current,#Tabs ul#MainTabs a:visited.current {
-	background: #e5e5e5 url(/images/tab-bg.gif) top repeat-x;
+	background: #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	color: #222;
 	font-weight: bold;

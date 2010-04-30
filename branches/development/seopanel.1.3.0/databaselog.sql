@@ -24,24 +24,24 @@ CREATE TABLE IF NOT EXISTS `seotools` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `url_section` varchar(100) NOT NULL,
+  `user_access` tinyint(1) NOT NULL DEFAULT '1',
   `reportgen` tinyint(1) NOT NULL DEFAULT '1',
   `cron` tinyint(1) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
-
 --
 -- Dumping data for table `seotools`
 --
 
-INSERT INTO `seotools` (`id`, `name`, `url_section`, `reportgen`, `cron`, `status`) VALUES
-(1, 'Keyword Position Checker', 'keyword-position-checker', 1, 1, 1),
-(2, 'Sitemap Generator', 'sitemap-generator', 0, 0, 1),
-(3, 'Rank Checker', 'rank-checker', 1, 1, 1),
-(4, 'Backlinks Checker', 'backlink-checker', 1, 1, 1),
-(5, 'Directory Submission', 'directory-submission', 1, 1, 1),
-(6, 'Search Engine Saturation', 'saturation-checker', 1, 1, 1);
+INSERT INTO `seotools` (`id`, `name`, `url_section`, `user_access`, `reportgen`, `cron`, `status`) VALUES
+(1, 'Keyword Position Checker', 'keyword-position-checker', 1, 1, 1, 1),
+(2, 'Sitemap Generator', 'sitemap-generator', 1, 0, 0, 1),
+(3, 'Rank Checker', 'rank-checker', 1, 1, 1, 1),
+(4, 'Backlinks Checker', 'backlink-checker', 1, 1, 1, 1),
+(5, 'Directory Submission', 'directory-submission', 1, 0, 0, 1),
+(6, 'Search Engine Saturation', 'saturation-checker', 1, 1, 1, 1);
 
 
 --
@@ -78,8 +78,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `set_type` enum('small','medium','large','text') DEFAULT 'small',
   PRIMARY KEY (`id`),
   UNIQUE KEY `set_name` (`set_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `settings`
@@ -90,4 +89,5 @@ INSERT INTO `settings` (`id`, `set_label`, `set_name`, `set_val`, `set_type`) VA
 (2, 'Seo Panel Description', 'SP_DESCRIPTION', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'text'),
 (3, 'Seo Panel Keywords', 'SP_KEYWORDS', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', 'text'),
 (4, 'Number of entries per page', 'SP_PAGINGNO', '10', 'small'),
-(5, 'Delay between each spider crawl(seconds)', 'SP_CRAWL_DELAY', '0', 'small');
+(5, 'Delay between each spider crawl(seconds)', 'SP_CRAWL_DELAY', '1', 'small'),
+(6, 'Allow user to generate reports', 'SP_USER_GEN_REPORT', '1', 'small');

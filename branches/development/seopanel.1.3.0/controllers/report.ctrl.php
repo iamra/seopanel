@@ -69,6 +69,8 @@ class ReportController extends Controller {
 
 	# func to show keyword report summary
 	function showKeywordReportSummary($searchInfo = '') {
+		
+		$this->set('sectionHead', 'Keyword Position Summary');
 		$userId = isLoggedIn();
 		
 		$websiteController = New WebsiteController();
@@ -95,6 +97,8 @@ class ReportController extends Controller {
 	
 	# func to show reports
 	function showReports($searchInfo = '') {
+		
+		$this->set('sectionHead', 'Detailed Keyword Position Reports');
 		$userId = isLoggedIn();
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');
@@ -200,6 +204,9 @@ class ReportController extends Controller {
 
 	# func to show graphical reports
 	function showGraphicalReports($searchInfo = '') {
+		
+		
+		$this->set('sectionHead', 'Graphical Keyword Position Reports');
 		$userId = isLoggedIn();
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');
