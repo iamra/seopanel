@@ -45,6 +45,7 @@ class KeywordController extends Controller{
 		
 		# set keywords list
 		$keywordList = $this->db->select($sql);
+		$this->set('pageNo', $_GET['pageno']);
 		$this->set('list', $keywordList);
 		$this->render('keyword/list');
 	}

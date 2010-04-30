@@ -203,8 +203,7 @@ class ReportController extends Controller {
 	}
 
 	# func to show graphical reports
-	function showGraphicalReports($searchInfo = '') {
-		
+	function showGraphicalReports($searchInfo = '') {		
 		
 		$this->set('sectionHead', 'Graphical Keyword Position Reports');
 		$userId = isLoggedIn();
@@ -323,6 +322,12 @@ class ReportController extends Controller {
 		# Draw the line graph
 		$chart->drawLineGraph($dataSet->GetData(), $dataSet->GetDataDescription());
 		$chart->drawPlotGraph($dataSet->GetData(), $dataSet->GetDataDescription(), 3, 2, 255, 255, 255);
+		
+		$j = 1;
+		$chart->setFontProperties("fonts/tahoma.ttf", 10);
+		foreach($seList as $seDomain){
+			$chart->writeValues($dataSet->GetData(), $dataSet->GetDataDescription(), "Serie".$j++);
+		}
 
 		# Finish the graph
 		$chart->setFontProperties("fonts/tahoma.ttf", 8);
@@ -446,7 +451,13 @@ class ReportController extends Controller {
 					$crawlResult[$seInfoId]['matched'] = array();
 					foreach($urlList as $i => $url){
 						$url = strip_tags($url);
-						if($this->showAll || stristr($url, $websiteUrl)){							 
+						if($this->showAll || stristr($url, $websiteUrl)){
+
+							if($this->showAll && stristr($url, $websiteUrl)){
+								$matchInfo['found'] = 1; 
+							}else{
+								$matchInfo['found'] = 0;
+							}
 							$matchInfo['url'] = $url;
 							$matchInfo['title'] = strip_tags($matches[$this->seList[$seInfoId]['title_index']][$i]);
 							$matchInfo['description'] = strip_tags($matches[$this->seList[$seInfoId]['description_index']][$i]);
@@ -501,6 +512,8 @@ class ReportController extends Controller {
 	
 	# func to check keyword rank
 	function quickRankChecker() {
+		
+		$this->set('sectionHead', 'Quick Keyword Position Checker');
 		$seController = New SearchEngineController();
 		$seList = $seController->__getAllSearchEngines();
 		$this->set('seList', $seList);

@@ -20,9 +20,10 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
+            }
+            $foundStyle = empty($listInfo['found']) ? "" : "background-color: #ffff00;";            
 			?>
-			<tr class="<?=$class?>">
+			<tr class="<?=$class?>" style="<?=$foundStyle?>">
 				<td class="<?=$leftBotClass?>" width='100px;'><b><?php echo $listInfo['rank']; ?></b></td>
 				<td class='td_br_right' id='seresult' colspan="2">
 					<a href='<?=$listInfo['url']?>' target='_blank'><? echo stripslashes($listInfo['title']);?></a>

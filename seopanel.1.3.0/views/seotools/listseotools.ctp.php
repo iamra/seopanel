@@ -4,7 +4,7 @@
 	<tr class="listHead">
 		<td class="left">ID</td>
 		<td>Name</td>
-		<td>Section Url</td>
+		<td>User Access</td>
 		<td>Reports</td>
 		<td>Cron</td>
 		<td class="right">Status</td>
@@ -36,13 +36,16 @@
             $statLabel = ($listInfo['cron']) ? "Active" : "Inactive"; 
             $cronLink = scriptAJAXLinkHref('seo-tools-manager.php', 'content', "sec=changecron&seotool_id={$listInfo['id']}&status={$listInfo['cron']}", $statLabel);
             
+            $accessLabel = ($listInfo['user_access']) ? "Yes" : "No"; 
+            $accessLink = scriptAJAXLinkHref('seo-tools-manager.php', 'content', "sec=changeaccess&seotool_id={$listInfo['id']}&user_access={$listInfo['user_access']}", $accessLabel);
+            
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?echo $listInfo['id'];?></td>
 				<td class="td_br_right left"><? echo $listInfo['name'];?></td>
-				<td class="td_br_right left"><? echo $listInfo['url_section'];?></td>				
-				<td class="td_br_right left"><? echo $reportgenLink;?></td>
-				<td class="td_br_right left"><? echo $cronLink;?></td>
+				<td class="td_br_right"><? echo $accessLink;?></td>				
+				<td class="td_br_right"><? echo $reportgenLink;?></td>
+				<td class="td_br_right"><? echo $cronLink;?></td>
 				<td class="<?=$rightBotClass?>" width="100px"><? echo $activateLink;?></td>
 			</tr>
 			<?php

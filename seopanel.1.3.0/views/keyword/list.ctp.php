@@ -3,7 +3,7 @@
 	<tr>
 		<th>Website: </th>
 		<td>
-			<select name="website_id" id="website_id">
+			<select name="website_id" id="website_id" onchange="doLoad('website_id', 'keywords.php', 'content')">
 				<option value="">-- Select --</option>
 				<?php foreach($websiteList as $websiteInfo){?>
 					<?php if($websiteInfo['id'] == $websiteId){?>
@@ -55,7 +55,7 @@
 							$statLabel = "Activate";
 						} 
 					?>
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('keywords.php', 'content', 'keywordId=<?=$listInfo['id']?>', 'action<?=$listInfo['id']?>')">
+					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('keywords.php', 'content', 'keywordId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- Select --</option>
 						<?if($listInfo['webstatus'] && $listInfo['status']){?>
 							<option value="reports">Reports</option>
