@@ -10,9 +10,11 @@
 		</td>
 		<td width="8px">&nbsp;</td>
 		<td id="content" height="340px" valign="top">
-			<script type="text/javascript">
-				scriptDoLoad('<?=$defaultScript?>', 'content', '<?=$defaultArgs?>');
-			</script>
+			<?php if(!empty($defaultScript)) {?>
+				<script type="text/javascript">
+					scriptDoLoad('<?=$defaultScript?>', 'content', '<?=$defaultArgs?>');
+				</script>
+			<?php }?>
 		</td>
 	</tr>
 </table>
