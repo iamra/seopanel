@@ -50,6 +50,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$controller->changeStatus($_GET['seotool_id'], $status, 'cron');			
 			$controller->listSeoTools();
 			break;
+		
+		case "changeaccess":
+			$access = empty($_GET['user_access']) ? 1 : 0;
+			$controller->changeStatus($_GET['seotool_id'], $access, 'user_access');			
+			$controller->listSeoTools();
+			break;
+			
 
 		default:
 			$controller->listSeoTools();

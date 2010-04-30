@@ -33,7 +33,7 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=reportsum', 'content')">Keyword Position Summary</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php', 'content')">Detailed Position Reports</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('graphical-reports.php', 'content')">Graphical Position Reports</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=kwchecker', 'content')">Quick Rank Checker</a></li>				
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=kwchecker', 'content')">Quick Position Checker</a></li>				
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content')">Keywords Manager</a></li>
 	         	<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
