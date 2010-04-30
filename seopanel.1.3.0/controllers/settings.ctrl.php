@@ -36,7 +36,22 @@ class SettingsController extends Controller{
 		$this->set('sectionHead', 'System Settings');
 		
 		$setList = $this->__getAllSettings();
-		foreach($setList as $setInfo){			
+		foreach($setList as $setInfo){
+
+			switch($setInfo['set_name']){
+				
+				case "SP_PAGINGNO":
+					$postInfo[$setInfo['set_name']] = intval($postInfo[$setInfo['set_name']]);
+					$postInfo[$setInfo['set_name']] = empty($postInfo[$setInfo['set_name']]) ? SP_PAGINGNO_DEFAULT : $postInfo[$setInfo['set_name']];				
+					break;
+				
+				case "SP_CRAWL_DELAY":
+				case "SP_USER_GEN_REPORT":
+					$postInfo[$setInfo['set_name']] = intval($postInfo[$setInfo['set_name']]);
+					break;
+					
+			}
+			
 			$sql = "update settings set set_val='".addslashes($postInfo[$setInfo['set_name']])."' where set_name='{$setInfo['set_name']}'";
 			$this->db->query($sql);
 		}

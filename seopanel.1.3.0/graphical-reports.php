@@ -30,7 +30,6 @@ include_once(SP_CTRLPATH."/report.ctrl.php");
 $controller = New ReportController();
 $controller->view->menu = 'seotools';
 $controller->layout = 'ajax';
-$controller->set('sectionHead', 'Graphical Reports');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	

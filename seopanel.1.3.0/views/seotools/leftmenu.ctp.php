@@ -28,17 +28,19 @@ foreach($menuList as $i => $menuInfo){
 	switch($menuInfo['url_section']){
 		case "keyword-position-checker":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'reports.php?sec=kwchecker';</script>
+			<script type="text/javascript">scriptList[<?=$i?>] = 'reports.php?sec=reportsum';</script>
 			<ul id='subui'>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=reportsum', 'content')">Keyword Position Summary</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php', 'content')">Detailed Position Reports</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('graphical-reports.php', 'content')">Graphical Position Reports</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=kwchecker', 'content')">Quick Rank Checker</a></li>				
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content')">Keywords Manager</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=reportsum', 'content')">Report Summary</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php', 'content')">Simple Reports</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('graphical-reports.php', 'content')">Graphical Reports</a></li>				
-	         	<?php if(SP_DEMO){?>
-	         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
-	         	<?php }else{?>
-					<li><a href="javascript:void(0);" onclick="scriptDoLoad('generate-reports.php', 'content')">Generate Reports</a></li>
+	         	<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
+					<?php if(SP_DEMO){?>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Keyword Reports</a></li>
+		         	<?php }else{?>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('generate-reports.php', 'content')">Generate Keyword Reports</a></li>
+		         	<?php }?>
 	         	<?php }?>
 			</ul>
 			<?php
@@ -60,10 +62,12 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=google', 'content')">Google Pagerank</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=alexa', 'content')">Alexa Rank</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=reports', 'content')">Rank Reports</a></li>
-				<?php if(SP_DEMO){?>
-	         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
-	         	<?php }else{?>
-					<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=generate', 'content')">Generate Reports</a></li>
+				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
+					<?php if(SP_DEMO){?>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         	<?php }else{?>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=generate', 'content')">Generate Reports</a></li>
+		         	<?php }?>
 	         	<?php }?>
 			</ul>
 			<?php
@@ -75,11 +79,13 @@ foreach($menuList as $i => $menuInfo){
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php', 'content')">Backlinks Checker</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=reports', 'content')">Backlinks Reports</a></li>
-				<?php if(SP_DEMO){?>
-	         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
-	         	<?php }else{?>
-					<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=generate', 'content')">Generate Reports</a></li>
-	         	<?php }?>
+				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
+					<?php if(SP_DEMO){?>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         	<?php }else{?>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=generate', 'content')">Generate Reports</a></li>
+		         	<?php }?>
+		  		<?php }?>
 			</ul>
 			<?php
 			break;
@@ -91,11 +97,13 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php', 'content')">Automatic Submission</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=featured', 'content')">Featured Submission</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=reports', 'content')">Submission Reports</a></li>
-				<?php if(SP_DEMO){?>
-	         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Check Submission</a></li>
-	         	<?php }else{?>	         		
-					<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=checksub', 'content')">Check Submission</a></li>
-	         	<?php }?>
+				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
+					<?php if(SP_DEMO){?>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Check Submission</a></li>
+		         	<?php }else{?>	         		
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=checksub', 'content')">Check Submission</a></li>
+		         	<?php }?>
+		     	<?php }?>
 			</ul>
 			<?php
 			break;			
@@ -105,12 +113,14 @@ foreach($menuList as $i => $menuInfo){
 			<script type="text/javascript">scriptList[<?=$i?>] = 'saturationchecker.php';</script>			
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php', 'content')">Saturation Checker</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=reports', 'content')">Saturation Reports</a></li>				
-				<?php if(SP_DEMO){?>
-	         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
-	         	<?php }else{?>
-	         		<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=generate', 'content')">Generate Reports</a></li>
-	         	<?php }?>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=reports', 'content')">Saturation Reports</a></li>
+				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>				
+					<?php if(SP_DEMO){?>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         	<?php }else{?>
+		         		<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=generate', 'content')">Generate Reports</a></li>
+		         	<?php }?>
+		      	<?php }?>
 			</ul>
 			<?php
 			break;

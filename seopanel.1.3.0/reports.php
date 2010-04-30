@@ -29,7 +29,6 @@ include_once(SP_CTRLPATH."/report.ctrl.php");
 $controller = New ReportController();
 $controller->view->menu = 'seotools';
 $controller->layout = 'ajax';
-$controller->set('sectionHead', 'Simple Reports');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
@@ -56,7 +55,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			break;
 			
 		case "kwchecker":
-			$controller->set('sectionHead', 'Quick Rank Checker');
 			$controller->quickRankChecker($_GET);
 			break;
 			

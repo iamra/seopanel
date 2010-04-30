@@ -48,7 +48,7 @@ class SeoPluginsController extends Controller{
 		$action = empty($info['action']) ? "index" : $info['action'];
 		$data = ($method=='get') ? $_GET : $_POST; 
 		$pluginControler->$action($data);
-	}	
+	}
 
 	# func to load plugin css files
 	function loadAllPluginCss() {
@@ -242,6 +242,16 @@ class SeoPluginsController extends Controller{
 		}		
 	}
 
+	# to check whether the directory is plugin
+	function isPluginDirectory($file){
+		if ( ($file != ".") && ($file != "..") && ($file != ".svn") &&  is_dir(SP_PLUGINPATH."/".$file) ) {
+			if(!preg_match('/^\./', $file)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	# func to update seo plugins in db
 	function __updateAllSeoPlugins(){
 		$sql = "update seoplugins set installed=0";
@@ -249,7 +259,7 @@ class SeoPluginsController extends Controller{
 		
 		if ($handle = opendir(SP_PLUGINPATH)) {
 			while (false !== ($file = readdir($handle))) {
-				if ( ($file != ".") && ($file != "..") &&  is_dir(SP_PLUGINPATH."/".$file) ) {
+				if ( $this->isPluginDirectory($file) ) {
 					$pluginName = $file;
 					$seoPluginInfo = $this->__getSeoPluginInfo($pluginName, 'name');
 					if(empty($seoPluginInfo['id'])){

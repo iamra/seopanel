@@ -27,7 +27,12 @@ class SeoToolsController extends Controller{
 	# index function
 	function index($info=''){
 		$this->layout = "default";
-		$sql = "select * from seotools where status=1";
+		if(isAdmin()){
+			$sql = "select * from seotools where status=1";	
+		}else{
+			$sql = "select * from seotools where status=1 and user_access=1";			
+		}
+		
 		$menuList = $this->db->select($sql);
 		if(count($menuList) <= 0){
 			$this->set('msg', 'No Active Seo Tools Found!');
@@ -60,7 +65,7 @@ class SeoToolsController extends Controller{
 				if($seoToolInfo['status'] == 1){					
 					$info['menu_sec'] = 'keyword-position-checker';
 					$defaultScript = "reports.php";
-					$defaultArgs = "sec=kwchecker";	
+					$defaultArgs = "sec=reportsum";	
 				}
 		}
 		
