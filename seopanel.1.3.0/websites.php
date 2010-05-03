@@ -46,17 +46,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		case "Activate":
 			$controller->__changeStatus($_GET['websiteId'], 1);			
-			$controller->listWebsites();
+			$controller->listWebsites($_GET);
 			break;
 		
 		case "Inactivate":
 			$controller->__changeStatus($_GET['websiteId'], 0);
-			$controller->listWebsites();
+			$controller->listWebsites($_GET);
 			break;
 		
 		case "delete":
 			$controller->__deleteWebsite($_GET['websiteId']);
-			$controller->listWebsites();
+			$controller->listWebsites($_GET);
 			break;
 		
 		case "edit":

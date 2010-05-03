@@ -38,7 +38,7 @@
 							$statLabel = "Activate";
 						} 
 					?>
-					<select name="action" id="action<?=$userInfo['id']?>" onchange="doAction('users.php', 'content', 'userId=<?=$userInfo['id']?>', 'action<?=$userInfo['id']?>')">
+					<select name="action" id="action<?=$userInfo['id']?>" onchange="doAction('users.php', 'content', 'userId=<?=$userInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$userInfo['id']?>')">
 						<option value="select">-- Select --</option>
 						<option value="<?=$statLabel?>"><?=$statLabel?></option>
 						<option value="edit">Edit</option>

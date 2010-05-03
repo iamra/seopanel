@@ -242,7 +242,7 @@ div#Wrapper {
 }
 
 .Container {
-	padding: 0 23px 0 30px;
+	padding: 0 20px 0 20px;
 	margin: 12px auto 0 auto;
 	text-align: center;
 	min-width: 750px;
@@ -464,6 +464,10 @@ div.Left .SectionHeader,div.Full .SectionHeader {
 
 .Block,.UpcomingBlock,.CompletedBlock {
 	margin-bottom: 25px;
+}
+
+.Block .leftmenu{
+	width: 186px;
 }
 
 h1.BlockHeader {

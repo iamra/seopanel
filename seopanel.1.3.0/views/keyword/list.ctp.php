@@ -55,7 +55,7 @@
 							$statLabel = "Activate";
 						} 
 					?>
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('keywords.php', 'content', 'keywordId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$listInfo['id']?>')">
+					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('keywords.php', 'content', 'keywordId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&website_id=<?=$websiteId?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- Select --</option>
 						<?if($listInfo['webstatus'] && $listInfo['status']){?>
 							<option value="reports">Reports</option>

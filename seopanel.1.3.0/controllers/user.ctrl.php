@@ -72,12 +72,13 @@ class UserController extends Controller{
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('users.php', '', 'scriptDoLoad', 'ContentFrame', 'layout=ajax');		
+		$pagingDiv = $this->paging->printPages('users.php', '', 'scriptDoLoad', 'content', 'layout=ajax');		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
 		
 		$userList = $this->db->select($sql);
-		$this->set('userList', $userList);		
+		$this->set('userList', $userList);
+		$this->set('pageNo', $_GET['pageno']);			
 		$this->render('user/list', $layout);
 	}
 	

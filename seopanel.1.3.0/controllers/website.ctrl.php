@@ -37,21 +37,22 @@ class WebsiteController extends Controller{
 			$userCtrler = New UserController();
 			$userList = $userCtrler->__getAllUsers();
 			$this->set('userList', $userList);
-			$this->set('userId', empty($info['userid']) ? 0 : $info['userid']);
 			
 		}else{
 			$sql = "select * from websites where user_id=$userId order by name";	
 		}		
+		$this->set('userId', empty($info['userid']) ? 0 : $info['userid']);		
 		
 		# pagination setup		
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('websites.php');		
+		$pagingDiv = $this->paging->printPages('websites.php?userid='.$info['userid']);		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
 				
-		$websiteList = $this->db->select($sql);		
+		$websiteList = $this->db->select($sql);	
+		$this->set('pageNo', $info['pageno']);		
 		$this->set('list', $websiteList);
 		$this->render('website/list');
 	}
@@ -114,7 +115,7 @@ class WebsiteController extends Controller{
 		$this->set('sectionHead', 'New Website');
 		$userId = isLoggedIn();
 		if(!empty($info['check']) && !$this->__getCountAllWebsites($userId)){
-			$this->set('msg', 'Please create a website before start to using seo tools and seo plugins.');
+			$this->set('msg', 'Please create a website before start to using seo tools and seo plugins.<br>Please <a href="javascript:void(0);" onclick="scriptDoLoad(\'websites.php\', \'content\')">activate</a> your website if you already created one.');
 		}
 		
 		# get all users

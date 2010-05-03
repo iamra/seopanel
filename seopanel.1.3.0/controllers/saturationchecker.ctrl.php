@@ -26,7 +26,7 @@ class SaturationCheckerController extends Controller{
 	var $colList = array('google' => 'google', 'yahoo' => 'yahoo', 'msn' => 'msn');
 	
 	function showSaturationChecker() {
-		$this->set('sectionHead', 'Search Engine Saturation Checker');
+		$this->set('sectionHead', 'Quick Search Engine Saturation Checker');
 		
 		$this->render('saturationchecker/showsaturationchecker');
 	}
@@ -91,7 +91,7 @@ class SaturationCheckerController extends Controller{
 	
 	# func to show genearte reports interface
 	function showGenerateReports($searchInfo = '') {
-		$this->set('sectionHead', 'Generate Reports');
+		$this->set('sectionHead', 'Generate Search Engine Saturation Reports');
 				
 		$userId = isLoggedIn();
 		$websiteController = New WebsiteController();
@@ -145,7 +145,7 @@ class SaturationCheckerController extends Controller{
 	
 	# func to show reports
 	function showReports($searchInfo = '') {
-		$this->set('sectionHead', 'Search Engine Saturation Checker Reports');
+		$this->set('sectionHead', 'Search Engine Saturation Reports');
 		$userId = isLoggedIn();
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');

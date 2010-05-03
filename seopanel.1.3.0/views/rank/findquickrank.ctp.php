@@ -1,11 +1,12 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="left">No</td>
-		<td>Url</td>
-		<td class="right">Rank</td>
+		<td>Url</td>		
+		<td>Google Pagerank</td>
+		<td class="right">Alexa rank</td>
 	</tr>
 	<?php
-	$colCount = 3; 
+	$colCount = 4; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
@@ -23,9 +24,14 @@
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?=($i+1)?></td>
 				<td class="td_br_right" style="text-align: left;"><?=$url?></td>
-				<td class="<?=$rightBotClass?>" width="150px" id='rank<?=$i?>' class='rankarea'>
+				<td width="150px" id='googlerank<?=$i?>' class='td_br_right rankarea'>
 					<script type="text/javascript">
-						scriptDoLoad('rank.php', 'rank<?=$i?>', 'sec=showalexa&url=<? echo urlencode($url); ?>');
+						scriptDoLoad('rank.php', 'googlerank<?=$i?>', 'sec=showpr&url=<? echo urlencode($url); ?>');
+					</script>
+				</td>
+				<td class="<?=$rightBotClass?>" width="150px" id='alexarank<?=$i?>' class='rankarea'>
+					<script type="text/javascript">
+						scriptDoLoad('rank.php', 'alexarank<?=$i?>', 'sec=showalexa&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
 			</tr>

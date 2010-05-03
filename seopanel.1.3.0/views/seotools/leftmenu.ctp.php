@@ -59,14 +59,14 @@ foreach($menuList as $i => $menuInfo){
 			?>
 			<script type="text/javascript">scriptList[<?=$i?>] = 'rank.php?sec=google';</script>			
 			<ul id='subui'>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=google', 'content')">Google Pagerank</a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=alexa', 'content')">Alexa Rank</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=quickrank', 'content')">Quick Rank Checker</a></li>
+<!--				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=alexa', 'content')">Alexa Rank</a></li>-->
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=reports', 'content')">Rank Reports</a></li>
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
-		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Rank Reports</a></li>
 		         	<?php }else{?>
-						<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=generate', 'content')">Generate Reports</a></li>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('rank.php?sec=generate', 'content')">Generate Rank Reports</a></li>
 		         	<?php }?>
 	         	<?php }?>
 			</ul>
@@ -77,13 +77,13 @@ foreach($menuList as $i => $menuInfo){
 			?>
 			<script type="text/javascript">scriptList[<?=$i?>] = 'backlinks.php';</script>			
 			<ul id='subui'>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php', 'content')">Backlinks Checker</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php', 'content')">Quick Backlinks Checker</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=reports', 'content')">Backlinks Reports</a></li>
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
-		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Backlinks Reports</a></li>
 		         	<?php }else{?>
-						<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=generate', 'content')">Generate Reports</a></li>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('backlinks.php?sec=generate', 'content')">Generate Backlinks Reports</a></li>
 		         	<?php }?>
 		  		<?php }?>
 			</ul>
@@ -112,13 +112,13 @@ foreach($menuList as $i => $menuInfo){
 			?>
 			<script type="text/javascript">scriptList[<?=$i?>] = 'saturationchecker.php';</script>			
 			<ul id='subui'>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php', 'content')">Saturation Checker</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php', 'content')">Quick Saturation Checker</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=reports', 'content')">Saturation Reports</a></li>
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>				
 					<?php if(SP_DEMO){?>
-		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Reports</a></li>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Generate Saturation Reports</a></li>
 		         	<?php }else{?>
-		         		<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=generate', 'content')">Generate Reports</a></li>
+		         		<li><a href="javascript:void(0);" onclick="scriptDoLoad('saturationchecker.php?sec=generate', 'content')">Generate Saturation Reports</a></li>
 		         	<?php }?>
 		      	<?php }?>
 			</ul>

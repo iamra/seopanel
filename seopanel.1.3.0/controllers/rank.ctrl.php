@@ -23,12 +23,14 @@
 # class defines all rank controller functions
 class RankController extends Controller{
 
-	function showGooglePageRank() {
-		$this->set('sectionHead', 'Google Pagerank Checker');
-		$this->render('rank/showgooglerank');
+	# func to show quick rank checker
+	function showQuickRankChecker() {
+		$this->set('sectionHead', 'Quick Rank Checker');
+		
+		$this->render('rank/showquickrank');
 	}
-
-	function findGooglePageRank($searchInfo) {
+	
+	function findQuickRank($searchInfo) {
 		$urlList = explode("\n", $searchInfo['website_urls']);
 		$list = array();
 		foreach ($urlList as $url) {
@@ -38,7 +40,7 @@ class RankController extends Controller{
 		}
 
 		$this->set('list', $list);
-		$this->render('rank/findgooglerank');
+		$this->render('rank/findquickrank');
 	}
 
 	function printGooglePageRank($url){
@@ -61,25 +63,6 @@ class RankController extends Controller{
 			return ($matches[3]) ? $matches[3] : 0;
 		}
 		return 0;
-	}
-
-	function showAlexaRank() {
-		$this->set('sectionHead', 'Alexa Rank Checker');
-
-		$this->render('rank/showalexarank');
-	}
-
-	function findAlexaRank($searchInfo) {
-		$urlList = explode("\n", $searchInfo['website_urls']);
-		$list = array();
-		foreach ($urlList as $url) {
-			if(!preg_match('/\w+/', $url)) continue;
-			if(!stristr($url, 'http://')) $url = "http://".$url;
-			$list[] = $url;
-		}
-
-		$this->set('list', $list);
-		$this->render('rank/findalexarank');
 	}
 
 	function printAlexaRank($url){
@@ -176,7 +159,7 @@ class RankController extends Controller{
 	
 	# func to show genearte reports interface
 	function showGenerateReports($searchInfo = '') {
-		$this->set('sectionHead', 'Generate Reports');
+		$this->set('sectionHead', 'Generate Google and Alexa Rank Reports');
 				
 		$userId = isLoggedIn();
 		$websiteController = New WebsiteController();
@@ -229,7 +212,7 @@ class RankController extends Controller{
 	
 	# func to show reports
 	function showReports($searchInfo = '') {
-		$this->set('sectionHead', 'Rank Reports');
+		$this->set('sectionHead', 'Google and Alexa Rank Reports');
 		$userId = isLoggedIn();
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');

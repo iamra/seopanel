@@ -49,12 +49,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		case "Activate":
 			$controller->__changeStatus($_GET['keywordId'], 1);			
-			$controller->listKeywords();
+			$controller->listKeywords($_GET);
 			break;
 		
 		case "Inactivate":
 			$controller->__changeStatus($_GET['keywordId'], 0);
-			$controller->listKeywords();
+			$controller->listKeywords($_GET);
 			break;
 		
 		case "reports":
@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		case "delete":
 			$controller->__deleteKeyword($_GET['keywordId']);
-			$controller->listKeywords();
+			$controller->listKeywords($_GET);
 			break;
 		
 		case "edit":
@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			break;
 
 		default:
-			$controller->listKeywords($_GET['website_id']);
+			$controller->listKeywords($_GET);
 			break;
 	}
 }

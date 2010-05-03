@@ -31,12 +31,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
 	switch($_POST['sec']){
 		
-		case "alexa":
-			$controller->findAlexaRank($_POST);
-			break;
-		
-		case "google":
-			$controller->findGooglePageRank($_POST);
+		case "quickrank":
+			$controller->findQuickRank($_POST);
 			break;
 			
 		case "generate":
@@ -48,19 +44,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			break;
 		
 		default:
-			$controller->findGooglePageRank($_POST);
+			$controller->findQuickRank($_POST);
 			break;
 	}
 	
 }else{
 	switch($_GET['sec']){
 		
-		case "alexa":
-			$controller->showAlexaRank();
-			break;
-		
-		case "google":
-			$controller->showGooglePageRank();
+		case "quickrank":
+			$controller->showQuickRankChecker();
 			break;
 			
 		case "showpr":
@@ -84,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			break;
 
 		default:
-			$controller->showGooglePageRank();
+			$controller->showQuickRankChecker();
 			break;
 	}
 }
