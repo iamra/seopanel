@@ -26,7 +26,7 @@ class BacklinkController extends Controller{
 	var $colList = array('google' => 'google', 'yahoo' => 'yahoo', 'msn' => 'msn', 'altavista' => 'altavista', 'alltheweb' => 'alltheweb');
 	
 	function showBacklink() {
-		$this->set('sectionHead', 'Backlink Checker');
+		$this->set('sectionHead', 'Quick Backlinks Checker');
 		
 		$this->render('backlink/showbacklink');
 	}
@@ -58,7 +58,9 @@ class BacklinkController extends Controller{
 				$url = 'http://www.google.com/search?q=link%3A' . urlencode($this->url);			
 				$v = $this->spider->getContent($url);
 				$v = empty($v['page']) ? '' :  $v['page'];
-				preg_match('/of about \<b\>([0-9\,]+)\<\/b\>/si', $v, $r);
+				if(preg_match('/of about \<b\>([0-9\,]+)\<\/b\>/si', $v, $r)){					
+				}elseif(preg_match('/of \<b\>([0-9\,]+)\<\/b\>/si', $v, $r)){					
+				}
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
@@ -104,7 +106,7 @@ class BacklinkController extends Controller{
 	
 	# func to show genearte reports interface
 	function showGenerateReports($searchInfo = '') {
-		$this->set('sectionHead', 'Generate Reports');
+		$this->set('sectionHead', 'Generate Backlinks Reports');
 				
 		$userId = isLoggedIn();
 		$websiteController = New WebsiteController();
@@ -158,7 +160,7 @@ class BacklinkController extends Controller{
 	
 	# func to show reports
 	function showReports($searchInfo = '') {
-		$this->set('sectionHead', 'Backlink Reports');
+		$this->set('sectionHead', 'Backlinks Reports');
 		$userId = isLoggedIn();
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');

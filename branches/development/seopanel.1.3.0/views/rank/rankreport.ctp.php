@@ -4,7 +4,7 @@
 	<tr>
 		<th>Website: </th>
 		<td>
-			<select name="website_id" id="website_id" style='width:190px;'>
+			<select name="website_id" id="website_id" style='width:190px;' onchange="scriptDoLoadPost('rank.php', 'search_form', 'content', '&sec=reports')">
 				<?php foreach($websiteList as $websiteInfo){?>
 					<?php if($websiteInfo['id'] == $websiteId){?>
 						<option value="<?=$websiteInfo['id']?>" selected><?=$websiteInfo['name']?></option>

@@ -24,10 +24,12 @@
 class KeywordController extends Controller{
 
 	# func to show keywords
-	function listKeywords($websiteId=''){		
+	function listKeywords($info=''){		
 		$this->set('sectionHead', 'Keywords Manager');
 		$userId = isLoggedIn();
 		$websiteController = New WebsiteController();
+		
+		$websiteId = empty($info['website_id']) ? "" : $info['website_id'];
 		$this->set('websiteList', $websiteController->__getAllWebsites($userId, true));
 		$this->set('websiteId', $websiteId);
 		$conditions = empty($websiteId) ? "" : " and k.website_id=$websiteId";

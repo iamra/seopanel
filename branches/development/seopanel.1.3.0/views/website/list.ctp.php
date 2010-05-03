@@ -1,5 +1,5 @@
 <?php echo showSectionHead($sectionHead); ?>
-	<?php if(!empty($isAdmin)){ ?>
+<?php if(!empty($isAdmin)){ ?>
 	<table width="50%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
 			<th>User: </th>
@@ -62,7 +62,7 @@
 							$statLabel = "Activate";
 						} 
 					?>
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('websites.php', 'content', 'websiteId=<?=$listInfo['id']?>', 'action<?=$listInfo['id']?>')">
+					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('websites.php', 'content', 'websiteId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&userid=<?=$userId?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- Select --</option>
 						<option value="<?=$statLabel?>"><?=$statLabel?></option>
 						<option value="edit">Edit</option>

@@ -21,5 +21,5 @@
 </form>
 
 <div id='subcontent'>
-	<p class='note'>Click on <b>Proceed</b> to generate reports</p>
+	<p class='note'>Click on <b>Proceed</b> to generate backlinks reports</p>
 </div>
