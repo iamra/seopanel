@@ -56,7 +56,7 @@ var periodic;
 function sitemapDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading) {
 	
 	hideDiv('proceed');
-	showSitemapLog(1);
+	showDiv('message');
 	if(!scriptArgs){ var scriptArgs = ''; }
 	scriptArgs = $(scriptForm).serialize() + scriptArgs;
 	myAjax = new Ajax.Updater(scriptPos, scriptUrl, {
@@ -66,17 +66,6 @@ function sitemapDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoadi
 		onLoading: function(request){ showLoadingIcon(scriptPos, noLoading); },
 		onComplete : function(request){ periodic.stop();},
 	});	
-}
-
-function showSitemapLog(start){
-	if(start){
-		document.getElementById('url_count').innerHTML = '0';
-		document.getElementById('curr_url').innerHTML = '';
-	}else{
-		document.getElementById('url_count').innerHTML = readCookie('url_count');
-		document.getElementById('curr_url').innerHTML = unescape(readCookie('curr_url'));
-	}	
-	periodic = setTimeout('showSitemapLog()', 2000);	
 }
 
 /* Onloading image icon function */
@@ -101,6 +90,11 @@ function showLoadingIcon(scriptPos,noLoading){
 		
 		case "subcontmed":
 			content = '<div id="loading_subcontmed"></div>';
+			loading = 1;
+			break;
+			
+		case "newsalert":
+			content = '<div id="loading_longthin"></div>';
 			loading = 1;
 			break;
 		
@@ -244,6 +238,10 @@ function loadJsCssFile(filename, filetype){
 
 function hideDiv(scriptPos){
 	document.getElementById(scriptPos).style.display = 'none';
+}
+
+function showDiv(scriptPos){
+	document.getElementById(scriptPos).style.display = '';
 }
 
 function crawlMetaData(url,scriptPos) {

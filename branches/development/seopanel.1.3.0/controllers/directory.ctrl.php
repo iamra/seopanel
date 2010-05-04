@@ -25,13 +25,13 @@ class DirectoryController extends Controller{
 	
 	function showSubmissionPage(  ) {
 		
-		$this->set('sectionHead', 'Automatic Directory Submission Tool');
+		$this->set('sectionHead', 'Semi Automatic Directory Submission Tool');
 		$userId = isLoggedIn();
+		$this->session->setSession('no_captcha', false);
 		
 		$websiteController = New WebsiteController();
 		$this->set('websiteList', $websiteController->__getAllWebsites($userId, true));
 		$this->set('websiteNull', true);
-		$this->set('onChange', "scriptDoLoadPost('directories.php', 'search_form', 'subcontent')");
 		
 		$this->render('directory/showsubmission');
 	}
@@ -56,6 +56,8 @@ class DirectoryController extends Controller{
 			$websiteInfo = $submitInfo;
 		}
 		$this->set('websiteInfo', $websiteInfo);
+		
+		$this->session->setSession('no_captcha', empty($submitInfo['no_captcha']) ? 0 : 1);	
 		
 		$this->render('directory/showsitesubmission');
 	}
@@ -130,6 +132,7 @@ class DirectoryController extends Controller{
 		}
 		
 		$sql = "select * from directories where working=1";
+		if(!empty($_SESSION['no_captcha'])) $sql .= " and is_captcha=0";
 		if(!empty($dirId)) $sql .= " and id=$dirId";
 		if(count($dirList) > 0) $sql .= " and id not in (".implode(',', $dirList).")";
 		$sql .= " order by id";

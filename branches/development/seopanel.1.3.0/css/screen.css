@@ -818,6 +818,14 @@ h1.BlockHeader {
 	z-index: 5;
 }
 
+#loading_longthin {
+	margin: 5px;
+	width: 700px;
+	height: 20px;
+	background: url('../images/ajax-loader.gif') center center no-repeat;
+	z-index: 5;
+}
+
 #loading_content {
 	width: 700px;
 	height: 350px;
@@ -1018,28 +1026,33 @@ h1.BlockHeader {
 	padding: 0px;
 }
 #topnewsbox{
-	margin:15px 22px 0px 30px;
+	margin:15px 20px 0px 20px;
 	position:relative;
 	text-align:left;
-	background-color:#bbd9ee;
-	border:1px solid #5296d0;
+	background-color:#fafad2;
+	border:1px solid #507FA5;
 	font-size: 12px;
 	min-height: 30px;		
+}
+
+#hidenews{
+	float: right;
+	margin-right: 24px;
+	font-size: 10px;
+}
+
+#hidenews A{
+	font-family: "Lucida Grande", arial, sans-serif;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 #newscontbox{
 	width: 914px;
 	float: left;	
-	padding: 5px;
+	padding: 5px 10px 5px 10px;
 }
 
-#closebox{
-	float: right;
-	width: 18px;
-	margin: 0px;
-	padding-top: 2px;
-	padding-left: 1px;
-}
 
 /* my account summary section */
 .summary{
