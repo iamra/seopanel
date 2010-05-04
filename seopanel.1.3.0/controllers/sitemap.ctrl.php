@@ -25,7 +25,7 @@ class SitemapController extends Controller{
 
 	var $smLimit = 50000;			# number of pages in a sitemap
  	var $baseUrl;					# base url of page
- 	var $smType='xml';				# the type of sitemap file should be created
+ 	var $smType = 'xml';				# the type of sitemap file should be created
  	var $urlList;					# the list of urls crawled from a site
  	var $hostName;					# hostname of the site
  	var $spider;					# spider object
