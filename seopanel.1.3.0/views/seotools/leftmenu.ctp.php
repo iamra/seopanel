@@ -99,9 +99,9 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=reports', 'content')">Submission Reports</a></li>
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>
-		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Check Submission</a></li>
+		         		<li><a href="javascript:void(0);" onclick="alertDemoMsg();">Check Submission Status</a></li>
 		         	<?php }else{?>	         		
-						<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=checksub', 'content')">Check Submission</a></li>
+						<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=checksub', 'content')">Check Submission Status</a></li>
 		         	<?php }?>
 		     	<?php }?>
 			</ul>

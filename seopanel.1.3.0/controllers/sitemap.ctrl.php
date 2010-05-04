@@ -25,7 +25,7 @@ class SitemapController extends Controller{
 
 	var $smLimit = 50000;			# number of pages in a sitemap
  	var $baseUrl;					# base url of page
- 	var $smType = 'xml';				# the type of sitemap file should be created
+ 	var $smType = 'xml';			# the type of sitemap file should be created
  	var $urlList;					# the list of urls crawled from a site
  	var $hostName;					# hostname of the site
  	var $spider;					# spider object
@@ -55,9 +55,7 @@ class SitemapController extends Controller{
 	
 	# func to generate sitemap
  	function generateSitemapFile($sitemapInfo){
- 		if(!empty($sitemapInfo['website_id'])){ 			
-			setcookie("url_count", 0);
-			setcookie("curr_url", '');			
+ 		if(!empty($sitemapInfo['website_id'])){			
 			$websiteController = New WebsiteController();
 			$websiteInfo = $websiteController->__getWebsiteInfo($sitemapInfo['website_id']);
  			$baseUrl = $websiteInfo['url'];
@@ -87,8 +85,6 @@ class SitemapController extends Controller{
  		
  		# func call to crawl urls from site
  		if(empty($urlList)){
- 			setcookie("url_count", 0);
-			setcookie("curr_url", $this->baseUrl);
 			$this->getSitemapUrls();
  		}else{
  			$this->urlList = $urlList;
@@ -113,9 +109,6 @@ class SitemapController extends Controller{
 		
 		if($this->urlList[$baseUrl]['visit'] == 1) return;				
 		$this->urlList[$baseUrl]['visit'] = 1;
-		
-		setcookie("url_count", count($this->urlList));
-		setcookie("curr_url", $baseUrl);
 		
 		$urlList = $this->spider->getUniqueUrls($baseUrl);
 		$hostName = $this->hostName;

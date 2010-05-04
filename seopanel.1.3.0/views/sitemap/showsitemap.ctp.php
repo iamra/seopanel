@@ -59,8 +59,9 @@
 
 <div id='logcontent'>	
 	<p class='note' id='proceed'>Click on <b>Proceed</b> to create sitemap file.</p>
-	<p class="note noteleft">Total Urls Crawled: <span id='url_count'>0</span></p>
-	<p class="note noteleft">Current Crawling Url: <span id='curr_url'><?=$baseUrl?></span></p>
+	<p class="note noteleft" id="message" style="display: none;">
+		<b>This process will take time according to number of links in your site. Please wait to get sitemap files!</b>
+	</p>
 </div>
 
 <div id='subcontmed'></div>
