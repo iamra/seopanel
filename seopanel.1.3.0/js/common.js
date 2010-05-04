@@ -99,6 +99,11 @@ function showLoadingIcon(scriptPos,noLoading){
 			loading = 1;
 			break;
 		
+		case "subcontmed":
+			content = '<div id="loading_subcontmed"></div>';
+			loading = 1;
+			break;
+		
 		default :
 			content = '<div id="loading_rankarea"></div>';
 			loading = 1;

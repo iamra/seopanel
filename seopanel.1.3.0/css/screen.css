@@ -834,6 +834,15 @@ h1.BlockHeader {
 	border: 1px solid #E5E5E5;
 }
 
+#loading_subcontmed {
+	width: 750px;
+	height: 100px;
+	background: url('../images/ajax-loader.gif') center center no-repeat;
+	z-index: 5;
+	margin-top: 10px;
+	border: 1px solid #E5E5E5;
+}
+
 #loading_content_frame {
 	width: 700px;
 	height: 300px;
