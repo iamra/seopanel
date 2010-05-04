@@ -51,7 +51,7 @@
 	<tr>
 		<th>&nbsp;</th>
 		<td style="padding-left: 9px;">
-			<a href="javascript:void(0);" onclick="sitemapDoLoadPost('sitemap.php', 'search_form', 'subcontent')"><img alt="" src="<?=SP_IMGPATH?>/proceed.gif"></a>
+			<a href="javascript:void(0);" onclick="sitemapDoLoadPost('sitemap.php', 'search_form', 'subcontmed')"><img alt="" src="<?=SP_IMGPATH?>/proceed.gif"></a>
 		</td>
 	</tr>
 </table>
@@ -63,4 +63,4 @@
 	<p class="note noteleft">Current Crawling Url: <span id='curr_url'><?=$baseUrl?></span></p>
 </div>
 
-<div id='subcontent'></div>
+<div id='subcontmed'></div>
