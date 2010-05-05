@@ -22,6 +22,7 @@
 
 # class defines all directory controller functions
 class DirectoryController extends Controller{
+	var $noTitles = 4; 			# no of titles and description for submission
 	
 	function showSubmissionPage(  ) {
 		
@@ -44,9 +45,13 @@ class DirectoryController extends Controller{
 	
 	function showWebsiteSubmissionPage($submitInfo, $error=false) {
 		if(empty($submitInfo['website_id'])) {
-			echo "<script>scriptDoLoad('directories.php', 'content');</script>";
-			return;
+			showErrorMsg("Please select a website to proceed!");
 		}
+		
+		# check whether the sitemap directory is writable
+ 		if(!is_writable(SP_TMPPATH ."/".$this->sitemapDir)){
+ 			showErrorMsg("Directory '<b>".SP_TMPPATH."</b>' is not <b>writable</b>. Please change its <b>permission</b> !");
+ 		}
 		
 		if(empty($error)){
 			$websiteController = New WebsiteController();
@@ -55,18 +60,16 @@ class DirectoryController extends Controller{
 		}else{
 			$websiteInfo = $submitInfo;
 		}
-		$this->set('websiteInfo', $websiteInfo);
-		
-		$this->session->setSession('no_captcha', empty($submitInfo['no_captcha']) ? 0 : 1);	
-		
+		$this->set('websiteInfo', $websiteInfo);		
+		$this->session->setSession('no_captcha', empty($submitInfo['no_captcha']) ? 0 : 1);
+		$this->set('noTitles', $this->noTitles);		
 		$this->render('directory/showsitesubmission');
 	}
 	
 	function saveSubmissiondata( $submitInfo ) {
 		
 		if(empty($submitInfo['website_id'])) {
-			echo "<script>scriptDoLoad('directories.php', 'content');</script>";
-			return;
+			showErrorMsg("Please select a website to proceed!");
 		}
 		
 		$_SESSION['skipped'][$submitInfo['website_id']] = array();
@@ -96,8 +99,12 @@ class DirectoryController extends Controller{
 					"owner_email='".addslashes($submitInfo['owner_email'])."'," .
 					"category='".addslashes($submitInfo['category'])."'," .
 					"title='".addslashes($submitInfo['title'])."'," .
-					"description='".addslashes($submitInfo['description'])."'," .
-					"keywords='".addslashes($submitInfo['keywords'])."' " .
+					"description='".addslashes($submitInfo['description'])."',";			
+			for($i=2;$i<=$this->noTitles;$i++){
+				$sql .= "title$i='".addslashes($submitInfo['title'.$i])."'," .
+					"description$i='".addslashes($submitInfo['description'.$i])."',";
+			}			
+			$sql .=	"keywords='".addslashes($submitInfo['keywords'])."' " .
 					"where id={$submitInfo['website_id']}";
 			$this->db->query($sql);
 		}
