@@ -29,23 +29,44 @@
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col">Website Url:</td>
-		<td class="td_right_col"><input type="text" name="url" value="<?=$websiteInfo['url']?>" style="width:300px;"><?=$errMsg['url']?></td>
+		<td class="td_right_col">
+			<input type="text" id="weburl" name="url" value="<?=$websiteInfo['url']?>" style="width:300px;">
+			<a style="text-decoration: none;" href="javascript:void(0);" onclick="crawlMetaData('websites.php?sec=crawlmeta', 'crawlstats')">&#171&#171 Crawl Meta Data</a>
+			<div id="crawlstats" style="float: right;padding-right:40px;"></div>
+			<br><?=$errMsg['url']?>
+		</td>
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col">Website Title:</td>
-		<td class="td_right_col"><input type="text" name="title" value="<?=stripslashes($websiteInfo['title'])?>" style="width:400px;"><?=$errMsg['title']?></td>
+		<td class="td_right_col"><input type="text" id="webtitle" name="title" value="<?=stripslashes($websiteInfo['title'])?>" style="width:400px;"><?=$errMsg['title']?></td>
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col">Website Description:</td>
 		<td class="td_right_col">
-			<textarea name="description"><?=stripslashes($websiteInfo['description'])?></textarea><?=$errMsg['description']?>
+			<textarea name="description" id="webdescription"><?=stripslashes($websiteInfo['description'])?></textarea><?=$errMsg['description']?>
 			<p>Some directories require minimum 150 characters for the description field.</p>
 		</td>
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col">Website Keywords:</td>
-		<td class="td_right_col"><textarea name="keywords"><?=stripslashes($websiteInfo['keywords'])?></textarea><?=$errMsg['keywords']?></td>
-	</tr>		
+		<td class="td_right_col"><textarea name="keywords" id="webkeywords"><?=stripslashes($websiteInfo['keywords'])?></textarea><?=$errMsg['keywords']?></td>
+	</tr>	
+	<tr class="blue_row" style="border-right: none;">
+		<td class="td_left_col">&nbsp;</td>
+		<td class="td_right_col"><b>Add different titles and descriptions to submit random title and description to directories.</b></td>
+	</tr>
+	<?php for($i=2;$i<=$noTitles;$i++){?>	
+		<tr class="white_row">
+			<td class="td_left_col">Submit Title<?=$i?>:</td>
+			<td class="td_right_col"><input type="text" name="title<?=$i?>" value="<?=stripslashes($websiteInfo['title'.$i])?>" style="width:400px;"></td>
+		</tr>
+		<tr class="blue_row">
+			<td class="td_left_col">Submit Description<?=$i?>:</td>
+			<td class="td_right_col">
+				<textarea name="description<?=$i?>"><?=stripslashes($websiteInfo['description'.$i])?></textarea>
+			</td>
+		</tr>
+	<?php }?>		
 	<tr class="blue_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>

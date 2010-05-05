@@ -38,6 +38,7 @@ class SitemapController extends Controller{
  	var $smfooter;					# sitemap footer
  	var $smfile = "";				# sitemap file
  	var $section = "";              # sitemap website
+ 	var $sitemapDir = "sitemap";	# sitemap directory where sitemap is created
 	
 	# func to show sitemap generator interface
 	function showSitemapGenerator() {
@@ -55,7 +56,14 @@ class SitemapController extends Controller{
 	
 	# func to generate sitemap
  	function generateSitemapFile($sitemapInfo){
- 		if(!empty($sitemapInfo['website_id'])){			
+ 		if(!empty($sitemapInfo['website_id'])){	
+
+ 			# check whether the sitemap directory is writable
+ 			if(!is_writable(SP_TMPPATH ."/".$this->sitemapDir)){
+ 				hideDiv('message');
+ 				showErrorMsg("Directory '<b>".SP_TMPPATH ."/".$this->sitemapDir."</b>' is not <b>writable</b>. Please change its <b>permission</b> !");
+ 			}
+ 			
 			$websiteController = New WebsiteController();
 			$websiteInfo = $websiteController->__getWebsiteInfo($sitemapInfo['website_id']);
  			$baseUrl = $websiteInfo['url'];
@@ -72,7 +80,8 @@ class SitemapController extends Controller{
 			
 			$this->createSitemap();
  		}else{
- 			echo "<p class='note notefailed'>No Website Found.</p>";
+ 			hideDiv('message');
+ 			showErrorMsg("No Website Found!");
  		} 		
  	}
  	
@@ -242,7 +251,7 @@ class SitemapController extends Controller{
 	
 	# create sitemap file
 	function createSitemapFile($smxml) {
-		$fp = fopen(SP_TMPPATH ."/sitemap/" .$this->smfile, 'w');
+		$fp = fopen(SP_TMPPATH ."/".$this->sitemapDir."/" .$this->smfile, 'w');
 		$smxml = $this->smheader . $smxml . $this->smfooter; 
 		fwrite($fp, $smxml);
 		fclose($fp);

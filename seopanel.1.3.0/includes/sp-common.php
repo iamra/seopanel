@@ -37,8 +37,20 @@ function redirectUrl($url) {
 # func to redirect url
 function redirectUrlByScript($url) {
 	print "<script>window.location='$url';</script>";
+}
+
+# func to hide div
+function hideDiv($divId) {
+	print "<script>hideDiv('$divId')</script>";
+}
+
+
+# func to show div
+function showDiv($divId) {
+	print "<script>showDiv('$divId')</script>";
 	exit;
 }
+
 
 # func to show no results
 function showNoRecordsList($colspan, $msg='No Records Found!') {

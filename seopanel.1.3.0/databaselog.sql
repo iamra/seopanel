@@ -91,3 +91,15 @@ INSERT INTO `settings` (`id`, `set_label`, `set_name`, `set_val`, `set_type`) VA
 (4, 'Number of entries per page', 'SP_PAGINGNO', '10', 'small'),
 (5, 'Delay between each spider crawl(seconds)', 'SP_CRAWL_DELAY', '1', 'small'),
 (6, 'Allow user to generate reports', 'SP_USER_GEN_REPORT', '1', 'small');
+
+--
+-- random title and description to websites table
+--
+ALTER TABLE `websites` ADD `title2` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `keywords` ,
+ADD `title3` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `title2` ,
+ADD `title4` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `title3` ,
+ADD `title5` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `title4` ,
+ADD `description2` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `title5` ,
+ADD `description3` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description2` ,
+ADD `description4` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description3` ,
+ADD `description5` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description4`; 

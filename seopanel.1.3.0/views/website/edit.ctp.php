@@ -30,15 +30,16 @@
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col">Url:</td>
-		<td class="td_right_col"><input type="text" id='weburl' name="url" value="<?=$post['url']?>" style="width:300px;"><?=$errMsg['url']?></td>
+		<td class="td_right_col">
+			<input type="text" id='weburl' name="url" value="<?=$post['url']?>" style="width:300px;">
+			<a style="text-decoration: none;" href="javascript:void(0);" onclick="crawlMetaData('websites.php?sec=crawlmeta', 'crawlstats')">&#171&#171 Crawl Meta Data</a>
+			<div id="crawlstats" style="float: right;padding-right:40px;"></div>
+			<br><?=$errMsg['url']?>
+		</td>
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col">Title:</td>
-		<td class="td_right_col">
-			<input type="text" name="title" id="webtitle" value="<?=$post['title']?>" style="width:400px;"> &nbsp;
-			<a style="text-decoration: none;" href="javascript:void(0);" onclick="crawlMetaData('websites.php?sec=crawlmeta', 'crawlstats')">&#171&#171 Crawl Meta Data</a>
-			<div id="crawlstats" style="float: right;padding-right:40px;"></div>
-		</td>
+		<td class="td_right_col"><input type="text" name="title" id="webtitle" value="<?=$post['title']?>" style="width:400px;"></td>
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col">Description:</td>
