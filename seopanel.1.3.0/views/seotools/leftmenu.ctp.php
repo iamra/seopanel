@@ -96,6 +96,7 @@ foreach($menuList as $i => $menuInfo){
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php', 'content')">Automatic Submission</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=featured', 'content')">Featured Submission</a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=skipped', 'content')">Skipped Directories</a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('directories.php?sec=reports', 'content')">Submission Reports</a></li>
 				<?php if(SP_USER_GEN_REPORT || isAdmin()){ ?>
 					<?php if(SP_DEMO){?>

@@ -265,3 +265,13 @@ function alertDemoMsg(){
     	exit;
     }
 }
+
+function checkCaptcha(checkId, scriptUrl, scriptPos){
+	var noCaptcha = 0;
+	if(document.getElementById(checkId).checked){
+		noCaptcha = 1;
+	}
+	
+	scriptUrl = scriptUrl + "&no_captcha=" + noCaptcha;
+	scriptDoLoad(scriptUrl, scriptPos);
+}
