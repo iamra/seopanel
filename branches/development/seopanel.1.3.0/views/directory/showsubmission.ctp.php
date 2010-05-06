@@ -6,7 +6,7 @@
 		<td>
 			<?php echo $this->render('website/websiteselectbox', 'ajax'); ?>
 		</td>
-		<td width="20px"><input type="checkbox" name="no_captcha"></td>
+		<td width="20px"><input type="checkbox" name="no_captcha" id="no_captcha" onclick="checkCaptcha('no_captcha', 'directories.php?sec=checkcaptcha', 'tmp')"></td>
 		<th style="text-align: left;" nowrap="nowrap">Directories with out captcha</th>
 		<td align='left'>
 			<a onclick="scriptDoLoadPost('directories.php', 'search_form', 'subcontent')" href="javascript:void(0);">

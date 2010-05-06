@@ -45,6 +45,7 @@ class DirectoryController extends Controller{
 	}
 	
 	function showWebsiteSubmissionPage($submitInfo, $error=false) {
+		
 		if(empty($submitInfo['website_id'])) {
 			showErrorMsg("Please select a website to proceed!");
 		}
@@ -125,9 +126,31 @@ class DirectoryController extends Controller{
 		}
 		
 		return $matches;
-	}	
+	}
+
+	# func to create captcha image in system
+	function __getCreatedCaptchaUrl($captchaUrl, $submitUrl, $phpsessid){
+		
+		$spider = new Spider();
+		$spider->_CURLOPT_REFERER = $submitUrl;
+		if(!empty($phpsessid)){
+			$spider->_CURLOPT_COOKIE = 'PHPSESSID=' . $phpsessid . '; path=/';	
+		} 
+		$ret = $spider->getContent($captchaUrl);
+		if(!empty($ret['page'])){
+			$captchaFile = $this->capchaFile .isLoggedIn() . ".jpg";
+			$fp = fopen(SP_TMPPATH."/".$captchaFile, 'w');
+			fwrite($fp, $ret['page']);
+			fclose($fp);
+			$captchaUrl = SP_WEBPATH. "/tmp/" .$captchaFile ."?rand=".mktime();	
+		}
+		return $captchaUrl; 
+	}
 	
+	# func to show submission page
 	function startSubmission( $websiteId, $dirId='' ) {
+		
+		# get list of already submitted directories
 		$sql = "select directory_id from dirsubmitinfo where website_id=$websiteId";
 		$list = $this->db->select($sql);
 		$dirList = array();
@@ -135,8 +158,10 @@ class DirectoryController extends Controller{
 			$dirList[] = $listInfo['directory_id'];
 		}
 		
-		if( (count($_SESSION['skipped'][$websiteId]) > 0) && is_array($_SESSION['skipped'][$websiteId])){
-			$dirList = array_merge($dirList, array_keys($_SESSION['skipped'][$websiteId]));
+		# to get skipped directories
+		$skipDirList = $this->__getAllSkippedDir($websiteId);
+		if( count($skipDirList) > 0){
+			$dirList = array_merge($dirList, $skipDirList);
 		}
 		
 		$sql = "select * from directories where working=1";
@@ -156,7 +181,8 @@ class DirectoryController extends Controller{
 		$websiteInfo = $websiteController->__getWebsiteInfo($websiteId);
 		$this->set('websiteId', $websiteId);
 		
-		$spider = new Spider(); 
+		$spider = new Spider();
+		$spider->_CURLOPT_HEADER = 1; 
 		$ret = $spider->getContent(addHttpToUrl($dirInfo['submit_url']));
 				
 		if($ret['error']){
@@ -169,7 +195,7 @@ class DirectoryController extends Controller{
 			$matches = $this->isCategoryExists($page, $dirInfo['category_col']);		
 		}
 
-		$phpsessid = '';
+		# if category exists proceed submission
 		if(!empty($matches[0])){
 			
 			$categorysel = $matches[0];
@@ -196,9 +222,9 @@ class DirectoryController extends Controller{
 			$imageHash = "";
 			if(preg_match('/name="'.$dirInfo['imagehash_col'].'".*?value="(.*?)"/is', $page, $hashMatch)){
 				$imageHash = $hashMatch[1];
-				$phpsessid = $spider->getSessionId($page);
 			}
 			$this->set('imageHash', $imageHash);
+			$phpsessid = $spider->getSessionId($page);
 			$this->set('phpsessid', $phpsessid);
 			
 			if(!empty($captchaUrl)){
@@ -217,15 +243,15 @@ class DirectoryController extends Controller{
 					if(!empty($imageHash)) {
 						$captchaUrl .= "&".$dirInfo['imagehashurl_col']."=".$imageHash; 
 					}else $captchaUrl .= "&rand=".rand(1,1000); 
-				}				
+				}
+
+				# to get stored image path if hot linking is prevented
+				if(SP_HOTLINKING) $captchaUrl = $this->__getCreatedCaptchaUrl($captchaUrl, $dirInfo['submit_url'], $phpsessid);
 			}
 			$this->set('captchaUrl', $captchaUrl);			
 		}else{
 			$this->set('error', 1);
 			$this->set('msg', 'The submission category not found in submission page. Please click on "Reload" or "Skip"');
-            /*$_SESSION['skipped'][$websiteId][$dirInfo['id']] = 1;
-		    $this->startSubmission($websiteId);
-		    return;*/			
 		}
 		
 		$this->render('directory/showsubmissionform');				
@@ -253,6 +279,7 @@ class DirectoryController extends Controller{
 		return $websiteInfo;
 	}	
 	
+	# submitting site directory
 	function submitSite( $submitInfo ) {
 				
 		$dirInfo = $this->__getDirectoryInfo($submitInfo['dir_id']);
@@ -285,8 +312,7 @@ class DirectoryController extends Controller{
 			$this->set('error', 1);
 			$this->set('msg', $ret['errmsg']);
 		}else{
-			$page = $ret['page'];
-			highlight_string($page);exit;		
+			$page = $ret['page'];		
 			if(preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)){
 				$this->set('msg', $matches[1]);
 				$status = 1;
@@ -312,9 +338,69 @@ class DirectoryController extends Controller{
 		$this->startSubmission($submitInfo['website_id']);		
 	}
 	
+	# to skip submission
 	function skipSubmission( $info ) {
-		$_SESSION['skipped'][$info['website_id']][$info['dir_id']] = 1;
+		
+		$sql = "Insert into skipdirectories(id,website_id,directory_id) values('', {$info['website_id']}, {$info['dir_id']})";
+		$this->db->query($sql);		
 		$this->startSubmission($info['website_id']);
+	}
+	
+	# to unskip submission
+	function unSkipSubmission( $skipId ) {
+		
+		$sql = "delete from skipdirectories where id=$skipId";
+		$this->db->query($sql);
+	}
+	
+	# to get all skipped directories
+	function __getAllSkippedDir($websiteId){
+		
+		$dirList = array();
+		$sql = "select directory_id from skipdirectories where website_id=$websiteId";
+		$list = $this->db->select($sql);
+		if(count($list) > 0){
+			foreach($list as $listInfo){
+				$dirList[] = $listInfo['directory_id'];
+			}
+		}
+		
+		return $dirList;
+	}
+	
+	# func to show Skipped Directories
+	function showSkippedDirectories($searchInfo=''){
+		$this->set('sectionHead', 'Skipped Directories');
+		$userId = isLoggedIn();
+		
+		$websiteController = New WebsiteController();
+		$websiteList = $websiteController->__getAllWebsites($userId, true);
+		$this->set('websiteList', $websiteList);
+		$websiteId = empty ($searchInfo['website_id']) ? $websiteList[0]['id'] : $searchInfo['website_id'];
+		$this->set('websiteId', $websiteId);
+		$this->set('onChange', "scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=skipped')");		
+		
+		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";		
+		$sql = "select ds.* ,d.domain
+								from skipdirectories ds,directories d 
+								where ds.directory_id=d.id 
+								$conditions  
+								order by id desc,d.domain";
+								
+		# pagination setup		
+		$this->db->query($sql, true);
+		$this->paging->setDivClass('pagingdiv');
+		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
+		$pagingDiv = $this->paging->printPages('directories.php?sec=skipped', '', 'scriptDoLoad', 'content', 'website_id='.$websiteId);		
+		$this->set('pagingDiv', $pagingDiv);
+		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;						
+								
+		$reportList = $this->db->select($sql);
+		
+		$this->set('list', $reportList);
+		$this->set('pageNo', $_GET['pageno']);
+		$this->set('websiteId', $websiteId);
+		$this->render('directory/skippeddirs');	
 	}
 	
 	# func to show submision reports
@@ -340,7 +426,7 @@ class DirectoryController extends Controller{
 		# pagination setup		
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
-		$this->paging->loadPaging($this->db->noRows, 20);
+		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
 		$pagingDiv = $this->paging->printPages('directories.php?sec=reports', '', 'scriptDoLoad', 'content', 'website_id='.$websiteId.'&active='.$searchInfo['active']);		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;						

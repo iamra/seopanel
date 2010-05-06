@@ -37,7 +37,7 @@ class Spider{
 	var $_CURLOPT_REFERER = "";
 	var $_CURL_sleep = 1;
 	var $_CURLOPT_COOKIE = "";
-	var $_CURLOPT_HEADER = 1;
+	var $_CURLOPT_HEADER = 0;
 
 	# spider constructor
 	function Spider()	{			

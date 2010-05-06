@@ -37,6 +37,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 		case "submitsite":
 			$controller->submitSite($_POST);
+			break;		
+			
+		case "skipped":
+			$controller->showSkippedDirectories($_POST);
 			break;
 			
 		case "reports":
@@ -67,12 +71,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$controller->skipSubmission($_GET);
 			break;
 		
+		case "unskip":
+			$controller->unSkipSubmission($_GET['id']);
+			$controller->showSkippedDirectories($_GET);
+			break;
+		
 		case "reload":
 			$controller->startSubmission($_GET['website_id'], $_GET['dir_id']);
 			break;
 			
 		case "reports":
 			$controller->showSubmissionReports($_GET);
+			break;
+			
+		case "skipped":
+			$controller->showSkippedDirectories($_GET);
 			break;
 			
 		case "checksub":
@@ -116,6 +129,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 		case "checkdir":			
 			$controller->checkDirectoryStatus($_GET['dir_id'], $_GET['nodebug']);
+			break;
+			
+		case "checkcaptcha":
+			$_SESSION['no_captcha'] = $_GET['no_captcha'];
 			break;
 		
 		default:

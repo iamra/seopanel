@@ -60,6 +60,7 @@ include(SP_VIEWPATH.'/menu/'.$userType.'menu.ctp.php');
 	</tr>
 </table>
 </div>
+<div id="tmp"></div>
 <?php if(empty($_COOKIE['hidenews'])){ ?>
 	<script>scriptDoLoad('index.php?sec=news', 'newsalert');</script>
 <?php }?>
