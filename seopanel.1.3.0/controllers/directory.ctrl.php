@@ -22,7 +22,8 @@
 
 # class defines all directory controller functions
 class DirectoryController extends Controller{
-	var $noTitles = 4; 			# no of titles and description for submission
+	var $noTitles = 5; 			  # no of titles and description for submission
+	var $capchaFile = "captcha";  # captcha file name
 	
 	function showSubmissionPage(  ) {
 		
@@ -124,7 +125,7 @@ class DirectoryController extends Controller{
 		}
 		
 		return $matches;
-	}
+	}	
 	
 	function startSubmission( $websiteId, $dirId='' ) {
 		$sql = "select directory_id from dirsubmitinfo where website_id=$websiteId";
@@ -145,8 +146,11 @@ class DirectoryController extends Controller{
 		$sql .= " order by id";
 		$dirInfo = $this->db->select($sql, true);
 		$this->set('dirInfo', $dirInfo);		
-				
-		if(empty($dirInfo['id'])) return;
+		
+		# directory list is empty
+		if(empty($dirInfo['id'])) {
+			showErrorMsg("No <b>Active</b> directories Found. Please <a href='http://www.seopanel.in/contact/' target='_blank'>Contact</a> <b>Seo Panel Team</b> to get more <b>directories</b>.");
+		}
 		
 		$websiteController = New WebsiteController();
 		$websiteInfo = $websiteController->__getWebsiteInfo($websiteId);
@@ -164,7 +168,8 @@ class DirectoryController extends Controller{
 		if(!empty($page)){
 			$matches = $this->isCategoryExists($page, $dirInfo['category_col']);		
 		}
-					
+
+		$phpsessid = '';
 		if(!empty($matches[0])){
 			
 			$categorysel = $matches[0];
@@ -191,8 +196,10 @@ class DirectoryController extends Controller{
 			$imageHash = "";
 			if(preg_match('/name="'.$dirInfo['imagehash_col'].'".*?value="(.*?)"/is', $page, $hashMatch)){
 				$imageHash = $hashMatch[1];
+				$phpsessid = $spider->getSessionId($page);
 			}
 			$this->set('imageHash', $imageHash);
+			$this->set('phpsessid', $phpsessid);
 			
 			if(!empty($captchaUrl)){
 				$captchaUrl = preg_replace('/^\//', '', $captchaUrl);				
@@ -214,24 +221,45 @@ class DirectoryController extends Controller{
 			}
 			$this->set('captchaUrl', $captchaUrl);			
 		}else{
-			if(SP_DEMO){
-            	$_SESSION['skipped'][$websiteId][$dirInfo['id']] = 1;
-		        $this->startSubmission($websiteId);
-                return;
-            }			
 			$this->set('error', 1);
-			$this->set('msg', 'The submission category not found in submission page. Please click on "Reload" or "Skip"');			
+			$this->set('msg', 'The submission category not found in submission page. Please click on "Reload" or "Skip"');
+            /*$_SESSION['skipped'][$websiteId][$dirInfo['id']] = 1;
+		    $this->startSubmission($websiteId);
+		    return;*/			
 		}
 		
 		$this->render('directory/showsubmissionform');				
 	}
+	
+	# to get random title and description for submisiion
+	function __getSubmitTitleDes($websiteInfo){
+		$titleList = array();
+		
+		$titleList[0]['title'] = $websiteInfo['title'];
+		$titleList[0]['description'] = $websiteInfo['description'];
+		for($i=2;$i<=$this->noTitles;$i++){
+			$titleInfo = array();
+			if(!empty($websiteInfo['title'.$i]) && !empty($websiteInfo['description'.$i])){
+				$titleInfo['title'] = $websiteInfo['title'.$i];
+				$titleInfo['description'] = $websiteInfo['description'.$i];
+				$titleList[] = $titleInfo;
+			}	
+		}
+		if($index = array_rand($titleList, 1)){
+			$websiteInfo['title'] = $titleList[$index]['title'];
+			$websiteInfo['description'] = $titleList[$index]['description'];	
+		}
+		
+		return $websiteInfo;
+	}	
 	
 	function submitSite( $submitInfo ) {
 				
 		$dirInfo = $this->__getDirectoryInfo($submitInfo['dir_id']);
 		
 		$websiteController = New WebsiteController();
-		$websiteInfo = $websiteController->__getWebsiteInfo($submitInfo['website_id']);
+		$websiteInfo = $websiteController->__getWebsiteInfo($submitInfo['website_id']);		
+		$websiteInfo = $this->__getSubmitTitleDes($websiteInfo);
 		
 		$postData = $dirInfo['title_col']."=".$websiteInfo['title'];
 		$postData .= "&".$dirInfo['url_col']."=".$websiteInfo['url'];
@@ -247,13 +275,18 @@ class DirectoryController extends Controller{
 		
 		$spider = new Spider(); 
 		$spider->_CURLOPT_POSTFIELDS = $postData;
+		$spider->_CURLOPT_REFERER = $dirInfo['submit_url'];
+		if(!empty($submitInfo['phpsessid'])){
+			$spider->_CURLOPT_COOKIE = 'PHPSESSID=' . $submitInfo['phpsessid'] . '; path=/';	
+		}
 		$ret = $spider->getContent($dirInfo['submit_url']);
 		
 		if($ret['error']){
 			$this->set('error', 1);
 			$this->set('msg', $ret['errmsg']);
 		}else{
-			$page = $ret['page'];		
+			$page = $ret['page'];
+			highlight_string($page);exit;		
 			if(preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)){
 				$this->set('msg', $matches[1]);
 				$status = 1;

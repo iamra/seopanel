@@ -102,4 +102,16 @@ ADD `title5` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL 
 ADD `description2` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `title5` ,
 ADD `description3` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description2` ,
 ADD `description4` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description3` ,
-ADD `description5` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description4`; 
+ADD `description5` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER `description4`;
+
+
+--
+-- Table structure for table `skipdirectories`
+--
+
+CREATE TABLE IF NOT EXISTS `skipdirectories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `website_id` int(11) NOT NULL,
+  `directory_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1; 

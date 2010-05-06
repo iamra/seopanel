@@ -53,7 +53,7 @@
 	</tr>	
 	<tr class="blue_row" style="border-right: none;">
 		<td class="td_left_col">&nbsp;</td>
-		<td class="td_right_col"><b>Add different titles and descriptions to submit random title and description to directories.</b></td>
+		<td class="td_right_col"><b>Optional titles and descriptions to submit random title and description to directories for better results.</b></td>
 	</tr>
 	<?php for($i=2;$i<=$noTitles;$i++){?>	
 		<tr class="white_row">
