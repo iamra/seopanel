@@ -27,6 +27,9 @@
 				<?php if(!empty($imageHash)){?>
 					<input type="hidden" name="<?=$dirInfo['imagehash_col']?>" value="<?=$imageHash?>">
 				<?php }?>
+				<?php if(!empty($phpsessid)){?>
+					<input type="hidden" name="phpsessid" value="<?=$phpsessid?>">
+				<?php }?>
 				<input type="text" name="<?=$dirInfo['cptcha_col']?>" value="" id='captcha'>
 				<p><img src='<?=$captchaUrl?>'></p>
 			</td>

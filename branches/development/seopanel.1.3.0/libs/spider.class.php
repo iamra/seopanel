@@ -37,6 +37,7 @@ class Spider{
 	var $_CURLOPT_REFERER = "";
 	var $_CURL_sleep = 1;
 	var $_CURLOPT_COOKIE = "";
+	var $_CURLOPT_HEADER = 1;
 
 	# spider constructor
 	function Spider()	{			
@@ -109,6 +110,7 @@ class Spider{
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_TIMEOUT , $this -> _CURLOPT_TIMEOUT );
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_COOKIEJAR , $this -> _CURLOPT_COOKIEJAR );
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_COOKIEFILE , $this -> _CURLOPT_COOKIEFILE );
+		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_HEADER , $this -> _CURLOPT_HEADER);
 		if(!empty($this -> _CURLOPT_COOKIE)) curl_setopt( $this -> _CURL_RESOURCE, CURLOPT_COOKIE , $this -> _CURLOPT_COOKIE );
 		if(!empty($this-> _CURLOPT_REFERER)){
 			curl_setopt($this -> _CURL_RESOURCE, CURLOPT_REFERER, $this-> _CURLOPT_REFERER); 
@@ -133,6 +135,15 @@ class Spider{
 		$ret['errmsg'] = curl_error( $this -> _CURL_RESOURCE );
 
 		return $ret;
+	}
+	
+	# func to get session id
+	function getSessionId($page){
+		if (preg_match('/PHPSESSID=(.*?);/', $page, $result)) {
+			return $result[1];
+		} else {
+			return false;
+		}
 	}
 }
 ?>
