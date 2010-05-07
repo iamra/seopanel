@@ -50,8 +50,4 @@ define('SP_PLUGINUPGRADEFILE', 'upgrade.sql');
 
 # The seo panel pagination default
 define('SP_PAGINGNO_DEFAULT', 10);
-
-# Hot Linking prevents
-define('SP_HOTLINKING', 1);
-
 ?>
