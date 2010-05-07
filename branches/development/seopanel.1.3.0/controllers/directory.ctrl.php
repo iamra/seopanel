@@ -51,7 +51,7 @@ class DirectoryController extends Controller{
 		}
 		
 		# check whether the sitemap directory is writable
- 		if(!is_writable(SP_TMPPATH ."/".$this->sitemapDir)){
+ 		if(SP_HOTLINKING && !is_writable(SP_TMPPATH ."/".$this->sitemapDir)){
  			showErrorMsg("Directory '<b>".SP_TMPPATH."</b>' is not <b>writable</b>. Please change its <b>permission</b> !");
  		}
 		
@@ -493,7 +493,7 @@ class DirectoryController extends Controller{
 	
 	function checkSubmissionReports( $searchInfo ) {
 		
-		$this->set('sectionHead', 'Check Submission Reports');
+		$this->set('sectionHead', 'Check Directory Submission Status');
 		$userId = isLoggedIn();
 		
 		$websiteController = New WebsiteController();

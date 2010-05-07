@@ -15,6 +15,16 @@
 			case "small":
 				$width = 40;
 				break;
+
+			case "bool":
+				if(empty($listInfo['set_val'])){
+					$selectYes = "";					
+					$selectNo = "selected";
+				}else{					
+					$selectYes = "selected";					
+					$selectNo = "";
+				}
+				break;
 				
 			case "medium":
 				$width = 200;
@@ -30,7 +40,14 @@
 			<td class="td_left_col"><?=$listInfo['set_label']?>:</td>
 			<td class="td_right_col">
 				<?php if($listInfo['set_type'] != 'text'){?>
-					<input type="text" name="<?=$listInfo['set_name']?>" value="<?=stripslashes($listInfo['set_val'])?>" style='width:<?=$width?>px'>
+					<?php if($listInfo['set_type'] == 'bool'){?>
+						<select  name="<?=$listInfo['set_name']?>">
+							<option value="1" <?=$selectYes?>>Yes</option>
+							<option value="0" <?=$selectNo?>>No</option>
+						</select>
+					<?php }else{?>
+						<input type="text" name="<?=$listInfo['set_name']?>" value="<?=stripslashes($listInfo['set_val'])?>" style='width:<?=$width?>px'>
+					<?php }?>
 				<?php }else{?>
 					<textarea name="<?=$listInfo['set_name']?>" style='width:<?=$width?>px'><?=stripslashes($listInfo['set_val'])?></textarea>
 				<?php }?>
