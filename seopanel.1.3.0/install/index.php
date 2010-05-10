@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	   *
+ *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	           *
  *   sendtogeo@gmail.com   												   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,25 +19,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+include_once 'install.class.php';
+$install = New Install();
 
-include_once("includes/sp-load.php");
-include_once(SP_CTRLPATH."/index.ctrl.php");
-include_once(SP_CTRLPATH."/directory.ctrl.php");
-$controller = New IndexController();
-$controller->view->menu = 'home';
+$install->showDefaultHeader();
 
-if($_SERVER['REQUEST_METHOD'] == 'GET'){
-
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	
+	switch($_POST['sec']){
+	}
+	
+}else{
+	
 	switch($_GET['sec']){
-		
-		case "news":
-			$controller->showNews($_GET);
-			break;
 
 		default:
-			$controller->index();
+			$install->checkRequirements();
 			break;
 	}
 }
-
+$install->showDefaultFooter();
 ?>

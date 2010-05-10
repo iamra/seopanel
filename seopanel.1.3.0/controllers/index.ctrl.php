@@ -27,9 +27,9 @@ class IndexController extends Controller{
 	function index(){
 		if(isLoggedIn()){
 			$userId = isLoggedIn();
-			$userCtrler = New UserController();
+			/*$userCtrler = New UserController();
 			$userInfo = $userCtrler->__getUserInfo($userId);
-			$this->set('userInfo', $userInfo);
+			$this->set('userInfo', $userInfo);*/
 			
 			$websiteCtrler = New WebsiteController();
 			$list = $websiteCtrler->__getAllWebsites($userId, true);
@@ -39,7 +39,8 @@ class IndexController extends Controller{
 			include_once(SP_CTRLPATH."/backlink.ctrl.php");
 			$rankCtrler = New RankController();
 			$backlinlCtrler = New BacklinkController();
-			$saturationCtrler = New SaturationCheckerController();
+			$saturationCtrler = New SaturationCheckerController();			
+			$dirCtrler = New DirectoryController();
 			
 			$websiteList = array();
 			foreach($list as $listInfo){
@@ -64,6 +65,8 @@ class IndexController extends Controller{
 				$listInfo['yahoo']['indexed'] = empty($report['yahoo']) ? "-" : $report['yahoo']." ".$report['rank_diff_yahoo'];
 				$listInfo['msn']['indexed'] = empty($report['msn']) ? "-" : $report['msn']." ".$report['rank_diff_msn'];
 				
+				$listInfo['dirsub']['total'] = $dirCtrler->__getTotalSubmitInfo($listInfo['id']);
+				$listInfo['dirsub']['active'] = $dirCtrler->__getTotalSubmitInfo($listInfo['id'], true);
 				$websiteList[] = $listInfo;
 			}			
 			$this->set('websiteList', $websiteList);

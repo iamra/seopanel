@@ -670,6 +670,15 @@ class DirectoryController extends Controller{
 		$statusLink = scriptAJAXLinkHref('directories.php', 'status_'.$dirId, "sec=dirstatus&dir_id=$dirId&status=$statVal", $statLabel);
 		
 		return $statusLink;
-	}	
+	}
+
+	# to get total directory submission info
+	function __getTotalSubmitInfo($websiteId, $activeCheck=false){
+		$sql = "select count(*) count from dirsubmitinfo where website_id=$websiteId";
+		if($activeCheck) $sql .= " and active=1";
+		
+		$countInfo = $this->db->select($sql, true);
+		return empty($countInfo['count']) ? 0 : $countInfo['count']; 
+	}
 }
 ?>
