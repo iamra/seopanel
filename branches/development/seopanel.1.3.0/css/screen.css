@@ -874,10 +874,6 @@ h1.BlockHeader {
 	color: black;
 }
 
-.bold{
-	font-weight: bold;
-}
-
 .green{
 	color: #00903B;
 }
@@ -916,14 +912,6 @@ h1.BlockHeader {
 .notefailed{
 	text-align: left;
 	color: #da3838;
-}
-
-.left {
-	text-align: left;
-}
-
-.right {
-	text-align: right;
 }
 
 .dirmsg{
@@ -1056,7 +1044,7 @@ h1.BlockHeader {
 
 /* my account summary section */
 .summary{
-	border: 1px solid #bebebe;	
+	border: 1px solid #B0C2CC;	
 }
 
 .summary td{
@@ -1064,7 +1052,7 @@ h1.BlockHeader {
 }
 
 .summary .topheader {
-	background-color: #E3E3E3;
+	background-color: #dae5ee;
 	color: #000000;
 	font-size: 13px;
 	margin: 0;
@@ -1075,24 +1063,24 @@ h1.BlockHeader {
 }
 
 .summary .subheader {
-	background-color: #f4f4f4;
+	background-color: #ECF3FA;
 	color: #000000;
 	font-size: 11px;
 	margin: 0;
 	padding: 1px 1px 1px 5px;
 	font-weight: bold;
-	border-left: 1px solid #bebebe;
-	text-align: left;
+	border-left: 1px solid #B0C2CC;
+	text-align: center;
 }
 
 .summary .subheaderdark {
-	background-color: #cccccc;
+	background-color: #BFD5E7;
 	color: #000000;
 	font-size: 11px;
 	margin: 0;
 	padding: 1px 1px 1px 5px;
 	font-weight: bold;
-	border-left: 1px solid #bebebe;
+	border-left: 1px solid #B0C2CC;
 	text-align: center;
 }
 
@@ -1102,8 +1090,18 @@ h1.BlockHeader {
 	margin: 0;
 	padding: 1px 1px 1px 5px;
 	text-align: left;
-	border-left: 1px solid #bebebe;
-	border-top: 1px solid #bebebe;
+	border-left: 1px solid #B0C2CC;
+	border-top: 1px solid #B0C2CC;
+}
+
+.summary .contentmid {
+	color: #000000;
+	font-size: 11px;
+	margin: 0;
+	padding: 1px 1px 1px 5px;
+	text-align: center;
+	border-left: 1px solid #B0C2CC;
+	border-top: 1px solid #B0C2CC;
 }
 
 .summary .norecord{
@@ -1112,5 +1110,22 @@ h1.BlockHeader {
 	margin: 0;
 	padding: 1px 1px 1px 1px;
 	text-align: center;
-	border-top: 1px solid #bebebe;
+	border-top: 1px solid #B0C2CC;
+}
+
+
+.bold{
+	font-weight: bold;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
 }

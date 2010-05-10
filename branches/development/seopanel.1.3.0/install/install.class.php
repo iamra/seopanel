@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	   *
+ *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	           *
  *   sendtogeo@gmail.com   												   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,24 +20,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-include_once("includes/sp-load.php");
-include_once(SP_CTRLPATH."/index.ctrl.php");
-include_once(SP_CTRLPATH."/directory.ctrl.php");
-$controller = New IndexController();
-$controller->view->menu = 'home';
-
-if($_SERVER['REQUEST_METHOD'] == 'GET'){
-
-	switch($_GET['sec']){
-		
-		case "news":
-			$controller->showNews($_GET);
-			break;
-
-		default:
-			$controller->index();
-			break;
+class Install {
+	
+	# func to check requirements
+	function checkRequirements() {
+		?>
+		hiiiii
+		<?php
+	}
+	
+	function showDefaultHeader() {
+		?>
+		<html>
+			<head>
+				<title>Seo Panel installation interface</title>
+				<meta name="description" content="Seo Panel installation Steps to install seo control panel for managing seo of your sites.">
+				<link rel="stylesheet" type="text/css" href="/css/screen.css" media="all" />				
+			</head>
+			<body>
+				<div class="installdiv">
+		<?php		
+	}
+	
+	function showDefaultFooter($content='') {
+		?>
+				</div>
+			</body>
+		</html>
+		<?php		
 	}
 }
-
 ?>
