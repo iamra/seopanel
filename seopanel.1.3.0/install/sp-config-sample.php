@@ -1,8 +1,8 @@
 <?php
 
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	           *
- *   sendtogeo@gmail.com   												   *
+ *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	   *
+ *   sendtogeo@gmail.com   						   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,39 +19,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-include_once 'install.class.php';
-include_once 'db.class.php';
-$install = New Install();
 
-# installation configiration
-define("SP_INSTALL_DIR", getcwd());
-define("SP_INSTALL_DB_FILE", SP_INSTALL_DIR."/../data/seopanel.sql");
-define("SP_INSTALL_CONFIG_FILE", SP_INSTALL_DIR."/../config/sp-config.php");
-define("SP_INSTALL_CONFIG_SAMPLE", SP_INSTALL_DIR."/sp-config-sample.php");
+# The web path or url to access seo panel through browser.
+define('SP_WEBPATH', '[SP_WEBPATH]');
 
-$install->showDefaultHeader();
+# DB settings - You can get this info from your web hosting provider.
+# The name of the database for seo panel
+define('DB_NAME', '[DB_NAME]');
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	
-	switch($_POST['sec']){
-		
-		case "startinstall":
-			$install->startInstallation($_POST);
-			break;
-		
-		case "proceedinstall":
-			$install->proceedInstallation($_POST);
-			break;			
-	}
-	
-}else{
-	
-	switch($_GET['sec']){
+# DB database username
+define('DB_USER', '[DB_USER]');
 
-		default:
-			$install->checkRequirements();
-			break;
-	}
-}
-$install->showDefaultFooter();
+# DB database password
+define('DB_PASSWORD', '[DB_PASSWORD]');
+
+# DB hostname
+define('DB_HOST', '[DB_HOST]');
+
+# The name of the database engine for seo panel
+define('DB_ENGINE', '[DB_ENGINE]');
+
+# The version of seo panel installed
+define('SP_INSTALLED', '2.0.0');
+
+# The DB debug mode
+define('SP_DEBUG', 1);
+
+# The seo panel seconds for session timeout
+define('SP_TIMEOUT', 3600);
+
 ?>
