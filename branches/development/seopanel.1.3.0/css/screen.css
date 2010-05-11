@@ -1,3 +1,5 @@
+@CHARSET "UTF-8";
+
 /*-------------------------------------------------
 PAGE BODY
 -------------------------------------------------*/
@@ -401,7 +403,7 @@ footer styles
 	height: 80px;
 	padding: 5px 0px 0px 0px;
 	font-size: 12px;
-	border-top: 1px solid #8F8F8F;
+	border-top: 1px solid #B0C2CC;
 }
 
 #footer a {
@@ -443,12 +445,11 @@ div.Left {
 
 div.Left .col,div.Right .col,div.Center .col {
 	background: #FFFFFF;
-	//padding: 15px 20px 10px;
 	padding: 12px 10px 10px 10px;
 	position: relative;
 	text-align: left;
 	min-height: 340px;
-	border: 1px solid #8F8F8F;
+	border: 1px solid #B0C2CC;
 }
 
 div.Left .SectionHeader,div.Full .SectionHeader {
@@ -975,7 +976,7 @@ h1.BlockHeader {
 #readme{
 	background-color: white;
 	margin: 50px;
-	border: 1px solid #8F8F8F;
+	border: 1px solid #B0C2CC;
 	text-align: left;
 	padding:10px;	
 }

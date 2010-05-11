@@ -27,6 +27,11 @@ $install->showDefaultHeader();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
 	switch($_POST['sec']){
+		
+		case "startinstall":
+			$install->startInstallation($_POST);
+			break;
+			
 	}
 	
 }else{
