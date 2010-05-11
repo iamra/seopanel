@@ -21,11 +21,11 @@
  ***************************************************************************/
 
 # The web path or url to access seo panel through browser.
-define('SP_WEBPATH', 'http://localhost/seopanel.v.1.3.0');
+define('SP_WEBPATH', '');
 
 # DB settings - You can get this info from your web hosting provider.
 # The name of the database for seo panel
-define('DB_NAME', 'seopanel.v.1.3.0');
+define('DB_NAME', 'localhost');
 
 # DB database username
 define('DB_USER', 'root');
@@ -38,6 +38,9 @@ define('DB_HOST', 'localhost');
 
 # The name of the database engine for seo panel
 define('DB_ENGINE', 'mysql');
+
+# The version of seo panel installed
+define('SP_INSTALLED', '2.0.0');
 
 # The DB debug mode
 define('SP_DEBUG', 1);

@@ -67,7 +67,7 @@ class Install {
 		
 		$configClass = "red";
 		$configSupport = "Not found";
-		$configFile = '../config/sp-config.php';
+		$configFile = SP_INSTALL_CONFIG_FILE;
 		if(file_exists($configFile)){
 			$configSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod 777 config/sp-config.php</p>";
 			if(is_writable($configFile)){				
@@ -79,7 +79,7 @@ class Install {
 	
 		$tmpClass = "red";
 		$tmpSupport = "Not found";
-		$tmpFile = '../tmp';
+		$tmpFile = SP_INSTALL_DIR.'/../tmp';
 		if(file_exists($tmpFile)){
 			$tmpSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod -R 777 tmp/</p>";
 			if(is_writable($tmpFile)){				
@@ -134,11 +134,83 @@ class Install {
 		<?php
 	}
 	
-	function startInstallation($info) {
+	# func to start installation
+	function startInstallation($info='', $errMsg='') {
 		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') ){
 			$this->checkRequirements(true);
 			return;
 		}
+		?>
+		<h1 class="BlockHeader">Database Settings</h1>
+		<form method="post">
+		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
+			<tr><th colspan="2" class="header">Database configuration</th></tr>
+			<tr><td colspan="2" class="error"><?php echo $errMsg;?></td></tr>
+			<tr>
+				<th>Database type:</th>
+				<td>
+					<select name="db_engine">
+						<option value="mysql">MySQL</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>Database server hostname:</th>
+				<td><input type="text" name="db_host" value="<?php echo empty($info['db_host']) ? "localhost" : $info['db_host'];?>"></td>
+			</tr>
+			<tr>
+				<th>Database name:</th>
+				<td><input type="text" name="db_name" value="<?php echo $info['db_name'];?>"></td>
+			</tr>
+			<tr>
+				<th>Database username:</th>
+				<td><input type="text" name="db_user" value="<?php echo $info['db_user'];?>"></td>
+			</tr>
+			<tr>
+				<th>Database password:</th>
+				<td><input type="text" name="db_pass" value="<?php echo $info['db_pass'];?>"></td>
+			</tr>
+		</table>		
+		<input type="hidden" value="proceedinstall" name="sec">		
+		<input type="submit" value="Proceed to next step" name="submit" class="button">
+		</form>
+		<?php		
+	}
+	
+	# func to write to config file
+	function writeConfigFile($info) {
+		
+		$handle = fopen(SP_INSTALL_CONFIG_SAMPLE, "r");
+		$cfgData = fread($handle, filesize(SP_INSTALL_CONFIG_SAMPLE));
+		fclose($handle);
+		
+		
+		$search = array('[SP_WEBPATH]', '[DB_NAME]', '[DB_USER]', '[DB_PASSWORD]', '[DB_HOST]', '[DB_ENGINE]');
+		$replace = array($info['web_path'], $info['db_host'], $info['db_user'], $info['db_pass'], $info['db_host'], $info['db_engine'] );
+		$cfgData = str_replace($search, $replace, $cfgData);
+		
+		$handle = fopen(SP_INSTALL_CONFIG_FILE, "w");
+		fwrite($handle, $cfgData);
+		fclose($handle);
+	}
+	
+	# func to proceed installation
+	function proceedInstallation($info) {
+		$db = New DB();
+		$errMsg = $db->connectDatabase($info['db_host'], $info['db_user'], $info['db_pass'], $info['db_name']);
+		if($db->error ){
+			$this->startInstallation($info, $errMsg);
+			return;
+		}
+		
+		if(!is_writable(SP_INSTALL_CONFIG_FILE)){
+			$this->checkRequirements(true);
+			return;
+		}
+
+		$this->writeConfigFile($info);
+		
+		exit;
 		?>
 		<h1 class="BlockHeader">Database Settings</h1>
 		<form method="post">
@@ -175,6 +247,7 @@ class Install {
 		<?php		
 	}
 	
+	# func to show default install header
 	function showDefaultHeader() {
 		?>
 		<html>
@@ -188,6 +261,7 @@ class Install {
 		<?php		
 	}
 	
+	# func to show default install footer
 	function showDefaultFooter($content='') {
 		?>
 				</div>
