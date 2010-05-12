@@ -37,6 +37,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		case "login":
 			$controller->login();
 			break;
+		
+		default:
+			$controller->index();
+			break;
 	}
 	
 }else{

@@ -130,7 +130,7 @@ class Install {
 		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="startinstall" name="sec">
-		<input type="submit" value="Proceed to next step" name="submit" class="button">
+		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
 		</form>
 		<?php
 	}
@@ -172,12 +172,12 @@ class Install {
 				<td><input type="text" name="db_pass" value="<?php echo $info['db_pass'];?>"></td>
 			</tr>
 			<tr>
-				<th>Admin Email:</th>
+				<th>Admin email address:</th>
 				<td><input type="text" name="email" value="<?php echo $info['email'];?>"></td>
 			</tr>
 		</table>		
 		<input type="hidden" value="proceedinstall" name="sec">		
-		<input type="submit" value="Proceed to next step" name="submit" class="button">
+		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
 		</form>
 		<?php		
 	}
@@ -191,7 +191,7 @@ class Install {
 		
 		
 		$search = array('[SP_WEBPATH]', '[DB_NAME]', '[DB_USER]', '[DB_PASSWORD]', '[DB_HOST]', '[DB_ENGINE]');
-		$replace = array($info['web_path'], $info['db_host'], $info['db_user'], $info['db_pass'], $info['db_host'], $info['db_engine'] );
+		$replace = array($info['web_path'], $info['db_name'], $info['db_user'], $info['db_pass'], $info['db_host'], $info['db_engine'] );
 		$cfgData = str_replace($search, $replace, $cfgData);
 		
 		$handle = fopen(SP_INSTALL_CONFIG_FILE, "w");
@@ -204,11 +204,19 @@ class Install {
 		$count = 0;
 		$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);		
 		if(empty($count)){
-			$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);
-			if(empty($count)) return false;
+			$reqUrl = preg_replace('/\/install\/index.php$/i', '', $reqUrl, 1, $count);
+			if(empty($count)){
+				$reqUrl = preg_replace('/\/install$/i', '', $reqUrl, 1, $count);
+				if(empty($count)) return false;
+			}
 		}
-		$protocol = empty($_SERVER['HTTPS']) ? "http://" : "https://"; 
-		$webPath = $protocol.$_SERVER['HTTP_HOST'].$reqUrl;
+		$protocol = empty($_SERVER['HTTPS']) ? "http://" : "https://";
+		$port = empty($_SERVER['SERVER_PORT']) ?  "" : (int) $_SERVER['SERVER_PORT'];
+		$host =  strtolower($_SERVER['HTTP_HOST']);
+		if(!empty($port) && ($port <> 443) && ($port <> 80)){
+			if(strpos($host, ':') === false){ $host .= ':' . $port; }
+		}
+		$webPath = $protocol.$host.$reqUrl;
 		return $webPath;
 	}
 	
@@ -227,6 +235,14 @@ class Install {
 		if(!is_writable(SP_INSTALL_CONFIG_FILE)){
 			$this->checkRequirements(true);
 			return;
+		}	
+		
+		# checking seo panel web path
+		$info['web_path'] = $this->getWebPath();
+		if(empty($info['web_path'])){
+			$errMsg = "Error occured while parsing installation url. Please <a href='http://www.seopanel.in/contact/' target='_blank'>contact</a> Seo Panel team.";
+			$this->startInstallation($info, $errMsg);
+			return;
 		}
 
 		# importing data to db
@@ -237,57 +253,44 @@ class Install {
 			return;
 		}
 		
-		# checking seo panel web path
-		$info['web_path'] = $this->getWebPath();
-		if(empty($info['web_path'])){
-			$errMsg = "Error occured while parsing installation url. Please <a href='http://www.seopanel.in/contact/' target='_blank'>contact</a> Seo Panel team.";
-			$this->startInstallation($info, $errMsg);
-			return;
-		}
-		
 		# write to config file
 		$this->writeConfigFile($info);
 		
 		
-		include_once SP_INSTALL_DIR.'/../libs/spider.class.php';
-		$installUpdateUrl = "http://www.seopanel.in/installupdate.php?url=".urlencode($info['web_path'])."&ip=".$_SERVER['SERVER_ADDR']."&email=".urlencode($info['email']);
-		$spider = New Spider();
-		$spider->getContent($installUpdateUrl);
-		
-		
-		exit;
-		?>
-		<h1 class="BlockHeader">Database Settings</h1>
-		<form method="post">
+		if(gethostbynamel('seopanel.in')){
+			include_once SP_INSTALL_DIR.'/../libs/spider.class.php';
+			$installUpdateUrl = "http://www.seopanel.in/installupdate.php?url=".urlencode($info['web_path'])."&ip=".$_SERVER['SERVER_ADDR']."&email=".urlencode($info['email']);
+			$spider = New Spider();
+			$spider->getContent($installUpdateUrl);
+		}		
+		?>		
+		<form method="post" action="<?php echo $info['web_path']."/login.php"; ?>">
+		<h1 class="BlockHeader">Seo Panel Installation Success</h1>
 		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
-			<tr><th colspan="2" class="header">Database configuration</th></tr>
-			<tr><td colspan="2" class="error"><?php echo $errMsg;?></td></tr>
+			<tr><th colspan="2" class="headersuccess">Seo Panel installed successfully!</th></tr>
 			<tr>
-				<th>Database type:</th>
-				<td>
-					<select name="db_type">
-						<option value="mysql">MySQL</option>
-					</select>
+				<td class="warning">Warning!</td>
+			</tr>
+			<tr>
+				<td style="border: none;">
+					<ul class="list">
+						<li> Please change permission of config file <b><?php echo SP_CONFIG_FILE;?></b> to avoid security issues.</li>
+						<li>Please remove installation directory <b>install</b> to avoid security issues.</li>
+					</ul>
 				</td>
 			</tr>
 			<tr>
-				<th>Database server hostname:</th>
-				<td><input type="text" name="db_host" value="localhost"></td>
+				<td class="warning" style="color:black;">Admin Login</td>
 			</tr>
 			<tr>
-				<th>Database name:</th>
-				<td><input type="text" name="db_name" value=""></td>
+				<td style="border: none;font-weight: normal;font-size: 13px;">
+					<b>Username:</b> <?php echo SP_ADMIN_USER?><br>
+					<b>Password:</b> <?php echo SP_ADMIN_PASS?><br><br>
+					<b>Note:</b> Please change password of admin after first login.
+				</td>
 			</tr>
-			<tr>
-				<th>Database username:</th>
-				<td><input type="text" name="db_user" value=""></td>
-			</tr>
-			<tr>
-				<th>Database password:</th>
-				<td><input type="text" name="db_pass" value=""></td>
-			</tr>
-		</table>		
-		<input type="submit" value="Proceed to next step" name="submit" class="button">
+		</table>				
+		<input type="submit" value="Proceed to admin login >>" name="submit" class="button">
 		</form>
 		<?php		
 	}

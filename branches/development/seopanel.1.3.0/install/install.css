@@ -55,6 +55,13 @@ h1.BlockHeader {
 	padding: 5px 5px 0px 5px;
 }
 
+.formtab th.headersuccess{
+	font-size: 16px;
+	text-align: left;
+	padding: 5px 5px 0px 5px;
+	color: green;
+}
+
 .formtab td.error{
 	font-size: 11px;
 	text-align: left;
@@ -93,5 +100,22 @@ h1.BlockHeader {
 	font-weight: normal;
 	font-size: 12px;
 	padding: 0px;
+	margin: 0px;
+}
+
+td.warning{
+	color:red;
+	font-weight: bold;
+	border: none;
+	font-size: 14px;
+}
+
+.list{
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.list li {
+	padding: 5px 0px;
 	margin: 0px;
 }

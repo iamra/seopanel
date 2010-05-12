@@ -49,6 +49,11 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	# loads seo panel main config file
 	include_once(SP_ABSPATH."/config/sp-config.php");
 	
+	if(!defined('SP_INSTALLED')){
+		header('Location: install/');
+		exit;
+	}
+	
 	# load seo panel extra config variables
 	if(file_exists(SP_ABSPATH."/config/sp-config-extra.php")){
 		include_once(SP_ABSPATH."/config/sp-config-extra.php");
@@ -86,8 +91,7 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	$seopanel->loadSeoPanel();
 		
 }else{
-	print "<font style='color:red;font-size:12px;'>Seo Panel Config File Not Found!</font>";
-	exit;
+	die("<p>The config file could not be found.</p><p><a href=\"install/index.php\">Click here to install Seo Panel.</a></p>");
 }
 
 ?>
