@@ -23,6 +23,7 @@
 # class defines all database functions
 class DB{
 
+	var $connectionId = false; 	# db connectio id
 	var $error = false;   		# error while databse operations
 	
 	function connectDatabase($dbServer, $dbUser, $dbPassword, $dbName){
@@ -44,14 +45,10 @@ class DB{
 	# func to Execute a general mysql query
 	function query($query, $noRows=false){
 		$res = @mysql_query($query, $this->connectionId);
-		if ($res){
-			$this->rowsAffected = @mysql_affected_rows($this->connectionId);
-			$this->lastInsertId = @mysql_insert_id($this->connectionId);
-		}else{
-			$this->showError();
+		if (empty($res)){
+			return $this->getError();
 			@mysql_free_result($res);
 		}
-		if($noRows) $this->noRows = mysql_num_rows($res);
 		return $res;
 	}
 
@@ -64,7 +61,7 @@ class DB{
 		return $error;
 	}
 	
-	function importDatabaseFile($filename){
+	function importDatabaseFile($filename, $block=true){
 		
 		# temporary variable, used to store current query
 		$tmpline = '';
@@ -86,12 +83,12 @@ class DB{
 			if (substr(trim($line), -1, 1) == ';'){
 				
 				if(!empty($tmpline)){
-					$this->query($tmpline);
+					$errMsg = $this->query($tmpline);
+					if($block && $this->error) return $errMsg;
 				}
 				$tmpline = '';
 			}
-		}
-		
+		}		
 	}
 }
 ?>

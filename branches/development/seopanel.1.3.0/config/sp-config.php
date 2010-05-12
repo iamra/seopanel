@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 # The web path or url to access seo panel through browser.
-define('SP_WEBPATH', '');
+define('SP_WEBPATH', 'http://localhost/seopanel.v.1.3.0');
 
 # DB settings - You can get this info from your web hosting provider.
 # The name of the database for seo panel

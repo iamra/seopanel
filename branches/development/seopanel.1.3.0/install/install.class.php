@@ -23,7 +23,8 @@
 class Install {
 	
 	# func to check requirements
-	function checkRequirements($error=false) {
+	function checkRequirements($error=false) {		
+		
 		$phpClass = "green";
 		$phpSupport = "Yes";
 		$phpVersion = phpversion();
@@ -170,6 +171,10 @@ class Install {
 				<th>Database password:</th>
 				<td><input type="text" name="db_pass" value="<?php echo $info['db_pass'];?>"></td>
 			</tr>
+			<tr>
+				<th>Admin Email:</th>
+				<td><input type="text" name="email" value="<?php echo $info['email'];?>"></td>
+			</tr>
 		</table>		
 		<input type="hidden" value="proceedinstall" name="sec">		
 		<input type="submit" value="Proceed to next step" name="submit" class="button">
@@ -194,21 +199,61 @@ class Install {
 		fclose($handle);
 	}
 	
+	function getWebPath(){
+		$reqUrl = $_SERVER['REQUEST_URI'];
+		$count = 0;
+		$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);		
+		if(empty($count)){
+			$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);
+			if(empty($count)) return false;
+		}
+		$protocol = empty($_SERVER['HTTPS']) ? "http://" : "https://"; 
+		$webPath = $protocol.$_SERVER['HTTP_HOST'].$reqUrl;
+		return $webPath;
+	}
+	
 	# func to proceed installation
 	function proceedInstallation($info) {
 		$db = New DB();
+		
+		# checking db settings
 		$errMsg = $db->connectDatabase($info['db_host'], $info['db_user'], $info['db_pass'], $info['db_name']);
 		if($db->error ){
 			$this->startInstallation($info, $errMsg);
 			return;
 		}
 		
+		# checking config file settings
 		if(!is_writable(SP_INSTALL_CONFIG_FILE)){
 			$this->checkRequirements(true);
 			return;
 		}
 
+		# importing data to db
+		$errMsg = $db->importDatabaseFile(SP_INSTALL_DB_FILE);
+		if($db->error ){
+			$errMsg = "Error occured while importing data: ". $errMsg;
+			$this->startInstallation($info, $errMsg);
+			return;
+		}
+		
+		# checking seo panel web path
+		$info['web_path'] = $this->getWebPath();
+		if(empty($info['web_path'])){
+			$errMsg = "Error occured while parsing installation url. Please <a href='http://www.seopanel.in/contact/' target='_blank'>contact</a> Seo Panel team.";
+			$this->startInstallation($info, $errMsg);
+			return;
+		}
+		
+		# write to config file
 		$this->writeConfigFile($info);
+		
+		
+		include_once SP_INSTALL_DIR.'/../libs/spider.class.php';
+		$installUpdateUrl = "http://www.seopanel.in/installupdate.php?url=".urlencode($info['web_path'])."&ip=".$_SERVER['SERVER_ADDR']."&email=".urlencode($info['email']);
+		$spider = New Spider();
+		$spider->getContent($installUpdateUrl);
+		
 		
 		exit;
 		?>
