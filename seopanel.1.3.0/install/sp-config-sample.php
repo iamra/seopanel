@@ -1,8 +1,8 @@
 <?php
 
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	   *
- *   sendtogeo@gmail.com   						   *
+ *   Copyright (C) 2009-2011 by Geo Varghese(www.seopanel.in)  	           *
+ *   sendtogeo@gmail.com   						                           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -43,9 +43,9 @@ define('DB_ENGINE', '[DB_ENGINE]');
 define('SP_INSTALLED', '2.0.0');
 
 # The DB debug mode
-define('SP_DEBUG', 1);
+define('SP_DEBUG', 0);
 
 # The seo panel seconds for session timeout
-define('SP_TIMEOUT', 3600);
+define('SP_TIMEOUT', 18000);
 
 ?>

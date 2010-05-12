@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2010 at 01:49 AM
+-- Generation Time: May 13, 2010 at 01:51 AM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -47,7 +47,15 @@ INSERT INTO `backlinkresults` (`website_id`, `google`, `yahoo`, `msn`, `altavist
 (3, 25, 319, 7, 343, 315, 1270665000),
 (4, 37, 405, 0, 1370, 1330, 1270751400),
 (3, 26, 318, 7, 338, 315, 1270751400),
-(5, 32, 374, 3, 1380, 1220, 1270751400);
+(5, 32, 374, 3, 1380, 1220, 1270751400),
+(4, 37, 412, 0, 1400, 1360, 1271183400),
+(3, 26, 300, 7, 335, 315, 1271183400),
+(5, 32, 395, 3, 1340, 1240, 1271183400),
+(5, 0, 334, 3, 1070, 1020, 1272565800),
+(4, 34, 366, 0, 1140, 1110, 1272565800),
+(3, 0, 300, 6, 257, 234, 1272565800),
+(4, 34, 356, 0, 1040, 1010, 1272911400),
+(3, 9, 318, 5, 272, 247, 1272911400);
 
 -- --------------------------------------------------------
 
@@ -335,175 +343,214 @@ CREATE TABLE IF NOT EXISTS `directories` (
   `imagehash_col` varchar(16) NOT NULL DEFAULT 'IMAGEHASH',
   `imagehashurl_col` varchar(16) NOT NULL DEFAULT 'imagehash',
   `extra_val` varchar(255) NOT NULL DEFAULT 'LINK_TYPE=normal&submit=Continue&AGREERULES=on',
+  `is_captcha` tinyint(1) NOT NULL DEFAULT '0',
   `working` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=454 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `directories`
 --
 
-INSERT INTO `directories` (`id`, `domain`, `submit_url`, `captcha_script`, `search_script`, `title_col`, `url_col`, `description_col`, `name_col`, `email_col`, `category_col`, `cptcha_col`, `imagehash_col`, `imagehashurl_col`, `extra_val`, `working`) VALUES
-(1, 'http://directory.seofreetools.net', 'http://directory.seofreetools.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(2, 'http://www.fat64.net', 'http://www.fat64.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(3, 'http://www.onpaco.com', 'http://www.onpaco.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(4, 'http://www.bluefootbuys.com', 'http://www.bluefootbuys.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(5, 'http://www.777media.com', 'http://www.777media.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(6, 'http://www.freewebsitedirectory.com', 'http://www.freewebsitedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(7, 'http://www.mygreencorner.com', 'http://www.mygreencorner.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(8, 'http://www.webhotlink.com', 'http://www.webhotlink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(9, 'http://www.skypemedia.com', 'http://www.skypemedia.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(10, 'http://www.directoryvault.com', 'http://www.directoryvault.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(11, 'http://www.pop-net.org', 'http://www.pop-net.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(12, 'http://www.123hitlinks.info', 'http://www.123hitlinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(13, 'http://www.pr3plus.com', 'http://www.pr3plus.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(14, 'http://www.tfwd.org', 'http://www.tfwd.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(15, 'http://www.ewebdir.com', 'http://www.ewebdir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(16, 'http://www.cheapdirectory.net', 'http://www.cheapdirectory.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(17, 'http://www.alistsites.com', 'http://www.alistsites.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(18, 'http://www.miriblack.com', 'http://www.miriblack.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(19, 'http://www.domaining.in', 'http://www.domaining.in/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(20, 'http://www.sanory.com', 'http://www.sanory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(21, 'http://www.aaawebdirectory.com', 'http://www.aaawebdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(22, 'http://www.pblake.com', 'http://www.pblake.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(23, 'http://www.1abc.org', 'http://www.1abc.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(24, 'http://www.therobot.info', 'http://www.therobot.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(25, 'http://www.yvir.com', 'http://www.yvir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(26, 'http://www.triplewdirectory.com', 'http://www.triplewdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(27, 'http://www.linkedout.info', 'http://www.linkedout.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(28, 'http://www.seocourt.com', 'http://www.seocourt.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(29, 'http://www.placeyourlinks.com', 'http://www.placeyourlinks.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(30, 'http://www.clickmybrick.com', 'http://www.clickmybrick.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(31, 'http://directory.allaboutadtips.com', 'http://directory.allaboutadtips.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(32, 'http://directory.seoexecutive.com', 'http://directory.seoexecutive.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(33, 'http://www.hitalyzer.com', 'http://www.hitalyzer.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(34, 'http://www.linkspremium.com', 'http://www.linkspremium.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(35, 'http://www.crazyleafdesign.com/webdirectory', 'http://www.crazyleafdesign.com/webdirectory/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(36, 'http://www.generalwebdirectory.info', 'http://www.generalwebdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(37, 'http://www.freelistingdirectory.info', 'http://www.freelistingdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(38, 'http://www.webdirectory1.info', 'http://www.webdirectory1.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(39, 'http://www.nuclearland.com', 'http://www.nuclearland.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(40, 'http://www.webslink.info', 'http://www.webslink.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(41, 'http://www.omega-link.co.uk', 'http://www.omega-link.co.uk/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(42, 'http://www.indiabusinessdirectory.info', 'http://www.indiabusinessdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(43, 'http://www.gainweb.org', 'http://www.gainweb.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(44, 'http://www.goobz.biz', 'http://www.goobz.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(45, 'http://www.magdalyns.com', 'http://www.magdalyns.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(46, 'http://www.directorybin.com', 'http://www.directorybin.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(47, 'http://www.deblinley.com', 'http://www.deblinley.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(48, 'http://www.jhucr.org', 'http://www.jhucr.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(49, 'http://www.boomdirectory.com', 'http://www.boomdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0),
-(50, 'http://www.doubledirectory.com', 'http://www.doubledirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0),
-(51, 'http://www.lutonengineering.com', 'http://www.lutonengineering.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(52, 'http://www.sblinks.org', 'http://www.sblinks.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(53, 'http://www.mymaxlinks.org', 'http://www.mymaxlinks.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(54, 'http://www.holidaydig.com', 'http://www.holidaydig.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(55, 'http://www.yrkdirectory.com', 'http://www.yrkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(56, 'http://www.addyourlnksnow.com', 'http://www.addyourlnksnow.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(57, 'http://www.submitsitenow.info', 'http://www.submitsitenow.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(58, 'http://www.directoryrank.net', 'http://www.directoryrank.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(59, 'http://www.webdiro.com', 'http://www.webdiro.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(60, 'http://www.aokdirectory.com', 'http://www.aokdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(61, 'http://www.tkdirectory.com', 'http://www.tkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(62, 'http://www.jambezi.com', 'http://www.jambezi.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(63, 'http://www.greatdir.net', 'http://www.greatdir.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(64, 'http://www.insectuniverse.com', 'http://www.insectuniverse.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(65, 'http://www.gkiv.com', 'http://www.gkiv.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(66, 'http://www.haqj.com', 'http://www.haqj.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(67, 'http://www.owdirectory.com', 'http://www.owdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(68, 'http://www.picna.com', 'http://www.picna.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0),
-(69, 'http://www.w4directory.com', 'http://www.w4directory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(70, 'http://www.towerpromote.com', 'http://www.towerpromote.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(71, 'http://www.increasedirectory.com', 'http://www.increasedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(72, 'http://www.thelivinglink.net', 'http://www.thelivinglink.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(73, 'http://www.mytopdirectory.info', 'http://www.mytopdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(74, 'http://www.seoname.com', 'http://www.seoname.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(75, 'http://www.businesssitesonthenet.co.uk', 'http://www.businesssitesonthenet.co.uk/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(76, 'http://www.counterdeal.com', 'http://www.counterdeal.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(77, 'http://www.mymaxlinks.info', 'http://www.mymaxlinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(78, 'http://www.prolificpi.com', 'http://www.prolificpi.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(79, 'http://www.migliana.com', 'http://www.migliana.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(80, 'http://www.tuenschel.com', 'http://www.tuenschel.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(81, 'http://www.hrce.com', 'http://www.hrce.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(82, 'http://www.lemurgene.com', 'http://www.lemurgene.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(83, 'http://www.biowatchmed.net', 'http://www.biowatchmed.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(84, 'http://www.gfxmedia.us', 'http://www.gfxmedia.us/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(85, 'http://www.ns8.biz', 'http://www.ns8.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(86, 'http://www.coolwebsitelistings.com', 'http://www.coolwebsitelistings.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(87, 'http://www.freewd.org', 'http://www.freewd.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(88, 'http://www.agrieducation.org', 'http://www.agrieducation.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(89, 'http://www.liveurls.net', 'http://www.liveurls.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(90, 'http://www.zzdirectory.com', 'http://www.zzdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(91, 'http://www.homessearchengine.com', 'http://www.homessearchengine.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(92, 'http://www.teacherslounge.info', 'http://www.teacherslounge.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(93, 'http://www.yournetdirectory.com', 'http://www.yournetdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(94, 'http://z0p.com', 'http://z0p.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(95, 'http://www.babelea.org', 'http://www.babelea.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(96, 'http://www.etup.org', 'http://www.etup.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(97, 'http://www.ggfb.org', 'http://www.ggfb.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(98, 'http://www.jordangreen.info', 'http://www.jordangreen.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(99, 'http://www.linkfly.info', 'http://www.linkfly.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(100, 'http://www.thehdb.com', 'http://www.thehdb.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(101, 'http://www.zerotres.com', 'http://www.zerotres.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(102, 'http://www.anyweblist.com', 'http://www.anyweblist.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(103, 'http://www.cheapwebdir.com', 'http://www.cheapwebdir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(104, 'http://www.directoryfreelink.com', 'http://www.directoryfreelink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(105, 'http://www.directoryseofriendly.com', 'http://www.directoryseofriendly.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(106, 'http://www.freeonlineindex.com', 'http://www.freeonlineindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(107, 'http://www.freeweblist.info', 'http://www.freeweblist.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(108, 'http://www.generalnetdirectory.com', 'http://www.generalnetdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(109, 'http://www.heydirectory.com', 'http://www.heydirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(110, 'http://www.inlinkdirectory.com', 'http://www.inlinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(111, 'http://www.monsterlinkdirectory.com', 'http://www.monsterlinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(112, 'http://www.netdirectorylink.com', 'http://www.netdirectorylink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(113, 'http://www.searchpowertour.com', 'http://www.searchpowertour.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(114, 'http://www.seolistsite.com', 'http://www.seolistsite.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(115, 'http://www.urlvault.info', 'http://www.urlvault.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(116, 'http://www.websitelists.info', 'http://www.websitelists.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(117, 'http://www.worldurllink.com', 'http://www.worldurllink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(118, 'http://www.netwerker.com', 'http://www.netwerker.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(119, 'http://www.netnamesindex.com', 'http://www.netnamesindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(120, 'http://www.edirectori.com', 'http://www.edirectori.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(121, 'http://www.stepmind.com', 'http://www.stepmind.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(122, 'http://www.devdir.biz', 'http://www.devdir.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(123, 'http://www.findinfo.ws', 'http://www.findinfo.ws/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(124, 'http://www.vccllc.com', 'http://www.vccllc.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(125, 'http://www.freeonlineregister.com', 'http://www.freeonlineregister.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(126, 'http://www.thecommercialdirectory.com', 'http://www.thecommercialdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(127, 'http://www.visuallinkdirectory.com', 'http://www.visuallinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(128, 'http://directorywind.com', 'http://directorywind.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(129, 'http://www.directorydr.com', 'http://www.directorydr.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(130, 'http://www.seodir.eu', 'http://www.seodir.eu/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(131, 'http://www.corporategoof.com', 'http://www.corporategoof.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(132, 'http://www.easyadsworld.com', 'http://www.easyadsworld.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(133, 'http://www.lexormedia.com', 'http://www.lexormedia.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(134, 'http://www.minidirectory.info', 'http://www.minidirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(135, 'http://www.extreme-directory.net', 'http://www.extreme-directory.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(136, 'http://www.faceahead.com', 'http://www.faceahead.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(137, 'http://www.firstfindengine.com', 'http://www.firstfindengine.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(138, 'http://www.go2directory.info', 'http://www.go2directory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(139, 'http://www.interactive-directory.com', 'http://www.interactive-directory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(140, 'http://www.w3c-software.com', 'http://www.w3c-software.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(141, 'http://www.wishdc.org', 'http://www.wishdc.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(142, 'http://www.westcelt.org', 'http://www.westcelt.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(143, 'http://www.webdirectorybook.com', 'http://www.webdirectorybook.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(144, 'http://www.oroop.com', 'http://www.oroop.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(145, 'http://www.listasweb.info', 'http://www.listasweb.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(146, 'http://www.sblinks.info', 'http://www.sblinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(147, 'http://www.thehopedirectory.com', 'http://www.thehopedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(148, 'http://www.clocktowerstudio.com', 'http://www.clocktowerstudio.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(149, 'http://www.infotechwv.com', 'http://www.infotechwv.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(150, 'http://www.dawsoneng.com', 'http://www.dawsoneng.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(151, 'http://www.cafrid.com', 'http://www.cafrid.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(152, 'http://www.fusionsalcedo.com', 'http://www.fusionsalcedo.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(153, 'http://www.justaskluke.com', 'http://www.justaskluke.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(154, 'http://www.logha.com', 'http://www.logha.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(155, 'http://www.pacdec.org', 'http://www.pacdec.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(156, 'http://www.sitechakra.com', 'http://www.sitechakra.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(157, 'http://www.webbacklinks.com', 'http://www.webbacklinks.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(158, 'http://www.searchnsearch.com', 'http://www.searchnsearch.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(159, 'http://www.interwebindex.com', 'http://www.interwebindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1),
-(160, 'http://www.o53.net', 'http://www.o53.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1);
+INSERT INTO `directories` (`id`, `domain`, `submit_url`, `captcha_script`, `search_script`, `title_col`, `url_col`, `description_col`, `name_col`, `email_col`, `category_col`, `cptcha_col`, `imagehash_col`, `imagehashurl_col`, `extra_val`, `is_captcha`, `working`) VALUES
+(1, 'http://www.searchnet.us/', 'http://www.searchnet.us/submit.php ', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(2, 'http://www.searchnetsssss.us/', 'http://www.searchnetsssss.us/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(3, 'http://directory.seofreetools.net', 'http://directory.seofreetools.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(4, 'http://directory.seofreetools.netddddd', 'http://directory.seofreetools.netddd/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(5, 'http://directory.seofreetools.netdddddss', 'http://directory.seofreetools.netdddsss/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `directories_bak`
+--
+
+CREATE TABLE IF NOT EXISTS `directories_bak` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `domain` varchar(255) NOT NULL,
+  `submit_url` varchar(255) NOT NULL,
+  `captcha_script` varchar(100) NOT NULL DEFAULT 'captcha.php',
+  `search_script` varchar(100) NOT NULL DEFAULT 'index.php?q=[--keyword--]',
+  `title_col` varchar(16) NOT NULL DEFAULT 'TITLE',
+  `url_col` varchar(16) NOT NULL DEFAULT 'URL',
+  `description_col` varchar(16) NOT NULL DEFAULT 'DESCRIPTION',
+  `name_col` varchar(16) NOT NULL DEFAULT 'OWNER_NAME',
+  `email_col` varchar(16) NOT NULL DEFAULT 'OWNER_EMAIL',
+  `category_col` varchar(16) NOT NULL DEFAULT 'CATEGORY_ID',
+  `cptcha_col` varchar(16) NOT NULL DEFAULT 'CAPTCHA',
+  `imagehash_col` varchar(16) NOT NULL DEFAULT 'IMAGEHASH',
+  `imagehashurl_col` varchar(16) NOT NULL DEFAULT 'imagehash',
+  `extra_val` varchar(255) NOT NULL DEFAULT 'LINK_TYPE=normal&submit=Continue&AGREERULES=on',
+  `is_captcha` tinyint(1) NOT NULL DEFAULT '0',
+  `working` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=454 ;
+
+--
+-- Dumping data for table `directories_bak`
+--
+
+INSERT INTO `directories_bak` (`id`, `domain`, `submit_url`, `captcha_script`, `search_script`, `title_col`, `url_col`, `description_col`, `name_col`, `email_col`, `category_col`, `cptcha_col`, `imagehash_col`, `imagehashurl_col`, `extra_val`, `is_captcha`, `working`) VALUES
+(1, 'http://directory.seofreetools.net', 'http://directory.seofreetools.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(2, 'http://www.fat64.net', 'http://www.fat64.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(3, 'http://www.onpaco.com', 'http://www.onpaco.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(4, 'http://www.bluefootbuys.com', 'http://www.bluefootbuys.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(5, 'http://www.777media.com', 'http://www.777media.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(6, 'http://www.freewebsitedirectory.com', 'http://www.freewebsitedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(7, 'http://www.mygreencorner.com', 'http://www.mygreencorner.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(8, 'http://www.webhotlink.com', 'http://www.webhotlink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(9, 'http://www.skypemedia.com', 'http://www.skypemedia.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(10, 'http://www.directoryvault.com', 'http://www.directoryvault.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(11, 'http://www.pop-net.org', 'http://www.pop-net.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(12, 'http://www.123hitlinks.info', 'http://www.123hitlinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(13, 'http://www.pr3plus.com', 'http://www.pr3plus.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(14, 'http://www.tfwd.org', 'http://www.tfwd.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(15, 'http://www.ewebdir.com', 'http://www.ewebdir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(16, 'http://www.cheapdirectory.net', 'http://www.cheapdirectory.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(17, 'http://www.alistsites.com', 'http://www.alistsites.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(18, 'http://www.miriblack.com', 'http://www.miriblack.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(19, 'http://www.domaining.in', 'http://www.domaining.in/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(20, 'http://www.sanory.com', 'http://www.sanory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(21, 'http://www.aaawebdirectory.com', 'http://www.aaawebdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(22, 'http://www.pblake.com', 'http://www.pblake.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(23, 'http://www.1abc.org', 'http://www.1abc.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(24, 'http://www.therobot.info', 'http://www.therobot.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(25, 'http://www.yvir.com', 'http://www.yvir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(26, 'http://www.triplewdirectory.com', 'http://www.triplewdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(27, 'http://www.linkedout.info', 'http://www.linkedout.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(28, 'http://www.seocourt.com', 'http://www.seocourt.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(29, 'http://www.placeyourlinks.com', 'http://www.placeyourlinks.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(30, 'http://www.clickmybrick.com', 'http://www.clickmybrick.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(31, 'http://directory.allaboutadtips.com', 'http://directory.allaboutadtips.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(32, 'http://directory.seoexecutive.com', 'http://directory.seoexecutive.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(33, 'http://www.hitalyzer.com', 'http://www.hitalyzer.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(34, 'http://www.linkspremium.com', 'http://www.linkspremium.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(35, 'http://www.crazyleafdesign.com/webdirectory', 'http://www.crazyleafdesign.com/webdirectory/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(36, 'http://www.generalwebdirectory.info', 'http://www.generalwebdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(37, 'http://www.freelistingdirectory.info', 'http://www.freelistingdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(38, 'http://www.webdirectory1.info', 'http://www.webdirectory1.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(39, 'http://www.nuclearland.com', 'http://www.nuclearland.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(40, 'http://www.webslink.info', 'http://www.webslink.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(41, 'http://www.omega-link.co.uk', 'http://www.omega-link.co.uk/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(42, 'http://www.indiabusinessdirectory.info', 'http://www.indiabusinessdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(43, 'http://www.gainweb.org', 'http://www.gainweb.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(44, 'http://www.goobz.biz', 'http://www.goobz.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(45, 'http://www.magdalyns.com', 'http://www.magdalyns.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(46, 'http://www.directorybin.com', 'http://www.directorybin.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(47, 'http://www.deblinley.com', 'http://www.deblinley.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(48, 'http://www.jhucr.org', 'http://www.jhucr.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(49, 'http://www.boomdirectory.com', 'http://www.boomdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(50, 'http://www.doubledirectory.com', 'http://www.doubledirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(51, 'http://www.lutonengineering.com', 'http://www.lutonengineering.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(52, 'http://www.sblinks.org', 'http://www.sblinks.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(53, 'http://www.mymaxlinks.org', 'http://www.mymaxlinks.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(54, 'http://www.holidaydig.com', 'http://www.holidaydig.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(55, 'http://www.yrkdirectory.com', 'http://www.yrkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(56, 'http://www.addyourlnksnow.com', 'http://www.addyourlnksnow.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(57, 'http://www.submitsitenow.info', 'http://www.submitsitenow.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(58, 'http://www.directoryrank.net', 'http://www.directoryrank.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(59, 'http://www.webdiro.com', 'http://www.webdiro.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(60, 'http://www.aokdirectory.com', 'http://www.aokdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(61, 'http://www.tkdirectory.com', 'http://www.tkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(62, 'http://www.jambezi.com', 'http://www.jambezi.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(63, 'http://www.greatdir.net', 'http://www.greatdir.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(64, 'http://www.insectuniverse.com', 'http://www.insectuniverse.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(65, 'http://www.gkiv.com', 'http://www.gkiv.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(66, 'http://www.haqj.com', 'http://www.haqj.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(67, 'http://www.owdirectory.com', 'http://www.owdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(68, 'http://www.picna.com', 'http://www.picna.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(69, 'http://www.w4directory.com', 'http://www.w4directory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(70, 'http://www.towerpromote.com', 'http://www.towerpromote.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(71, 'http://www.increasedirectory.com', 'http://www.increasedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(72, 'http://www.thelivinglink.net', 'http://www.thelivinglink.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(73, 'http://www.mytopdirectory.info', 'http://www.mytopdirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(74, 'http://www.seoname.com', 'http://www.seoname.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(75, 'http://www.businesssitesonthenet.co.uk', 'http://www.businesssitesonthenet.co.uk/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(76, 'http://www.counterdeal.com', 'http://www.counterdeal.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(77, 'http://www.mymaxlinks.info', 'http://www.mymaxlinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(78, 'http://www.prolificpi.com', 'http://www.prolificpi.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(79, 'http://www.migliana.com', 'http://www.migliana.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(80, 'http://www.tuenschel.com', 'http://www.tuenschel.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(81, 'http://www.hrce.com', 'http://www.hrce.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(82, 'http://www.lemurgene.com', 'http://www.lemurgene.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(83, 'http://www.biowatchmed.net', 'http://www.biowatchmed.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(84, 'http://www.gfxmedia.us', 'http://www.gfxmedia.us/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(85, 'http://www.ns8.biz', 'http://www.ns8.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(86, 'http://www.coolwebsitelistings.com', 'http://www.coolwebsitelistings.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(87, 'http://www.freewd.org', 'http://www.freewd.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 0),
+(88, 'http://www.agrieducation.org', 'http://www.agrieducation.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(89, 'http://www.liveurls.net', 'http://www.liveurls.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(90, 'http://www.zzdirectory.com', 'http://www.zzdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(91, 'http://www.homessearchengine.com', 'http://www.homessearchengine.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(92, 'http://www.teacherslounge.info', 'http://www.teacherslounge.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(93, 'http://www.yournetdirectory.com', 'http://www.yournetdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(94, 'http://z0p.com', 'http://z0p.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(95, 'http://www.babelea.org', 'http://www.babelea.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(96, 'http://www.etup.org', 'http://www.etup.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(97, 'http://www.ggfb.org', 'http://www.ggfb.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(98, 'http://www.jordangreen.info', 'http://www.jordangreen.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(99, 'http://www.linkfly.info', 'http://www.linkfly.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(100, 'http://www.thehdb.com', 'http://www.thehdb.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(101, 'http://www.zerotres.com', 'http://www.zerotres.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(102, 'http://www.anyweblist.com', 'http://www.anyweblist.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(103, 'http://www.cheapwebdir.com', 'http://www.cheapwebdir.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(104, 'http://www.directoryfreelink.com', 'http://www.directoryfreelink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(105, 'http://www.directoryseofriendly.com', 'http://www.directoryseofriendly.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(106, 'http://www.freeonlineindex.com', 'http://www.freeonlineindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(107, 'http://www.freeweblist.info', 'http://www.freeweblist.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(108, 'http://www.generalnetdirectory.com', 'http://www.generalnetdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(109, 'http://www.heydirectory.com', 'http://www.heydirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(110, 'http://www.inlinkdirectory.com', 'http://www.inlinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(111, 'http://www.monsterlinkdirectory.com', 'http://www.monsterlinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(112, 'http://www.netdirectorylink.com', 'http://www.netdirectorylink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(113, 'http://www.searchpowertour.com', 'http://www.searchpowertour.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(114, 'http://www.seolistsite.com', 'http://www.seolistsite.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(115, 'http://www.urlvault.info', 'http://www.urlvault.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(116, 'http://www.websitelists.info', 'http://www.websitelists.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(117, 'http://www.worldurllink.com', 'http://www.worldurllink.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(118, 'http://www.netwerker.com', 'http://www.netwerker.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(119, 'http://www.netnamesindex.com', 'http://www.netnamesindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(120, 'http://www.edirectori.com', 'http://www.edirectori.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(121, 'http://www.stepmind.com', 'http://www.stepmind.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(122, 'http://www.devdir.biz', 'http://www.devdir.biz/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(123, 'http://www.findinfo.ws', 'http://www.findinfo.ws/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(124, 'http://www.vccllc.com', 'http://www.vccllc.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(125, 'http://www.freeonlineregister.com', 'http://www.freeonlineregister.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(126, 'http://www.thecommercialdirectory.com', 'http://www.thecommercialdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(127, 'http://www.visuallinkdirectory.com', 'http://www.visuallinkdirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(128, 'http://directorywind.com', 'http://directorywind.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(129, 'http://www.directorydr.com', 'http://www.directorydr.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(130, 'http://www.seodir.eu', 'http://www.seodir.eu/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(131, 'http://www.corporategoof.com', 'http://www.corporategoof.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(132, 'http://www.easyadsworld.com', 'http://www.easyadsworld.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(133, 'http://www.lexormedia.com', 'http://www.lexormedia.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(134, 'http://www.minidirectory.info', 'http://www.minidirectory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(135, 'http://www.extreme-directory.net', 'http://www.extreme-directory.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(136, 'http://www.faceahead.com', 'http://www.faceahead.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(137, 'http://www.firstfindengine.com', 'http://www.firstfindengine.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(138, 'http://www.go2directory.info', 'http://www.go2directory.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(139, 'http://www.interactive-directory.com', 'http://www.interactive-directory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(140, 'http://www.w3c-software.com', 'http://www.w3c-software.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(141, 'http://www.wishdc.org', 'http://www.wishdc.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(142, 'http://www.westcelt.org', 'http://www.westcelt.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(143, 'http://www.webdirectorybook.com', 'http://www.webdirectorybook.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(144, 'http://www.oroop.com', 'http://www.oroop.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(145, 'http://www.listasweb.info', 'http://www.listasweb.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(146, 'http://www.sblinks.info', 'http://www.sblinks.info/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(147, 'http://www.thehopedirectory.com', 'http://www.thehopedirectory.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(148, 'http://www.clocktowerstudio.com', 'http://www.clocktowerstudio.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(149, 'http://www.infotechwv.com', 'http://www.infotechwv.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(150, 'http://www.dawsoneng.com', 'http://www.dawsoneng.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(151, 'http://www.cafrid.com', 'http://www.cafrid.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(152, 'http://www.fusionsalcedo.com', 'http://www.fusionsalcedo.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(153, 'http://www.justaskluke.com', 'http://www.justaskluke.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
+(154, 'http://www.logha.com', 'http://www.logha.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(155, 'http://www.pacdec.org', 'http://www.pacdec.org/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(156, 'http://www.sitechakra.com', 'http://www.sitechakra.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(157, 'http://www.webbacklinks.com', 'http://www.webbacklinks.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 0),
+(158, 'http://www.searchnsearch.com', 'http://www.searchnsearch.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(159, 'http://www.interwebindex.com', 'http://www.interwebindex.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
+(160, 'http://www.o53.net', 'http://www.o53.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -519,12 +566,19 @@ CREATE TABLE IF NOT EXISTS `dirsubmitinfo` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `submit_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `dirsubmitinfo`
 --
 
+INSERT INTO `dirsubmitinfo` (`id`, `website_id`, `directory_id`, `status`, `active`, `submit_time`) VALUES
+(10, 4, 3, 1, 1, 1273216007),
+(8, 3, 3, 0, 1, 1273180522),
+(9, 11, 3, 1, 1, 1273180664),
+(11, 3, 2, 0, 0, 1273180664),
+(12, 3, 4, 0, 0, 1273180664),
+(13, 3, 5, 0, 0, 1273216405);
 
 -- --------------------------------------------------------
 
@@ -541,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `keywords` (
   `searchengines` varchar(120) DEFAULT NULL,
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `keywords`
@@ -549,12 +603,12 @@ CREATE TABLE IF NOT EXISTS `keywords` (
 
 INSERT INTO `keywords` (`id`, `name`, `lang_code`, `country_code`, `website_id`, `searchengines`, `status`) VALUES
 (1, 'seo control', '', '', 3, '1:2:3', 1),
-(2, 'seo contact', '', '', 3, '1', 1),
+(2, 'seo contact', '', '', 3, '1', 0),
 (3, 'control panel', '', '', 3, '1:2:3', 1),
 (4, 'seo', '', '', 3, '1:2:3', 1),
 (5, 'donate seo', '', '', 3, '1', 1),
 (6, 'contact seo', '', '', 3, '1', 1),
-(7, 'seo', '', '', 4, '1:2:3', 1);
+(8, 'free seo tools', '', '', 4, '1:2:3', 1);
 
 -- --------------------------------------------------------
 
@@ -615,26 +669,6 @@ INSERT INTO `languages` (`lang_code`, `lang_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `metatag`
---
-
-CREATE TABLE IF NOT EXISTS `metatag` (
-  `meta` int(11) NOT NULL,
-  `tag` int(11) NOT NULL,
-  `key` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `metatag`
---
-
-INSERT INTO `metatag` (`meta`, `tag`, `key`) VALUES
-(1, 1, 0),
-(3, 4, 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `rankresults`
 --
 
@@ -657,7 +691,21 @@ INSERT INTO `rankresults` (`website_id`, `google_pagerank`, `alexa_rank`, `resul
 (4, 4, 82761, 1270665000),
 (4, 4, 82310, 1270751400),
 (3, 4, 106286, 1270751400),
-(5, 3, 82310, 1270751400);
+(5, 3, 82310, 1270751400),
+(4, 4, 81971, 1271183400),
+(3, 4, 103533, 1271183400),
+(5, 3, 81971, 1271183400),
+(5, 3, 85037, 1272306600),
+(4, 4, 85037, 1272306600),
+(3, 4, 104678, 1272306600),
+(4, 4, 85256, 1272565800),
+(3, 4, 104662, 1272565800),
+(5, 3, 85256, 1272565800),
+(5, 3, 84468, 1272652200),
+(4, 4, 84468, 1272652200),
+(3, 4, 103704, 1272652200),
+(4, 4, 83875, 1272911400),
+(3, 4, 102672, 1272911400);
 
 -- --------------------------------------------------------
 
@@ -685,7 +733,15 @@ INSERT INTO `saturationresults` (`website_id`, `google`, `yahoo`, `msn`, `result
 (3, 10, 18, 7, 1270665000),
 (4, 33, 39, 17, 1270751400),
 (3, 10, 18, 7, 1270751400),
-(5, 189, 1191, 102, 1270751400);
+(5, 189, 1191, 102, 1270751400),
+(4, 35, 37, 19, 1271183400),
+(3, 10, 17, 7, 1271183400),
+(5, 209, 1200, 93, 1271183400),
+(5, 137, 981, 96, 1272565800),
+(4, 36, 40, 21, 1272565800),
+(3, 10, 16, 8, 1272565800),
+(4, 36, 40, 21, 1272911400),
+(3, 10, 15, 8, 1272911400);
 
 -- --------------------------------------------------------
 
@@ -765,7 +821,42 @@ INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `descripti
 (51, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
 (52, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
 (53, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(54, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.');
+(54, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
+(55, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(56, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
+(57, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
+(58, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
+(59, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
+(60, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
+(61, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
+(62, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control ...', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(75, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
+(77, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
+(78, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
+(79, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control ...', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(74, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
+(76, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
+(98, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
+(99, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
+(101, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
+(102, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
+(103, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
+(104, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(100, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
+(106, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(107, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(108, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
+(111, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
+(112, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
+(113, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(114, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(115, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
+(116, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
+(117, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
+(118, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
+(119, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
+(125, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(124, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.');
 
 -- --------------------------------------------------------
 
@@ -780,7 +871,7 @@ CREATE TABLE IF NOT EXISTS `searchresults` (
   `rank` int(8) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=130 ;
 
 --
 -- Dumping data for table `searchresults`
@@ -816,7 +907,42 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 (51, 1, 1, 2, 1270751400),
 (52, 1, 1, 3, 1270751400),
 (53, 1, 2, 3, 1270751400),
-(54, 1, 2, 4, 1270751400);
+(54, 1, 2, 4, 1270751400),
+(55, 6, 1, 5, 1271183400),
+(56, 5, 1, 1, 1271183400),
+(57, 1, 1, 2, 1271183400),
+(58, 1, 1, 3, 1271183400),
+(59, 1, 2, 5, 1271183400),
+(60, 1, 2, 6, 1271183400),
+(61, 1, 3, 6, 1271183400),
+(62, 1, 3, 13, 1271183400),
+(76, 1, 1, 3, 1272393000),
+(75, 1, 1, 2, 1272393000),
+(77, 1, 2, 3, 1272393000),
+(79, 1, 3, 12, 1272393000),
+(78, 1, 3, 7, 1272393000),
+(74, 6, 1, 12, 1272393000),
+(98, 6, 1, 10, 1272565800),
+(100, 1, 1, 3, 1272565800),
+(99, 1, 1, 2, 1272565800),
+(102, 1, 2, 8, 1272565800),
+(101, 1, 2, 7, 1272565800),
+(104, 1, 3, 11, 1272565800),
+(103, 1, 3, 6, 1272565800),
+(106, 8, 1, 62, 1272565800),
+(107, 8, 2, 3, 1272565800),
+(108, 8, 2, 4, 1272565800),
+(111, 6, 1, 10, 1272652200),
+(112, 5, 1, 1, 1272652200),
+(113, 8, 1, 60, 1272652200),
+(114, 8, 2, 3, 1272652200),
+(115, 8, 2, 4, 1272652200),
+(116, 1, 1, 2, 1272652200),
+(117, 1, 1, 3, 1272652200),
+(118, 1, 2, 7, 1272652200),
+(119, 1, 2, 8, 1272652200),
+(125, 1, 3, 11, 1272652200),
+(124, 1, 3, 6, 1272652200);
 
 -- --------------------------------------------------------
 
@@ -835,14 +961,15 @@ CREATE TABLE IF NOT EXISTS `seoplugins` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `installed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `seoplugins`
 --
 
 INSERT INTO `seoplugins` (`id`, `label`, `name`, `author`, `description`, `version`, `website`, `status`, `installed`) VALUES
-(1, 'Meta Tag Generator', 'MetaTagGenerator', 'Geo Varghese', 'Meta Tag Generator', '2.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
+(1, 'Meta Tag Generator', 'MetaTagGenerator', 'Geo Varghese', 'Meta Tag Generator', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1),
+(2, 'Test Plugin', 'TestPlugin', 'Geo Varghese', 'Seo Panel Test Plugin: Check the structure of test plugin and it will help you to create new Seo Panel Plugins.', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -854,6 +981,7 @@ CREATE TABLE IF NOT EXISTS `seotools` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `url_section` varchar(100) NOT NULL,
+  `user_access` tinyint(1) NOT NULL DEFAULT '1',
   `reportgen` tinyint(1) NOT NULL DEFAULT '1',
   `cron` tinyint(1) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
@@ -864,13 +992,91 @@ CREATE TABLE IF NOT EXISTS `seotools` (
 -- Dumping data for table `seotools`
 --
 
-INSERT INTO `seotools` (`id`, `name`, `url_section`, `reportgen`, `cron`, `status`) VALUES
-(1, 'Keyword Position Checker', 'keyword-position-checker', 1, 1, 1),
-(2, 'Sitemap Generator', 'sitemap-generator', 0, 0, 1),
-(3, 'Rank Checker', 'rank-checker', 1, 1, 1),
-(4, 'Backlinks Checker', 'backlink-checker', 1, 1, 1),
-(5, 'Directory Submission', 'directory-submission', 1, 1, 1),
-(6, 'Search Engine Saturation', 'saturation-checker', 1, 1, 1);
+INSERT INTO `seotools` (`id`, `name`, `url_section`, `user_access`, `reportgen`, `cron`, `status`) VALUES
+(1, 'Keyword Position Checker', 'keyword-position-checker', 1, 1, 1, 1),
+(2, 'Sitemap Generator', 'sitemap-generator', 1, 0, 0, 1),
+(3, 'Rank Checker', 'rank-checker', 1, 1, 1, 1),
+(4, 'Backlinks Checker', 'backlink-checker', 1, 1, 1, 1),
+(5, 'Directory Submission', 'directory-submission', 1, 0, 0, 1),
+(6, 'Search Engine Saturation', 'saturation-checker', 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `set_label` varchar(64) NOT NULL,
+  `set_name` varchar(64) NOT NULL,
+  `set_val` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `set_type` enum('small','bool','medium','large','text') DEFAULT 'small',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `set_name` (`set_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `set_label`, `set_name`, `set_val`, `set_type`) VALUES
+(1, 'Seo Panel Title', 'SP_TITLE', 'Seo Panel: World\\''s first seo control panel for multiple web sites', 'large'),
+(2, 'Seo Panel Description', 'SP_DESCRIPTION', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'text'),
+(3, 'Seo Panel Keywords', 'SP_KEYWORDS', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', 'text'),
+(4, 'Number of entries per page', 'SP_PAGINGNO', '2', 'small'),
+(5, 'Delay between each spider crawl(seconds)', 'SP_CRAWL_DELAY', '2', 'small'),
+(6, 'Allow user to generate reports', 'SP_USER_GEN_REPORT', '0', 'bool'),
+(7, 'Image hotlink protection enabled', 'SP_HOTLINKING', '0', 'bool');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skipdirectories`
+--
+
+CREATE TABLE IF NOT EXISTS `skipdirectories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `website_id` int(11) NOT NULL,
+  `directory_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `website_id` (`website_id`,`directory_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Dumping data for table `skipdirectories`
+--
+
+INSERT INTO `skipdirectories` (`id`, `website_id`, `directory_id`) VALUES
+(14, 3, 2),
+(18, 4, 2),
+(17, 4, 1),
+(16, 11, 2),
+(15, 11, 1),
+(20, 4, 5),
+(19, 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testplugin`
+--
+
+CREATE TABLE IF NOT EXISTS `testplugin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `testplugin`
+--
+
+INSERT INTO `testplugin` (`id`, `title`, `description`, `status`) VALUES
+(1, 'test title', 'test description', 0),
+(2, 'test title', 'test description', 0);
 
 -- --------------------------------------------------------
 
@@ -889,16 +1095,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `utype_id`, `username`, `password`, `first_name`, `last_name`, `email`, `created`, `status`) VALUES
-(1, 1, 'spadmin', 'a4d312c461703c46a56b1bdcda9b5cdc', 'Admin', 'Seo Tool Kit', 'sendtogeo@gmail.com', 1270708599, 1),
-(12, 2, 'spuser1', '0feee92aa8c942716ff18b07943cf662', 'sp', 'user1', 'spuser1@test.com', 1270708599, 1),
-(13, 2, 'gdfgdfgdf', '3d55fe6e05cb645336f7e86d8904d471', 'dgdfg', 'dfgdf', 'dfgdf@jasfjhsj.com', 1270708095, 1);
+(1, 1, 'spadmin', 'a4d312c461703c46a56b1bdcda9b5cdc', 'Seo Panel', 'Admin', 'sendtogeo@gmail.com', 1270708599, 1),
+(13, 2, 'gdfgdfgdf', '3d55fe6e05cb645336f7e86d8904d471', 'dgdfg', 'dfgdf', 'dfgdf@jasfjhsj.com', 1270708095, 1),
+(14, 2, 'sfsdfffffffff', '4e0de973983c9b99ef6bf02f59df1ca3', 'sfsdfffffffff', 'sfsdfffffffff', 'sfsdfffffffff@hfgh.com', 1272821827, 1),
+(15, 2, 'sdfffffff', '40db518c4468b2f028546bc40b3b486a', 'sdfffffff', 'sdfffffff', 'sdfffffff@ashgh.com', 1272822042, 1);
 
 -- --------------------------------------------------------
 
@@ -937,16 +1144,24 @@ CREATE TABLE IF NOT EXISTS `websites` (
   `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `keywords` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title2` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title3` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title4` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title5` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description2` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description3` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description4` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description5` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `websites`
 --
 
-INSERT INTO `websites` (`id`, `name`, `url`, `owner_name`, `owner_email`, `category`, `title`, `description`, `keywords`, `user_id`, `status`) VALUES
-(3, 'Seo Panel', 'http://www.seopanel.in', '', '', '', '', '', '', 1, 1),
-(4, 'Seo Free Tools', 'http://www.seofreetools.net', 'sdfsdf fsdfsdf', 'sdfsd@gsdfhg.com', 'sdhjh', 'sdfsd', 'hhjhj', 'jhjhj', 1, 1),
-(5, 'seo free directory', 'http://directory.seofreetools.net/', '', '', '', 'Seo Free Directory - Web Directory Page and Web Directory Search Site', 'Seo Free Directory - A web directory page and web directory search site providing forum-directory,web directory in,virtual web directory,web directory sites. The web directory services are free web directory submit,online web directory,best web directory,open web directory,paid web directory.', 'seo free directory,web directory page, web directory search,forum-directory,web directory in,virtual web directory,web directory sites', 12, 1);
+INSERT INTO `websites` (`id`, `name`, `url`, `owner_name`, `owner_email`, `category`, `title`, `description`, `keywords`, `title2`, `title3`, `title4`, `title5`, `description2`, `description3`, `description4`, `description5`, `user_id`, `status`) VALUES
+(3, 'Seo Panel', 'http://www.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo tools,seo', 'Seo Panel: World\\''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', '', '', '', '', '', '', '', '', 1, 1),
+(4, 'Seo Free Tools', 'http://www.seofreetools.net', 'Geo Varghese', 'sendtogeo@gmail.com', 'seo', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.', 'SEO Free Tools,SEO Tutorials,SEO News,Cheap Web Hosting', '', '', '', '', '', '', '', '', 1, 1),
+(11, 'Seo Panel Forum', 'http://forum.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo forum,seo', 'Seo Panel Forum Index page', 'Seo Panel Forum ', 'Seo Panel Forum ', '', '', '', '', '', '', '', '', 1, 1);

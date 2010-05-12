@@ -39,12 +39,7 @@ class Controller extends Seopanel{
 			
 			$this->db->query("show tables", true);
 			if($this->db->noRows <= 0){
-				# starts installtion of seo panel software
-				$this->restoreData();
-				
-				$installUpdateUrl = "http://www.seopanel.in/installupdate.php?url=".urlencode(SP_WEBPATH)."&ip=".$_SERVER['SERVER_ADDR'];
-				$spider = New Spider();
-				$spider->getContent($installUpdateUrl);
+				die("<p>The database tables could not be found.</p><p><a href=\"install/index.php\">Click here to install Seo Panel.</a></p>");
 			}
 		}
 		
