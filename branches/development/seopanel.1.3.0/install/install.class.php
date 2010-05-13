@@ -295,6 +295,58 @@ class Install {
 		<?php		
 	}
 	
+	
+	# func to check upgrade requirements
+	function checkUpgradeRequirements($error=false) {		
+		
+		$configClass = "red";
+		$configSupport = "Not found";
+		$configFile = SP_INSTALL_CONFIG_FILE;
+		if(file_exists($configFile)){
+			$configSupport = "Found";				
+			$configClass = "green";
+		}
+
+		$dbClass = "red";
+		$dbSupport = "Database config variables not defined";
+		include_once(SP_INSTALL_CONFIG_FILE);
+		if(defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER') && defined('DB_PASSWORD') && defined('DB_ENGINE')){
+			$db = New DB();
+			
+			$errMsg = $db->connectDatabase(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+			if($db->error ){
+				$dbSupport = $errMsg;
+			}else{				
+				$dbSupport = "Connected to databse successfully";				
+				$dbClass = "green";
+			}
+		}
+		
+		$errMsg = $error ? "Please fix the following errors to proceed to next step!" : "";
+		?>
+		<h1 class="BlockHeader">Welcome to Seo panel Upgradation</h1>
+		<form method="post">
+		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
+			<tr><th colspan="2" class="header">Upgrade compatibility</th></tr>
+			<tr><td colspan="2" class="error"><?php echo $errMsg;?></td></tr>
+			<tr>
+				<th>/config/sp-config.php</th>
+				<td class="<?php echo $configClass;?>"><?php echo $configSupport; ?></td>
+			</tr>
+			<tr>
+				<th>Database</th>
+				<td class="<?php echo $dbClass;?>"><?php echo $dbSupport; ?></td>
+			</tr>
+		</table>
+		<input type="hidden" value="<?php echo $configClass;?>" name="config">
+		<input type="hidden" value="<?php echo $dbClass;?>" name="db">
+		<input type="hidden" value="startinstall" name="sec">
+		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
+		</form>
+		<?php
+	}
+	
+	
 	# func to show default install header
 	function showDefaultHeader() {
 		?>
