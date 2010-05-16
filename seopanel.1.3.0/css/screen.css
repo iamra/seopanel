@@ -188,8 +188,8 @@ h1 {
 	padding: 0;
 	border-bottom: 0;
 	margin: 0;
-	color: #333;
-	font-size: 16px;
+	color: black;
+	font-size: 14px;
 	font-weight: bold;
 }
 
@@ -1129,4 +1129,20 @@ h1.BlockHeader {
 
 .center {
 	text-align: center;
+}
+
+fieldset {
+	background:none repeat scroll 0 0 #ecf3fa;
+	border:1px solid #B0C2CC;
+	margin:1em;
+	padding:1em;
+}
+
+legend {
+	background:none repeat scroll 0 0 #dae5ee;
+	border : 1px solid #B0C2CC;
+	color:#000000;
+	font-size: 14px;
+	padding: 2px 8px;
+	font-weight: bold;
 }

@@ -1,20 +1,22 @@
 <div class="Center" style='width:100%;'>
 <div class="col" style="">
-<div class="SectionHeader">
-<h1 style="text-align:center;">Seo Panel</h1>
+<!--<div class="SectionHeader">
+<h1 style="text-align:center;border:none;font-size:20px;">Seo Panel <?=SP_INSTALLED?></h1>
 </div>
-<div class="Block">
-<h1 class="BlockHeader">&nbsp;</h1>
-<br />
-<div>
-<h1>Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
+--><fieldset>
+	<legend>Seo Panel <?=SP_INSTALLED?></legend>
+<p style="font-size: 13px;"><b>Welcome to Seo Panel - World's first seo control panel for multiple websites</b></p>
 <p style="font-size: 13px;">
-	A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.
-	Its a seo tool kit containing lots of tools to increase and track the performance of your websites. It will help us to store and manage seo process of different websites. 
+	A complete open source seo control panel for managing search engine optimization of your websites. 
+	Seo Panel is a seo tool kit includes latest hot seo tools to increase and track the performace your websites.
+	It is a free software released under GNU GENERAL PUBLIC LICENSE Version 2.<br></br>
+	The main feature of Seo Panel is its extendability by using Seo Plugins.
+	Any one can easily create and use seo plugins for seo panel. 
 </p>
-<br />
-<hr />
-<p style="font-weight: bold;font-size: 14px;">The major features of Seo Panel:</p>
+</fieldset>
+
+<fieldset>
+<legend>The major features of Seo Panel <?=SP_INSTALLED?></legend>
 <ul id="features">
 	<li>
 		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=directory-submission">Directory Submission</a> 
@@ -61,10 +63,7 @@
 		</p>		
 	</li>
 </ul>
+</fieldset>
 
-
-</div>
-
-<!-- Update Log --></div>
 </div>
 </div>
