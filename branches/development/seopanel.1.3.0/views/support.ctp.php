@@ -1,12 +1,8 @@
 <div class="Center" style='width:100%;'>
 <div class="col" style="">
-<div class="SectionHeader">
-<h1 style="text-align:center;">Seo Panel Support System</h1>
-</div>
-<div class="Block">
-<h1 class="BlockHeader">&nbsp;</h1>
-<br />
-<div>
+
+<fieldset>
+<legend>Seo Panel Support System</legend>
 <h1>Seo Panel support system will provide you following services.</h1>
 <p style="font-size: 13px;">
 	
@@ -21,8 +17,20 @@
 	
 	<p><a href="http://support.seofreetools.net/" target="_blank" title="seo panel support"><img src="<?=SP_IMGPATH?>/submit_ticket.jpg" alt="seo panel support"></a> or Please <a href="http://support.seofreetools.net/" target="_blank" title="seo panel support"><b>click here</b></a> to create new tickets in <b>seo panel support system</b>.</p>	 
 </p>
-</div>
+</fieldset>
 
-</div>
+<fieldset>
+<legend>Contact Seo Panel Team</legend>
+</fieldset>
+
+<fieldset>
+<legend>Download Seo Panel</legend>
+</fieldset>
+
+
+<fieldset>
+<legend>Donate for Seo Panel</legend>
+</fieldset>
+
 </div>
 </div>

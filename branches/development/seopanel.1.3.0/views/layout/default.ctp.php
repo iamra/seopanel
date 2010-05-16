@@ -7,7 +7,7 @@
 	$spDescription = empty($spDescription) ? SP_DESCRIPTION : $spDescription;
 	$spKeywords = empty($spKeywords) ? SP_KEYWORDS : $spKeywords;  
 ?>
-<title><?=$spTitle?></title>
+<title><?=stripslashes($spTitle)?></title>
 <meta name="description" content="<?=$spDescription?>" />
 <meta name="keywords" content="<?=$spKeywords?>" />
 <link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen.css"
@@ -26,9 +26,11 @@ var spdemo = <?=SP_DEMO?>;
 </script>
 <div id="Header"><?php include_once(SP_VIEWPATH."/menu/topmenu.ctp.php");?>
 
-<a href="http://www.seopanel.in/" style="padding:0px;width:200px;" target="_blank">
+<div style="width:300px;">
+<a href="<?=SP_WEBPATH?>" style="padding:0px;width:200px;">
 	<h1 style="width:200px;">Seo Panel</h1>
 </a>
+</div>
 
 <!-- TABS -->
 <div id="Tabs">
