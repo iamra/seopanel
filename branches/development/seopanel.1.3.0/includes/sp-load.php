@@ -78,7 +78,7 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	define('SP_LIBPATH', SP_ABSPATH."/libs");
 	define('SP_TMPPATH', SP_ABSPATH."/tmp");	
 	define('SP_PLUGINPATH', SP_ABSPATH."/plugins");
-	define('SP_DATAPATH', SP_ABSPATH."/data");
+	define('SP_DATAPATH', SP_ABSPATH."/install/data");
 
 	# web settings
 	define('SP_CSSPATH', SP_WEBPATH."/css");

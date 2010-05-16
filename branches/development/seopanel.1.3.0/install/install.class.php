@@ -297,7 +297,59 @@ class Install {
 	
 	
 	# func to check upgrade requirements
-	function checkUpgradeRequirements($error=false) {		
+	function checkUpgradeRequirements($error=false, $errorMsg='') {
+
+		$phpClass = "green";
+		$phpSupport = "Yes";
+		$phpVersion = phpversion();
+		if(intval($phpVersion) < 6){			
+			$phpClass = "green";
+			$phpSupport = "Yes";
+		}
+		$phpSupport .= " ( PHP $phpVersion )";
+		
+		$mysqlClass = "red";
+		$mysqlSupport = "No";
+		if(function_exists('mysql_query')){
+			$res = mysql_query("select version() as version");
+			$resObj = mysql_fetch_object($res);
+			$mysqlSupport = "Yes ( MySQL " . $resObj->version ." )";
+			$mysqlClass = "green";
+		}
+		
+		$curlClass = "red";
+		$curlSupport = "No";
+		if(function_exists('curl_version')){
+			$version = curl_version();
+			$curlSupport = "Yes ( CURL  {$version['version']} )";
+			$curlClass = "green";
+		}
+		
+		$shorttagClass = "red";
+		$shorttagSupport = "Disabled";
+		if(ini_get('short_open_tag')){
+			$shorttagSupport = "Enabled";
+			$shorttagClass = "green";
+		}
+		
+		$gdClass = "red";
+		$gdSupport = "No";
+		if(function_exists('gd_info')){
+			$version = gd_info();
+			$gdSupport = "Yes ( GD  {$version['GD Version']} )";
+			$gdClass = "green";
+		}		
+			
+		$tmpClass = "red";
+		$tmpSupport = "Not found";
+		$tmpFile = SP_INSTALL_DIR.'/../tmp';
+		if(file_exists($tmpFile)){
+			$tmpSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod -R 777 tmp/</p>";
+			if(is_writable($tmpFile)){				
+				$tmpSupport = "Found, Writable";				
+				$tmpClass = "green";
+			}			
+		}
 		
 		$configClass = "red";
 		$configSupport = "Not found";
@@ -317,18 +369,38 @@ class Install {
 			if($db->error ){
 				$dbSupport = $errMsg;
 			}else{				
-				$dbSupport = "Connected to databse successfully";				
+				$dbSupport = "Connected to database successfully";				
 				$dbClass = "green";
 			}
-		}
+		}		
 		
-		$errMsg = $error ? "Please fix the following errors to proceed to next step!" : "";
+		$errMsg = $error ? (empty($errorMsg) ? "Please fix the following errors to proceed to next step!" : $errorMsg) : "";
 		?>
-		<h1 class="BlockHeader">Welcome to Seo panel Upgradation</h1>
+		<h1 class="BlockHeader">Welcome to Seo panel Upgrade</h1>
 		<form method="post">
 		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
 			<tr><th colspan="2" class="header">Upgrade compatibility</th></tr>
 			<tr><td colspan="2" class="error"><?php echo $errMsg;?></td></tr>
+			<tr>
+				<th>PHP version >= 4.0.0</th>
+				<td class="<?php echo $phpClass;?>"><?php echo $phpSupport;?></td>
+			</tr>
+			<tr>
+				<th>MySQL Support</th>
+				<td class="<?php echo $mysqlClass;?>"><?php echo $mysqlSupport;?></td>
+			</tr>
+			<tr>
+				<th>CURL Support</th>
+				<td class="<?php echo $mysqlClass;?>"><?php echo $curlSupport; ?></td>
+			</tr>
+			<tr>
+				<th>PHP short_open_tag</th>
+				<td class="<?php echo $shorttagClass;?>"><?php echo $shorttagSupport; ?></td>
+			</tr>
+			<tr>
+				<th>GD graphics support</th>
+				<td class="<?php echo $gdClass;?>"><?php echo $gdSupport; ?></td>
+			</tr>
 			<tr>
 				<th>/config/sp-config.php</th>
 				<td class="<?php echo $configClass;?>"><?php echo $configSupport; ?></td>
@@ -337,11 +409,64 @@ class Install {
 				<th>Database</th>
 				<td class="<?php echo $dbClass;?>"><?php echo $dbSupport; ?></td>
 			</tr>
+			<tr>
+				<th>/tmp</th>
+				<td class="<?php echo $tmpClass;?>"><?php echo $tmpSupport; ?></td>
+			</tr>
 		</table>
+		<input type="hidden" value="<?php echo $phpClass;?>" name="php_support">
+		<input type="hidden" value="<?php echo $mysqlClass;?>" name="mysql_support">
+		<input type="hidden" value="<?php echo $curlClass;?>" name="curl_support">
+		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
-		<input type="hidden" value="<?php echo $dbClass;?>" name="db">
-		<input type="hidden" value="startinstall" name="sec">
-		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
+		<input type="hidden" value="<?php echo $dbClass;?>" name="db_support">
+		<input type="hidden" value="proceedupgrade" name="sec">
+		<input type="submit" value="Upgrade to Seo Panel v.<?php echo SP_INSTALLED;?> >>" name="submit" class="button">
+		</form>
+		<?php
+	}
+	
+	function proceedUpgrade($info=''){ 
+		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') || ($info['db_support'] == 'red')){
+			$this->checkUpgradeRequirements(true);
+			return;
+		}		
+		
+		include_once(SP_INSTALL_CONFIG_FILE);
+		$db = New DB();
+		
+		# check database connection
+		$errMsg = $db->connectDatabase(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+		if($db->error){
+			$this->checkUpgradeRequirements(true, $errMsg);
+			return;
+		}
+		
+		# importing data to db
+		$errMsg = $db->importDatabaseFile(SP_UPGRADE_DB_FILE, false);
+		/*if($db->error){
+			$errMsg = "Error occured while importing data: ". $errMsg;
+			$this->checkUpgradeRequirements(true, $errMsg);
+			return;
+		}*/		
+		
+		?>
+		<form method="post" action="<?php echo SP_WEBPATH."/login.php"; ?>">
+		<h1 class="BlockHeader">Suuccess Seo Panel v.<?php echo SP_INSTALLED;?> Upgrade</h1>
+		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
+			<tr><th colspan="2" class="headersuccess">Seo Panel upgraded successfully!</th></tr>
+			<tr>
+				<td class="warning">Warning!</td>
+			</tr>
+			<tr>
+				<td style="border: none;">
+					<ul class="list">
+						<li>Please remove installation directory <b>install</b> to avoid security issues.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>				
+		<input type="submit" value="Proceed to admin login >>" name="submit" class="button">
 		</form>
 		<?php
 	}
