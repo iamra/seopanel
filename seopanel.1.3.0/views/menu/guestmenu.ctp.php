@@ -1,10 +1,15 @@
 <?php
 	$homeClass = "";
 	$supportClass = "";
-	$loginClass = "";
+	$loginClass = "";	
+	$registerClass = "";
 	switch($this->menu){
 		case "support":
 			$supportClass = "current";
+			break;			
+		
+		case "register":
+			$registerClass = "current";
 			break;
 			
 		case "login":
@@ -23,3 +28,6 @@
 <li><a class="<?=$supportClass?>" href="<?=SP_WEBPATH?>/support.php">Support</a></li>
 
 <li style="float: right; margin-right: 30px;"><a class="<?=$loginClass?>" href="<?=SP_WEBPATH?>/login.php">My Account</a></li>
+<?php if(!isLoggedIn() && SP_USER_REGISTRATION){?>
+	<li style="float: right;"><a class="<?=$registerClass?>" title="register seo panel" href="<?=SP_WEBPATH?>/register.php">Register</a></li>
+<?php } ?>

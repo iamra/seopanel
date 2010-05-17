@@ -224,5 +224,15 @@ class Validation{
 		}		
 		return $msg;
 	}
+	
+	# func to check captcha
+	function checkCaptcha($code) {
+		$msg = '';
+		if(!PhpCaptcha::Validate($_POST['code'])){
+			$msg = "Invalid code entered";
+			$this->flagErr = true;
+		}		
+		return $msg;
+	}
 }
 ?>
