@@ -57,6 +57,45 @@ class UserController extends Controller{
 		$this->index();
 	}
 	
+	# register function
+	function register(){		
+		$this->render('common/register');
+	}
+	
+	# function to start registration
+	function startRegistration(){
+		$this->set('post', $_POST);
+		$userInfo = $_POST;
+		$errMsg['userName'] = formatErrorMsg($this->validate->checkUname($userInfo['userName']));
+		$errMsg['password'] = formatErrorMsg($this->validate->checkPasswords($userInfo['password'], $userInfo['confirmPassword']));
+		$errMsg['firstName'] = formatErrorMsg($this->validate->checkBlank($userInfo['firstName']));
+		$errMsg['lastName'] = formatErrorMsg($this->validate->checkBlank($userInfo['lastName']));
+		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userInfo['email']));
+		$errMsg['code'] = formatErrorMsg($this->validate->checkCaptcha($userInfo['code']));
+		if(!$this->validate->flagErr){
+			if (!$this->__checkUserName($userInfo['userName'])) {
+				if (!$this->__checkEmail($userInfo['email'])) {
+										
+					# format values					
+					$sql = "insert into users
+							(id,utype_id,username,password,first_name,last_name,email,created,status) 
+							values
+							('',2,'{$userInfo['userName']}','".md5($userInfo['password'])."',
+							'".addslashes($userInfo['firstName'])."','".addslashes($userInfo['lastName'])."','{$userInfo['email']}',UNIX_TIMESTAMP(),1)";
+					$this->db->query($sql);					
+					$this->render('common/registerconfirm');
+					exit;
+				}else{
+					$errMsg['email'] = formatErrorMsg('Email already exist!');
+				}
+			}else{
+				$errMsg['userName'] = formatErrorMsg('Username already exist!');
+			}
+		}
+		$this->set('errMsg', $errMsg);
+		$this->register();
+	}
+	
 	# function for logout
 	function logout(){
 		Session::setSession('userInfo', "");

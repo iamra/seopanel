@@ -37,7 +37,8 @@ class Seopanel{
 		include_once(SP_LIBPATH.'/paging.class.php');
 		include_once(SP_LIBPATH.'/pchart.class.php');
 		include_once(SP_LIBPATH.'/pdata.class.php');
-		include_once(SP_LIBPATH.'/xmlparser.class.php');
+		include_once(SP_LIBPATH.'/xmlparser.class.php');		
+		include_once(SP_LIBPATH.'/captcha.class.php');
 		Session::startSession();
 		
 		# include common functions		

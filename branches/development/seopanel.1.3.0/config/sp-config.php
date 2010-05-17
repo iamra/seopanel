@@ -25,7 +25,7 @@ define('SP_WEBPATH', 'http://localhost/seopanel.v.1.3.0');
 
 # DB settings - You can get this info from your web hosting provider.
 # The name of the database for seo panel
-define('DB_NAME', 'seopanel.2.0.0');
+define('DB_NAME', 'seopanel.v.1.3.0');
 
 # DB database username
 define('DB_USER', 'root');
