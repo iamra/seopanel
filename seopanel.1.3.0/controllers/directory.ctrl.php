@@ -174,7 +174,7 @@ class DirectoryController extends Controller{
 		
 		# directory list is empty
 		if(empty($dirInfo['id'])) {
-			showErrorMsg("No <b>Active</b> directories Found. Please <a href='http://www.seopanel.in/contact/' target='_blank'>Contact</a> <b>Seo Panel Team</b> to get more <b>directories</b>.");
+			showErrorMsg("No <b>Active</b> directories Found. Please <a href='".SP_CONTACT_LINK."' target='_blank'>Contact</a> <b>Seo Panel Team</b> to get more <b>directories</b>.");
 		}
 		
 		$websiteController = New WebsiteController();

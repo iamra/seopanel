@@ -15,8 +15,12 @@
 		<td><input type="password" name="password" value=""><?=$errMsg['password']?></td>
 	</tr>
 	<tr>
-		<td colspan="2" class="actionsBox" style="padding-left:79px;">
-			<input class="img" style="border:0px;" type="image" src="<?=SP_IMGPATH?>/proceed.gif" name="login"/>
+		<th>&nbsp;</th>
+		<td class="actionsBox">
+			<input class="button" type="submit" name="login" value="Login >>"/>
+			<?php if(!isLoggedIn() && SP_USER_REGISTRATION){ ?>
+				<a href="<?=SP_WEBPATH?>/register.php" style="font-size: 12px;">Register</a>
+			<?php }?>
 		</td>
 	</tr>
 </table>

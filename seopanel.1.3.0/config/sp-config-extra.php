@@ -50,4 +50,20 @@ define('SP_PLUGINUPGRADEFILE', 'upgrade.sql');
 
 # The seo panel pagination default
 define('SP_PAGINGNO_DEFAULT', 10);
+
+# The seo panel help page
+define('SP_HELP_LINK', 'http://help.seopanel.in/');
+
+# The seo panel forum page
+define('SP_FORUM_LINK', 'http://forum.seopanel.in/');
+
+# The seo panel support page
+define('SP_SUPPORT_LINK', 'http://support.seofreetools.net/');
+
+# The seo panel contact page
+define('SP_CONTACT_LINK', 'http://www.seopanel.in/contact/');
+
+# The seo panel donate page
+define('SP_DONATE_LINK', 'http://www.seopanel.in/donate/');
+
 ?>

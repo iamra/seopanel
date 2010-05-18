@@ -1131,8 +1131,7 @@ h1.BlockHeader {
 	text-align: center;
 }
 
-fieldset {
-	background:none repeat scroll 0 0 #ecf3fa;
+fieldset {	
 	border:1px solid #B0C2CC;
 	margin:1em;
 	padding:1em;
@@ -1142,7 +1141,35 @@ legend {
 	background:none repeat scroll 0 0 #dae5ee;
 	border : 1px solid #B0C2CC;
 	color:#000000;
-	font-size: 14px;
+	font-size: 13px;
 	padding: 2px 8px;
 	font-weight: bold;
+}
+
+.button{
+	padding:3px 2px;
+	border:1px solid #666666;
+	font-weight:bold;
+	background:url("../images/bg_button.gif") repeat-x scroll center top #EFEFEF;
+	color:#000000;
+	cursor:pointer;
+	font-family:"Lucida Grande",Verdana,Helvetica,Arial,sans-serif;
+	font-size:0.85em;
+	width:auto !important;
+	text-align: center;
+	height: 20px;
+}
+
+.actionForm input.button {
+	background:url("../images/bg_button.gif") repeat-x scroll center top #EFEFEF;
+	border:1px solid #666666;
+	color:#000000;
+	cursor:pointer;
+	font-size:12px;
+	font-weight:bold;
+	height:24px;
+	margin:0px;
+	padding:0px 5px 3px 5px;
+	text-align:center;
+	width:auto !important;
 }

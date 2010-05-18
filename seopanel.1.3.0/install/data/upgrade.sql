@@ -85,14 +85,15 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`id`, `set_label`, `set_name`, `set_val`, `set_type`) VALUES
-(1, 'Seo Panel Title', 'SP_TITLE', 'Seo Panel: World\\''s first seo control panel for multiple web sites', 'large'),
+(1, 'Seo Panel Title', 'SP_TITLE', 'Seo Panel: World\'s first seo control panel for multiple web sites', 'large'),
 (2, 'Seo Panel Description', 'SP_DESCRIPTION', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'text'),
 (3, 'Seo Panel Keywords', 'SP_KEYWORDS', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', 'text'),
-(4, 'Number of entries per page', 'SP_PAGINGNO', '2', 'small'),
+(4, 'Number of entries per page', 'SP_PAGINGNO', '10', 'small'),
 (5, 'Delay between each spider crawl(seconds)', 'SP_CRAWL_DELAY', '2', 'small'),
 (6, 'Allow user to generate reports', 'SP_USER_GEN_REPORT', '0', 'bool'),
 (7, 'Image hotlink protection enabled', 'SP_HOTLINKING', '0', 'bool'),
 (8, 'User registration interface', 'SP_USER_REGISTRATION', '1', 'bool');
+
 
 --
 -- random title and description to websites table
