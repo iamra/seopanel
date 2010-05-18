@@ -1175,3 +1175,30 @@ A.actionbut{
 	width:auto !important;
 	text-decoration: none;
 }
+
+.infobox p{
+	color:#444444;
+	font:1.2em Verdana,Arial,sans-serif;
+}
+
+.infobox h1{
+	color: #445566;
+	font-size: 20px;
+	margin: 10px 0px;
+	font-family: Georgia,sans-serif;
+	font-weight: normal;
+}
+
+.infobox b{
+	color: #0044AA;
+	text-decoration: none;
+	font-weight: normal;	
+}
+
+.infobox A{
+	text-decoration: none;
+}
+
+.infobox A:HOVER{
+	text-decoration: underline;
+}
