@@ -7,7 +7,7 @@
 <input type="hidden" name="sec" value="register">
 <table width="100%" cellpadding="0" cellspacing="0" class="actionForm">
 	<tr>
-		<th>Username:*</th>
+		<th width="28%">Username:*</th>
 		<td><input type="text" name="userName" value="<?=$post['userName']?>"><?=$errMsg['userName']?></td>
 	</tr>
 	<tr>
@@ -44,7 +44,7 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td colspan="0" class="actionsBox">
-			<input class="button" type="submit" name="login" value="Register >>"/>
+			<input class="button" type="submit" name="login" value="Create my account >>"/>
 		</td>
 	</tr>
 </table>
