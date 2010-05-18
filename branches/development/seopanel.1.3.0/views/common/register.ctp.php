@@ -44,7 +44,7 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td colspan="0" class="actionsBox">
-			<input class="but1" type="image" style="width:61px;height:22px;border: 0px;" src="<?=SP_IMGPATH?>/proceed.gif" name="login"/>
+			<input class="button" type="submit" name="login" value="Register >>"/>
 		</td>
 	</tr>
 </table>

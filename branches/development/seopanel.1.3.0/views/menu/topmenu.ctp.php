@@ -1,6 +1,7 @@
 <h3>
 	<span id="floatright"> 
-		<a href="http://help.seopanel.in/" target="_blank" title="seo panel help">Help</a> <span	class="pipe">|</span>
+		<a href="<?=SP_HELP_LINK?>" target="_blank" title="Seo Panel Help Guide">Help</a> <span class="pipe">|</span>
+		<a href="<?=SP_FORUM_LINK?>" target="_blank" title="Seo Panel Forum">Forum</a> <span class="pipe">|</span>
 		<?php 
 		$userInfo = Session::readSession('userInfo');
 		if(empty($userInfo['userId'])){	
