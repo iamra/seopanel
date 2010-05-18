@@ -1146,21 +1146,8 @@ legend {
 	font-weight: bold;
 }
 
-.button{
-	padding:3px 2px;
-	border:1px solid #666666;
-	font-weight:bold;
-	background:url("../images/bg_button.gif") repeat-x scroll center top #EFEFEF;
-	color:#000000;
-	cursor:pointer;
-	font-family:"Lucida Grande",Verdana,Helvetica,Arial,sans-serif;
-	font-size:0.85em;
-	width:auto !important;
-	text-align: center;
-	height: 20px;
-}
 
-.actionForm input.button {
+.actionbut, .actionForm input.button {
 	background:url("../images/bg_button.gif") repeat-x scroll center top #EFEFEF;
 	border:1px solid #666666;
 	color:#000000;
@@ -1172,4 +1159,19 @@ legend {
 	padding:0px 5px 3px 5px;
 	text-align:center;
 	width:auto !important;
+}
+
+A.actionbut{
+	background:url("../images/bg_button.gif") repeat-x scroll center top #EFEFEF;
+	border:1px solid #666666;
+	color:#000000;
+	cursor:pointer;
+	font-size:13px;
+	font-weight:bold;
+	height:30px;
+	margin:0px;
+	padding:0px 5px 3px 5px;
+	text-align:center;
+	width:auto !important;
+	text-decoration: none;
 }

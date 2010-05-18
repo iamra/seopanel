@@ -1,7 +1,7 @@
 <div class="Left">
 <div class="col">
 <div class="Block">
-<h1 class="BlockHeader">Login Section</h1>
+<h1 class="BlockHeader">Sign In</h1>
 <br />
 <form name="loginForm" method="post" action="<?=SP_WEBPATH?>/login.php">
 <input type="hidden" name="sec" value="login">
@@ -17,9 +17,9 @@
 	<tr>
 		<th>&nbsp;</th>
 		<td class="actionsBox">
-			<input class="button" type="submit" name="login" value="Login >>"/>
+			<input class="button" type="submit" name="login" value="Sign In >>"/>
 			<?php if(!isLoggedIn() && SP_USER_REGISTRATION){ ?>
-				<a href="<?=SP_WEBPATH?>/register.php" style="font-size: 12px;">Register</a>
+				&nbsp;<a href="<?=SP_WEBPATH?>/register.php" style="font-size: 13px;">Register</a>
 			<?php }?>
 		</td>
 	</tr>

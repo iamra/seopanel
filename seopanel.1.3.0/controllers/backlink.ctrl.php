@@ -58,8 +58,9 @@ class BacklinkController extends Controller{
 				$url = 'http://www.google.com/search?q=link%3A' . urlencode($this->url);			
 				$v = $this->spider->getContent($url);
 				$v = empty($v['page']) ? '' :  $v['page'];
-				if(preg_match('/of about \<b\>([0-9\,]+)\<\/b\>/si', $v, $r)){					
-				}elseif(preg_match('/of \<b\>([0-9\,]+)\<\/b\>/si', $v, $r)){					
+				if(preg_match('/about ([0-9\,]+) results/si', $v, $r)){					
+				}elseif(preg_match('/<div id=resultStats>([0-9\,]+) results/si', $v, $r)){					
+				}elseif(preg_match('/([0-9\,]+) results/si', $v, $r)){					
 				}
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;

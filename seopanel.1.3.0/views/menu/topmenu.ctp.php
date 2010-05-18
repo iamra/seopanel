@@ -6,10 +6,10 @@
 		$userInfo = Session::readSession('userInfo');
 		if(empty($userInfo['userId'])){	
 		?> 			
-			<a href="<?=SP_WEBPATH?>/login.php">Login</a>
+			<a href="<?=SP_WEBPATH?>/login.php">Sign in</a>
 		<?php }else{ ?>
-			<a href="admin-panel.php?sec=myprofile">My Profile</a> <span class="pipe">|</span>
-			<a href="<?=SP_WEBPATH?>/login.php?sec=logout">Logout</a>
+			<a href="admin-panel.php?sec=myprofile">Profile</a> <span class="pipe">|</span>
+			<a href="<?=SP_WEBPATH?>/login.php?sec=logout">Sign out</a>
 		<?php }?>
 	</span>
 </h3>
