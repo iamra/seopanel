@@ -43,7 +43,7 @@ define('SP_DEMO', 0);
 define('SP_PLUGININFOFILE', 'plugin.xml');
 
 # seo panel plugin site info
-define('SP_PLUGINSITE', 'http://www.seopanel.in/seo-plugins/');
+define('SP_PLUGINSITE', 'http://www.seopanel.in/plugins/');
 
 # The seo panel plugin upgrade db file
 define('SP_PLUGINUPGRADEFILE', 'upgrade.sql');
