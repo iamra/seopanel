@@ -9,7 +9,7 @@
 		<p>
 			We are providing <b>1000 free active and verified</b> internet directory package, to add into your seo panel <b>directory submission tool</b>.
 			It will help you to <b>increase the backlinks</b> of your websites.
-			Actually 1000 directory list is <b>introduced</b> to collect some money for <b>future devlopment</b> of seo panel.
+			Actually 1000 directory list is <b>introduced</b> to collect some money for <b>future development</b> of seo panel.
 			To get the 1000 directory list please <a href="<?=SP_DONATE_LINK?>" target="_blank">donate</a> $10 or more to improve the features of seo panel.
 			If you have any questions about 1000 directory package, please <a href="<?=SP_CONTACT_LINK?>" target="_blank">contact us</a> or open a ticket in <a href="<?=SP_SUPPORT_LINK?>" target="_blank">support system</a>.   
 		</p>		

@@ -2,7 +2,7 @@
 <div class="col" style="">
 
 <fieldset>
-<legend>Seo Panel <?=SP_INSTALLED?></legend>
+<legend>Seo Panel Version <?=SP_INSTALLED?></legend>
 
 <ul class="infobox">
 	<li>		

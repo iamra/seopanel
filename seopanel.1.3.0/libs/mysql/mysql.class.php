@@ -35,7 +35,7 @@ class Mysql extends Database{
 		$this->connectionId = @mysql_connect($dbServer, $dbUser, $dbPassword, true);
 		if (!$this->connectionId){
 			$this->showError();			
-			redirectUrl(SP_WEBPATH.'/readme.php?error=1');
+			showErrorMsg("<p style='color:red'>Database connection failed!<br>Please check your database settings!</p>");
 		}
 		$this->selectDatabase($dbName);
 		return;
@@ -45,8 +45,8 @@ class Mysql extends Database{
 	function selectDatabase($dbName){
 		$res = @mysql_select_db($dbName, $this->connectionId);
 		$this->showError();
-		if(mysql_errno() != 0){		
-			redirectUrl(SP_WEBPATH.'/readme.php?error=2');
+		if(mysql_errno() != 0){
+			showErrorMsg("<p style='color:red'>Database connection failed!<br>Please check your database settings!</p>");
 		}
 		return $res;
 	}
