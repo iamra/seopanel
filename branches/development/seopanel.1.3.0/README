@@ -1,12 +1,12 @@
 *******************************************
-Seo Control Panel - Seo Panel Version 1.2.0 
+Seo Control Panel - Seo Panel Version 2.0.0
 *******************************************
 
 -----------------------------------------
 Requirements
 -----------------------------------------
 
-   1. PHP, MYSQL
+   1. PHP, MYSQL, Web Server(e.g APACHE)
 
    2. CURL enabled with PHP, Refer following link to install curl with php if it is not installed.
 
@@ -17,128 +17,70 @@ Requirements
 Installation: Simple 5 minute installation
 ------------------------------------------
 
-   1. Download and Unzip the package.
+	1. Download and Unzip the package
    
-   2. Open up config/sp-config.php with a text editor like Notepad or similar editor. 
-   	  Then modify the following sections with your server and database settings.
-   		
-   		# The web path or url to access seo panel through browser.
-		define('SP_WEBPATH', 'http://localhost/seopanel');
-		
-		# DB settings - You can get this info from your web hosting provider.
-		# The name of the database for seo panel
-		define('DB_NAME', 'seopanel');
-		
-		# DB database username.
-		define('DB_USER', 'root');
-		
-		# DB database password.
-		define('DB_PASSWORD', '');
-		
-		# DB hostname.
-		define('DB_HOST', 'localhost');
+   	2. Upload all the files contained in this folder (retaining the directory structure) to a web accessible directory on your server or hosting account.
+   	
+	3. Change the permissions on config/sp-config.php to be writable by all (666 or -rw-rw-rw- within your FTP Client)
+	
+	4. Change the permissions on the tmp,tmp/sitemap directories to be writable by all (777 or -rwxrwxrwx within your FTP Client)
+
+	5. Using your web browser visit the location you placed Seo Panel with the addition of install/index.php or pointing directly to install/, e.g. http://www.yourdomain.com/seopanel/install/
+
+	6. Follow the steps and fill out all the requested information.
+
+	7. Change the permissions on config/sp-config.php to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)   
    
-   
-   3. Save the contents of file config/sp-config.php.
-   
-   4. Upload everything to your document root.
-   
-   5. Chage permission of "tmp" folder of seo panel directory. Your "tmp" directory should be writable.
-   
-   	  In linux/unix  change permission by following command.
-   	  
-   	  chmod -R 777 tmp
-   	  
-   
-   6. Open index.php in your browser. This should setup the tables needed for seo panel. 
-   	  If there is an error, double check your config/sp-config.php file, and try again. 
-   	  If it fails again, please go to the support forums or take "readme.php" in your browser.
-   
-   7. Please use following login details to access Admin Section.
+   	8. Please use following login details to access Admin Interface.
    
    		Admin Section:
+   		
    			Username: spadmin
    			Password: spadmin
    		
-   Note: Please change password of admin section from 'My Account' link on right top of seo panel, after first login to prevent from security threats. 
+   	Note: 
+   		Please change password of administrator by visiting 'Profile' link on right top of the seo panel to prevent from security threats.
+   		Remove install directory of seo panel
+   		
+
+Instalaltion Reference Link: http://www.seopanel.in/install/
+  		
+If you have any issues while installation, Please use following resources to fix it or contact seo panel team. 
    
-
---------------------------------
-The major features of Seo Panel:
---------------------------------
-
-Directory Submission Tool
--------------------------
-a) Automatic Directory Submission - Automated Directory Submission Tool help us to submit our website to major internet directories.
-
-b) Featured Directory Submission - To create featured listing in seo free directory.
-
-c) Directory Submission Reports - To track the status of directory submission reports of each website in seo panel.
-
-d) Check Directory Submission - To check the status of directory submission of each website.
-
-
-Keyword position checker
-------------------------
-a) Quick Rank Checker - A tool to check your Search Engine Position for your targetted keywords.
-
-b) Keywords Manager - A tool to manage your targetted keywords for each website.
-
-c) Simple Reports - A Report containing performance of your targetted keywords in major Search engines.
-
-d) Graphical Reports - An advanced graphical Report containing performance of your targetted keywords in major Search engines.
-
-e) Generate Reports - A tool to generate daily reports of search engine position rank of each keyword in the major search engines.
-
-
-Sitemap Generator
------------------
-a) Google Sitemap Generator - A Google sitemap generator to create XML,TEXT and HTML Sitemaps.
-
-
-Rank Checker
-------------
-a) Google Pagerank - A tool to check google pagerank of multiple urls.
-
-b) Alexa Rank - A tool to check alexa rank of multiple urls.
-
-c) Rank Reports - A report to track alexa and google pagerank of each website.
-
-d) Generate Reports - A tool to generate daily alexa and google pagerank reprts for each website.
-
-
-Backlinks Checker
------------------
-a) Backlinks Checker - A tool to check number of backlinks of each website in google,yahoo,msn,altavista and alltheweb.
-
-b) Backlinks Reports - A Report to track the number of backlinks of each website in google,yahoo,msn,altavista and alltheweb.
-
-c) Generate Reports - A tool to generate daily backlinks reports for each website in google,yahoo,msn,altavista and alltheweb.
-
-
-Meta Tag Generator
-------------------
-a) Meta Tag Generator - A tool to create suitable meta tags for each site.
-
-
-Seo Plugins
------------
-Seo Panel is an open source software for search engine optimization. Also you can develop your own seo plugins and install in seo panel. Its very easy to create seo plugins in seo panel
- 
 
 ---------------------------
 Online Seo Panel Resources:
 ---------------------------
 
-a) Seo Panel Help Guide and Forum: http://help.seopanel.in/
+a) Seo Panel Help Guide: http://help.seopanel.in/
+
+b) Seo Panel Forum: http://forum.seopanel.in/
 
 b) Seo Panel Support: http://www.seopanel.in/support/
 
-c) Download Seo Panel: http://www.seopanel.in/download/
+e) Seo Panel Contact: http://www.seopanel.in/contact/
 
-d) Donate for Seo Panel: http://www.seopanel.in/donate/
 
-e) Seo Panel Contact Form: http://www.seopanel.in/contact/
+--------------------------------
+The major features of Seo Panel:
+--------------------------------
+
+a) Automatic Directory Submission Tool
+
+b) Keyword Position Checker
+
+c) Sitemap Generator
+
+d) Google and Alexa Rank Checker
+
+e) Backlinks Checker
+
+f) Search Engine Saturation Checker
+
+g) Seo Panel Plugins
+
+h) Meta Tag Generator
+
 
 -------------------------------------------
 Developed By Geo Varghese (www.seopanel.in)

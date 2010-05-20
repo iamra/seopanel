@@ -1020,9 +1020,12 @@ h1.BlockHeader {
 #topnewsbox{
 	margin:15px 20px 0px 20px;
 	position:relative;
-	text-align:left;
-	background-color:#fafad2;
-	border:1px solid #507FA5;
+	text-align:left;	
+	background:none repeat scroll 0 0 #FDFEB8;
+	border:1px solid #FFBB00;
+	-moz-border-radius:5px 5px 5px 5px;
+	clear:both;
+	
 	font-size: 12px;
 	min-height: 30px;		
 }
@@ -1031,16 +1034,19 @@ h1.BlockHeader {
 	float: right;
 	margin-right: 24px;
 	font-size: 10px;
+	padding-top: 3px;
 }
 
-#hidenews A{
-	font-family: "Lucida Grande", arial, sans-serif;
-	font-weight: bold;
+#hidenews A{	
+	font-family: Georgia,sans-serif;
 	text-decoration: none;
 }
 
-#newscontbox{
-	width: 914px;
+#hidenews A:HOVER{
+	text-decoration: underline;
+}
+
+#newscontbox{	
 	float: left;	
 	padding: 5px 10px 5px 10px;
 }
@@ -1181,12 +1187,12 @@ A.actionbut{
 
 .infobox p{
 	color:#444444;
-	font:1.2em Verdana,Arial,sans-serif;
+	font:1.1em Verdana,Arial,sans-serif;
 }
 
 .infobox h1{
 	color: #445566;
-	font-size: 20px;
+	font-size: 16px;
 	margin: 10px 0px;
 	font-family: Georgia,sans-serif;
 	font-weight: normal;
