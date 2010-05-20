@@ -61,71 +61,72 @@
 		</p>
 	</li>	
 	<li>		
-		<h1>Backlinks Checker</h1>
+		<h1>Search Engine Saturation Checker</h1>
 		<p>
-			Backlinks checker will find <b>number of backlinks</b> of our websites in different search engines<b>(google,yahoo,msn etc)</b> and <b>stores</b> it in the system.
-			<br>In <b>backlink reports</b> section, we can see the <b>daily backlinks count</b> of each website by <b>detailed reports</b>.
+			Search Engine Saturation checker will find <b>number of indexed pages</b> of our websites in different search engines<b>(google,yahoo,msn etc)</b> and <b>stores</b> it in the system.
+			In <b>search engine saturation checker reports</b> section, we can see the <b>daily indexed page count</b> of each website by <b>detailed reports</b>.
 		</p>
 	</li>
 	<li>		
-		<h1></h1>
-		<p></p>
+		<h1>Seo Panel Plugins</h1>
+		<p>
+			The <b>major feature</b> of seo control panel is its <b>extentability</b>.
+			Add <b>seo plugins</b> to your seo panel to <b>extend the features</b> according to your requirement.
+			<a href="<?=SP_PLUGINSITE?>" target="_blank">Seo panel plugins</a> are provided by both seo panel and third party sites.
+			You can also easily <b>develop</b> seo plugins for your seo panel.
+			You can <a href="<?=SP_PLUGINSITE?>" target="_blank">submit</a> your plugin to seo panel and we will <b>publish</b> it around around the globe after our <b>review</b> process.
+		</p>
 	</li>
 	<li>		
 		<h1>Meta Tag Generator</h1>
 		<p>
-			Meta tag generator is a plugin for creating custom meta tags for your site and it will help us to give direction for search engine bots about our website.
+			Meta tag generator is a <b>seo panel plugin</b> for creating <b>custom meta tags</b> for our site.
+			It will help us to give <b>more information</b> about our website to <b>search engine bots</b> while they crawl our site.
 		</p>
 	</li>
 </ul>
+</fieldset>
 
+<fieldset>
+<legend>Seo Panel Online Resources</legend>	
+<ul class="infobox">
 
-
-<ul id="features">
 	<li>
-		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=directory-submission">Directory Submission</a> 
-		<p>About 150 free directories to submit your sites.</p>
-		<p>a) <b>Automatic Directory Submission</b> - Automated Directory Submission Tool help us to submit our website to major internet directories.</p> 
-		<p>b) <b>Featured Directory Submission</b> - To create featured listing in <a target="_blank" href="http://directory.seopanel.in/">seo free directory.</a></p>
-		<p>c) <b>Directory Submission Reports</b> - To track the status of directory submission reports of each website in seo panel.</p>
-		<p>d) <b>Check Directory Submission</b> - To check the status of directory submission of each website.</p>
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-tools.php">Keyword position checker</a>
-		<p>a) <b>Quick Rank Checker</b> - A tool to check your Search Engine Position for your targetted keywords.</p>
-		<p>b) <b>Keywords Manager</b> - A tool to manage your targetted keywords for each website.</p>
-		<p>c) <b>Simple Reports</b> - A Report containing performance of your targetted keywords in major Search engines.</p>
-		<p>d) <b>Graphical Reports</b> - An advanced graphical Report containing performance of your targetted keywords in major Search engines.</p>
-		<p>e) <b>Generate Reports</b> - A tool to generate daily reports of search engine position rank of each keyword in the major search engines.</p>
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=sitemap-generator">Sitemap Generator</a>
-		<p>a) <b>Google Sitemap Generator</b> - A Google sitemap generator to create XML,TEXT and HTML Sitemaps.</p>
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=rank-checker">Rank Checker</a>
-		<p>a) <b>Google Pagerank</b> - A tool to check google pagerank of multiple urls.</p>
-		<p>b) <b>Alexa Rank</b> - A tool to check alexa rank of multiple urls.</p>
-		<p>c) <b>Rank Reports</b> - A report to track alexa and google pagerank of each website.</p>
-		<p>d) <b>Generate Reports</b> - A tool to generate daily alexa and google pagerank reprts for each website.</p>
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=backlink-checker">Backlinks Checker</a>
-		<p>a) <b>Backlinks Checker</b> - A tool to check number of backlinks of each website in google,yahoo,msn,altavista and alltheweb.</p>
-		<p>b) <b>Backlinks Reports</b> - A Report to track the number of backlinks of each website in google,yahoo,msn,altavista and alltheweb.</p>
-		<p>c) <b>Generate Reports</b> - A tool to generate daily backlinks reports for each website in google,yahoo,msn,altavista and alltheweb.</p>
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-plugins.php?sec=show">Meta Tag Generator</a>
-		<p>a) <b>Meta Tag Generator</b> - A tool to create suitable meta tags for each site.</p>		
-	</li>
-	<li>
-		<a href="<?=SP_WEBPATH?>/seo-plugins.php?sec=show">Seo Plugins</a>
+		<h1>Seo Panel Online Resources for Reference</h1>				
+		
+		
 		<p>
-			Seo Panel is an open source software for search engine optimization. Also you can develop your own seo plugins and install in seo panel.
-			Its very easy to create seo plugins in seo panel.
-		</p>		
+			<a href="http://www.seopanel.in" target="_blank">Seo Panel Official Site</a>
+		</p>
+		<p>
+			<a href="<?=SP_DOWNLOAD_LINK?>" target="_blank">Download Seo Panel</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_DEMO_LINK?>" target="_blank">Seo Panel Demo</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_CONTACT_LINK?>" target="_blank">Conatct Seo Panel</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_HELP_LINK?>" target="_blank">Seo Panel Help Guide</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_FORUM_LINK?>" target="_blank">Seo Panel Forum</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_SUPPORT_LINK?>" target="_blank">Seo Panel Support System</a>
+		</p>
+		
+		<p>
+			<a href="<?=SP_DONATE_LINK?>" target="_blank">Donate to seo Panel</a>
+		</p>
 	</li>
+	
 </ul>
 </fieldset>
 
