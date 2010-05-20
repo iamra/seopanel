@@ -44,7 +44,7 @@
 	</li>
 	<li>		
 		<h1>Sitemap Generator</h1>
-		<p>This will help us to create <b>XML,HTML,TEXT</b> sitemap files for our website for <b>submit</b> to search engines.</p>
+		<p>This will help us to create <b>XML,HTML,TEXT</b> sitemap files of our website for <b>submit</b> to search engines.</p>
 	</li>
 	<li>		
 		<h1>Google and Alexa Rank Checker</h1>
@@ -74,14 +74,14 @@
 			Add <b>seo plugins</b> to your seo panel to <b>extend the features</b> according to your requirement.
 			<a href="<?=SP_PLUGINSITE?>" target="_blank">Seo panel plugins</a> are provided by both seo panel and third party sites.
 			You can also easily <b>develop</b> seo plugins for your seo panel.
-			You can <a href="<?=SP_PLUGINSITE?>" target="_blank">submit</a> your plugin to seo panel and we will <b>publish</b> it around around the globe after our <b>review</b> process.
+			You can <a href="<?=SP_PLUGINSITE?>" target="_blank">submit</a> your seo plugin to seo panel and we will <b>publish</b> it in our website after our <b>review</b> process.
 		</p>
 	</li>
 	<li>		
 		<h1>Meta Tag Generator</h1>
 		<p>
 			Meta tag generator is a <b>seo panel plugin</b> for creating <b>custom meta tags</b> for our site.
-			It will help us to give <b>more information</b> about our website to <b>search engine bots</b> while they crawl our site.
+			It will help us to give <b>more information</b> about our website to <b>search engine bots</b> while they crawl our swebite.
 		</p>
 	</li>
 </ul>
