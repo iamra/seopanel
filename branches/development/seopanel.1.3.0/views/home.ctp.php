@@ -1,22 +1,86 @@
 <div class="Center" style='width:100%;'>
 <div class="col" style="">
-<!--<div class="SectionHeader">
-<h1 style="text-align:center;border:none;font-size:20px;">Seo Panel <?=SP_INSTALLED?></h1>
-</div>
---><fieldset>
-	<legend>Seo Panel <?=SP_INSTALLED?></legend>
-<p style="font-size: 13px;"><b>Welcome to Seo Panel - World's first seo control panel for multiple websites</b></p>
-<p style="font-size: 13px;">
-	A complete open source seo control panel for managing search engine optimization of your websites. 
-	Seo Panel is a seo tool kit includes latest hot seo tools to increase and track the performace your websites.
-	It is a free software released under GNU GENERAL PUBLIC LICENSE Version 2.<br></br>
-	The main feature of Seo Panel is its extendability by using Seo Plugins.
-	Any one can easily create and use seo plugins for seo panel. 
-</p>
+
+<fieldset>
+<legend>Seo Panel <?=SP_INSTALLED?></legend>
+
+<ul class="infobox">
+	<li>		
+		<h1>Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
+		<p>
+			A complete <b>open source seo control panel</b> for managing <b>search engine optimization</b> of your websites. 
+			Seo Panel is a <b>seo tool kit</b> includes latest hot seo tools to <b>increase and track</b> the <b>performace</b> of your websites.
+			It is a <b>free software</b> released under <b>GNU GENERAL PUBLIC LICENSE VERSION 2</b>.<br></br>
+			The main feature of seo panel is its <b>extendability</b> by using <a href="<?=SP_PLUGINSITE?>" target="_blank">seo plugins</a>.
+			Any one can easily <b>develop and install</b> required plugins for their seo panel. 
+		</p>
+		<p></p>
+		<p>
+			This open source software was <b>released on January 2010</b>.
+			With in this <b>short period</b> of  time <b>thousands</b> of <b>web masters</b> are using this software for <b>optimizing</b> their websites.
+			Use seo panel today itself and <b>enjoy</b> everything related to seo under a <b>single platform</b>.
+		</p>	
+	</li>
+</ul>
 </fieldset>
 
 <fieldset>
-<legend>The major features of Seo Panel <?=SP_INSTALLED?></legend>
+<legend>Major Features of Seo Panel <?=SP_INSTALLED?></legend>
+<ul class="infobox">
+	<li>		
+		<h1>Automatic Directory Submission Tool</h1>
+		<p>
+			Automatic directory submission tool help us to <b>submit our websites</b> into to major <b>free and paid internet directories</b>.
+			We can also <b>track the status</b> of each submision through <b>periodical check</b> using submission <b>status checker script</b>.
+			<b>Directory manager</b> will help us to find out whether <b>directory is active</b> or not.
+		</p>
+	</li>
+	<li>		
+		<h1>Keyword Position Checker</h1>
+		<p>
+			Keyword position checker will find the <b>search engine position</b> of <b>targetted keywords</b> of your website and <b>stores</b> it in the system.
+			In keyword position reports section, we can see the <b>daily positions</b> of keywords in different search engines by <b>beautiful graphs</b> and <b>detailed reports</b>.
+		</p>
+	</li>
+	<li>		
+		<h1>Sitemap Generator</h1>
+		<p>This will help us to create <b>XML,HTML,TEXT</b> sitemap files for our website for <b>submit</b> to search engines.</p>
+	</li>
+	<li>		
+		<h1>Google and Alexa Rank Checker</h1>
+		<p>
+			Google and alexa rank checker will find <b>google pagerank</b> and <b>alexa rank</b> of our websites and <b>stores</b> it in the system.
+			In <b>rank reports</b> section, we can see the <b>daily</b> google and alexa rank of each website by <b>detailed reports</b>.
+		</p>
+	</li>
+	<li>		
+		<h1>Backlinks Checker</h1>
+		<p>
+			Backlinks checker will find <b>number of backlinks</b> of our websites in different search engines<b>(google,yahoo,msn etc)</b> and <b>stores</b> it in the system.
+			<br>In <b>backlink reports</b> section, we can see the <b>daily backlinks count</b> of each website by <b>detailed reports</b>.
+		</p>
+	</li>	
+	<li>		
+		<h1>Backlinks Checker</h1>
+		<p>
+			Backlinks checker will find <b>number of backlinks</b> of our websites in different search engines<b>(google,yahoo,msn etc)</b> and <b>stores</b> it in the system.
+			<br>In <b>backlink reports</b> section, we can see the <b>daily backlinks count</b> of each website by <b>detailed reports</b>.
+		</p>
+	</li>
+	<li>		
+		<h1></h1>
+		<p></p>
+	</li>
+	<li>		
+		<h1>Meta Tag Generator</h1>
+		<p>
+			Meta tag generator is a plugin for creating custom meta tags for your site and it will help us to give direction for search engine bots about our website.
+		</p>
+	</li>
+</ul>
+
+
+
 <ul id="features">
 	<li>
 		<a href="<?=SP_WEBPATH?>/seo-tools.php?menu_sec=directory-submission">Directory Submission</a> 
