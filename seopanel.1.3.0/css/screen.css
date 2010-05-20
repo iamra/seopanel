@@ -1197,8 +1197,6 @@ A.actionbut{
 
 .infobox A{
 	text-decoration: none;
-}
-
-.infobox A:HOVER{
-	text-decoration: underline;
+	background: url(../images/urlicon.gif) 2px 5px no-repeat;
+	padding-left: 17px;
 }

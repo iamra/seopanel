@@ -66,4 +66,10 @@ define('SP_CONTACT_LINK', 'http://www.seopanel.in/contact/');
 # The seo panel donate page
 define('SP_DONATE_LINK', 'http://www.seopanel.in/donate/');
 
+# The seo panel download page
+define('SP_DOWNLOAD_LINK', 'http://www.seopanel.in/download/');
+
+# The seo panel demo page
+define('SP_DEMO_LINK', 'http://www.seopanel.in/demo/');
+
 ?>
