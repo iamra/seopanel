@@ -2,15 +2,15 @@
 <div class="col" style="">
 
 <fieldset>
-<legend>Seo Panel Version <?=SP_INSTALLED?></legend>
+<!--<legend>Seo Panel Version <?=SP_INSTALLED?></legend>-->
 
 <ul class="infobox">
 	<li>		
-		<h1>Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
+		<h1 style="text-align: center;margin-bottom: 20px;font-size: 20px;">Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
 		<p>
 			A complete <b>open source seo control panel</b> for managing <b>search engine optimization</b> of your websites. 
 			Seo Panel is a <b>seo tool kit</b> includes latest hot seo tools to <b>increase and track</b> the <b>performace</b> of your websites.
-			It is a <b>free software</b> released under <b>GNU GENERAL PUBLIC LICENSE VERSION 2</b>.<br></br>
+			It is a <b>free software</b> released under <b>GNU GENERAL PUBLIC LICENSE</b>.<br>
 			The main feature of seo panel is its <b>extendability</b> by using <a href="<?=SP_PLUGINSITE?>" target="_blank">seo plugins</a>.
 			Any one can easily <b>develop and install</b> required plugins for their seo panel. 
 		</p>
@@ -81,7 +81,7 @@
 		<h1>Meta Tag Generator</h1>
 		<p>
 			Meta tag generator is a <b>seo panel plugin</b> for creating <b>custom meta tags</b> for our site.
-			It will help us to give <b>more information</b> about our website to <b>search engine bots</b> while they crawl our swebite.
+			It will help us to give <b>more information</b> about our website to <b>search engine bots</b> while they crawl our website.
 		</p>
 	</li>
 </ul>

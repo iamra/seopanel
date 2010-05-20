@@ -1,5 +1,5 @@
 --
---This file includes the database changes of Seo Panel version from 1.2.0 to 1.3.0
+--This file includes the database changes of Seo Panel version from 1.2.0 to 2.0.0
 --
 
 --

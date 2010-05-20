@@ -70,6 +70,12 @@ class Install {
 		$configSupport = "Not found";
 		$configFile = SP_INSTALL_CONFIG_FILE;
 		if(file_exists($configFile)){
+			
+			include_once(SP_INSTALL_CONFIG_FILE);
+			if(defined('SP_INSTALLED')){
+				die("<p style='color:red'>Seo Panel version ".SP_INSTALLED." is already installed in your system!</p>");
+			}
+			
 			$configSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod 777 config/sp-config.php</p>";
 			if(is_writable($configFile)){				
 				$configSupport = "Found, Writable";				
