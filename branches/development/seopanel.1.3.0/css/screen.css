@@ -727,7 +727,8 @@ h1.BlockHeader {
 	border: 1px solid #CFCFCF;
 	color: #808080;
 	font-weight: bold;
-	height: 15px;
+	min-height: 15px;
+	height: auto;
 	padding-left: 0px;
 	margin: 1px;
 }
@@ -752,7 +753,8 @@ h1.BlockHeader {
 
 .subtab li {
 	background: url(../images/arrow.gif) 2px 9px no-repeat;
-	height: 16px;
+	min-height: 16px;
+	height: auto;
 	vertical-align: middle;
 }
 
@@ -835,7 +837,7 @@ h1.BlockHeader {
 }
 
 #loading_subcontent {
-	width: 750px;
+	width: 732px;
 	height: 350px;
 	background: url('../images/ajax-loader.gif') center center no-repeat;
 	z-index: 5;
@@ -844,7 +846,7 @@ h1.BlockHeader {
 }
 
 #loading_subcontmed {
-	width: 750px;
+	width: 732px;
 	height: 100px;
 	background: url('../images/ajax-loader.gif') center center no-repeat;
 	z-index: 5;
@@ -890,7 +892,8 @@ h1.BlockHeader {
 	background-color: #F4F7FA;
 	vertical-align: middle;
 	border: 1px solid #B0C2CC;
-	height: 20px;
+	min-height: 20px;
+	height: auto !important;
 	padding-left: 4px;
 }
 
@@ -1138,12 +1141,12 @@ fieldset {
 }
 
 legend {
-	background:none repeat scroll 0 0 #dae5ee;
+	background:none repeat scroll 0 0 #ECF3FA;
 	border : 1px solid #B0C2CC;
-	color:#000000;
+	font-family: Georgia,sans-serif;
+	color: #445566;
 	font-size: 13px;
 	padding: 2px 8px;
-	font-weight: bold;
 }
 
 

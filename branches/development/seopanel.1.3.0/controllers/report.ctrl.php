@@ -446,7 +446,6 @@ class ReportController extends Controller {
 			$crawlStatus = 0;
 			if(empty($result['error'])){				
 				if(preg_match_all($this->seList[$seInfoId]['regex'], $pageContent, $matches)){
-					#echo "<pre>";print_r($matches[1]);echo "</pre>";exit;
 					$urlList = $matches[$this->seList[$seInfoId]['url_index']];
 					$crawlResult[$seInfoId]['matched'] = array();
 					foreach($urlList as $i => $url){
