@@ -10,15 +10,15 @@ Installation: Simple 5 minute installation
    
    	2. Upload all the files contained in this folder (retaining the directory structure) to a web accessible directory on your server or hosting account.
    	
-	3. Change the permissions on config/sp-config.php to be writable by all (666 or -rw-rw-rw- within your FTP Client)
+	3. Change the permissions on "config/sp-config.php" to be writable by all (666 or -rw-rw-rw- within your FTP Client)
 	
-	4. Change the permissions on the tmp,tmp/sitemap directories to be writable by all (777 or -rwxrwxrwx within your FTP Client)
+	4. Change the permissions on the "tmp" directories to be writable by all (777 or -rwxrwxrwx within your FTP Client)
 
-	5. Using your web browser visit the location you placed Seo Panel with the addition of install/index.php or pointing directly to install/, e.g. http://www.yourdomain.com/seopanel/install/
+	5. Using your web browser visit the location you placed Seo Panel with the addition of "install/index.php" or pointing directly to "install/", e.g. http://www.yourdomain.com/seopanel/install/
 
 	6. Follow the steps and fill out all the requested information.
 
-	7. Change the permissions on config/sp-config.php to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)   
+	7. Change the permissions on "config/sp-config.php" to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)   
    
    	8. Please use following login details to access Admin Interface.
    
@@ -29,7 +29,7 @@ Installation: Simple 5 minute installation
    		
    	Note: 
    		Please change password of administrator by visiting 'Profile' link on right top of the seo panel to prevent from security threats.
-   		Remove install directory of seo panel
+   		Remove "install" directory of seo panel
 
 
 
@@ -45,7 +45,7 @@ Steps to Upgrade Seo Panel to Latest Version
    
    	3. Upload all the files contained in this folder (retaining the directory structure) to a web accessible directory on your server or hosting account.
    	
-   	4. Open up config/sp-config.php with a text editor like Notepad or similar editor.
+   	4. Open up "config/sp-config.php" with a text editor like Notepad or similar editor.
        Then modify the following sections with your server and database settings of previous version of seo panel.
 
 		# The web path or url to access seo panel through browser.
@@ -65,17 +65,17 @@ Steps to Upgrade Seo Panel to Latest Version
 		define('DB_HOST', 'localhost');
 
 
-   5. Save the contents of file config/sp-config.php.
+   5. Save the contents of file "config/sp-config.php".
    
    6. Change the permissions on the tmp,tmp/sitemap directories to be writable by all (777 or -rwxrwxrwx within your FTP Client)
    
-   7. Using your web browser visit the location you placed Seo Panel with the addition of install/upgrade.php, 
+   7. Using your web browser visit the location you placed Seo Panel with the addition of "install/upgrade.php", 
       e.g. http://www.yourdomain.com/seopanel/install/upgrade.php
    
    8. Follow the steps and fill out all the requested information.   
 
 
-Instalaltion Reference Link: http://www.seopanel.in/install/
+Installation Reference Link: http://www.seopanel.in/install/
   		
 If you have any issues while installation, Please use following resources to fix it or contact seo panel team. 
 

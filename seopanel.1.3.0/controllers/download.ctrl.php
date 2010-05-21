@@ -30,7 +30,7 @@ class DownloadController extends Controller{
 		switch($fileSec){
 			
 			case "sitemap":
-				$file = SP_TMPPATH."/sitemap/".$fileName;
+				$file = SP_TMPPATH."/".$fileName;
 				break;
 		}
 		

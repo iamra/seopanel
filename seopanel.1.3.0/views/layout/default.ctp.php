@@ -27,9 +27,7 @@ var spdemo = <?=SP_DEMO?>;
 <div id="Header"><?php include_once(SP_VIEWPATH."/menu/topmenu.ctp.php");?>
 
 <div style="width:300px;">
-<a href="<?=SP_WEBPATH?>" style="padding:0px;width:200px;">
 	<h1 style="width:200px;">Seo Panel</h1>
-</a>
 </div>
 
 <!-- TABS -->

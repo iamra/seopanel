@@ -25,10 +25,10 @@ class Install {
 	# func to check requirements
 	function checkRequirements($error=false) {		
 		
-		$phpClass = "green";
-		$phpSupport = "Yes";
-		$phpVersion = phpversion();
-		if(intval($phpVersion) < 6){			
+		$phpClass = "red";
+		$phpSupport = "No";
+		$phpVersion = phpversion();		
+		if(intval($phpVersion) >= 4){			
 			$phpClass = "green";
 			$phpSupport = "Yes";
 		}
@@ -76,7 +76,7 @@ class Install {
 				die("<p style='color:red'>Seo Panel version ".SP_INSTALLED." is already installed in your system!</p>");
 			}
 			
-			$configSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod 777 config/sp-config.php</p>";
+			$configSupport = "Found, Unwritable<br><p class='note'><b>Command:</b> chmod 666 config/sp-config.php</p>";
 			if(is_writable($configFile)){				
 				$configSupport = "Found, Writable";				
 				$configClass = "green";
@@ -94,7 +94,14 @@ class Install {
 				$tmpClass = "green";
 			}			
 		}
-		$errMsg = $error ? "Please fix the following errors to proceed to next step!" : "";
+		
+		$errMsg = "";
+		if($error){
+			if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') ){
+				$errMsg = "Please fix the following errors to proceed to next step!";
+			}
+		}
+		
 		?>
 		<h1 class="BlockHeader">Welcome to Seo panel Installation</h1>
 		<form method="post">
@@ -111,7 +118,7 @@ class Install {
 			</tr>
 			<tr>
 				<th>CURL Support</th>
-				<td class="<?php echo $mysqlClass;?>"><?php echo $curlSupport; ?></td>
+				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
 			<tr>
 				<th>PHP short_open_tag</th>
@@ -305,10 +312,10 @@ class Install {
 	# func to check upgrade requirements
 	function checkUpgradeRequirements($error=false, $errorMsg='') {
 
-		$phpClass = "green";
-		$phpSupport = "Yes";
+		$phpClass = "red";
+		$phpSupport = "No";
 		$phpVersion = phpversion();
-		if(intval($phpVersion) < 6){			
+		if(intval($phpVersion) >= 4){			
 			$phpClass = "green";
 			$phpSupport = "Yes";
 		}
@@ -368,6 +375,9 @@ class Install {
 		$dbClass = "red";
 		$dbSupport = "Database config variables not defined";
 		include_once(SP_INSTALL_CONFIG_FILE);
+		if(defined('SP_INSTALLED') && (SP_INSTALLED == SP_UPGRADE_VERSION)){
+			die("<p style='color:red'>Seo Panel version ".SP_INSTALLED." is already installed in your system!</p>");
+		}		
 		if(defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER') && defined('DB_PASSWORD') && defined('DB_ENGINE')){
 			$db = New DB();
 			
@@ -380,7 +390,17 @@ class Install {
 			}
 		}		
 		
-		$errMsg = $error ? (empty($errorMsg) ? "Please fix the following errors to proceed to next step!" : $errorMsg) : "";
+		$errMsg = "";
+		if($error){
+			if(empty($errorMsg)){
+				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') ){
+					$errMsg = "Please fix the following errors to proceed to next step!";
+				}
+			}else{
+				$errMsg = $errorMsg;
+			}
+		}
+		
 		?>
 		<h1 class="BlockHeader">Welcome to Seo panel Upgrade</h1>
 		<form method="post">
@@ -397,7 +417,7 @@ class Install {
 			</tr>
 			<tr>
 				<th>CURL Support</th>
-				<td class="<?php echo $mysqlClass;?>"><?php echo $curlSupport; ?></td>
+				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
 			<tr>
 				<th>PHP short_open_tag</th>
@@ -427,7 +447,8 @@ class Install {
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="<?php echo $dbClass;?>" name="db_support">
 		<input type="hidden" value="proceedupgrade" name="sec">
-		<input type="submit" value="Upgrade to Seo Panel v.<?php echo SP_INSTALLED;?> >>" name="submit" class="button">
+		<?php $submitLabel = defined('SP_INSTALLED') ? "Upgrade to Seo Panel v.".SP_INSTALLED : "Upgrade Seo Panel"; ?>
+		<input type="submit" value="<?=$submitLabel?> >>" name="submit" class="button">
 		</form>
 		<?php
 	}

@@ -38,7 +38,7 @@ class SitemapController extends Controller{
  	var $smfooter;					# sitemap footer
  	var $smfile = "";				# sitemap file
  	var $section = "";              # sitemap website
- 	var $sitemapDir = "sitemap";	# sitemap directory where sitemap is created
+ 	var $sitemapDir = "";			# sitemap directory where sitemap is created
 	
 	# func to show sitemap generator interface
 	function showSitemapGenerator() {
@@ -207,7 +207,7 @@ class SitemapController extends Controller{
 	}	
 	
 	function showSitemapFiles(){
-		if ($handle = opendir(SP_TMPPATH ."/sitemap/")) {
+		if ($handle = opendir(SP_TMPPATH ."/".$this->sitemapDir)) {
 		    while (false !== ($file = readdir($handle))) {
 		        if ( ($file != ".") && ($file != "..") ) {
 		        	if(preg_match("/".$this->section."_sitemap\d+\.".$this->smType."/", $file, $matches)){

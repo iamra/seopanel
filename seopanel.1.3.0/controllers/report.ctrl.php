@@ -499,8 +499,8 @@ class ReportController extends Controller {
 			}
 		}
 		
-		$sql = "insert into searchresults(id,keyword_id,searchengine_id,rank,time)
-				values('',{$matchInfo['keyword_id']},{$matchInfo['se_id']},{$matchInfo['rank']},$time)";
+		$sql = "insert into searchresults(keyword_id,searchengine_id,rank,time)
+				values({$matchInfo['keyword_id']},{$matchInfo['se_id']},{$matchInfo['rank']},$time)";
 		$this->db->query($sql);
 		
 		$recordId = $this->db->getMaxId('searchresults');		
