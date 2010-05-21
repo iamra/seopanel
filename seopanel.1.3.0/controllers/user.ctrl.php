@@ -78,9 +78,9 @@ class UserController extends Controller{
 										
 					# format values					
 					$sql = "insert into users
-							(id,utype_id,username,password,first_name,last_name,email,created,status) 
+							(utype_id,username,password,first_name,last_name,email,created,status) 
 							values
-							('',2,'{$userInfo['userName']}','".md5($userInfo['password'])."',
+							(2,'{$userInfo['userName']}','".md5($userInfo['password'])."',
 							'".addslashes($userInfo['firstName'])."','".addslashes($userInfo['lastName'])."','{$userInfo['email']}',UNIX_TIMESTAMP(),1)";
 					$this->db->query($sql);					
 					$this->render('common/registerconfirm');
@@ -191,8 +191,8 @@ class UserController extends Controller{
 		if(!$this->validate->flagErr){
 			if (!$this->__checkUserName($userInfo['userName'])) {
 				if (!$this->__checkEmail($userInfo['email'])) {
-					$sql = "insert into users(id,utype_id,username,password,first_name,last_name,email,created,status) 
-							values('',2,'{$userInfo['userName']}','".md5($userInfo['password'])."','{$userInfo['firstName']}','{$userInfo['lastName']}','{$userInfo['email']}',UNIX_TIMESTAMP(),1)";
+					$sql = "insert into users(utype_id,username,password,first_name,last_name,email,created,status) 
+							values(2,'{$userInfo['userName']}','".md5($userInfo['password'])."','{$userInfo['firstName']}','{$userInfo['lastName']}','{$userInfo['email']}',UNIX_TIMESTAMP(),1)";
 					$this->db->query($sql);
 					$this->listUsers('ajax');
 					exit;
