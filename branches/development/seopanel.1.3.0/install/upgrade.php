@@ -24,6 +24,7 @@ include_once 'db.class.php';
 $install = New Install();
 
 # installation configiration
+define("SP_UPGRADE_VERSION", '2.0.0');
 define("SP_INSTALL_DIR", getcwd());
 define("SP_CONFIG_FILE", "config/sp-config.php");
 define("SP_UPGRADE_DB_FILE", SP_INSTALL_DIR."/data/upgrade.sql");

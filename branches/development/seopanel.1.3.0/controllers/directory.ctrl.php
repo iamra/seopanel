@@ -324,7 +324,7 @@ class DirectoryController extends Controller{
 			$sql = "select id from dirsubmitinfo where website_id={$submitInfo['website_id']} and directory_id={$submitInfo['dir_id']}";
 			$subInfo = $this->db->select($sql);
 			if(empty($subInfo[0][id])){
-				$sql = "insert into dirsubmitinfo(id,website_id,directory_id,status,submit_time) values('', {$submitInfo['website_id']}, {$submitInfo['dir_id']}, $status,".mktime().")";				
+				$sql = "insert into dirsubmitinfo(website_id,directory_id,status,submit_time) values({$submitInfo['website_id']}, {$submitInfo['dir_id']}, $status,".mktime().")";				
 			}else{
 				$sql = "update dirsubmitinfo set status=$status,submit_time=".mktime()." where id={$subInfo[0][id]}";
 			}
@@ -341,7 +341,7 @@ class DirectoryController extends Controller{
 	# to skip submission
 	function skipSubmission( $info ) {
 		
-		$sql = "Insert into skipdirectories(id,website_id,directory_id) values('', {$info['website_id']}, {$info['dir_id']})";
+		$sql = "Insert into skipdirectories(website_id,directory_id) values({$info['website_id']}, {$info['dir_id']})";
 		$this->db->query($sql);		
 		$this->startSubmission($info['website_id']);
 	}

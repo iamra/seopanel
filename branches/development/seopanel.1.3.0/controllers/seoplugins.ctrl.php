@@ -267,8 +267,8 @@ class SeoPluginsController extends Controller{
 						# parse plugin info
 						$pluginInfo = $this->parsePluginInfoFile($file);						
 						
-						$sql = "insert into seoplugins(id,label,name,author,description,version,website,status,installed) 
-								values('','".addslashes($pluginInfo['label'])."','$pluginName','".addslashes($pluginInfo['author'])."','".addslashes($pluginInfo['description'])."','{$pluginInfo['version']}','{$pluginInfo['website']}',0,1)";
+						$sql = "insert into seoplugins(label,name,author,description,version,website,status,installed) 
+								values('".addslashes($pluginInfo['label'])."','$pluginName','".addslashes($pluginInfo['author'])."','".addslashes($pluginInfo['description'])."','{$pluginInfo['version']}','{$pluginInfo['website']}',0,1)";
 						$this->db->query($sql);
 						
 						$pluginDBFile = SP_PLUGINPATH."/".$file."/".SP_PLUGINDBFILE;  

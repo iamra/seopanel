@@ -109,8 +109,8 @@ class KeywordController extends Controller{
 		if(!$this->validate->flagErr){
 			if (!$this->__checkName($listInfo['name'], $listInfo['website_id'])) {
 				$listInfo['searchengines'] = is_array($listInfo['searchengines']) ? $listInfo['searchengines'] : array();
-				$sql = "insert into keywords(id,name,lang_code,country_code,website_id,searchengines,status)
-							values('','{$listInfo['name']}','{$listInfo['lang_code']}','{$listInfo['country_code']}',{$listInfo['website_id']},'".implode(':', $listInfo['searchengines'])."',1)";
+				$sql = "insert into keywords(name,lang_code,country_code,website_id,searchengines,status)
+							values('{$listInfo['name']}','{$listInfo['lang_code']}','{$listInfo['country_code']}',{$listInfo['website_id']},'".implode(':', $listInfo['searchengines'])."',1)";
 				$this->db->query($sql);
 				$this->listKeywords();
 				exit;

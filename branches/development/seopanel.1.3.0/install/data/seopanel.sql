@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 21, 2010 at 12:52 PM
+-- Generation Time: May 22, 2010 at 01:09 AM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -532,7 +532,7 @@ CREATE TABLE IF NOT EXISTS `dirsubmitinfo` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `submit_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `dirsubmitinfo`
@@ -544,7 +544,8 @@ INSERT INTO `dirsubmitinfo` (`id`, `website_id`, `directory_id`, `status`, `acti
 (9, 11, 3, 1, 1, 1273180664),
 (11, 3, 2, 0, 0, 1273180664),
 (12, 3, 4, 0, 0, 1273180664),
-(13, 3, 5, 0, 0, 1273216405);
+(13, 3, 5, 0, 0, 1273216405),
+(14, 13, 1, 0, 0, 1274467902);
 
 -- --------------------------------------------------------
 
@@ -561,7 +562,7 @@ CREATE TABLE IF NOT EXISTS `keywords` (
   `searchengines` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `keywords`
@@ -577,7 +578,10 @@ INSERT INTO `keywords` (`id`, `name`, `lang_code`, `country_code`, `website_id`,
 (8, 'free seo tools', '', '', 4, '1:2:3', 1),
 (14, 'الخطوط أدوات البطل', '', '', 4, '2', 1),
 (15, 'свободный герой инструменты', '', '', 4, '2', 1),
-(13, 'εργαλεία sefree', '', '', 4, '1', 1);
+(13, 'εργαλεία sefree', '', '', 4, '1', 1),
+(16, 'sdfsdfffffffffff', '', '', 18, '1', 1),
+(17, 'web hosting plans', '', '', 13, '1:2:3', 1),
+(18, '50gb hosting', '', '', 13, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -851,7 +855,11 @@ INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `descripti
 (147, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
 (158, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
 (157, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(156, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...');
+(156, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
+(160, 'http://www.gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting,VPS Hosting in the world.'),
+(161, 'http://gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting,VPS Hosting in the world'),
+(162, 'http://www.gethostingplans.com/sp/13/Shared-Hosting/50GB-Hosting/', 'Web Hosting: Shared Hosting - 50GB Hosting', 'Shared Hosting - 50GB Hosting We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting ...'),
+(163, 'http://www.gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'hosting.india.to, 100 GB, 1000 GB, N/L, N/L, N/L, N/L, N/L, cpanel, Linux, $59.17, Reseller Hosting - Reseller Hosting &middot; hosting.india.to, 50 GB, 500 GB ...');
 
 -- --------------------------------------------------------
 
@@ -866,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `searchresults` (
   `rank` int(8) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=160 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=164 ;
 
 --
 -- Dumping data for table `searchresults`
@@ -948,7 +956,11 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 (147, 8, 1, 62, 1274380200),
 (158, 1, 3, 8, 1274380200),
 (157, 1, 2, 6, 1274380200),
-(156, 1, 2, 5, 1274380200);
+(156, 1, 2, 5, 1274380200),
+(160, 17, 1, 68, 1274466600),
+(161, 17, 3, 8, 1274466600),
+(162, 18, 1, 1, 1274466600),
+(163, 18, 1, 2, 1274466600);
 
 -- --------------------------------------------------------
 
@@ -967,7 +979,7 @@ CREATE TABLE IF NOT EXISTS `seoplugins` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `installed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `seoplugins`
@@ -975,7 +987,7 @@ CREATE TABLE IF NOT EXISTS `seoplugins` (
 
 INSERT INTO `seoplugins` (`id`, `label`, `name`, `author`, `description`, `version`, `website`, `status`, `installed`) VALUES
 (1, 'Meta Tag Generator', 'MetaTagGenerator', 'Geo Varghese', 'Meta Tag Generator', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1),
-(2, 'Test Plugin', 'TestPlugin', 'Geo Varghese', 'Seo Panel Test Plugin: Check the structure of test plugin and it will help you to create new Seo Panel Plugins.', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
+(3, 'Test Plugin', 'TestPlugin', 'Geo Varghese', 'Seo Panel Test Plugin: Check the structure of test plugin and it will help you to create new Seo Panel Plugins.', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1048,7 +1060,7 @@ CREATE TABLE IF NOT EXISTS `skipdirectories` (
   `directory_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `website_id` (`website_id`,`directory_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `skipdirectories`
@@ -1061,7 +1073,8 @@ INSERT INTO `skipdirectories` (`id`, `website_id`, `directory_id`) VALUES
 (15, 11, 1),
 (21, 12, 1),
 (20, 4, 5),
-(19, 4, 4);
+(19, 4, 4),
+(22, 13, 2);
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1112,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `users`
@@ -1113,7 +1126,9 @@ INSERT INTO `users` (`id`, `utype_id`, `username`, `password`, `first_name`, `la
 (16, 2, 'sdfasdf', '5e64fe04bfd8363b6c74ea86f5c867f1', 'sdfasdf', 'sdfasdf', 'deepthyraorre@gmail.com', 1274390478, 1),
 (17, 2, 'sdfasdf1', '32464e67508b6fd835043e37845cd967', 'sdfasdf', 'sdfasdf', 'geo_v123@yahoo.com', 1274130006, 1),
 (18, 2, 'spuser2', '5bbe1684f44cbcbd25fa26028e274561', 'sp', 'user2', 'spuser2@gmail.com', 1274208649, 1),
-(19, 2, 'sdfsadf', '669c4fb17bc500e01c5006bb64617a02', 'sdfsadf', 'sdfsadf', 'deepthyraor@gmail.com', 1274426439, 1);
+(19, 2, 'sdfsadf', '669c4fb17bc500e01c5006bb64617a02', 'sdfsadf', 'sdfsadf', 'deepthyraor@gmail.com', 1274426439, 1),
+(20, 2, 'sdfffffffffff', '0ba687c4880fea77283a9394c79c35a9', 'sdfffffffffff', 'sdfffffffffff', 'de@de.com', 1274426911, 1),
+(21, 2, 'daaaaaaaaaaaa', '5a6ad8944ad508f5e4277a819a371b9f', 'daaaaaaaaaaaa', 'daaaaaaaaaaaa', 'daaaaaaaaaaaa@fff.com', 1274468613, 1);
 
 -- --------------------------------------------------------
 
@@ -1163,7 +1178,7 @@ CREATE TABLE IF NOT EXISTS `websites` (
   `user_id` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `websites`
@@ -1174,5 +1189,9 @@ INSERT INTO `websites` (`id`, `name`, `url`, `owner_name`, `owner_email`, `categ
 (4, 'Seo Free Tools', 'http://www.seofreetools.net', 'Geo Varghese', 'sendtogeo@gmail.com', 'seo', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.', 'SEO Free Tools,SEO Tutorials,SEO News,Cheap Web Hosting', '', '', '', '', '', '', '', '', 1, 1),
 (11, 'Seo Panel Forum', 'http://forum.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo forum,seo', 'Seo Panel Forum Index page', 'Seo Panel Forum ', 'Seo Panel Forum ', '', '', '', '', '', '', '', '', 1, 1),
 (12, 'Support Seo Panel', 'http://support.seofreetools.net/', 'asd', 'asd@gdfg.com', 'asda', 'Seo Panel :: Support Ticket System', 'asdas', 'asdas', '', '', '', '', '', '', '', '', 17, 1),
-(13, 'fsdfasd', 'http://www.gethostingplans.com/', 'asdasd', 'asda@test.com', 'asd', 'asdas', 'asdasd', 'asdasd', 'asda', 'asda', 'sdasd', 'asdd', 'asd', 'asda', 'asd', 'asdd', 1, 1),
-(14, 'zxc', 'zxczx', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1);
+(13, 'gethosti', 'http://www.gethostingplans.com/', 'asdasd', 'asda@test.com', 'asd', 'asdas', 'asdasd', 'asdasd', 'asda', 'asda', 'sdasd', 'asdd', 'asd', 'asda', 'asd', 'asdd', 1, 1),
+(14, 'zxc', 'zxczx', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
+(15, 'sdf', 'sdfsdf', NULL, NULL, NULL, 'sdfsd', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
+(16, 'ggggggggg', 'gggggggggggggg', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
+(17, 'dfsfa', 'sdfsdfsd', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
+(18, 'dada', 'daadaaaaaa', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1);

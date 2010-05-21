@@ -24,7 +24,7 @@ class TestPlugin extends SeoPluginsController{
 		$list = $this->db->select($sql);*/
 		
 		# example to insert data to database tabel
-		/*$sql = "insert into testplugin(id,title,description) values('','test title','test description')";
+		/*$sql = "insert into testplugin(title,description) values('test title','test description')";
 		$list = $this->db->query($sql);*/
 		
 		$this->set('img', $img);
