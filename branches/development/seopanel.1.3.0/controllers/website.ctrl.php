@@ -143,8 +143,8 @@ class WebsiteController extends Controller{
 		$errMsg['url'] = formatErrorMsg($this->validate->checkBlank($listInfo['url']));
 		if(!$this->validate->flagErr){
 			if (!$this->__checkName($listInfo['name'], $userId)) {
-				$sql = "insert into websites(id,name,url,title,description,keywords,user_id,status)
-							values('','{$listInfo['name']}','{$listInfo['url']}','".addslashes($listInfo['title'])."','".addslashes($listInfo['description'])."','".addslashes($listInfo['keywords'])."',$userId,1)";
+				$sql = "insert into websites(name,url,title,description,keywords,user_id,status)
+							values('{$listInfo['name']}','{$listInfo['url']}','".addslashes($listInfo['title'])."','".addslashes($listInfo['description'])."','".addslashes($listInfo['keywords'])."',$userId,1)";
 				$this->db->query($sql);
 				$this->listWebsites();
 				exit;
