@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2010 at 12:00 AM
+-- Generation Time: May 21, 2010 at 12:52 PM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `backlinkresults` (
   `altavista` int(11) NOT NULL,
   `alltheweb` int(11) NOT NULL,
   `result_time` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `backlinkresults`
@@ -68,10 +68,10 @@ INSERT INTO `backlinkresults` (`website_id`, `google`, `yahoo`, `msn`, `altavist
 --
 
 CREATE TABLE IF NOT EXISTS `country` (
-  `country_code` char(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `country_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `country_code` char(2) COLLATE utf8_unicode_ci NOT NULL,
+  `country_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`country_code`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `country`
@@ -333,68 +333,30 @@ INSERT INTO `country` (`country_code`, `country_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `directories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `domain` varchar(255) NOT NULL,
-  `submit_url` varchar(255) NOT NULL,
-  `captcha_script` varchar(100) NOT NULL DEFAULT 'captcha.php',
-  `search_script` varchar(100) NOT NULL DEFAULT 'index.php?q=[--keyword--]',
-  `title_col` varchar(16) NOT NULL DEFAULT 'TITLE',
-  `url_col` varchar(16) NOT NULL DEFAULT 'URL',
-  `description_col` varchar(16) NOT NULL DEFAULT 'DESCRIPTION',
-  `name_col` varchar(16) NOT NULL DEFAULT 'OWNER_NAME',
-  `email_col` varchar(16) NOT NULL DEFAULT 'OWNER_EMAIL',
-  `category_col` varchar(16) NOT NULL DEFAULT 'CATEGORY_ID',
-  `cptcha_col` varchar(16) NOT NULL DEFAULT 'CAPTCHA',
-  `imagehash_col` varchar(16) NOT NULL DEFAULT 'IMAGEHASH',
-  `imagehashurl_col` varchar(16) NOT NULL DEFAULT 'imagehash',
-  `extra_val` varchar(255) NOT NULL DEFAULT 'LINK_TYPE=normal&submit=Continue&AGREERULES=on',
+  `domain` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `submit_url` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `captcha_script` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT 'captcha.php',
+  `search_script` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT 'index.php?q=[--keyword--]',
+  `title_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'TITLE',
+  `url_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'URL',
+  `description_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'DESCRIPTION',
+  `name_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'OWNER_NAME',
+  `email_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'OWNER_EMAIL',
+  `category_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'CATEGORY_ID',
+  `cptcha_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'CAPTCHA',
+  `imagehash_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'IMAGEHASH',
+  `imagehashurl_col` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT 'imagehash',
+  `extra_val` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT 'LINK_TYPE=normal&submit=Continue&AGREERULES=on',
   `is_captcha` tinyint(1) NOT NULL DEFAULT '0',
   `working` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=454 ;
 
 --
 -- Dumping data for table `directories`
 --
 
 INSERT INTO `directories` (`id`, `domain`, `submit_url`, `captcha_script`, `search_script`, `title_col`, `url_col`, `description_col`, `name_col`, `email_col`, `category_col`, `cptcha_col`, `imagehash_col`, `imagehashurl_col`, `extra_val`, `is_captcha`, `working`) VALUES
-(1, 'http://www.searchnet.us/', 'http://www.searchnet.us/submit.php ', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
-(2, 'http://www.searchnetsssss.us/', 'http://www.searchnetsssss.us/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
-(3, 'http://directory.seofreetools.net', 'http://directory.seofreetools.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
-(4, 'http://directory.seofreetools.netddddd', 'http://directory.seofreetools.netddd/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1),
-(5, 'http://directory.seofreetools.netdddddss', 'http://directory.seofreetools.netdddsss/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 0, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `directories_bak`
---
-
-CREATE TABLE IF NOT EXISTS `directories_bak` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `domain` varchar(255) NOT NULL,
-  `submit_url` varchar(255) NOT NULL,
-  `captcha_script` varchar(100) NOT NULL DEFAULT 'captcha.php',
-  `search_script` varchar(100) NOT NULL DEFAULT 'index.php?q=[--keyword--]',
-  `title_col` varchar(16) NOT NULL DEFAULT 'TITLE',
-  `url_col` varchar(16) NOT NULL DEFAULT 'URL',
-  `description_col` varchar(16) NOT NULL DEFAULT 'DESCRIPTION',
-  `name_col` varchar(16) NOT NULL DEFAULT 'OWNER_NAME',
-  `email_col` varchar(16) NOT NULL DEFAULT 'OWNER_EMAIL',
-  `category_col` varchar(16) NOT NULL DEFAULT 'CATEGORY_ID',
-  `cptcha_col` varchar(16) NOT NULL DEFAULT 'CAPTCHA',
-  `imagehash_col` varchar(16) NOT NULL DEFAULT 'IMAGEHASH',
-  `imagehashurl_col` varchar(16) NOT NULL DEFAULT 'imagehash',
-  `extra_val` varchar(255) NOT NULL DEFAULT 'LINK_TYPE=normal&submit=Continue&AGREERULES=on',
-  `is_captcha` tinyint(1) NOT NULL DEFAULT '0',
-  `working` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=454 ;
-
---
--- Dumping data for table `directories_bak`
---
-
-INSERT INTO `directories_bak` (`id`, `domain`, `submit_url`, `captcha_script`, `search_script`, `title_col`, `url_col`, `description_col`, `name_col`, `email_col`, `category_col`, `cptcha_col`, `imagehash_col`, `imagehashurl_col`, `extra_val`, `is_captcha`, `working`) VALUES
 (1, 'http://directory.seofreetools.net', 'http://directory.seofreetools.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
 (2, 'http://www.fat64.net', 'http://www.fat64.net/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
 (3, 'http://www.onpaco.com', 'http://www.onpaco.com/submit.php', 'captcha.php', 'index.php?q=[--keyword--]', 'TITLE', 'URL', 'DESCRIPTION', 'OWNER_NAME', 'OWNER_EMAIL', 'CATEGORY_ID', 'CAPTCHA', 'IMAGEHASH', 'imagehash', 'LINK_TYPE=normal&submit=Continue&AGREERULES=on', 1, 1),
@@ -570,7 +532,7 @@ CREATE TABLE IF NOT EXISTS `dirsubmitinfo` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `submit_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `dirsubmitinfo`
@@ -592,14 +554,14 @@ INSERT INTO `dirsubmitinfo` (`id`, `website_id`, `directory_id`, `status`, `acti
 
 CREATE TABLE IF NOT EXISTS `keywords` (
   `id` bigint(24) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lang_code` varchar(8) DEFAULT NULL,
-  `country_code` varchar(8) NOT NULL,
+  `name` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lang_code` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country_code` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
   `website_id` int(11) DEFAULT NULL,
-  `searchengines` varchar(120) DEFAULT NULL,
+  `searchengines` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `keywords`
@@ -612,7 +574,10 @@ INSERT INTO `keywords` (`id`, `name`, `lang_code`, `country_code`, `website_id`,
 (4, 'seo', '', '', 3, '1:2:3', 1),
 (5, 'donate seo', '', '', 3, '1', 1),
 (6, 'contact seo', '', '', 3, '1', 1),
-(8, 'free seo tools', '', '', 4, '1:2:3', 1);
+(8, 'free seo tools', '', '', 4, '1:2:3', 1),
+(14, 'الخطوط أدوات البطل', '', '', 4, '2', 1),
+(15, 'свободный герой инструменты', '', '', 4, '2', 1),
+(13, 'εργαλεία sefree', '', '', 4, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -621,10 +586,10 @@ INSERT INTO `keywords` (`id`, `name`, `lang_code`, `country_code`, `website_id`,
 --
 
 CREATE TABLE IF NOT EXISTS `languages` (
-  `lang_code` varchar(8) NOT NULL,
-  `lang_name` varchar(24) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lang_code` varchar(8) CHARACTER SET latin1 NOT NULL,
+  `lang_name` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`lang_code`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `languages`
@@ -681,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `rankresults` (
   `google_pagerank` int(8) NOT NULL,
   `alexa_rank` int(11) NOT NULL,
   `result_time` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `rankresults`
@@ -716,7 +681,11 @@ INSERT INTO `rankresults` (`website_id`, `google_pagerank`, `alexa_rank`, `resul
 (12, 0, 83404, 1274207400),
 (4, 4, 83404, 1274207400),
 (3, 4, 98328, 1274207400),
-(11, 0, 98328, 1274207400);
+(11, 0, 98328, 1274207400),
+(4, 4, 84460, 1274380200),
+(3, 4, 98003, 1274380200),
+(11, 0, 98003, 1274380200),
+(12, 0, 84460, 1274380200);
 
 -- --------------------------------------------------------
 
@@ -730,7 +699,7 @@ CREATE TABLE IF NOT EXISTS `saturationresults` (
   `yahoo` int(11) NOT NULL,
   `msn` int(11) NOT NULL,
   `result_time` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `saturationresults`
@@ -766,19 +735,19 @@ INSERT INTO `saturationresults` (`website_id`, `google`, `yahoo`, `msn`, `result
 
 CREATE TABLE IF NOT EXISTS `searchengines` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `domain` varchar(120) DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `cookie_send` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `domain` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cookie_send` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `no_of_results_page` int(8) DEFAULT NULL,
   `start` int(11) NOT NULL DEFAULT '0',
   `max_results` int(11) NOT NULL DEFAULT '100',
-  `regex` varchar(255) DEFAULT NULL,
+  `regex` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `url_index` int(11) NOT NULL DEFAULT '1',
   `title_index` int(11) NOT NULL DEFAULT '2',
   `description_index` int(11) NOT NULL DEFAULT '3',
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `searchengines`
@@ -797,10 +766,10 @@ INSERT INTO `searchengines` (`id`, `domain`, `url`, `cookie_send`, `no_of_result
 
 CREATE TABLE IF NOT EXISTS `searchresultdetails` (
   `searchresult_id` bigint(24) unsigned DEFAULT NULL,
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(160) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(160) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `searchresultdetails`
@@ -851,6 +820,8 @@ INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `descripti
 (79, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control ...', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
 (74, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
 (76, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
+(155, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(159, 'http://www.seopanel.in/download/', 'Download Seo Panel - World''s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.It will help us to store and manage ...'),
 (98, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
 (99, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
 (101, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
@@ -861,6 +832,8 @@ INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `descripti
 (106, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
 (107, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
 (108, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
+(150, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
+(151, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
 (111, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
 (112, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
 (113, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
@@ -871,7 +844,14 @@ INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `descripti
 (118, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
 (119, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
 (125, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(124, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.');
+(124, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
+(154, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
+(152, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(153, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
+(147, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
+(158, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
+(157, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
+(156, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...');
 
 -- --------------------------------------------------------
 
@@ -886,7 +866,7 @@ CREATE TABLE IF NOT EXISTS `searchresults` (
   `rank` int(8) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=130 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=160 ;
 
 --
 -- Dumping data for table `searchresults`
@@ -937,6 +917,8 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 (79, 1, 3, 12, 1272393000),
 (78, 1, 3, 7, 1272393000),
 (74, 6, 1, 12, 1272393000),
+(159, 1, 3, 12, 1274380200),
+(155, 1, 1, 3, 1274380200),
 (98, 6, 1, 10, 1272565800),
 (100, 1, 1, 3, 1272565800),
 (99, 1, 1, 2, 1272565800),
@@ -947,6 +929,8 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 (106, 8, 1, 62, 1272565800),
 (107, 8, 2, 3, 1272565800),
 (108, 8, 2, 4, 1272565800),
+(150, 6, 1, 7, 1274380200),
+(153, 8, 2, 6, 1274380200),
 (111, 6, 1, 10, 1272652200),
 (112, 5, 1, 1, 1272652200),
 (113, 8, 1, 60, 1272652200),
@@ -957,7 +941,14 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 (118, 1, 2, 7, 1272652200),
 (119, 1, 2, 8, 1272652200),
 (125, 1, 3, 11, 1272652200),
-(124, 1, 3, 6, 1272652200);
+(124, 1, 3, 6, 1272652200),
+(154, 1, 1, 2, 1274380200),
+(151, 5, 1, 1, 1274380200),
+(152, 8, 2, 5, 1274380200),
+(147, 8, 1, 62, 1274380200),
+(158, 1, 3, 8, 1274380200),
+(157, 1, 2, 6, 1274380200),
+(156, 1, 2, 5, 1274380200);
 
 -- --------------------------------------------------------
 
@@ -967,16 +958,16 @@ INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `tim
 
 CREATE TABLE IF NOT EXISTS `seoplugins` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `label` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `author` varchar(64) NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `version` varchar(8) NOT NULL,
-  `website` varchar(255) NOT NULL,
+  `label` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `author` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `version` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `installed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `seoplugins`
@@ -994,14 +985,14 @@ INSERT INTO `seoplugins` (`id`, `label`, `name`, `author`, `description`, `versi
 
 CREATE TABLE IF NOT EXISTS `seotools` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `url_section` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url_section` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_access` tinyint(1) NOT NULL DEFAULT '1',
   `reportgen` tinyint(1) NOT NULL DEFAULT '1',
   `cron` tinyint(1) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `seotools`
@@ -1023,13 +1014,13 @@ INSERT INTO `seotools` (`id`, `name`, `url_section`, `user_access`, `reportgen`,
 
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `set_label` varchar(64) NOT NULL,
-  `set_name` varchar(64) NOT NULL,
-  `set_val` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `set_type` enum('small','bool','medium','large','text') DEFAULT 'small',
+  `set_label` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `set_name` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `set_val` text COLLATE utf8_unicode_ci NOT NULL,
+  `set_type` enum('small','bool','medium','large','text') CHARACTER SET latin1 DEFAULT 'small',
   PRIMARY KEY (`id`),
   UNIQUE KEY `set_name` (`set_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `settings`
@@ -1057,7 +1048,7 @@ CREATE TABLE IF NOT EXISTS `skipdirectories` (
   `directory_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `website_id` (`website_id`,`directory_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `skipdirectories`
@@ -1080,19 +1071,16 @@ INSERT INTO `skipdirectories` (`id`, `website_id`, `directory_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `testplugin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(64) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `title` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(255) CHARACTER SET latin1 NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `testplugin`
 --
 
-INSERT INTO `testplugin` (`id`, `title`, `description`, `status`) VALUES
-(1, 'test title', 'test description', 0),
-(2, 'test title', 'test description', 0);
 
 -- --------------------------------------------------------
 
@@ -1103,15 +1091,15 @@ INSERT INTO `testplugin` (`id`, `title`, `description`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `utype_id` int(11) DEFAULT NULL,
-  `username` varchar(64) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL,
-  `first_name` varchar(64) DEFAULT NULL,
-  `last_name` varchar(64) DEFAULT NULL,
-  `email` varchar(120) DEFAULT NULL,
+  `username` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `first_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `users`
@@ -1122,9 +1110,10 @@ INSERT INTO `users` (`id`, `utype_id`, `username`, `password`, `first_name`, `la
 (13, 2, 'gdfgdfgdf', '3d55fe6e05cb645336f7e86d8904d471', 'dgdfg', 'dfgdf', 'dfgdf@jasfjhsj.com', 1270708095, 1),
 (14, 2, 'sfsdfffffffff', '4e0de973983c9b99ef6bf02f59df1ca3', 'sfsdfffffffff', 'sfsdfffffffff', 'sfsdfffffffff@hfgh.com', 1272821827, 1),
 (15, 2, 'sdfffffff', '40db518c4468b2f028546bc40b3b486a', 'sdfffffff', 'sdfffffff', 'sdfffffff@ashgh.com', 1272822042, 1),
-(16, 2, 'sdfasdf', '5e64fe04bfd8363b6c74ea86f5c867f1', 'sdfasdf', 'sdfasdf', 'deepthyraorre@gmail.com', 0, 1),
+(16, 2, 'sdfasdf', '5e64fe04bfd8363b6c74ea86f5c867f1', 'sdfasdf', 'sdfasdf', 'deepthyraorre@gmail.com', 1274390478, 1),
 (17, 2, 'sdfasdf1', '32464e67508b6fd835043e37845cd967', 'sdfasdf', 'sdfasdf', 'geo_v123@yahoo.com', 1274130006, 1),
-(18, 2, 'spuser2', '5bbe1684f44cbcbd25fa26028e274561', 'sp', 'user2', 'spuser2@gmail.com', 1274208649, 1);
+(18, 2, 'spuser2', '5bbe1684f44cbcbd25fa26028e274561', 'sp', 'user2', 'spuser2@gmail.com', 1274208649, 1),
+(19, 2, 'sdfsadf', '669c4fb17bc500e01c5006bb64617a02', 'sdfsadf', 'sdfsadf', 'deepthyraor@gmail.com', 1274426439, 1);
 
 -- --------------------------------------------------------
 
@@ -1134,10 +1123,10 @@ INSERT INTO `users` (`id`, `utype_id`, `username`, `password`, `first_name`, `la
 
 CREATE TABLE IF NOT EXISTS `usertypes` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
-  `user_type` varchar(16) DEFAULT NULL,
-  `description` varchar(64) DEFAULT NULL,
+  `user_type` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `usertypes`
@@ -1155,26 +1144,26 @@ INSERT INTO `usertypes` (`id`, `user_type`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `websites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `owner_name` varchar(64) NOT NULL,
-  `owner_email` varchar(120) NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `keywords` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `title2` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `title3` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `title4` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `title5` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description2` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description3` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description4` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description5` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `owner_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `owner_email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keywords` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title2` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title3` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title4` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title5` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description2` text COLLATE utf8_unicode_ci,
+  `description3` text COLLATE utf8_unicode_ci,
+  `description4` text COLLATE utf8_unicode_ci,
+  `description5` text COLLATE utf8_unicode_ci,
   `user_id` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `websites`
@@ -1184,4 +1173,6 @@ INSERT INTO `websites` (`id`, `name`, `url`, `owner_name`, `owner_email`, `categ
 (3, 'Seo Panel', 'http://www.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo tools,seo', 'Seo Panel: World\\''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', '', '', '', '', '', '', '', '', 1, 1),
 (4, 'Seo Free Tools', 'http://www.seofreetools.net', 'Geo Varghese', 'sendtogeo@gmail.com', 'seo', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.', 'SEO Free Tools,SEO Tutorials,SEO News,Cheap Web Hosting', '', '', '', '', '', '', '', '', 1, 1),
 (11, 'Seo Panel Forum', 'http://forum.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo forum,seo', 'Seo Panel Forum Index page', 'Seo Panel Forum ', 'Seo Panel Forum ', '', '', '', '', '', '', '', '', 1, 1),
-(12, 'Support Seo Panel', 'http://support.seofreetools.net/', 'asd', 'asd@gdfg.com', 'asda', 'Seo Panel :: Support Ticket System', 'asdas', 'asdas', '', '', '', '', '', '', '', '', 17, 1);
+(12, 'Support Seo Panel', 'http://support.seofreetools.net/', 'asd', 'asd@gdfg.com', 'asda', 'Seo Panel :: Support Ticket System', 'asdas', 'asdas', '', '', '', '', '', '', '', '', 17, 1),
+(13, 'fsdfasd', 'http://www.gethostingplans.com/', 'asdasd', 'asda@test.com', 'asd', 'asdas', 'asdasd', 'asdasd', 'asda', 'asda', 'sdasd', 'asdd', 'asd', 'asda', 'asd', 'asdd', 1, 1),
+(14, 'zxc', 'zxczx', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1);

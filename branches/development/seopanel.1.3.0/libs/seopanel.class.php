@@ -50,6 +50,8 @@ class Seopanel{
 		include_once(SP_CTRLPATH.'/website.ctrl.php');
 		include_once(SP_CTRLPATH.'/user.ctrl.php');
 		include_once(SP_CTRLPATH.'/settings.ctrl.php');
+		
+		header ('Content-type: text / html; charset = utf-8');
 	}	
 	
 	# to set variable to render
