@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 22, 2010 at 01:09 AM
+-- Generation Time: May 22, 2010 at 02:21 AM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -39,27 +39,6 @@ CREATE TABLE IF NOT EXISTS `backlinkresults` (
 -- Dumping data for table `backlinkresults`
 --
 
-INSERT INTO `backlinkresults` (`website_id`, `google`, `yahoo`, `msn`, `altavista`, `alltheweb`, `result_time`) VALUES
-(4, 34, 409, 0, 1410, 1370, 1270492200),
-(3, 25, 333, 8, 358, 328, 1270492200),
-(4, 34, 405, 0, 1370, 1330, 1270665000),
-(5, 31, 386, 3, 1380, 1220, 1270665000),
-(3, 25, 319, 7, 343, 315, 1270665000),
-(4, 37, 405, 0, 1370, 1330, 1270751400),
-(3, 26, 318, 7, 338, 315, 1270751400),
-(5, 32, 374, 3, 1380, 1220, 1270751400),
-(4, 37, 412, 0, 1400, 1360, 1271183400),
-(3, 26, 300, 7, 335, 315, 1271183400),
-(5, 32, 395, 3, 1340, 1240, 1271183400),
-(5, 0, 334, 3, 1070, 1020, 1272565800),
-(4, 34, 366, 0, 1140, 1110, 1272565800),
-(3, 0, 300, 6, 257, 234, 1272565800),
-(4, 34, 356, 0, 1040, 1010, 1272911400),
-(3, 9, 318, 5, 272, 247, 1272911400),
-(12, 0, 21, 0, 24, 24, 1274207400),
-(4, 34, 101, 0, 1020, 988, 1274207400),
-(3, 9, 114, 8, 247, 222, 1274207400),
-(11, 0, 116, 0, 10, 10, 1274207400);
 
 -- --------------------------------------------------------
 
@@ -532,20 +511,12 @@ CREATE TABLE IF NOT EXISTS `dirsubmitinfo` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `submit_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `dirsubmitinfo`
 --
 
-INSERT INTO `dirsubmitinfo` (`id`, `website_id`, `directory_id`, `status`, `active`, `submit_time`) VALUES
-(10, 4, 3, 1, 1, 1273216007),
-(8, 3, 3, 0, 1, 1273180522),
-(9, 11, 3, 1, 1, 1273180664),
-(11, 3, 2, 0, 0, 1273180664),
-(12, 3, 4, 0, 0, 1273180664),
-(13, 3, 5, 0, 0, 1273216405),
-(14, 13, 1, 0, 0, 1274467902);
 
 -- --------------------------------------------------------
 
@@ -562,26 +533,12 @@ CREATE TABLE IF NOT EXISTS `keywords` (
   `searchengines` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `keywords`
 --
 
-INSERT INTO `keywords` (`id`, `name`, `lang_code`, `country_code`, `website_id`, `searchengines`, `status`) VALUES
-(1, 'seo control', '', '', 3, '1:2:3', 1),
-(2, 'seo contact', '', '', 3, '1', 0),
-(3, 'control panel', '', '', 3, '1:2:3', 1),
-(4, 'seo', '', '', 3, '1:2:3', 1),
-(5, 'donate seo', '', '', 3, '1', 1),
-(6, 'contact seo', '', '', 3, '1', 1),
-(8, 'free seo tools', '', '', 4, '1:2:3', 1),
-(14, 'الخطوط أدوات البطل', '', '', 4, '2', 1),
-(15, 'свободный герой инструменты', '', '', 4, '2', 1),
-(13, 'εργαλεία sefree', '', '', 4, '1', 1),
-(16, 'sdfsdfffffffffff', '', '', 18, '1', 1),
-(17, 'web hosting plans', '', '', 13, '1:2:3', 1),
-(18, '50gb hosting', '', '', 13, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -656,40 +613,6 @@ CREATE TABLE IF NOT EXISTS `rankresults` (
 -- Dumping data for table `rankresults`
 --
 
-INSERT INTO `rankresults` (`website_id`, `google_pagerank`, `alexa_rank`, `result_time`) VALUES
-(4, 4, 84145, 1270492200),
-(3, 4, 110074, 1270492200),
-(5, 3, 82761, 1270665000),
-(3, 4, 107218, 1270665000),
-(4, 4, 82761, 1270665000),
-(4, 4, 82310, 1270751400),
-(3, 4, 106286, 1270751400),
-(5, 3, 82310, 1270751400),
-(4, 4, 81971, 1271183400),
-(3, 4, 103533, 1271183400),
-(5, 3, 81971, 1271183400),
-(5, 3, 85037, 1272306600),
-(4, 4, 85037, 1272306600),
-(3, 4, 104678, 1272306600),
-(4, 4, 85256, 1272565800),
-(3, 4, 104662, 1272565800),
-(5, 3, 85256, 1272565800),
-(5, 3, 84468, 1272652200),
-(4, 4, 84468, 1272652200),
-(3, 4, 103704, 1272652200),
-(4, 4, 83875, 1272911400),
-(3, 4, 102672, 1272911400),
-(4, 0, 0, 1274121000),
-(3, 0, 0, 1274121000),
-(11, 0, 98328, 1274121000),
-(12, 0, 83404, 1274207400),
-(4, 4, 83404, 1274207400),
-(3, 4, 98328, 1274207400),
-(11, 0, 98328, 1274207400),
-(4, 4, 84460, 1274380200),
-(3, 4, 98003, 1274380200),
-(11, 0, 98003, 1274380200),
-(12, 0, 84460, 1274380200);
 
 -- --------------------------------------------------------
 
@@ -709,27 +632,6 @@ CREATE TABLE IF NOT EXISTS `saturationresults` (
 -- Dumping data for table `saturationresults`
 --
 
-INSERT INTO `saturationresults` (`website_id`, `google`, `yahoo`, `msn`, `result_time`) VALUES
-(4, 31, 39, 21, 1270492200),
-(3, 10, 18, 7, 1270492200),
-(4, 33, 39, 17, 1270665000),
-(5, 191, 1201, 102, 1270665000),
-(3, 10, 18, 7, 1270665000),
-(4, 33, 39, 17, 1270751400),
-(3, 10, 18, 7, 1270751400),
-(5, 189, 1191, 102, 1270751400),
-(4, 35, 37, 19, 1271183400),
-(3, 10, 17, 7, 1271183400),
-(5, 209, 1200, 93, 1271183400),
-(5, 137, 981, 96, 1272565800),
-(4, 36, 40, 21, 1272565800),
-(3, 10, 16, 8, 1272565800),
-(4, 36, 40, 21, 1272911400),
-(3, 10, 15, 8, 1272911400),
-(12, 3, 3, 0, 1274207400),
-(4, 36, 31, 22, 1274207400),
-(3, 47, 14, 7, 1274207400),
-(11, 59, 18, 1, 1274207400);
 
 -- --------------------------------------------------------
 
@@ -779,87 +681,6 @@ CREATE TABLE IF NOT EXISTS `searchresultdetails` (
 -- Dumping data for table `searchresultdetails`
 --
 
-INSERT INTO `searchresultdetails` (`searchresult_id`, `url`, `title`, `description`) VALUES
-(12, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(11, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(14, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(13, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(16, 'http://www.seopanel.in/download/', 'Download Seo Panel - World''s first seo control panel ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.It will help us to store and manage ...'),
-(15, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(9, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(10, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(25, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(26, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(28, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(27, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(30, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(29, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(32, 'http://www.seopanel.in/download/', 'Download Seo Panel - World''s first seo control panel ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.It will help us to store and manage ...'),
-(31, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(41, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(42, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(44, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(43, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(46, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(45, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(48, 'http://www.seopanel.in/download/', 'Download Seo Panel - World''s first seo control panel ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.It will help us to store and manage ...'),
-(47, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(49, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(50, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(51, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(52, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(53, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(54, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(55, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(56, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(57, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(58, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
-(59, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(60, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(61, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(62, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control ...', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(75, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(77, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(78, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple ...', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(79, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control ...', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(74, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
-(76, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
-(155, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(159, 'http://www.seopanel.in/download/', 'Download Seo Panel - World''s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.It will help us to store and manage ...'),
-(98, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
-(99, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(101, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(102, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(103, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(104, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(100, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
-(106, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(107, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(108, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
-(150, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(151, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(111, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo  services.'),
-(112, 'http://www.seopanel.in/donate/', 'Donate to Seo Panel - First Open source seo control panel in world', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this ...'),
-(113, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(114, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(115, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
-(116, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(117, 'http://www.seopanel.in/download/', 'Download Seo Panel - World&#39;s first seo control panel for multiple ...', 'Download Seo Panel and Install it in your server to manage search engine optimization of your websites.Its an opensource free software for seo.'),
-(118, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(119, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(125, 'http://www.seopanel.in/contact/', 'Contact Seo Panel Team - First Open source seo control panel in world', 'Contact Seo Panel - First Open source seo control panel in world for new seo services.'),
-(124, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(154, 'http://www.seopanel.in/', 'Seo Panel: World&#39;s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo  tools to increase and track the ...'),
-(152, 'www.seofreetools.net', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(153, 'www.seofreetools.net/seo-tools', 'Download Free SEO Tools,Alexa Rank Script,Google Pagerank Script', 'seo tools for check google page rank,alexa rank,keyword ranking in search engines.Add Alexa rank Script,google page rank script,keyword-search-engine to your site'),
-(147, 'http://www.seofreetools.net/', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.'),
-(158, 'http://www.seopanel.in/', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites.'),
-(157, 'www.seopanel.in/donate', 'Donate to Seo Panel - First Open source seo control panel in ...', 'Donate Seo Panel Team for improving the first open source seo control panel in world. It would great if we get some money to improve features of this project.'),
-(156, 'www.seopanel.in', 'Seo Panel: World''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your ...'),
-(160, 'http://www.gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting,VPS Hosting in the world.'),
-(161, 'http://gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting,VPS Hosting in the world'),
-(162, 'http://www.gethostingplans.com/sp/13/Shared-Hosting/50GB-Hosting/', 'Web Hosting: Shared Hosting - 50GB Hosting', 'Shared Hosting - 50GB Hosting We offer Best Web Hosting,Web Hosting Plan Monitor,cheap web hosting.Best Dedicated Hosting,Reseller Hosting,Shared Hosting ...'),
-(163, 'http://www.gethostingplans.com/', 'Web Hosting: Web Hosting Plan Monitor', 'hosting.india.to, 100 GB, 1000 GB, N/L, N/L, N/L, N/L, N/L, cpanel, Linux, $59.17, Reseller Hosting - Reseller Hosting &middot; hosting.india.to, 50 GB, 500 GB ...');
 
 -- --------------------------------------------------------
 
@@ -874,93 +695,12 @@ CREATE TABLE IF NOT EXISTS `searchresults` (
   `rank` int(8) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=164 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `searchresults`
 --
 
-INSERT INTO `searchresults` (`id`, `keyword_id`, `searchengine_id`, `rank`, `time`) VALUES
-(12, 1, 1, 3, 1270492200),
-(11, 1, 1, 2, 1270492200),
-(14, 1, 2, 4, 1270492200),
-(13, 1, 2, 3, 1270492200),
-(16, 1, 3, 31, 1270492200),
-(15, 1, 3, 6, 1270492200),
-(9, 6, 1, 3, 1270492200),
-(10, 5, 1, 1, 1270492200),
-(25, 6, 1, 3, 1270578600),
-(26, 5, 1, 1, 1270578600),
-(28, 1, 1, 3, 1270578600),
-(27, 1, 1, 2, 1270578600),
-(30, 1, 2, 9, 1270578600),
-(29, 1, 2, 8, 1270578600),
-(32, 1, 3, 32, 1270578600),
-(31, 1, 3, 6, 1270578600),
-(41, 6, 1, 3, 1270665000),
-(42, 5, 1, 1, 1270665000),
-(44, 1, 1, 3, 1270665000),
-(43, 1, 1, 2, 1270665000),
-(46, 1, 2, 4, 1270665000),
-(45, 1, 2, 3, 1270665000),
-(48, 1, 3, 32, 1270665000),
-(47, 1, 3, 5, 1270665000),
-(49, 6, 1, 2, 1270751400),
-(50, 5, 1, 1, 1270751400),
-(51, 1, 1, 2, 1270751400),
-(52, 1, 1, 3, 1270751400),
-(53, 1, 2, 3, 1270751400),
-(54, 1, 2, 4, 1270751400),
-(55, 6, 1, 5, 1271183400),
-(56, 5, 1, 1, 1271183400),
-(57, 1, 1, 2, 1271183400),
-(58, 1, 1, 3, 1271183400),
-(59, 1, 2, 5, 1271183400),
-(60, 1, 2, 6, 1271183400),
-(61, 1, 3, 6, 1271183400),
-(62, 1, 3, 13, 1271183400),
-(76, 1, 1, 3, 1272393000),
-(75, 1, 1, 2, 1272393000),
-(77, 1, 2, 3, 1272393000),
-(79, 1, 3, 12, 1272393000),
-(78, 1, 3, 7, 1272393000),
-(74, 6, 1, 12, 1272393000),
-(159, 1, 3, 12, 1274380200),
-(155, 1, 1, 3, 1274380200),
-(98, 6, 1, 10, 1272565800),
-(100, 1, 1, 3, 1272565800),
-(99, 1, 1, 2, 1272565800),
-(102, 1, 2, 8, 1272565800),
-(101, 1, 2, 7, 1272565800),
-(104, 1, 3, 11, 1272565800),
-(103, 1, 3, 6, 1272565800),
-(106, 8, 1, 62, 1272565800),
-(107, 8, 2, 3, 1272565800),
-(108, 8, 2, 4, 1272565800),
-(150, 6, 1, 7, 1274380200),
-(153, 8, 2, 6, 1274380200),
-(111, 6, 1, 10, 1272652200),
-(112, 5, 1, 1, 1272652200),
-(113, 8, 1, 60, 1272652200),
-(114, 8, 2, 3, 1272652200),
-(115, 8, 2, 4, 1272652200),
-(116, 1, 1, 2, 1272652200),
-(117, 1, 1, 3, 1272652200),
-(118, 1, 2, 7, 1272652200),
-(119, 1, 2, 8, 1272652200),
-(125, 1, 3, 11, 1272652200),
-(124, 1, 3, 6, 1272652200),
-(154, 1, 1, 2, 1274380200),
-(151, 5, 1, 1, 1274380200),
-(152, 8, 2, 5, 1274380200),
-(147, 8, 1, 62, 1274380200),
-(158, 1, 3, 8, 1274380200),
-(157, 1, 2, 6, 1274380200),
-(156, 1, 2, 5, 1274380200),
-(160, 17, 1, 68, 1274466600),
-(161, 17, 3, 8, 1274466600),
-(162, 18, 1, 1, 1274466600),
-(163, 18, 1, 2, 1274466600);
 
 -- --------------------------------------------------------
 
@@ -979,15 +719,14 @@ CREATE TABLE IF NOT EXISTS `seoplugins` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `installed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `seoplugins`
 --
 
 INSERT INTO `seoplugins` (`id`, `label`, `name`, `author`, `description`, `version`, `website`, `status`, `installed`) VALUES
-(1, 'Meta Tag Generator', 'MetaTagGenerator', 'Geo Varghese', 'Meta Tag Generator', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1),
-(3, 'Test Plugin', 'TestPlugin', 'Geo Varghese', 'Seo Panel Test Plugin: Check the structure of test plugin and it will help you to create new Seo Panel Plugins.', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
+(1, 'Meta Tag Generator', 'MetaTagGenerator', 'Geo Varghese', 'Meta Tag Generator', '1.0.0', 'http://www.seopanel.in/seo-plugins/', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1060,38 +799,10 @@ CREATE TABLE IF NOT EXISTS `skipdirectories` (
   `directory_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `website_id` (`website_id`,`directory_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
-
---
--- Dumping data for table `skipdirectories`
---
-
-INSERT INTO `skipdirectories` (`id`, `website_id`, `directory_id`) VALUES
-(14, 3, 2),
-(18, 4, 2),
-(17, 4, 1),
-(15, 11, 1),
-(21, 12, 1),
-(20, 4, 5),
-(19, 4, 4),
-(22, 13, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testplugin`
---
-
-CREATE TABLE IF NOT EXISTS `testplugin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(64) CHARACTER SET latin1 NOT NULL,
-  `description` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `testplugin`
+-- Dumping data for table `skipdirectories`
 --
 
 
@@ -1112,23 +823,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `utype_id`, `username`, `password`, `first_name`, `last_name`, `email`, `created`, `status`) VALUES
-(1, 1, 'spadmin', 'a4d312c461703c46a56b1bdcda9b5cdc', 'Seo Panel', 'Admin', 'sendtogeo@gmail.com', 1270708599, 1),
-(13, 2, 'gdfgdfgdf', '3d55fe6e05cb645336f7e86d8904d471', 'dgdfg', 'dfgdf', 'dfgdf@jasfjhsj.com', 1270708095, 1),
-(14, 2, 'sfsdfffffffff', '4e0de973983c9b99ef6bf02f59df1ca3', 'sfsdfffffffff', 'sfsdfffffffff', 'sfsdfffffffff@hfgh.com', 1272821827, 1),
-(15, 2, 'sdfffffff', '40db518c4468b2f028546bc40b3b486a', 'sdfffffff', 'sdfffffff', 'sdfffffff@ashgh.com', 1272822042, 1),
-(16, 2, 'sdfasdf', '5e64fe04bfd8363b6c74ea86f5c867f1', 'sdfasdf', 'sdfasdf', 'deepthyraorre@gmail.com', 1274390478, 1),
-(17, 2, 'sdfasdf1', '32464e67508b6fd835043e37845cd967', 'sdfasdf', 'sdfasdf', 'geo_v123@yahoo.com', 1274130006, 1),
-(18, 2, 'spuser2', '5bbe1684f44cbcbd25fa26028e274561', 'sp', 'user2', 'spuser2@gmail.com', 1274208649, 1),
-(19, 2, 'sdfsadf', '669c4fb17bc500e01c5006bb64617a02', 'sdfsadf', 'sdfsadf', 'deepthyraor@gmail.com', 1274426439, 1),
-(20, 2, 'sdfffffffffff', '0ba687c4880fea77283a9394c79c35a9', 'sdfffffffffff', 'sdfffffffffff', 'de@de.com', 1274426911, 1),
-(21, 2, 'daaaaaaaaaaaa', '5a6ad8944ad508f5e4277a819a371b9f', 'daaaaaaaaaaaa', 'daaaaaaaaaaaa', 'daaaaaaaaaaaa@fff.com', 1274468613, 1);
+(1, 1, 'spadmin', 'a4d312c461703c46a56b1bdcda9b5cdc', 'Seo Panel', 'Admin', 'sendtogeo@gmail.com', 1270708599, 1);
 
 -- --------------------------------------------------------
 
@@ -1178,20 +880,9 @@ CREATE TABLE IF NOT EXISTS `websites` (
   `user_id` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `websites`
 --
 
-INSERT INTO `websites` (`id`, `name`, `url`, `owner_name`, `owner_email`, `category`, `title`, `description`, `keywords`, `title2`, `title3`, `title4`, `title5`, `description2`, `description3`, `description4`, `description5`, `user_id`, `status`) VALUES
-(3, 'Seo Panel', 'http://www.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo tools,seo', 'Seo Panel: World\\''s first seo control panel for multiple web sites', 'A complete free control panel for managing search engine optimization of your websites. It containing lots of hot seo tools to increase and track the performace your websites. Its an open source software and also you can develop your own seo plugins for seo panel.', 'Seo Panel,seo control panel,search engine optimization panel,seo tools kit,keyword rank checker,google pagerank checker,alexa rank checker,sitemap generator,meta tag generator,back link checker,Website Submission tool', '', '', '', '', '', '', '', '', 1, 1),
-(4, 'Seo Free Tools', 'http://www.seofreetools.net', 'Geo Varghese', 'sendtogeo@gmail.com', 'seo', 'SEO Free Tools,Tutorials,PageRank Checker and Alexa Rank Checker', 'Seofreetools.net is providing lot of seo free tools to track your site perfomance. Also latest seo news, seo tutorials to improve your site ratings.', 'SEO Free Tools,SEO Tutorials,SEO News,Cheap Web Hosting', '', '', '', '', '', '', '', '', 1, 1),
-(11, 'Seo Panel Forum', 'http://forum.seopanel.in', 'Geo varghese', 'sendtogeo@gmail.com', 'seo forum,seo', 'Seo Panel Forum Index page', 'Seo Panel Forum ', 'Seo Panel Forum ', '', '', '', '', '', '', '', '', 1, 1),
-(12, 'Support Seo Panel', 'http://support.seofreetools.net/', 'asd', 'asd@gdfg.com', 'asda', 'Seo Panel :: Support Ticket System', 'asdas', 'asdas', '', '', '', '', '', '', '', '', 17, 1),
-(13, 'gethosti', 'http://www.gethostingplans.com/', 'asdasd', 'asda@test.com', 'asd', 'asdas', 'asdasd', 'asdasd', 'asda', 'asda', 'sdasd', 'asdd', 'asd', 'asda', 'asd', 'asdd', 1, 1),
-(14, 'zxc', 'zxczx', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
-(15, 'sdf', 'sdfsdf', NULL, NULL, NULL, 'sdfsd', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
-(16, 'ggggggggg', 'gggggggggggggg', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
-(17, 'dfsfa', 'sdfsdfsd', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
-(18, 'dada', 'daadaaaaaa', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1);
