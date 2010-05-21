@@ -43,7 +43,7 @@ define('DB_ENGINE', 'mysql');
 define('SP_INSTALLED', '2.0.0');
 
 # The DB debug mode
-define('SP_DEBUG', 0);
+define('SP_DEBUG', 1);
 
 # The seo panel seconds for session timeout
 define('SP_TIMEOUT', 18000);

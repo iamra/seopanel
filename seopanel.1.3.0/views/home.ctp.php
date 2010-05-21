@@ -6,7 +6,7 @@
 
 <ul class="infobox">
 	<li>		
-		<h1 style="text-align: center;margin-bottom: 20px;font-size: 20px;">Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
+		<h1 style="text-align: center;margin-bottom: 30px;font-size: 22px;">Welcome to Seo Panel - World's first seo control panel for multiple websites</h1>
 		<p>
 			A complete <b>open source seo control panel</b> for managing <b>search engine optimization</b> of your websites. 
 			Seo Panel is a <b>seo tool kit</b> includes latest hot seo tools to <b>increase and track</b> the <b>performace</b> of your websites.

@@ -37,7 +37,8 @@ class Mysql extends Database{
 			$this->showError();			
 			showErrorMsg("<p style='color:red'>Database connection failed!<br>Please check your database settings!</p>");
 		}
-		$this->selectDatabase($dbName);
+		$this->selectDatabase($dbName);				
+		$this->query( "SET NAMES utf8");
 		return;
 	}
 

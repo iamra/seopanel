@@ -17,5 +17,5 @@
 </table>
 </form>
 <div id='subcontent'>
-	<p class='note'>Select a <b>Website</b> to <b>Proceed</b> directory submission. Check <b>Directories with out captcha</b> to submit to directories with out captcha!</p>
+	<p class='note left'>Select a <b>Website</b> to <b>Proceed</b> directory submission.<br>Check <b>Directories with out captcha</b> to submit to directories with out captcha!</p>
 </div>
