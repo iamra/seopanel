@@ -870,6 +870,7 @@ h1.BlockHeader {
 	text-align: right;
 	vertical-align: bottom;
 	font-size: 12px;
+	float: right;
 }
 
 .pagingdiv a:hover {
