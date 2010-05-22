@@ -256,7 +256,7 @@ function crawlMetaData(url,scriptPos) {
 
 function hideNewsBox(scriptPos, cookieVar, cookieVal) {
 	hideDiv(scriptPos);
-	createCookie(cookieVar, cookieVal, 2);
+	createCookie(cookieVar, cookieVal, 1);
 }
 
 function alertDemoMsg(){
