@@ -21,6 +21,11 @@
  ***************************************************************************/
 include_once 'install.class.php';
 include_once 'db.class.php';
+
+@ini_set("display_erros", "Off");
+@ini_set("display_startup_errors", "Off");
+error_reporting(0);
+
 $install = New Install();
 
 # installation configiration
