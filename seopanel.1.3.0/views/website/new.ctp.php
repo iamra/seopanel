@@ -7,6 +7,7 @@
 	<? 
 	}
 ?>
+<?php $post['url'] = empty($post['url']) ? "http://" : $post['url']; ?>
 <form id="newWebsite">
 <input type="hidden" name="sec" value="create"/>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
