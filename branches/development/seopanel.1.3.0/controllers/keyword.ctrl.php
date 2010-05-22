@@ -104,7 +104,7 @@ class KeywordController extends Controller{
 		$userId = isLoggedIn();
 		$this->set('post', $listInfo);
 		$errMsg['name'] = formatErrorMsg($this->validate->checkBlank($listInfo['name']));		
-		$errMsg['searchengines'] = formatErrorMsg($this->validate->checkBlank($listInfo['searchengines']));
+		$errMsg['searchengines'] = formatErrorMsg($this->validate->checkBlank(implode('', $listInfo['searchengines'])));
 		
 		if(!$this->validate->flagErr){
 			if (!$this->__checkName($listInfo['name'], $listInfo['website_id'])) {
@@ -176,7 +176,7 @@ class KeywordController extends Controller{
 		$userId = isLoggedIn();
 		$this->set('post', $listInfo);
 		$errMsg['name'] = formatErrorMsg($this->validate->checkBlank($listInfo['name']));
-		$errMsg['searchengines'] = formatErrorMsg($this->validate->checkBlank($listInfo['searchengines']));
+		$errMsg['searchengines'] = formatErrorMsg($this->validate->checkBlank(implode('', $listInfo['searchengines'])));
 		if(!$this->validate->flagErr){
 
 			if($listInfo['name'] != $listInfo['oldName']){
