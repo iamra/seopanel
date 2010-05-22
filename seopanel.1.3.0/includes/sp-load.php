@@ -24,26 +24,6 @@ $abspath = getcwd();
 define( 'SP_ABSPATH', $abspath );
 
 
-# check for curl with php 
-if (!function_exists('curl_init')) {
-	print "
-		<div style='margin:50px 250px;font-size:13px;border:1px solid black;padding:5px;line-height:30px;background-color:#f4f7fa;color:#da3838'>
-		The <b>CURL is not Installed with PHP</b> in your <b>Server</b>.<br>
-		Please <b>INSTALL</b> it by referring <br><a href='http://php.net/manual/en/curl.setup.php'>http://php.net/manual/en/curl.setup.php</a>  
-		<br>or <br>Please <b>contact your web hosting provider to INSTALL</b> it.</div>";
-	exit;
-}
-
-# checks for php short_open_tag 
-if (!ini_get('short_open_tag')) {
-	print "
-		<div style='margin:50px 200px;font-size:14px;border:1px solid black;padding:5px;line-height:30px;background-color:#f4f7fa;background-color:#f4f7fa;color:#da3838'>
-		The <b>php.ini directive 'short_open_tag' is not enabled</b> in your Server.<br> 
-		Please <b>enable</b> it from <b>php.ini</b> file by referring <br><a href='http://php.net/manual/en/ini.core.php'>http://php.net/manual/en/ini.core.php</a>  
-		<br>or<br> Please <b>contact your web hosting provider to Enable</b> it.</div>";
-	exit;
-}
-
 if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	
 	# loads seo panel main config file
@@ -53,6 +33,26 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 		header('Location: install/');
 		exit;
 	}
+	
+	# check for curl with php 
+	if (!function_exists('curl_init')) {
+		print "
+			<div style='margin:50px 250px;font-size:13px;border:1px solid black;padding:5px;line-height:30px;background-color:#f4f7fa;color:#da3838'>
+			The <b>CURL is not Installed with PHP</b> in your <b>Server</b>.<br>
+			Please <b>INSTALL</b> it by referring <br><a href='http://php.net/manual/en/curl.setup.php'>http://php.net/manual/en/curl.setup.php</a>  
+			<br>or <br>Please <b>contact your web hosting provider to INSTALL</b> it.</div>";
+		exit;
+	}
+	
+	# checks for php short_open_tag 
+	if (!ini_get('short_open_tag')) {
+		print "
+			<div style='margin:50px 200px;font-size:14px;border:1px solid black;padding:5px;line-height:30px;background-color:#f4f7fa;background-color:#f4f7fa;color:#da3838'>
+			The <b>php.ini directive 'short_open_tag' is not enabled</b> in your Server.<br> 
+			Please <b>enable</b> it from <b>php.ini</b> file by referring <br><a href='http://php.net/manual/en/ini.core.php'>http://php.net/manual/en/ini.core.php</a>  
+			<br>or<br> Please <b>contact your web hosting provider to Enable</b> it.</div>";
+		exit;
+	}	
 	
 	# load seo panel extra config variables
 	if(file_exists(SP_ABSPATH."/config/sp-config-extra.php")){

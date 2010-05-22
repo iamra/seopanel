@@ -37,9 +37,7 @@ class Install {
 		$mysqlClass = "red";
 		$mysqlSupport = "No";
 		if(function_exists('mysql_query')){
-			$res = mysql_query("select version() as version");
-			$resObj = mysql_fetch_object($res);
-			$mysqlSupport = "Yes ( MySQL " . $resObj->version ." )";
+			$mysqlSupport = "Yes";
 			$mysqlClass = "green";
 		}
 		
@@ -324,9 +322,7 @@ class Install {
 		$mysqlClass = "red";
 		$mysqlSupport = "No";
 		if(function_exists('mysql_query')){
-			$res = mysql_query("select version() as version");
-			$resObj = mysql_fetch_object($res);
-			$mysqlSupport = "Yes ( MySQL " . $resObj->version ." )";
+			$mysqlSupport = "Yes";
 			$mysqlClass = "green";
 		}
 		
