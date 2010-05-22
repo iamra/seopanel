@@ -389,7 +389,7 @@ class Install {
 		$errMsg = "";
 		if($error){
 			if(empty($errorMsg)){
-				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') ){
+				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') || ($dbClass == 'red')){
 					$errMsg = "Please fix the following errors to proceed to next step!";
 				}
 			}else{
