@@ -371,9 +371,6 @@ class Install {
 		$dbClass = "red";
 		$dbSupport = "Database config variables not defined";
 		include_once(SP_INSTALL_CONFIG_FILE);
-		if(defined('SP_INSTALLED') && (SP_INSTALLED == SP_UPGRADE_VERSION)){
-			die("<p style='color:red'>Seo Panel version ".SP_INSTALLED." is already installed in your system!</p>");
-		}		
 		if(defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER') && defined('DB_PASSWORD') && defined('DB_ENGINE')){
 			$db = New DB();
 			
@@ -389,7 +386,7 @@ class Install {
 		$errMsg = "";
 		if($error){
 			if(empty($errorMsg)){
-				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') || ($dbClass == 'red')){
+				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') || ($dbClass == 'red') ){
 					$errMsg = "Please fix the following errors to proceed to next step!";
 				}
 			}else{
