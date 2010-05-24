@@ -64,48 +64,49 @@ function sitemapDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoadi
 		parameters : scriptArgs,
 		evalScripts : true,
 		onLoading: function(request){ showLoadingIcon(scriptPos, noLoading); },
-		onComplete : function(request){ periodic.stop();},
+		onComplete : function(request){ periodic.stop();}
 	});	
 }
 
 /* Onloading image icon function */
 function showLoadingIcon(scriptPos,noLoading){
 	loading = 0;
+  	contentDiv = "";
 	switch (scriptPos){		
 		
 		case "content":
-			content = '<div id="loading_content"></div>';
+			contentDiv = '<div id="loading_content"></div>';
 			loading = 1;
 			break;
 		
 		case "subcontent":
-			content = '<div id="loading_subcontent"></div>';
+			contentDiv = '<div id="loading_subcontent"></div>';
 			loading = 1;
 			break;
 		
 		case "ContentFrame":
-			content = '<div id="loading_content_frame"></div>';
+			contentDiv = '<div id="loading_content_frame"></div>';
 			loading = 1;
 			break;
 		
 		case "subcontmed":
-			content = '<div id="loading_subcontmed"></div>';
+			contentDiv = '<div id="loading_subcontmed"></div>';
 			loading = 1;
 			break;
 			
 		case "newsalert":
-			content = '<div id="loading_longthin"></div>';
+			contentDiv = '<div id="loading_longthin"></div>';
 			loading = 1;
 			break;
 		
 		default :
-			content = '<div id="loading_rankarea"></div>';
+			contentDiv = '<div id="loading_rankarea"></div>';
 			loading = 1;
 			break;
 	}
 	
 	if((loading == 1) && (noLoading != 1)){
-		document.getElementById(scriptPos).innerHTML = content;
+		document.getElementById(scriptPos).innerHTML = contentDiv;
 	}
 }
 
