@@ -1,19 +1,10 @@
 #labels seo,panel,installation,requirements,Featured
-= Introduction =
+== Seo Panel Installation Requirements ==
 
-Seo Panel Installation Requirements
+1. *PHP* version >= 4.0.0
 
+2. *MySQL* Support
 
-= Details =
+3. *CURL* Support - Curl must be installed with php, Ref: http://php.net/manual/en/curl.setup.php
 
-
-
-1. *PHP, MYSQL*
-
-2. *CURL installed with PHP*, Refer following link to install CURL with php if it is not installed.
-
-http://php.net/manual/en/curl.setup.php
-
-or
-
-Please contact your Web Hosting Provider to install it.
+4. PHP *short_open_tag* - In php settings short_open_tag must be enabled
