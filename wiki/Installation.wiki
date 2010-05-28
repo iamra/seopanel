@@ -10,7 +10,7 @@
 4. Change the permissions on the *tmp* directory to be writable by all (777 or -rwxrwxrwx within your FTP Client) 
 
 5. Using your web browser visit the location you placed Seo Panel with the addition of *install/index.php* or pointing directly to *install/*
-e.g. *http://www.yourdomain.com/seopanel/install/*
+e.g. http://www.yourdomain.com/seopanel/install/
 
 6. Follow the steps and fill out all the requested information.
 
