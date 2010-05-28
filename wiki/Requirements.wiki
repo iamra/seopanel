@@ -1,4 +1,4 @@
-#labels seo,panel,installation,requirements,Featured
+#labels seo,panel,installation,requirements,Featured,Phase-Requirements
 == Seo Panel Installation Requirements ==
 
 1. *PHP* version >= 4.0.0
