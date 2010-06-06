@@ -95,9 +95,12 @@ class IndexController extends Controller{
 				if(empty($_COOKIE['default_news'])){
 					$ret = $this->spider->getContent(SP_NEWS_PAGE);
 					setcookie("default_news", $ret['page'], time()+ (60*60*24));
-				}				
-				$this->set('newsContent', stripslashes($_COOKIE['default_news']));
-				$this->render('common/topnewsbox', 'ajax');
+				}
+				
+				if(!empty($_COOKIE['default_news'])){				
+					$this->set('newsContent', stripslashes($_COOKIE['default_news']));
+					$this->render('common/topnewsbox', 'ajax');
+				}
 		}
 		
 	}
