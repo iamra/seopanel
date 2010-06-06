@@ -93,7 +93,6 @@ class IndexController extends Controller{
 			
 			default:
 				if(empty($_COOKIE['default_news'])){
-					echo "hh";exit;
 					$ret = $this->spider->getContent(SP_NEWS_PAGE);
 					setcookie("default_news", $ret['page'], time()+ (60*60*24));
 				}				
