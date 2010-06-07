@@ -415,8 +415,8 @@ class ReportController extends Controller {
 	function crawlKeyword( $keywordInfo, $seId='' ) {
 		$crawlResult = array();
 		$websiteUrl = formatUrl($keywordInfo['url']);
-		if(!preg_match('/\w/', $websiteUrl)) return $crawlResult;
-		if(!preg_match('/\w/', $keywordInfo['name'])) return $crawlResult;	
+		if(empty($websiteUrl)) return $crawlResult;
+		if(empty($keywordInfo['name'])) return $crawlResult;	
 		
 		$seList = explode(':', $keywordInfo['searchengines']);
 		foreach($seList as $seInfoId){
