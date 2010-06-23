@@ -43,8 +43,8 @@
 					<td class="content"><?php echo $websiteInfo['googlerank'];?></td>
 					<td class="content"><?php echo $websiteInfo['alexarank'];?></td>
 					<td class="content"><?php echo $websiteInfo['google']['backlinks'];?></td>
-					<td class="content"><?php echo $websiteInfo['msn']['backlinks'];?></td>
 					<td class="content"><?php echo $websiteInfo['yahoo']['backlinks'];?></td>
+					<td class="content"><?php echo $websiteInfo['msn']['backlinks'];?></td>
 					<td class="content"><?php echo $websiteInfo['google']['indexed'];?></td>
 					<td class="content"><?php echo $websiteInfo['yahoo']['indexed'];?></td>					
 					<td class="content"><?php echo $websiteInfo['msn']['indexed'];?></td>
