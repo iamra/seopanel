@@ -400,3 +400,9 @@ update searchengines set regex='<li.*?<h3><a.*?\\*\\*(.*?)".*?>(.*?)<\\/a><\\/h3
 --
 ALTER TABLE searchengines ADD `start_offset` INT( 8 ) NOT NULL DEFAULT '0' AFTER `start`;
 UPDATE `searchengines` SET `start_offset` = `no_of_results_page`;
+
+--
+-- Fix for google SE in 3.0.0
+--
+
+UPDATE searchengines SET from_pattern='<div id="?ires"?>' where  url LIKE '%google%';
