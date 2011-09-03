@@ -7302,6 +7302,7 @@ CREATE TABLE IF NOT EXISTS `websites` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `websites`
+-- Fix for google SE in 3.0.0
 --
 
+UPDATE searchengines SET from_pattern='<div id="?ires"?>' where  url LIKE '%google%';
