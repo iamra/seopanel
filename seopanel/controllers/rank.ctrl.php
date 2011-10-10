@@ -60,7 +60,7 @@ class RankController extends Controller{
 	function __getGooglePageRank ($url) {
 
 	    if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;	    
-		$url = "http://www.google.com/search?client=navclient-auto&ch=".$this->CheckHash($this->hashURL($url))."&features=Rank&q=info:".$url."&num=100&filter=0";
+		$url = "http://toolbarqueries.google.com/tbr?client=navclient-auto&ch=".$this->CheckHash($this->hashURL($url))."&features=Rank&q=info:".$url."&num=100&filter=0";
 		$ret = $this->spider->getContent($url);
 		if(!empty($ret['page'])){
 			preg_match('/Rank_([0-9]+):([0-9]+):([0-9]+)/si', $ret['page'], $matches);
