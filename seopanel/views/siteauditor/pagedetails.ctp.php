@@ -105,10 +105,10 @@ $backLink = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&
         				<td class="td_br_right left"><?=$listInfo['link_anchor']?></td>
         				<td class="td_br_right left"><?=$listInfo['link_title']?></td>
         				<td class="td_br_right">
-        				    <?php echo $reportInfo['nofollow'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
+        				    <?php echo $listInfo['nofollow'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
         				</td>
         				<td class="<?=$rightBotClass?>">
-        					<?php echo $reportInfo['external'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
+        					<?php echo $listInfo['extrenal'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
         				</td>
         			</tr>
         			<?php
