@@ -68,13 +68,21 @@ class Spider{
     # func to get backlink page info
 	function getPageInfo($url, $domainUrl, $returnUrls=false){
 	    
-		$ret = $this->getContent(Spider::addTrailingSlash($url));
+	    $urlWithTrailingSlash = Spider::addTrailingSlash($url);
+		$ret = $this->getContent($urlWithTrailingSlash);
 		$pageInfo = array();
 		$checkUrl = formatUrl($domainUrl);
 		
 		if( !empty($ret['page'])){
 			$string = str_replace(array("\n",'\n\r','\r\n','\r'), "", $ret['page']);			
 			$pageInfo = WebsiteController::crawlMetaData($url, '', $string, true);
+			
+			// to add the url with to current url when no httpp prefix is vailable with it 
+			if ( ($url != $domainUrl) && preg_match('/.*\//', $urlWithTrailingSlash, $matchPrefix)) { 
+			    $appendUrlPrefix = $matchPrefix[0];
+			} else {
+			    $appendUrlPrefix = $domainUrl."/";
+			} 
 					
 			$pattern = "/<a(.*?)>(.*?)<\/a>/is";	
 			preg_match_all($pattern, $string, $matches, PREG_PATTERN_ORDER);
@@ -91,7 +99,13 @@ class Spider{
     					        $pageInfo['external'] += 1;
     					    }					        
     				    } else {
-    				        $href = $domainUrl."/".$href;
+    				        $href = $appendUrlPrefix.$href;
+    				        // if contains back directory operator
+    				        if (stristr($href, '/../')) {
+                            	$hrefParts = explode('/../', $href);
+                            	preg_match('/.*\//', $hrefParts[0], $matchpart);	
+                            	$href = $matchpart[0]. $hrefParts[1];
+                            }
     				    }
     				    
     				    // if details of urls to be checked
@@ -114,6 +128,7 @@ class Spider{
 				}
 			}			
 		}
+		//echo "<pre>";print_r($pageInfo);exit;
 		return $pageInfo;
 	}
 	
