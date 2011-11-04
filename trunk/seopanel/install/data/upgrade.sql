@@ -1,0 +1,1 @@
+UPDATE searchengines SET regex = '<li.*?class="?g.*?<a.*?href="(.*?)".*?>(.*?)<\\/a>.*?<div.*?>(.*?)<cite>' WHERE url LIKE '%google%';
