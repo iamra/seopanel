@@ -7306,3 +7306,4 @@ CREATE TABLE IF NOT EXISTS `websites` (
 --
 
 UPDATE searchengines SET from_pattern='<div id="?ires"?>' where  url LIKE '%google%';
+UPDATE searchengines SET regex = '<li.*?class="?g.*?<a.*?href="(.*?)".*?>(.*?)<\\/a>.*?<div.*?>(.*?)<cite>' WHERE url LIKE '%google%';
