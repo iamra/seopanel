@@ -88,6 +88,7 @@ class ReportController extends Controller {
 		$websiteList = $websiteController->__getAllWebsitesWithActiveKeywords($userId, true);
 		$this->set('websiteList', $websiteList);
 		$websiteId = isset($searchInfo['website_id']) ? $searchInfo['website_id'] : $websiteList[0]['id'];
+		$websiteId = intval($websiteId);
 		$this->set('websiteId', $websiteId);
 		
 		$seController = New SearchEngineController();
