@@ -83,8 +83,10 @@ class BacklinkController extends Controller{
 			case 'msn':
 				$url = 'http://www.bing.com/search?q=link%3A' . urlencode($this->url);
 				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];				
-				preg_match('/of ([0-9\,]+) results/si', $v, $r);
+				$v = empty($v['page']) ? '' :  $v['page'];
+		        if(preg_match('/of ([0-9\,]+) results/si', $v, $r)) {
+				}elseif(preg_match('/id="count">.*?\(([0-9\,]+).*?\)/si', $v, $r)) {				    
+				}
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
