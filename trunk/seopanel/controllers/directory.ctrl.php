@@ -182,7 +182,7 @@ class DirectoryController extends Controller{
 		if(!empty($_SESSION['dirsub_lang'])) $sql .= " and lang_code='{$_SESSION['dirsub_lang']}'";
 		if(!empty($dirId)) $sql .= " and id=$dirId";
 		if(count($dirList) > 0) $sql .= " and id not in (".implode(',', $dirList).")";
-		$sql .= " order by id";
+		$sql .= " order by extra_val ASC";
 		$dirInfo = $this->db->select($sql, true);
 		$this->set('dirInfo', $dirInfo);		
 		
