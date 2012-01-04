@@ -834,6 +834,7 @@ h1.BlockHeader {
 	height: 20px;
 	background: url('../images/ajax-loader-small.gif') center center no-repeat;
 	z-index: 5;
+	margin: auto;
 }
 
 #loading_longthin {
@@ -849,6 +850,7 @@ h1.BlockHeader {
 	height: 350px;
 	background: url('../images/ajax-loader.gif') center center no-repeat;
 	z-index: 5;
+	margin: auto;
 }
 
 #loading_subcontent {
@@ -856,7 +858,7 @@ h1.BlockHeader {
 	height: 350px;
 	background: url('../images/ajax-loader.gif') center center no-repeat;
 	z-index: 5;
-	margin-top: 10px;
+	margin: 10px auto 0px auto;
 	border: 1px solid #E5E5E5;
 }
 
@@ -865,7 +867,7 @@ h1.BlockHeader {
 	height: 100px;
 	background: url('../images/ajax-loader.gif') center center no-repeat;
 	z-index: 5;
-	margin-top: 10px;
+	margin: 10px auto 0px auto;
 	border: 1px solid #E5E5E5;
 }
 
