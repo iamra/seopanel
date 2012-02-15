@@ -114,7 +114,7 @@ class View extends Seopanel{
 		}
 
 		ob_start();
-		include_once(PLUGIN_VIEWPATH."/".$viewFile.".ctp.php");
+		include(PLUGIN_VIEWPATH."/".$viewFile.".ctp.php");
 		$viewContent = ob_get_contents();
 		ob_end_clean();
 		return $viewContent;
