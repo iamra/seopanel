@@ -63,3 +63,10 @@ if(!empty($msg)){
 		<td class="right"></td>
 	</tr>
 </table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
+	<tr>
+    	<td style="padding-top: 6px;text-align:right;">
+    		<a href="<?=SP_PLUGINSITE?>" class="actionbut" target="_blank"><?=$spTextPlugin['Download Seo Panel Plugins']?> &gt;&gt;</a>
+    	</td>
+	</tr>
+</table>
