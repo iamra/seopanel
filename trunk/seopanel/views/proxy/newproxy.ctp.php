@@ -27,7 +27,7 @@
 	<tr class="blue_row">
 		<td class="td_left_col"><?=$spTextProxy['Proxy Password']?>:</td>
 		<td class="td_right_col">
-			<input type="text" name="proxy_password" value="<?=$post['proxy_password']?>"><?=$errMsg['proxy_password']?>
+			<input type="password" name="proxy_password" value="<?=$post['proxy_password']?>"><?=$errMsg['proxy_password']?>
 		</td>
 	</tr>		
 	<tr class="blue_row">
