@@ -305,4 +305,9 @@ function showPrintHeader($headMsg='') {
 	<?php
 	if (!empty($headMsg)) echo showSectionHead($headMsg);
 }
+
+# func to debug the variables
+function debugVar($value) {
+    echo "<pre>";print_r($value);echo "</pre>";
+}
 ?>
