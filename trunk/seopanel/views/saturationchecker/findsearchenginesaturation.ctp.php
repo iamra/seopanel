@@ -2,11 +2,10 @@
 	<tr class="listHead">
 		<td class="left"><?=$spText['common']['Url']?></td>
 		<td>Google</td>
-		<td>Yahoo</td>
 		<td class="right">Bing</td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 3; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
@@ -20,18 +19,13 @@
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $tdWidth = "130px";            
+            $tdWidth = "25%";            
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>" style="text-align:left;padding-left:10px;"><?=$url?></td>
 				<td class="td_br_right" width="<?=$tdWidth?>" id='googlerank<?=$i?>'>
 					<script type="text/javascript">
 						scriptDoLoad('saturationchecker.php', 'googlerank<?=$i?>', 'sec=saturation&engine=google&url=<? echo urlencode($url); ?>');
-					</script>
-				</td>
-				<td class="td_br_right" width="<?=$tdWidth?>" id='yahoorank<?=$i?>'>
-					<script type="text/javascript">
-						scriptDoLoad('saturationchecker.php', 'yahoorank<?=$i?>', 'sec=saturation&engine=yahoo&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
 				<td class="<?=$rightBotClass?>" width="<?=$tdWidth?>" id='msnrank<?=$i?>'>
