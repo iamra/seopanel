@@ -90,6 +90,29 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	define('SP_IMGPATH', SP_WEBPATH."/images");
 	define('SP_JSPATH', SP_WEBPATH."/js");
 
+	# to prevent sql injection
+	if(!empty($_SERVER['REQUEST_METHOD']) && SP_PREVENT_SQL_INJECTION){
+	    # merge all post and get elements
+        foreach (array_merge($_GET, $_POST) AS $name => $value) {
+            
+            # if not a numeric parameter
+            if (!is_numeric($value)) {
+               
+                # Search for patterns in the value of the parameter that indicate an SQL injection
+                $pattern = '/(and|or)[\s\(\)\/\*]+(update|delete|select)\W|(select|update).+\.(password|email)|(select|update|delete).+users/im';
+                
+                # replace all matched strings
+                while (preg_match($pattern, $value)) {
+                    if (isset($_GET[$name])) {
+                        $value = $_GET[$name] = $_REQUEST[$name] = preg_replace($pattern, '', $value);
+                    } else {
+                        $value = $_POST[$name] = $_REQUEST[$name] = preg_replace($pattern, '', $value);
+                    }
+                }
+            }
+        }
+    }	
+
 	# create super class object
 	include_once(SP_LIBPATH."/seopanel.class.php");
 	$seopanel = New Seopanel();
