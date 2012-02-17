@@ -2,7 +2,7 @@
 	<tr class="listHead">
 		<td class="left"><?=$spText['common']['Url']?></td>
 		<td>Google</td>
-		<td>Yahoo</td>
+		<td>Alexa</td>
 		<td class="right">Bing</td>
 	</tr>
 	<?php
@@ -29,9 +29,9 @@
 						scriptDoLoad('backlinks.php', 'googlerank<?=$i?>', 'sec=backlink&engine=google&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
-				<td class="td_br_right" width="<?=$tdWidth?>" id='yahoorank<?=$i?>'>
+				<td class="td_br_right" width="<?=$tdWidth?>" id='alexa<?=$i?>'>
 					<script type="text/javascript">
-						scriptDoLoad('backlinks.php', 'yahoorank<?=$i?>', 'sec=backlink&engine=yahoo&url=<? echo urlencode($url); ?>');
+						scriptDoLoad('backlinks.php', 'alexa<?=$i?>', 'sec=backlink&engine=alexa&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
 				<td class="<?=$rightBotClass?>" width="<?=$tdWidth?>" id='msnrank<?=$i?>'>

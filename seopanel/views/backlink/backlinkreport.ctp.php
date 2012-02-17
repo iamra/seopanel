@@ -1,4 +1,4 @@
-<?php echo showSectionHead($spTextTools['Generate Backlinks Reports']); ?>
+<?php echo showSectionHead($spTextTools['Backlinks Reports']); ?>
 <form id='search_form'>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
@@ -43,7 +43,7 @@
 	<tr class="listHead">
 		<td class="left"><?=$spText['common']['Date']?></td>
 		<td>Google</td>
-		<td>Yahoo</td>
+		<td>Alexa</td>
 		<td class="right">Bing</td>
 	</tr>
 	<?php
@@ -65,7 +65,7 @@
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?php echo date('Y-m-d', $listInfo['result_time']); ?></td>
 				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['google'].'</b> '. $listInfo['rank_diff_google']?></td>
-				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['yahoo'].'</b> '. $listInfo['rank_diff_yahoo']?></td>
+				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['alexa'].'</b> '. $listInfo['rank_diff_alexa']?></td>
 				<td class='<?=$rightBotClass?>' style='text-align:left;padding-left:40px;'><b><?=$listInfo['msn'].'</b> '. $listInfo['rank_diff_msn']?></td>
 			</tr>
 			<?php
