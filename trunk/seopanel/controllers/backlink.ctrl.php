@@ -23,8 +23,7 @@
 # class defines all backlink controller functions
 class BacklinkController extends Controller{
 	var $url;
-	/*var $colList = array('google' => 'google', 'yahoo' => 'yahoo', 'msn' => 'msn', 'altavista' => 'altavista', 'alltheweb' => 'alltheweb');*/
-	var $colList = array('google' => 'google', 'yahoo' => 'yahoo', 'msn' => 'msn');
+	var $colList = array('google' => 'google', 'alexa' => 'alexa', 'msn' => 'msn');
 	
 	function showBacklink() {
 		
@@ -70,18 +69,10 @@ class BacklinkController extends Controller{
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
-			#yahoo
-			case 'yahoo':
-				$url = "http://siteexplorer.search.yahoo.com/advsearch?p=".urldecode(formatUrl($this->url, false))."&bwm=i&bwmo=d&bwmf=s";
-				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];
-				preg_match('/Inlinks \((.+?)\)/si', $v, $r);
-				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
-				break;
-				
 			#msn
 			case 'msn':
-				$url = 'http://www.bing.com/search?q=link%3A' . urlencode($this->url);
+			    $url = formatUrl($this->url, false);
+				$url = 'http://www.bing.com/search?q=link%3A' . urlencode($url);
 				$v = $this->spider->getContent($url);
 				$v = empty($v['page']) ? '' :  $v['page'];
 		        if(preg_match('/of ([0-9\,]+) results/si', $v, $r)) {
@@ -90,23 +81,14 @@ class BacklinkController extends Controller{
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
-			#altavista
-			case 'altavista':
-				$url = "http://siteexplorer.search.yahoo.com/advsearch?p=".urlencode($this->url)."&bwm=i&bwmf=u&bwms=p&fr=altavista";
-                $v = $this->spider->getContent($url);
-                $v = empty($v['page']) ? '' :  $v['page'];
-                preg_match('/Inlinks \((.+?)\)/si', $v, $r);
-                return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
-                break;
-				
-			#alltheweb
-			case 'alltheweb':				
-				$url = "http://siteexplorer.search.yahoo.com/advsearch?p=".urlencode($this->url)."&bwm=i&bwmf=u&bwms=p&fr=alltheweb";
-                $v = $this->spider->getContent($url);
-                $v = empty($v['page']) ? '' :  $v['page'];
-                preg_match('/Inlinks \((.+?)\)/si', $v, $r);
-                return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
-                break;
+			# alexa
+			case 'alexa':
+				$url = 'http://data.alexa.com/data?cli=10&dat=snbamz&url=' . urlencode($this->url);
+				$v = $this->spider->getContent($url);
+				$v = empty($v['page']) ? '' :  $v['page'];
+				preg_match('/<LINKSIN NUM="(.*?)"/si', $v, $r);
+				return ($r[1]) ? intval($r[1]) : 0;
+				break;
 		}
 		
 		return 0;
@@ -160,8 +142,8 @@ class BacklinkController extends Controller{
 			$this->db->query($sql);
 		}
 		
-		$sql = "insert into backlinkresults(website_id,google,yahoo,msn,result_time)
-				values({$matchInfo['id']},{$matchInfo['google']},{$matchInfo['yahoo']},{$matchInfo['msn']},$time)";
+		$sql = "insert into backlinkresults(website_id,google,alexa,msn,result_time)
+				values({$matchInfo['id']},{$matchInfo['google']},{$matchInfo['alexa']},{$matchInfo['msn']},$time)";
 		$this->db->query($sql);
 	}
 	

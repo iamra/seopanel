@@ -1,4 +1,4 @@
-<?php echo showSectionHead($spText['common']['Generate Backlinks Reports']); ?>
+<?php echo showSectionHead($spTextTools['Generate Backlinks Reports']); ?>
 <form id='search_form'>
 <table width="400px" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
