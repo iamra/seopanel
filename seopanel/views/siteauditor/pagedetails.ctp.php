@@ -12,14 +12,14 @@ $backLink = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&
         	<tr>
         		<th class="leftcell" width="20%"><?=$spTextSA['Page Link']?>:</th>
         		<td width="40%" style="text-align: left;"><a href="<?=$reportInfo['page_url']?>" target="_blank"><?=$reportInfo['page_url']?></a></td>
-        		<th width="20%">Google <?=$spTextHome['Backlinks']?>:</th>
-        		<td><?=$reportInfo['google_backlinks']?></td>        		
+        		<th width="20%">Google Pagerank:</th>
+        		<td><?=$reportInfo['pagerank']?></td>        		
         	</tr>
         	<tr>
         		<th class="leftcell"><?=$spText['label']['Title']?>:</th>
         		<td style="text-align: left;"><?=strip_tags($reportInfo['page_title'])?></td>
-        		<th>Yahoo <?=$spTextHome['Backlinks']?>:</th>
-        		<td><?=$reportInfo['yahoo_backlinks']?></td>
+        		<th>Google <?=$spTextHome['Backlinks']?>:</th>
+        		<td><?=$reportInfo['google_backlinks']?></td>
         	</tr>
         	<tr>
         		<th class="leftcell"><?=$spText['label']['Description']?>:</th>
@@ -36,12 +36,6 @@ $backLink = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&
         	<tr>
         		<th class="leftcell"><?=$spText['label']['Comments']?>:</th>
         		<td style="text-align: left;"><?=$reportInfo['comments']?></td>
-        		<th>Yahoo <?=$spTextHome['Indexed']?>:</th>
-        		<td><?=$reportInfo['yahoo_indexed']?></td>
-        	</tr>
-        	<tr>
-        		<th class="leftcell">Google Pagerank:</th>
-        		<td style="text-align: left;"><?=$reportInfo['pagerank']?></td>
         		<th>Bing <?=$spTextHome['Indexed']?>:</th>
         		<td><?=$reportInfo['bing_indexed']?></td>
         	</tr>

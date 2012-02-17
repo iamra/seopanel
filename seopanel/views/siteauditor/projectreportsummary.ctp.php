@@ -45,28 +45,6 @@ if(!empty($printVersion)) {
         	</tr>
         	<tr>
             	<?php
-        	    foreach ($seArr as $i => $se) {
-    		        $class = $i ? "" :"leftcell";
-    		        ?>
-    		        <th class="<?=$class?>"><?=ucfirst($se)?> <?=$spTextHome['Backlinks']?>:</th>
-        			<td><?=$projectInfo[$se."_backlinks"]?></td>
-    		        <?php	        
-        	    } 
-            	?>
-        	</tr>
-        	<tr>
-            	<?php
-        	    foreach ($seArr as $i => $se) {
-    		        $class = $i ? "" :"leftcell";
-    		        ?>
-    		        <th class="<?=$class?>"><?=ucfirst($se)?> <?=$spTextHome['Indexed']?>:</th>
-        			<td><?=$projectInfo[$se."_indexed"]?></td>
-    		        <?php	        
-        	    } 
-            	?>
-        	</tr>
-        	<tr>
-            	<?php
         	    foreach ($metaArr as $col => $label) {
     		        $class = ($col == "page_title") ? "leftcell" : "";
     		        ?>
@@ -109,6 +87,33 @@ if(!empty($printVersion)) {
         		<td><?=$projectInfo['PR0']?></td>
         		<th><?=$spText['label']['Brocken']?>:</th>
         		<td><?=$projectInfo['brocken']?></td>
+        	</tr>
+        	
+        	<tr>
+            	<?php
+        	    foreach ($seArr as $i => $se) {
+    		        $class = $i ? "" :"leftcell";
+    		        ?>
+    		        <th class="<?=$class?>"><?=ucfirst($se)?> <?=$spTextHome['Backlinks']?>:</th>
+        			<td><?=$projectInfo[$se."_backlinks"]?></td>
+    		        <?php	        
+        	    } 
+            	?>
+        		<th>&nbsp;</th>
+        		<td>&nbsp;</td>
+        	</tr>
+        	<tr>
+            	<?php
+        	    foreach ($seArr as $i => $se) {
+    		        $class = $i ? "" :"leftcell";
+    		        ?>
+    		        <th class="<?=$class?>"><?=ucfirst($se)?> <?=$spTextHome['Indexed']?>:</th>
+        			<td><?=$projectInfo[$se."_indexed"]?></td>
+    		        <?php	        
+        	    } 
+            	?>
+        		<th>&nbsp;</th>
+        		<td>&nbsp;</td>
         	</tr>
         </table>
 	</div>
