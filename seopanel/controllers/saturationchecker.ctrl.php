@@ -23,7 +23,7 @@
 # class defines all backlink controller functions
 class SaturationCheckerController extends Controller{
 	var $url;
-	var $colList = array('google' => 'google', 'yahoo' => 'yahoo', 'msn' => 'msn');
+	var $colList = array('google' => 'google', 'msn' => 'msn');
 	
 	function showSaturationChecker() {
 		
@@ -74,15 +74,6 @@ class SaturationCheckerController extends Controller{
 					$rank = ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				}
 				return $rank;
-				break;
-				
-			#yahoo
-			case 'yahoo':
-				$url = 'http://siteexplorer.search.yahoo.com/advsearch?p=' . urldecode(formatUrl($this->url, false));
-				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];
-				preg_match('/Pages \(([0-9\,]+)\)/si', $v, $r);
-				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
 			#msn
@@ -149,8 +140,8 @@ class SaturationCheckerController extends Controller{
 			$this->db->query($sql);
 		}
 		
-		$sql = "insert into saturationresults(website_id,google,yahoo,msn,result_time)
-				values({$matchInfo['id']},{$matchInfo['google']},{$matchInfo['yahoo']},{$matchInfo['msn']},$time)";
+		$sql = "insert into saturationresults(website_id,google,msn,result_time)
+				values({$matchInfo['id']},{$matchInfo['google']},{$matchInfo['msn']},$time)";
 		$this->db->query($sql);
 	}
 	

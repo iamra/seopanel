@@ -43,11 +43,10 @@
 	<tr class="listHead">
 		<td class="left"><?=$spText['common']['Date']?></td>
 		<td>Google</td>
-		<td>Yahoo</td>
 		<td class="right">Bing</td>
 	</tr>
 	<?php
-	$colCount = 4; 
+	$colCount = 3; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
@@ -65,7 +64,6 @@
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?php echo date('Y-m-d', $listInfo['result_time']); ?></td>
 				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['google'].'</b> '. $listInfo['rank_diff_google']?></td>
-				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['yahoo'].'</b> '. $listInfo['rank_diff_yahoo']?></td>
 				<td class='<?=$rightBotClass?>' style='text-align:left;padding-left:40px;'><b><?=$listInfo['msn'].'</b> '. $listInfo['rank_diff_msn']?></td>
 			</tr>
 			<?php
