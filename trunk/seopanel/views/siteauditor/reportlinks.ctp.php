@@ -37,10 +37,8 @@ if(!empty($printVersion)) {
 		<td class="left" style="width: 30%;"><?=$page_urlLink?></td>
 		<td><?=$pagerankLink?></td>
 		<td><?=$google_backlinksLink?></td>
-		<td><?=$yahoo_backlinksLink?></td>
 		<td><?=$bing_backlinksLink?></td>
 		<td><?=$google_indexedLink?></td>
-		<td><?=$yahoo_indexedLink?></td>
 		<td><?=$bing_indexedLink?></td>
 		<td><?=$external_linksLink?></td>
 		<td><?=$total_linksLink?></td>
@@ -49,7 +47,7 @@ if(!empty($printVersion)) {
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = 13; 
+	$colCount = 11; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -64,10 +62,8 @@ if(!empty($printVersion)) {
 				<td class="<?=$leftBotClass?> left"><?=$pageLink?></td>
 				<td class="td_br_right"><?=$listInfo['pagerank']?></td>
 				<td class="td_br_right"><?=$listInfo['google_backlinks']?></td>
-				<td class="td_br_right"><?=$listInfo['yahoo_backlinks']?></td>
 				<td class="td_br_right"><?=$listInfo['bing_backlinks']?></td>
 				<td class="td_br_right"><?=$listInfo['google_indexed']?></td>
-				<td class="td_br_right"><?=$listInfo['yahoo_indexed']?></td>
 				<td class="td_br_right"><?=$listInfo['bing_indexed']?></td>
 				<td class="td_br_right"><?=$listInfo['external_links']?></td>
 				<td class="td_br_right"><?=$listInfo['total_links']?></td>
