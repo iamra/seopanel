@@ -43,7 +43,7 @@ if(!empty($printVersion)) {
 <?php }?>
 <div class="Block" style="margin-top: 28px;clear: both;">
 	<?php
-	$colSpan = 14; 
+	$colSpan = 11; 
 	?>
 	<table width="100%" cellspacing="0" cellpadding="0" class="summary">
 		<tr><td class="topheader" colspan="<?=$colSpan?>"><?=$spTextHome['Website Statistics']?></td></tr>
@@ -52,17 +52,16 @@ if(!empty($printVersion)) {
 			<td class="subheader" rowspan="2"><?=$spTextHome['SiteNameUrl']?></td>
 			<td class="subheaderdark" colspan="2"><?=$spTextHome['Ranks']?></td>
 			<td class="subheaderdark" colspan="3"><?=$spTextHome['Backlinks']?></td>
-			<td class="subheaderdark" colspan="3"><?=$spTextHome['Pages Indexed']?></td>
+			<td class="subheaderdark" colspan="2"><?=$spTextHome['Pages Indexed']?></td>
 			<td class="subheaderdark" colspan="2"><?=$spTextHome['Directory Submission']?></td>
 		</tr>		
 		<tr>
 			<td class="subheader">Google</td>
 			<td class="subheader">Alexa</td>
 			<td class="subheader">Google</td>
-			<td class="subheader">Yahoo</td>
+			<td class="subheader">Alexa</td>
 			<td class="subheader">Bing</td>			
 			<td class="subheader">Google</td>
-			<td class="subheader">Yahoo</td>
 			<td class="subheader">Bing</td>
 			<td class="subheader"><?=$spText['common']['Total']?></td>
 			<td class="subheader"><?=$spText['common']['Active']?></td>
@@ -86,10 +85,9 @@ if(!empty($printVersion)) {
 					<td class="content"><a href="<?=$rankLink?>"><?php echo $websiteInfo['googlerank'];?></a></td>
 					<td class="content"><a href="<?=$rankLink?>"><?php echo $websiteInfo['alexarank'];?></a></td>
 					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['google']['backlinks'];?></a></td>
-					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['yahoo']['backlinks'];?></a></td>
+					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['alexa']['backlinks'];?></a></td>
 					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['msn']['backlinks'];?></a></td>
-					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['google']['indexed'];?></a></td>
-					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['yahoo']['indexed'];?></a></td>					
+					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['google']['indexed'];?></a></td>				
 					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['msn']['indexed'];?></a></td>
 					<td class="contentmid"><a href="<?=$totaldirLink?>"><?php echo $websiteInfo['dirsub']['total'];?></a></td>					
 					<td class="contentmid"><a href="<?=$activeDirLink?>"><?php echo $websiteInfo['dirsub']['active'];?></a></td>
