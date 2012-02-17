@@ -1043,3 +1043,8 @@ UPDATE searchengines SET from_pattern='<div id="?ires"?>' where  url LIKE '%goog
 UPDATE searchengines SET regex= '<li.*?class="?g.*?<a.*?href="\\/url\\?q=(.*?)&amp;sa=U.*?>(.*?)<\\/a>.*?<div.*?>(.*?)<cite>' WHERE url LIKE '%google%';
 
 INSERT INTO texts(`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES (NULL, 'en', 'plugin', 'Download Seo Panel Plugins', 'Download Seo Panel Plugins', CURRENT_TIMESTAMP);
+
+ALTER TABLE `backlinkresults` DROP `yahoo`, DROP `altavista`, DROP `alltheweb`;
+ALTER TABLE `backlinkresults` ADD `alexa` INT( 11 ) NOT NULL AFTER `msn`;
+ALTER TABLE `auditorreports` DROP `yahoo_backlinks`, DROP `yahoo_indexed`;
+ALTER TABLE `saturationresults` DROP `yahoo`;
