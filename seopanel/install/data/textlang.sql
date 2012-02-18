@@ -6277,3 +6277,6 @@ INSERT INTO `translators` (`id`, `lang_code`, `trans_name`, `trans_company`, `tr
 (16, 'es', 'Alex Rubio', 'miniz', 'http://www.technicalrp.com/'),
 (17, 'tr', 'Buray Savas ANIL', 'Geliyoo Türkiye', 'http://www.geliyoo.com/'),
 (18, 'fa', 'mohammad mohammadi', 'tirdadnova@yahoo.com', 'mailto:tirdadnova@yahoo.com');
+
+INSERT INTO texts(`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES (NULL, 'en', 'plugin', 'Download Seo Panel Plugins', 'Download Seo Panel Plugins', CURRENT_TIMESTAMP);
+INSERT INTO texts(`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES (NULL, 'en', 'settings', 'getallpluginfree', 'Also get all <b>plugins</b> we develop for <b>Free!</b>', CURRENT_TIMESTAMP);
