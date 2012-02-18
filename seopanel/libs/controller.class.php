@@ -56,6 +56,7 @@ class Controller extends Seopanel{
 		# to define all system variables
 		$force = false;
 		if (!empty($_GET['lang_code'])) {
+		    $_GET['lang_code'] = addslashes($_GET['lang_code']);
 			$this->assignLangCode(trim($_GET['lang_code']));
 			$_GET['lang_code'] = '';
 			$force = true;
