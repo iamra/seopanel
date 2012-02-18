@@ -189,7 +189,8 @@ class SeoPluginsController extends Controller{
 	}
 	
 	# func to list seo plugin info
-	function listPluginInfo($pluginId){		
+	function listPluginInfo($pluginId){
+	    $pluginId = intval($pluginId);		
 		$this->set('pluginInfo', $this->__getSeoPluginInfo($pluginId));	
 		$this->set('pageNo', $_GET['pageno']);	
 		$this->render('seoplugins/listplugininfo');
