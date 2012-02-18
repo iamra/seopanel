@@ -11,7 +11,16 @@
 		<td width="8px">&nbsp;</td>
 		<td id="content" height="340px" valign="top">
 			<script type="text/javascript">
-				scriptDoLoad('seo-plugins.php?pid=<?=$menuSelected?>', 'content', '');
+				<?php
+				// to pass all get arguments to the selected plugin's action function
+				$argString = "";
+				foreach ($_GET as $name => $value) {
+				    if (!in_array($name, array('sec', 'menu_selected'))) {
+				        $argString .= "&$name=$value";    
+				    }
+				} 
+				?>
+				scriptDoLoad('seo-plugins.php?pid=<?=$menuSelected?><?=$argString?>', 'content', '');
 			</script>
 		</td>
 	</tr>
