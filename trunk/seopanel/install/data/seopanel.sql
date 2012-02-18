@@ -1036,15 +1036,11 @@ CREATE TABLE IF NOT EXISTS `websites` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Fix for google SE in 3.0.0
+-- Fix for google SE in 3.0.3
 --
 
 UPDATE searchengines SET from_pattern='<div id="?ires"?>' where  url LIKE '%google%';
 UPDATE searchengines SET regex= '<li.*?class="?g.*?<a.*?href="\\/url\\?q=(.*?)&amp;sa=U.*?>(.*?)<\\/a>.*?<div.*?>(.*?)<cite>' WHERE url LIKE '%google%';
-
-INSERT INTO texts(`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES (NULL, 'en', 'plugin', 'Download Seo Panel Plugins', 'Download Seo Panel Plugins', CURRENT_TIMESTAMP);
-INSERT INTO texts(`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES (NULL, 'en', 'settings', 'getallpluginfree', 'Also get all <b>plugins</b> we develop for <b>Free!</b>', CURRENT_TIMESTAMP);
-
 
 ALTER TABLE `backlinkresults` DROP `yahoo`, DROP `altavista`, DROP `alltheweb`;
 ALTER TABLE `backlinkresults` ADD `alexa` INT( 11 ) NOT NULL AFTER `msn`;
