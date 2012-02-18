@@ -611,13 +611,13 @@ class DirectoryController extends Controller{
 	# func to show directory manager
 	function showDirectoryManager($info=''){		
 		
-		$info['stscheck'] = isset($info['stscheck']) ? $info['stscheck'] : 1;
+		$info['stscheck'] = isset($info['stscheck']) ? intval($info['stscheck']) : 1;
 		$capcheck = isset($info['capcheck']) ? (($info['capcheck'] == 'yes') ? 1 : 0 ) : "";  
 		$sql = "SELECT *,l.lang_name FROM directories d,languages l where d.lang_code=l.lang_code and working={$info['stscheck']}";		
 		if(!empty($info['dir_name'])) $sql .= " and domain like '%{$info['dir_name']}%'";
 		if($info['capcheck'] != '') $sql .= " and is_captcha=$capcheck";
-		if(!empty($info['google_pagerank'])) $sql .= " and google_pagerank={$info['google_pagerank']}";
-		if(!empty($info['lang_code'])) $sql .= " and d.lang_code='{$info['lang_code']}'";
+		if(isset($info['google_pagerank']) && ($info['google_pagerank'] != '')) $sql .= " and google_pagerank=".intval($info['google_pagerank']);
+		if(!empty($info['lang_code'])) $sql .= " and d.lang_code='".addslashes($info['lang_code'])."'";
 		$sql .= " order by id";		
 		
 		# pagination setup		
