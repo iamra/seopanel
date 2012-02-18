@@ -75,14 +75,7 @@ class Spider{
 		
 		if( !empty($ret['page'])){
 			$string = str_replace(array("\n",'\n\r','\r\n','\r'), "", $ret['page']);			
-			$pageInfo = WebsiteController::crawlMetaData($url, '', $string, true);
-			
-			// to add the url with to current url when no httpp prefix is vailable with it 
-			if ( ($url != $domainUrl) && preg_match('/.*\//', $urlWithTrailingSlash, $matchPrefix)) { 
-			    $appendUrlPrefix = $matchPrefix[0];
-			} else {
-			    $appendUrlPrefix = $domainUrl."/";
-			} 
+			$pageInfo = WebsiteController::crawlMetaData($url, '', $string, true); 
 					
 			$pattern = "/<a(.*?)>(.*?)<\/a>/is";	
 			preg_match_all($pattern, $string, $matches, PREG_PATTERN_ORDER);
@@ -99,7 +92,17 @@ class Spider{
     					        $pageInfo['external'] += 1;
     					    }					        
     				    } else {
-    				        $href = $appendUrlPrefix.$href;
+    				        
+    				        // if url starts with / then append with base url of site
+    				        if (preg_match('/^\//', $href)) {
+    				            $href = $domainUrl . $href;    
+    				        } elseif ( $url == $domainUrl) {
+    				            $href = $domainUrl ."/". $href;        
+    				        } else {
+    				            $pageInfo['total_links'] -= 1;
+    				            continue;
+    				        }
+    				        
     				        // if contains back directory operator
     				        if (stristr($href, '/../')) {
                             	$hrefParts = explode('/../', $href);
@@ -140,7 +143,7 @@ class Spider{
 	
     # function to remove last trailing slash
 	public static function addTrailingSlash($url) {
-	    if (!stristr($url, '?')) {
+	    if (!stristr($url, '?') && !stristr($url, '#')) {
 	        if (!preg_match("/\.([^\/]+)$/", $url)) {		
         		if (!preg_match('/\/$/', $url)) {
         		    $url .= "/";
