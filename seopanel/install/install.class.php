@@ -264,6 +264,14 @@ class Install {
 			return;
 		}
 		
+		# importing text file
+		$errMsg = $db->importDatabaseFile(SP_INSTALL_DB_LANG_FILE);
+		if($db->error ){
+			$errMsg = "Error occured while importing data: ". $errMsg;
+			$this->startInstallation($info, $errMsg);
+			return;
+		}
+		
 		# write to config file
 		$this->writeConfigFile($info);
 		
