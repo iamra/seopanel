@@ -38,7 +38,7 @@
 				<option value="">-- <?=$spText['common']['Select']?> --</option>				
 				<?php
 				for ($i=0; $i<=10; $i++) {
-					$selected = (isset($info['google_pagerank']) && ($i == $info['google_pagerank'])) ? "selected" : "";					
+					$selected = (($info['google_pagerank'] != '') && ($i == $info['google_pagerank'])) ? "selected" : "";					
 					?>			
 					<option value="<?=$i?>" <?=$selected?>>PR <?=$i?></option>
 					<?php
