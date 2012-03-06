@@ -617,6 +617,7 @@ class DirectoryController extends Controller{
 		if(!empty($info['dir_name'])) $sql .= " and domain like '%{$info['dir_name']}%'";
 		if($info['capcheck'] != '') $sql .= " and is_captcha=$capcheck";
 		if(isset($info['google_pagerank']) && ($info['google_pagerank'] != '')) $sql .= " and google_pagerank=".intval($info['google_pagerank']);
+		if (!empty($info['langcode'])) { $info['lang_code'] = $info['langcode']; }
 		if(!empty($info['lang_code'])) $sql .= " and d.lang_code='".addslashes($info['lang_code'])."'";
 		$sql .= " order by id";		
 		
@@ -624,7 +625,9 @@ class DirectoryController extends Controller{
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('directories.php?sec=directorymgr&dir_name='.urlencode($info['dir_name'])."&stscheck={$info['stscheck']}&capcheck={$info['capcheck']}");		
+		$pageScriptPath = 'directories.php?sec=directorymgr&dir_name='.urlencode($info['dir_name'])."&stscheck={$info['stscheck']}&capcheck=".$info['capcheck'];
+		$pageScriptPath .= "&google_pagerank=".$info['google_pagerank']."&langcode=".$info['lang_code'];
+		$pagingDiv = $this->paging->printPages($pageScriptPath);		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
 		
