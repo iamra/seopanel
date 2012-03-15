@@ -498,7 +498,7 @@ class ReportController extends Controller {
 			
 			$searchUrl = str_replace('[--keyword--]', urlencode(stripslashes($keywordInfo['name'])), $this->seList[$seInfoId]['url']);
 			$searchUrl = str_replace('[--lang--]', $keywordInfo['lang_code'], $searchUrl);
-			$searchUrl = str_replace('[--country--]', $keywordInfo['country_code'], $searchUrl);
+			$searchUrl = str_replace('[--country--]', strtolower($keywordInfo['country_code']), $searchUrl);
 			$seUrl = str_replace('[--start--]', $this->seList[$seInfoId]['start'], $searchUrl);
 			
 			if(!empty($this->seList[$seInfoId]['cookie_send'])){
