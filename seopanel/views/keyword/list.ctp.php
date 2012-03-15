@@ -48,8 +48,8 @@ $searchFun = "scriptDoLoadPost('keywords.php', 'listform', 'content')";
 		<td><?=$spText['common']['Id']?></td>
 		<td><?=$spText['common']['Name']?></td>
 		<td><?=$spText['common']['Website']?></td>
-		<td><?=$spText['common']['lang']?></td>
 		<td><?=$spText['common']['Country']?></td>
+		<td><?=$spText['common']['lang']?></td>
 		<td><?=$spText['common']['Status']?></td>
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
