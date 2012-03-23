@@ -282,7 +282,8 @@ class ReportController extends Controller {
 		$im = imagecreate($width, $height);		
         $bgColor = imagecolorallocate($im, 245, 248, 250);
         $textColor = imagecolorallocate($im, 233, 14, 91);
-        imagestring($im, 5, 260, 5,  $msg, $textColor);
+	    $fontFile = ($_SESSION['lang_code'] == 'ja') ? "fonts/M+1P+IPAG.ttf" : "fonts/tahoma.ttf";
+	    imagettftext($im, 10, 0, 260, 20, $textColor, $fontFile, $msg);
         imagepng($im);
         imagedestroy($im);
         exit;
@@ -328,7 +329,8 @@ class ReportController extends Controller {
 		
 		// check whether the records are available for drawing graph
 		if(empty($dataList) || empty($maxValue)) {
-		    $this->showMessageAsImage($_SESSION['text']['common']['No Records Found']."!");		    
+		    $kpText = ($_SESSION['lang_code'] == 'ja') ? $_SESSION['text']['common']['No Records Found']."!" : "No Records Found!";
+		    $this->showMessageAsImage($kpText);		    
 		}
 		
 		# Dataset definition
@@ -352,14 +354,22 @@ class ReportController extends Controller {
 		$dataSet->AddPoint(array_keys($dataList), "Serie$serieCount");
 		$dataSet->SetAbsciseLabelSerie("Serie$serieCount");
 		
-		$dataSet->SetXAxisName("Date");		
-		$dataSet->SetYAxisName("Rank");
+		# if language is japanese
+		if ($_SESSION['lang_code'] == 'ja') {
+		    $fontFile = "fonts/M+1P+IPAG.ttf";		    
+		    $dataSet->SetXAxisName($_SESSION['text']['common']["Date"]);		
+		    $dataSet->SetYAxisName($_SESSION['text']['common']["Rank"]);
+		} else {
+	        $fontFile = "fonts/tahoma.ttf";
+		    $dataSet->SetXAxisName("Date");		
+		    $dataSet->SetYAxisName("Rank");
+		}
 		$dataSet->SetXAxisFormat("date");		
-
+		
 		# Initialise the graph
 		$chart = new pChart(720, 520);
 		$chart->setFixedScale($maxValue, 1);		
-		$chart->setFontProperties("fonts/tahoma.ttf", 8);
+		$chart->setFontProperties($fontFile, 8);
 		$chart->setGraphArea(85, 30, 670, 425);
 		$chart->drawFilledRoundedRectangle(7, 7, 713, 513, 5, 240, 240, 240);
 		$chart->drawRoundedRectangle(5, 5, 715, 515, 5, 230, 230, 230);
@@ -369,7 +379,7 @@ class ReportController extends Controller {
 		$chart->drawGrid(4, TRUE, 230, 230, 230, 50);
 
 		# Draw the 0 line   
-		$chart->setFontProperties("fonts/tahoma.ttf", 6);
+		$chart->setFontProperties($fontFile, 6);
 		$chart->drawTreshold(0, 143, 55, 72, TRUE, TRUE);
 
 		# Draw the line graph
@@ -377,7 +387,7 @@ class ReportController extends Controller {
 		$chart->drawPlotGraph($dataSet->GetData(), $dataSet->GetDataDescription(), 3, 2, 255, 255, 255);
 		
 		$j = 1;
-		$chart->setFontProperties("fonts/tahoma.ttf", 10);
+		$chart->setFontProperties($fontFile, 10);
 		foreach($seList as $seDomain){
 			$chart->writeValues($dataSet->GetData(), $dataSet->GetDataDescription(), "Serie".$j++);
 		}
@@ -385,8 +395,9 @@ class ReportController extends Controller {
 		# Finish the graph
 		$chart->setFontProperties("fonts/tahoma.ttf", 8);
 		$chart->drawLegend(90, 35, $dataSet->GetDataDescription(), 255, 255, 255);
-		$chart->setFontProperties("fonts/tahoma.ttf", 10);
-		$chart->drawTitle(60, 22, "Keyword Position Report", 50, 50, 50, 585);
+		$chart->setFontProperties($fontFile, 10);
+		$kpText = ($_SESSION['lang_code'] == 'ja') ? $this->spTextKeyword["Keyword Position Report"] : "Keyword Position Report"; 
+		$chart->drawTitle(60, 22, $kpText, 50, 50, 50, 585);
 		$chart->stroke();
 	}
 	
