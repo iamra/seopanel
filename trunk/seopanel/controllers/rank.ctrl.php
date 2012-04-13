@@ -98,7 +98,7 @@ class RankController extends Controller{
 		$url = 'http://data.alexa.com/data?cli=10&dat=snbamz&url=' . urlencode($url);
 		$ret = $this->spider->getContent($url);
 		if(!empty($ret['page'])){
-			preg_match('/\<popularity url\="(.*?)" TEXT\="([0-9]+)"\/\>/si', $ret['page'], $matches);
+			preg_match('/\<popularity url\="(.*?)" TEXT\="([0-9]+)"/si', $ret['page'], $matches);
 			return ($matches[2]) ? $matches[2] : 0;
 		}
 		return 0;
