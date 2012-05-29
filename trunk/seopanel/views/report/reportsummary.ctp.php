@@ -1,11 +1,29 @@
 <?php
 if(!empty($printVersion)) {
     showPrintHeader($spTextTools['Keyword Position Summary']);
+    ?>
+    <table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
+    	<?php if (!empty($websiteUrl)) {?>
+    		<tr>
+    			<th><?=$spText['common']['Website']?>:</th>
+        		<td>
+        			<?php echo $websiteUrl; ?>
+    			</td>
+    		</tr>
+		<?php }?>
+		<tr>
+			<th><?=$spText['common']['Period']?>:</th>
+    		<td>
+    			<?=$fromTime?> - <?=$toTime?>
+			</td>
+		</tr>
+	</table>
+    <?php
 } else {
     echo showSectionHead($spTextTools['Keyword Position Summary']);
     ?>
 	<form id='search_form'>
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
+	<table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
 			<th width="100px"><?=$spText['common']['Website']?>: </th>
 			<td width="200px">
@@ -20,24 +38,35 @@ if(!empty($printVersion)) {
 					<?php }?>
 				</select>
 			</td>
-			<td colspan="2"><a href="javascript:void(0);" onclick="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
+			<th><?=$spText['common']['Period']?>:</th>
+    		<td>
+    			<input type="text" style="width: 72px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/> 
+    			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/> 
+    			<input type="text" style="width: 72px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
+    			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="images/cal.gif"/>
+    		</td>
+			<td><a href="javascript:void(0);" onclick="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
 		</tr>
 	</table>
 	</form>
 	<?php
-		if(empty($list)){
-			?>
-			<p class='note'>
-				<?=$spText['common']['No Keywords Found']?>.
-				<a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content', 'sec=new&amp;website_id=')"><?=$spText['label']['Click Here']?></a> <?=$spTextKeyword['to create new keywords']?>.
-			</p>
-			<?php
-			exit;
-		} 
+	if(empty($list)){
+		?>
+		<p class='note'>
+			<?=$spText['common']['No Keywords Found']?>.
+			<a href="javascript:void(0);" onclick="scriptDoLoad('keywords.php', 'content', 'sec=new&amp;website_id=')"><?=$spText['label']['Click Here']?></a> <?=$spTextKeyword['to create new keywords']?>.
+		</p>
+		<?php
+		exit;
+	}
+
+	// url parameters
+	$mainLink = SP_WEBPATH."/reports.php?sec=reportsum&website_id=$websiteId&from_time=$fromTime&to_time=$toTime";
+	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal";
 	?>
 	<div style="float:right;margin-right: 10px;">
-		<a href="<?=SP_WEBPATH?>/reports.php?sec=reportsum&doc_type=export&website_id=<?=$websiteId?>"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?=SP_WEBPATH?>/reports.php?sec=reportsum&doc_type=print&website_id=<?=$websiteId?>"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
+		<a href="<?=$directLink?>&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
+		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
 	</div>
 <?php }?>
 
@@ -46,23 +75,43 @@ if(!empty($printVersion)) {
 	<tr>
 	<td width='33%'>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
-	<tr class="listHead">		
+	<tr class="listHead">
+		<?php
+		$linkClass = "";
+        if ($orderCol == 'keyword') {
+            $oVal = ($orderVal == 'DESC') ? "ASC" : "DESC";
+            $linkClass .= "sort_".strtolower($orderVal);
+        } else {
+            $oVal = 'ASC';
+        }
+		$linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
+		?>		
 		<?php if (empty($websiteId)) {?>
 			<td class="left"><?=$spText['common']['Website']?></td>
-			<td><?=$spText['common']['Keyword']?></td>
+			<td><?=$linkName?></td>
 		<?php } else { ?>
-			<td class="left"><?=$spText['common']['Keyword']?></td>
+			<td class="left"><?=$linkName?></td>
 		<?php }?>
 		<?php
 		$seCount = count($seList);
 		foreach ($seList as $i => $seInfo){
+		    
+		    $linkClass = "";
+            if ($seInfo['id'] == $orderCol) {
+                $oVal = ($orderVal == 'DESC') ? "ASC" : "DESC";
+                $linkClass .= "sort_".strtolower($oVal);
+            } else {
+                $oVal = 'ASC';
+            }
+            $linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col={$seInfo['id']}&order_val=$oVal', 'content')\">{$seInfo['domain']}</a>";
+		    
 			if( ($i+1) == $seCount){			
 				?>
-				<td class="right"><?php echo $seInfo['domain']?></td>
+				<td class="right"><?php echo $linkName; ?></td>
 				<?php	
 			}else{
 				?>
-				<td><?php echo $seInfo['domain']?></td>
+				<td><?php echo $linkName; ?></td>
 				<?php
 			}
 			
@@ -74,7 +123,8 @@ if(!empty($printVersion)) {
 	if(count($list) > 0){
 		$catCount = count($list);
 		$i = 0;
-		foreach($list as $listInfo){
+		foreach($indexList as $keywordId => $rankValue){
+		    $listInfo = $list[$keywordId];
 			$positionInfo = $listInfo['position_info'];
 			$class = ($i % 2) ? "blue_row" : "white_row";
             if($catCount == ($i + 1)){

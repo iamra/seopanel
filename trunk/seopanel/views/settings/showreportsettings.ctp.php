@@ -1,24 +1,18 @@
 <?php 
-$headLabel = empty($headLabel) ? $spTextPanel['System Settings'] : $headLabel;
+$headLabel = empty($headLabel) ? $spTextPanel['Report Settings'] : $headLabel;
 echo showSectionHead($headLabel);
 
 // if saved successfully
 if (!empty($saved)) {
-    showSuccessMsg($spTextSettings['syssettingssaved'], false);
+    showSuccessMsg($spTextReport['reportsettingssaved'], false);
 }
-
-// save process failed
-if (!empty($errorMsg)) {
-    echo showErrorMsg($errorMsg, false);
-}
-
 ?>
 <form id="updateSettings">
 <input type="hidden" value="update" name="sec">
 <input type="hidden" value="<?=$category?>" name="category">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
-		<td class="left" width='30%'><?=$headLabel?></td>
+		<td class="left" width='35%'><?=$headLabel?></td>
 		<td class="right">&nbsp;</td>
 	</tr>
 	<?php 
@@ -60,19 +54,22 @@ if (!empty($errorMsg)) {
 							<option value="0" <?=$selectNo?>><?=$spText['common']['No']?></option>
 						</select>
 					<?php }else{?>
-						<?php if($listInfo['set_name'] == 'SP_DEFAULTLANG') {?>
+						<?php if($listInfo['set_name'] == 'SP_SYSTEM_REPORT_INTERVAL') {?>
 							<select name="<?=$listInfo['set_name']?>">
 								<?php
-								foreach ($langList as $langInfo) {
-									$selected = ($langInfo['lang_code'] == $listInfo['set_val']) ? "selected" : "";
+								foreach ($scheduleList as $interval => $label) {
+									$selected = ($interval == $listInfo['set_val']) ? "selected" : "";
 									?>			
-									<option value="<?=$langInfo['lang_code']?>" <?=$selected?>><?=$langInfo['lang_name']?></option>
+									<option value="<?=$interval?>" <?=$selected?>><?=$label?></option>
 									<?php
 								}
 								?>
 							</select>
 						<?php } else {?>
 							<input type="text" name="<?=$listInfo['set_name']?>" value="<?=stripslashes($listInfo['set_val'])?>" style='width:<?=$width?>px'>
+							<?php if ($listInfo['set_name'] == 'SP_NUMBER_KEYWORDS_CRON') {?>
+								<p><?=$spTextReport['keywordnumbercheckedcronnote']?></p>
+							<?php } ?>
 						<?php }?>
 					<?php }?>
 				<?php }else{?>
@@ -95,7 +92,7 @@ if (!empty($errorMsg)) {
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>
     	<td style="padding-top: 6px;text-align:right;">
-    		<a onclick="scriptDoLoad('settings.php?category=<?=$category?>', 'content', 'layout=ajax')" href="javascript:void(0);" class="actionbut">
+    		<a onclick="scriptDoLoad('settings.php?sec=reportsettings', 'content', 'layout=ajax')" href="javascript:void(0);" class="actionbut">
          		<?=$spText['button']['Cancel']?>
          	</a>&nbsp;
          	<?php $actFun = SP_DEMO ? "alertDemoMsg()" : "confirmSubmit('settings.php', 'updateSettings', 'content')"; ?>

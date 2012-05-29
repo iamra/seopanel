@@ -47,12 +47,28 @@ foreach($menuList as $i => $menuInfo){
 			<?php
 			break;
 			
+		case "se-manager":
+			?>
+			<script type="text/javascript">scriptList[<?=$i?>] = 'searchengine.php';</script>			
+			<ul id='subui'>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('searchengine.php', 'content')"><?=$spTextPanel['Search Engine Manager']?></a></li>
+			</ul>
+			<?php
+			break;
+			
 		case "report-manager":
 			?>
-			<script type="text/javascript">scriptList[<?=$i?>] = 'cron.php';</script>			
+			<script type="text/javascript">scriptList[<?=$i?>] = 'archive.php';</script>			
 			<ul id='subui'>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('cron.php', 'content')"><?=$spTextPanel['Report Generation Manager']?></a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('cron.php?sec=croncommand', 'content')"><?=$spTextPanel['Cron Command']?></a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('archive.php', 'content')"><?=$spTextPanel['Archived Reports']?></a></li>				
+				<?php if (isAdmin() || SP_ALLOW_USER_SCHEDULE_REPORT) {?>
+					<li><a href="javascript:void(0);" onclick="scriptDoLoad('reports.php?sec=schedule', 'content')"><?=$spTextPanel['Schedule Reports']?></a></li>
+				<?php }?>
+				<?php if (isAdmin()) {?>
+    				<li><a href="javascript:void(0);" onclick="scriptDoLoad('cron.php', 'content')"><?=$spTextPanel['Report Generation Manager']?></a></li>
+    				<li><a href="javascript:void(0);" onclick="scriptDoLoad('cron.php?sec=croncommand', 'content')"><?=$spTextPanel['Cron Command']?></a></li>
+					<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=reportsettings', 'content')"><?=$spTextPanel['Report Settings']?></a></li>
+				<?php }?>
 			</ul>
 			<?php
 			break;

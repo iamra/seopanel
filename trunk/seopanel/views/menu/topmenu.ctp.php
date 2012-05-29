@@ -1,7 +1,7 @@
 <h3>
 	<span id="floatright">
 		<b><?=$spText['common']['lang']?>:</b> 
-		<select name="lang_code" id="lang_code" class="lang_code" onchange="doLoadUrl('lang_code', '<?=$redirectUrl?>')">
+		<select name="lang_code" id="lang_code" class="lang_code" onchange="doLoadUrl('lang_code', '<?=$redirectUrl?>')" style="width: 134px;">
 			<?php
 			foreach ($langList as $langInfo) {
 				$selected = ($langInfo['lang_code'] == $_SESSION['lang_code']) ? "selected" : "";

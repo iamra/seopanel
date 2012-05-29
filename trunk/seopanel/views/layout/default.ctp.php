@@ -10,10 +10,11 @@
 <title><?=stripslashes($spTitle)?></title>
 <meta name="description" content="<?=$spDescription?>" />
 <meta name="keywords" content="<?=$spKeywords?>" />
-<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen.css"
-	media="all" />
-<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/datepicker.css"
-	media="all" />
+<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/datepicker.css" media="all" />
+<?php if (in_array($_SESSION['lang_code'], array('ar', 'he', 'fa'))) {?>
+	<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen_rtl.css" media="all" />
+<?php }?>
 <link rel="shortcut icon" href="<?=SP_IMGPATH?>/favicon.ico" />
 <script language="Javascript" src="<?=SP_JSPATH?>/prototype.js"></script>
 <script language="Javascript" src="<?=SP_JSPATH?>/common.js"></script>
