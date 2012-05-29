@@ -64,9 +64,9 @@
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?php echo date('Y-m-d', $listInfo['result_time']); ?></td>
-				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['google'].'</b> '. $listInfo['rank_diff_google']?></td>
-				<td class='td_br_right' style='text-align:left;padding-left:40px;'><b><?=$listInfo['alexa'].'</b> '. $listInfo['rank_diff_alexa']?></td>
-				<td class='<?=$rightBotClass?>' style='text-align:left;padding-left:40px;'><b><?=$listInfo['msn'].'</b> '. $listInfo['rank_diff_msn']?></td>
+				<td class='td_br_right' style='text-align:left;padding-left:40px;'><a href="<?=$directLinkList['google']?>" target="_blank"><?=$listInfo['google'].'</a> '. $listInfo['rank_diff_google']?></td>
+				<td class='td_br_right' style='text-align:left;padding-left:40px;'><a href="<?=$directLinkList['alexa']?>" target="_blank"><?=$listInfo['alexa'].'</a> '. $listInfo['rank_diff_alexa']?></td>
+				<td class='<?=$rightBotClass?>' style='text-align:left;padding-left:40px;'><a href="<?=$directLinkList['msn']?>" target="_blank"><?=$listInfo['msn'].'</a> '. $listInfo['rank_diff_msn']?></td>
 			</tr>
 			<?php
 			$i++;

@@ -9,7 +9,7 @@
 <table width="60%" cellpadding="0" cellspacing="0" class="actionForm">
 	<tr>
 		<th><?=$spText['login']['Login']?>:</th>
-		<td><input type="text" name="userName" value="<?=$post['userName']?>"><?=$errMsg['userName']?></td>
+		<td><input type="text" name="userName" id="userName" value="<?=$post['userName']?>"><?=$errMsg['userName']?></td>
 	</tr>
 	<tr>
 		<th><?=$spText['login']['Password']?>:</th>
@@ -25,6 +25,13 @@
 		</td>
 	</tr>
 </table>
+
+<script>
+window.onload = function() {
+  document.getElementById("userName").focus();
+}
+</script>
+
 </form>
 </div>
 </div>

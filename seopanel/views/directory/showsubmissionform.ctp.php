@@ -17,7 +17,15 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="left" style="width: 30%"><?=$spTextTools['directory-submission']?></td>
-		<td class="right"><?=$dirInfo['domain']?></td>
+		<td class="right">&nbsp;</td>
+	</tr>		
+	<tr class="white_row">
+		<td class="td_left_col"><?=$spText['common']['Directory']?>:</td>
+		<td class="td_right_col"><a href="<?=$dirInfo['submit_url']?>" target="_blank"><?=$dirInfo['domain']?></a></td>
+	</tr>		
+	<tr class="blue_row">
+		<td class="td_left_col"><?=$spText['common']['Google Pagerank']?>:</td>
+		<td class="td_right_col"><?=$dirInfo['google_pagerank']?></td>
 	</tr>		
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Category']?>:</td>
