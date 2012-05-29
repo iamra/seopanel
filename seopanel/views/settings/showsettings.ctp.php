@@ -71,8 +71,10 @@ if (!empty($errorMsg)) {
 								}
 								?>
 							</select>
-						<?php } else {?>
-							<input type="text" name="<?=$listInfo['set_name']?>" value="<?=stripslashes($listInfo['set_val'])?>" style='width:<?=$width?>px'>
+						<?php } else {
+						    $type = ($listInfo['set_name'] == 'SP_SMTP_PASSWORD') ? "password" : "text";
+						    ?>
+							<input type="<?=$type?>" name="<?=$listInfo['set_name']?>" value="<?=stripslashes($listInfo['set_val'])?>" style='width:<?=$width?>px'>
 						<?php }?>
 					<?php }?>
 				<?php }else{?>
