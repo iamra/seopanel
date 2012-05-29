@@ -129,7 +129,7 @@ class CronController extends Controller {
 				$reportCtrler->updateUserReportSetting($userInfo['id'], 'last_generated', $lastGenerated);
 				
 				// send email notification if enabled
-				if (SP_REPORT_EMAIL_NOTIFICATION && $repSetInfo['email_notification']) {
+				if (SP_REPORT_EMAIL_NOTIFICATION && $repSetInfo['email_notification']  && (count($websiteList) > 0)) {
 				    $reportCtrler->sentEmailNotificationForReportGen($userInfo, $repSetInfo['last_generated'], $lastGenerated);
 				}
     			
