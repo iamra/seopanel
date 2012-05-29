@@ -739,7 +739,7 @@ class DirectoryController extends Controller{
 			// to check  the value of the LINK_TYPE if phpld directory
 			if (($dirInfo['script_type_id'] == 1) && preg_match('/name="LINK_TYPE" value="(\d)"/s', $page)) {
 			    $subject = array('LINK_TYPE=reciprocal', 'LINK_TYPE=normal', 'LINK_TYPE=free');
-			    $replace = array('LINK_TYPE=1', 'LINK_TYPE=2', 'LINK_TYPE=3');
+			    $replace = array('reciprocal=1&LINK_TYPE=1', 'LINK_TYPE=2', 'LINK_TYPE=3');
 			    $dirInfo['extra_val'] = str_replace($subject, $replace, $dirInfo['extra_val']);
 				$extraValUpdate = ",extra_val='{$dirInfo['extra_val']}'";	    
 			}
