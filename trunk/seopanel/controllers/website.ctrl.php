@@ -27,6 +27,7 @@ class WebsiteController extends Controller{
 	function listWebsites($info=''){		
 		
 		$userId = isLoggedIn();
+		$info['pageno'] = intval($info['pageno']);
 		if(isAdmin()){
 			$sql = "select w.*,u.username from websites w,users u where u.id=w.user_id";
 			$sql .= empty($info['userid']) ? "" : " and w.user_id=".$info['userid']; 
@@ -282,7 +283,7 @@ class WebsiteController extends Controller{
 	}
 	
 	# func to crawl meta data of a website
-	public static function crawlMetaData($websiteUrl, $keyInput='', $pageContent='', $returVal=false) {
+	public function crawlMetaData($websiteUrl, $keyInput='', $pageContent='', $returVal=false) {
 	    if (empty($pageContent)) {
     		if(!preg_match('/\w+/', $websiteUrl)) return;
     		if(!stristr($websiteUrl, 'http://')) $websiteUrl = "http://".$websiteUrl;
@@ -343,7 +344,7 @@ class WebsiteController extends Controller{
 		return $metaInfo; 
 	}
 	
-	public static function addInputValue($value, $col) {
+	public function addInputValue($value, $col) {
 
 		$value = removeNewLines($value);
 		?>

@@ -37,13 +37,17 @@ class AdminPanelController extends Controller{
             			'name' => $this->spTextPanel['User Manager'],
             			'url_section' => 'users'						
 						);
-						
+		}
+
+		if (isLoggedIn()) {
 			$menuList[] = array(
 						'id' => 3,
             			'name' => $this->spTextPanel['Reports Manager'],
             			'url_section' => 'report-manager'						
-						);			
-			
+						);
+		}			
+
+		if (isAdmin()) {
 			$menuList[] = array(
 						'id' => 4,
             			'name' => $this->spTextPanel['Seo Tools Manager'],
@@ -60,6 +64,12 @@ class AdminPanelController extends Controller{
 						'id' => 6,
             			'name' => $this->spTextPanel['Directory Manager'],
             			'url_section' => 'directory-manager'						
+						);
+						
+			$menuList[] = array(
+						'id' => 11,
+            			'name' => $this->spTextPanel['Search Engine Manager'],
+            			'url_section' => 'se-manager'						
 						);
 						
 			$menuList[] = array(
@@ -86,11 +96,22 @@ class AdminPanelController extends Controller{
             			'url_section' => 'about-us'						
 						);
 		
-		$menuSelected = empty($info['menu_selected']) ? 'websites' : $info['menu_selected']; 
+		$menuSelected = empty($info['menu_selected']) ? 'websites' : urldecode($info['menu_selected']); 
 		$this->set('menuList', $menuList);
 		$this->set('menuSelected', $menuSelected);
-		$startScript = empty($info['start_script']) ? "websites.php" : $info['start_script'];
-		$this->set('startFunction', "scriptDoLoad('$startScript', 'content')");
+		$startScript = empty($info['start_script']) ? "websites.php" : urldecode($info['start_script']);
+		if (!stristr($startScript, '.php')) {
+		    $startScript .= ".php";    
+		}
+		
+		$arguments = "";
+		foreach ($info as $key => $value) {
+		    if (!in_array($key, array('menu_selected', 'start_script'))) {
+		        $arguments .= "&$key=".urldecode($value);    
+		    }
+		}
+		
+		$this->set('startFunction', "scriptDoLoad('$startScript', 'content', '$arguments')");
 		
 		$this->render('adminpanel/adminpanel');
 	}

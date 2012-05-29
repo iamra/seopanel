@@ -77,24 +77,27 @@ class IndexController extends Controller{
 			$saturationCtrler = New SaturationCheckerController();			
 			$dirCtrler = New DirectoryController();
 			
+		    $fromTime = mktime(0, 0, 0, date('m'), date('d') - 1, date('Y'));
+		    $toTime = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+			
 			$websiteList = array();
 			foreach($list as $listInfo){
 				
 				# rank reports
-				$report = $rankCtrler->__getWebsiteRankReport($listInfo['id']);
+				$report = $rankCtrler->__getWebsiteRankReport($listInfo['id'], $fromTime, $toTime);
 				$report = $report[0];
 				$listInfo['alexarank'] = empty($report['alexa_rank']) ? "-" : $report['alexa_rank']." ".$report['rank_diff_alexa'];
 				$listInfo['googlerank'] = empty($report['google_pagerank']) ? "-" : $report['google_pagerank']." ".$report['rank_diff_google'];
 				
 				# back links reports
-				$report = $backlinlCtrler->__getWebsitebacklinkReport($listInfo['id']);
+				$report = $backlinlCtrler->__getWebsitebacklinkReport($listInfo['id'], $fromTime, $toTime);
 				$report = $report[0];
 				$listInfo['google']['backlinks'] = empty($report['google']) ? "-" : $report['google']." ".$report['rank_diff_google'];
 				$listInfo['alexa']['backlinks'] = empty($report['alexa']) ? "-" : $report['alexa']." ".$report['rank_diff_alexa'];
 				$listInfo['msn']['backlinks'] = empty($report['msn']) ? "-" : $report['msn']." ".$report['rank_diff_msn'];
 				
 				# rank reports
-				$report = $saturationCtrler->__getWebsiteSaturationReport($listInfo['id']);
+				$report = $saturationCtrler->__getWebsiteSaturationReport($listInfo['id'], $fromTime, $toTime);
 				$report = $report[0];				
 				$listInfo['google']['indexed'] = empty($report['google']) ? "-" : $report['google']." ".$report['rank_diff_google'];
 				$listInfo['msn']['indexed'] = empty($report['msn']) ? "-" : $report['msn']." ".$report['rank_diff_msn'];
