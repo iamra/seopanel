@@ -969,7 +969,7 @@ class ReportController extends Controller {
 		    $repSetInfo['user_id'] = $userId;
 		    $repSetInfo['report_interval'] = SP_SYSTEM_REPORT_INTERVAL;
 		    $repSetInfo['email_notification'] = SP_REPORT_EMAIL_NOTIFICATION;
-		    $lastGeneratedDay = (SP_SYSTEM_REPORT_INTERVAL == 30) ? 1 : (date('d') - SP_SYSTEM_REPORT_INTERVAL + 1);
+		    $lastGeneratedDay = (SP_SYSTEM_REPORT_INTERVAL == 30) ? 1 : (date('d') - SP_SYSTEM_REPORT_INTERVAL);
 		    $repSetInfo['last_generated'] = mktime(0, 0, 0, date('m'), $lastGeneratedDay, date('Y'));
 		    $this->createUserReportSettings($repSetInfo);
 		    $repSetInfo['id'] = $this->db->getMaxId('reports_settings');
