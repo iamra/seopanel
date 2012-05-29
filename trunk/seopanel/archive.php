@@ -22,36 +22,31 @@
 
 include_once("includes/sp-load.php");
 checkLoggedIn();
-include_once(SP_CTRLPATH."/adminpanel.ctrl.php");
-$controller = New AdminPanelController();
-$controller->view->menu = 'adminpanel';
-
-$controller->set('spTitle', 'Seo Panel: User control panel for manage settings');
-$controller->set('spDescription', 'User control panel for manage settings');
-$controller->set('spKeywords', 'Seo Panel settings,User control panel,manage seo panel settings');
-$controller->spTextPanel = $controller->getLanguageTexts('panel', $_SESSION['lang_code']);
-$controller->set('spTextPanel', $controller->spTextPanel);
+include_once(SP_CTRLPATH."/keyword.ctrl.php");
+include_once(SP_CTRLPATH."/website.ctrl.php");
+include_once(SP_CTRLPATH."/searchengine.ctrl.php");
+include_once(SP_CTRLPATH."/report.ctrl.php");
+$controller = New ReportController();
+$controller->layout = 'ajax';
+$controller->spTextTools = $controller->getLanguageTexts('seotools', $_SESSION['lang_code']);
+$controller->set('spTextTools', $controller->spTextTools);
+$controller->spTextKeyword = $controller->getLanguageTexts('keyword', $_SESSION['lang_code']);
+$controller->set('spTextKeyword', $controller->spTextKeyword);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
 	switch($_POST['sec']){
+			
+		default:
+			$controller->showOverallReportSummary($_POST);
+			break;
 	}
-	
+
 }else{
 	switch($_GET['sec']){
-		case "newweb":
-			$info['start_script'] = 'websites.php?sec=new&check=1';
-			$controller->index($info);
-			break;
-		
-		case "myprofile":
-			$info['menu_selected'] = 'my-profile';
-			$info['start_script'] = 'users.php?sec=my-profile';
-			$controller->index($info);
-			break;		
-
+			
 		default:
-			$controller->index($_GET);
+			$controller->showOverallReportSummary($_GET);
 			break;
 	}
 }

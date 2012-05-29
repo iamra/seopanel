@@ -114,7 +114,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			break;
 			
 		case "featured":
-			$controller->showFeaturedSubmission();
+			$controller->showFeaturedSubmission($_GET);
 			break;
 			
 		case "directorymgr":
