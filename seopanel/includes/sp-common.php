@@ -294,11 +294,13 @@ function exportToCsv($fileName, $content) {
 }
 
 # func to show printer hearder
-function showPrintHeader($headMsg='') {
+function showPrintHeader($headMsg='', $doPrint=true) {
     ?>
 	<script language="Javascript" src="<?=SP_JSPATH?>/common.js"></script>
 	<script type="text/javascript">
-		window.print();
+		<?php if ($doPrint) { ?>
+			window.print();
+		<?php }?>
 		loadJsCssFile("<?=SP_CSSPATH?>/screen.css", "css");
 	</script>	
     <style>BODY{background-color:white;padding:50px 10px;}</style>
@@ -309,5 +311,65 @@ function showPrintHeader($headMsg='') {
 # func to debug the variables
 function debugVar($value) {
     echo "<pre>";print_r($value);echo "</pre>";
+}
+
+# func to send mail
+function sendMail($from, $fromName, $to ,$subject,$content){
+	$mail = new PHPMailer();
+	
+	# check whether the mail send by smtp or not
+	if(SP_SMTP_MAIL){
+		$mail->IsSMTP();	
+		$mail->SMTPAuth = true;
+		$mail->Host = SP_SMTP_HOST;
+		$mail->Username = SP_SMTP_USERNAME;
+		$mail->Password = SP_SMTP_PASSWORD;
+	}
+
+	$mail->From = $from;
+	$mail->FromName = $fromName;
+	$mail->AddAddress($to, "");
+	$mail->WordWrap = 50;                              
+	$mail->IsHTML(true);
+
+	$mail->Subject = $subject;
+	$mail->Body = $content;
+	if(!$mail->Send()){
+		return 0;
+	}else{
+		return 1;
+	}
+}
+
+# func to sanitize data to prevent attacks
+function sanitizeData($data, $stripTags=true, $addSlashes=false) {
+    
+    if (is_array($data)) {
+        foreach ($data as $col => $val) {
+
+            if ($val == 'password') {
+                continue;
+            }
+            
+            if ($stripTags) {
+                $val = strip_tags($val);
+            } 
+            
+            if ($addSlashes) {
+                $val = addslashes($val);
+            }
+            
+            $data[$col] = $val;
+        }
+    } else {
+        if ($stripTags) {
+            $data = strip_tags($data);
+        } 
+        
+        if ($addSlashes) {
+            $data = addslashes($data);
+        }
+    }
+    return $data;
 }
 ?>
