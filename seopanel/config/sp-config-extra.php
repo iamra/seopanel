@@ -60,6 +60,9 @@ define('SP_PAGINGNO_DEFAULT', 10);
 # prevent sql injection
 define('SP_PREVENT_SQL_INJECTION', true);
 
+# database persistent connection
+define('SP_DB_PERSISTENT_CONNECTION', false);
+
 # The seo panel help page
 define('SP_HELP_LINK', 'http://help.seopanel.in/');
 
