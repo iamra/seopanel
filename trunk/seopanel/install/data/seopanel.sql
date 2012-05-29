@@ -1082,6 +1082,7 @@ CREATE TABLE IF NOT EXISTS `websites` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `websites`
+-- the directory rank change
 --
-
+ALTER TABLE `directories` ADD `rank` INT( 11 ) NOT NULL DEFAULT '0';
+update directories set rank=rank+1 where id=1;
