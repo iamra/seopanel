@@ -1,3 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen.css" media="all" />
+    <style>
+        <?php
+        $filename =SP_ABSPATH."/css/screen.css";
+        $fp = fopen($filename, "r");    
+        echo fread($fp, filesize($filename));
+        fclose($fp)
+        ?>
+    </style>
+</head>
+<body>
 <?=$commonTexts['Hello']?> <?=$name?>,<br><br>
 
 <?=$reportTexts['report_email_body_text1']?><br><br><br><br>
@@ -26,3 +39,5 @@ echo str_replace('[LOGIN_LINK]', "<a href='$reportLink'>{$loginTexts['Login']}</
 		</tr>
 	</tbody>
 </table>
+</body>
+</html>
