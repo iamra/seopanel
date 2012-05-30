@@ -329,7 +329,7 @@ function sendMail($from, $fromName, $to ,$subject,$content){
 	$mail->From = $from;
 	$mail->FromName = $fromName;
 	$mail->AddAddress($to, "");
-	$mail->WordWrap = 50;                              
+	$mail->WordWrap = 70;                              
 	$mail->IsHTML(true);
 
 	$mail->Subject = $subject;
