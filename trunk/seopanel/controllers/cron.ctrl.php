@@ -119,19 +119,24 @@ class CronController extends Controller {
 			    
 			    $websiteCtrler = New WebsiteController();
     			$websiteList = $websiteCtrler->__getAllWebsites($userInfo['id']);
-    			foreach($websiteList as $websiteInfo){
-    				
-    				$this->websiteInfo = $websiteInfo;
-    				$this->routeCronJob($websiteInfo['id'], '', true);
-    			}
     			
-    			// save report generated time
-				$reportCtrler->updateUserReportSetting($userInfo['id'], 'last_generated', $lastGenerated);
-				
-				// send email notification if enabled
-				if (SP_REPORT_EMAIL_NOTIFICATION && $repSetInfo['email_notification']  && (count($websiteList) > 0)) {
-				    $reportCtrler->sentEmailNotificationForReportGen($userInfo, $repSetInfo['last_generated'], $lastGenerated);
-				}
+    			// if websites are available
+    			if (count($websiteList) > 0) {
+    			
+        			foreach($websiteList as $websiteInfo){
+        				
+        				$this->websiteInfo = $websiteInfo;
+        				$this->routeCronJob($websiteInfo['id'], '', true);
+        			}
+        			
+        			// save report generated time
+    				$reportCtrler->updateUserReportSetting($userInfo['id'], 'last_generated', $lastGenerated);
+    				
+    				// send email notification if enabled
+    				if (SP_REPORT_EMAIL_NOTIFICATION && $repSetInfo['email_notification']) {
+    				    $reportCtrler->sentEmailNotificationForReportGen($userInfo, $repSetInfo['last_generated'], $lastGenerated);
+    				}
+    			}
     			
 			}
 		}		
