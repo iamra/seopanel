@@ -564,7 +564,7 @@ class Install {
 	
 	# function to create seo panel API Key
 	function createSeoPanelAPIKey($db) {
-	    $sql = "Select set_val from settings where set_name='SP_API_KEY'";
+	    $sql = "Select id, set_val from settings where set_name='SP_API_KEY'";
 	    $apiInfo = $db->select($sql, true);
 
 	    if (empty($apiInfo['set_val'])) {
