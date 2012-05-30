@@ -134,7 +134,9 @@ foreach($menuList as $i => $menuInfo){
 			<script type="text/javascript">scriptList[<?=$i?>] = 'settings.php?sec=aboutus';</script>			
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=aboutus', 'content')"><?=$spTextPanel['About Us']?></a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=version', 'content')"><?=$spText['label']['Version']?></a></li>
+				<?php if (isAdmin()) {?>
+					<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=version', 'content')"><?=$spText['label']['Version']?></a></li>
+				<?php }?>
 			</ul>
 			<?php
 			break;
