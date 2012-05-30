@@ -573,7 +573,11 @@ class Install {
 	        $apiKey .= rand(10000000, 100000000);
 	        $apiKey = md5($apiKey);
 	        
-	        $sql = "Insert into settings(set_label,set_name,set_val,set_type) values('Seo Panel API Key', 'SP_API_KEY', '$apiKey', 'large')";
+	        if (empty($apiInfo['id'])) {
+	            $sql = "Insert into settings(set_label,set_name,set_val,set_type) values('Seo Panel API Key', 'SP_API_KEY', '$apiKey', 'large')";
+	        } else {
+	            $sql = "update settings set set_val='$apiKey' where set_name='SP_API_KEY'";
+	        }
 	        $apiInfo = $db->query($sql);
 	    }
 	}	    
