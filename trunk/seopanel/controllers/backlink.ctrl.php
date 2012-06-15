@@ -25,9 +25,9 @@ class BacklinkController extends Controller{
 	var $url;
 	var $colList = array('google' => 'google', 'alexa' => 'alexa', 'msn' => 'msn');
 	var $backUrlList = array(
-		'google' => 'http://www.google.com/search?q=link%3A',
+		'google' => 'http://www.google.com/search?hl=en&q=link%3A',
 		'alexa' => 'http://www.alexa.com/site/linksin/',
-		'msn' => 'http://www.bing.com/search?q=link%3A',
+		'msn' => 'http://www.bing.com/search?setmkt=en&q=link%3A',
 	);
 	
 	function showBacklink() {
