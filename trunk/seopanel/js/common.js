@@ -52,7 +52,6 @@ function eraseCookie(name) {
 }
 
 /* site map request */
-var periodic;
 function sitemapDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading) {
 	
 	hideDiv('proceed');
@@ -63,8 +62,7 @@ function sitemapDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoadi
 		method : 'post',
 		parameters : scriptArgs,
 		evalScripts : true,
-		onLoading: function(request){ showLoadingIcon(scriptPos, noLoading); },
-		onComplete : function(request){ periodic.stop();}
+		onLoading: function(request){ showLoadingIcon(scriptPos, noLoading); }
 	});	
 }
 
