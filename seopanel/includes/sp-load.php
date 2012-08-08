@@ -89,6 +89,11 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	define('SP_CSSPATH', SP_WEBPATH."/css");
 	define('SP_IMGPATH', SP_WEBPATH."/images");
 	define('SP_JSPATH', SP_WEBPATH."/js");
+	
+	#create database object	
+	include_once(SP_LIBPATH."/database.class.php");
+	$dbObj = New Database(DB_ENGINE);
+	$dbObj->dbConnect();
 
 	# to prevent sql injection
 	if(!empty($_SERVER['REQUEST_METHOD']) && SP_PREVENT_SQL_INJECTION){
