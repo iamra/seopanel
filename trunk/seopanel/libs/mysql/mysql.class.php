@@ -33,20 +33,27 @@ class Mysql extends Database{
 	function Mysql($dbServer, $dbUser, $dbPassword, $dbName, $debug){
 		$this->setDebugMode($debug);
 		
-		// if mysql persistent connection enabled
-		if (SP_DB_PERSISTENT_CONNECTION) {
-		    $this->connectionId = @mysql_pconnect($dbServer, $dbUser, $dbPassword, true);
+		if (defined('SP_DB_CONN_ID')) {
+		    $this->connectionId =  SP_DB_CONN_ID;   
 		} else {
-		    $this->connectionId = @mysql_connect($dbServer, $dbUser, $dbPassword, true);
-		}
 		
-		if (!$this->connectionId){
-			$this->showError();			
-			showErrorMsg("<p style='color:red'>Database connection failed!<br>Please check your database settings!</p>");
-		}
-		$this->selectDatabase($dbName);				
-		$this->query( "SET NAMES utf8");
-		return;
+    		// if mysql persistent connection enabled
+    		if (SP_DB_PERSISTENT_CONNECTION) {
+    		    $this->connectionId = @mysql_pconnect($dbServer, $dbUser, $dbPassword, true);
+    		} else {
+    		    $this->connectionId = @mysql_connect($dbServer, $dbUser, $dbPassword, true);
+    		}
+    		
+    		if (!$this->connectionId){
+    			$this->showError();			
+    			showErrorMsg("<p style='color:red'>Database connection failed!<br>Please check your database settings!</p>");
+    		} else {
+    		    $this->selectDatabase($dbName);				
+    		    $this->query( "SET NAMES utf8");
+    		    define('SP_DB_CONN_ID', $this->connectionId);
+    		}
+		}		
+		
 	}
 
 	# func to select database

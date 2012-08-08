@@ -186,11 +186,6 @@ class Controller extends Seopanel{
 				$_SESSION['text'][$category] = $this->getLanguageTexts($category, $langCode);
 			}	
 		}
-	}
-	
-	# destructor
-	function __destruct() {
-		$this->db->close();	
 	}	
 
 	# function to check whether user is keyword owner or not
