@@ -82,11 +82,11 @@ class BacklinkController extends Controller{
 			#msn
 			case 'msn':
 			    $url = formatUrl($this->url, false);
-				$url = $this->backUrlList[$engine] . urlencode($url);
+				$url = $this->backUrlList[$engine] . urlencode(addHttpToUrl($url));
 				$v = $this->spider->getContent($url);
 				$v = empty($v['page']) ? '' :  $v['page'];
-		        if(preg_match('/of ([0-9\,]+) results/si', $v, $r)) {
-				}elseif(preg_match('/id="count">.*?\(([0-9\,]+).*?\)/si', $v, $r)) {				    
+		        if (preg_match('/([0-9\,]+) results/si', $v, $r)) {
+				} elseif (preg_match('/id="count".*?>.*?\(([0-9\,]+).*?\)/si', $v, $r)) {
 				}
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
