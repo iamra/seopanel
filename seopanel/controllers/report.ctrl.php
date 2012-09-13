@@ -540,7 +540,7 @@ class ReportController extends Controller {
 	}
 	
 	# func to crawl keyword
-	function crawlKeyword( $keywordInfo, $seId='', $cron=false ) {
+	function crawlKeyword( $keywordInfo, $seId='', $cron=false, $removeDuplicate=true) {
 		$crawlResult = array();
 		$websiteUrl = formatUrl($keywordInfo['url'], false);
 		if(empty($websiteUrl)) return $crawlResult;
@@ -565,6 +565,13 @@ class ReportController extends Controller {
 			    $searchUrl = str_replace('&cr=country&', '&cr=&', $searchUrl);
 			}
 			$seUrl = str_replace('[--start--]', $this->seList[$seInfoId]['start'], $searchUrl);
+			
+			// if google add special parameters
+			$isGoogle = false;
+			if (stristr($this->seList[$seInfoId]['url'], 'google')) {
+			    $isGoogle = true;
+			    $seUrl .= "&ie=utf-8&pws=0&gl=".$keywordInfo['country_code'];
+			}
 			
 			if(!empty($this->seList[$seInfoId]['cookie_send'])){
 				$this->seList[$seInfoId]['cookie_send'] = str_replace('[--lang--]', $keywordInfo['lang_code'], $this->seList[$seInfoId]['cookie_send']);
@@ -598,9 +605,20 @@ class ReportController extends Controller {
 					$urlList = $matches[$this->seList[$seInfoId]['url_index']];
 					$crawlResult[$seInfoId]['matched'] = array();
 					$rank = 1;
+					$previousDomain = "";
 					foreach($urlList as $i => $url){
 						$url = urldecode(strip_tags($url));
-						if(!preg_match('/^http:\/\/|^https:\/\//i', $url)) continue;						
+						if(!preg_match('/^http:\/\/|^https:\/\//i', $url)) continue;
+
+						// check to remove duplicates from same domain if google is the search engine
+						if ($removeDuplicate && $isGoogle) {
+						    $currentDomain = parse_url($url, PHP_URL_HOST);
+						    if ($previousDomain == $currentDomain) {
+						        continue;        
+						    }
+						    $previousDomain = $currentDomain;
+						}
+						
 						if($this->showAll || stristr($url, $websiteUrl)){
 
 							if($this->showAll && stristr($url, $websiteUrl)){
