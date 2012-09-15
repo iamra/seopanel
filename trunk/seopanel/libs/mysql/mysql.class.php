@@ -33,10 +33,11 @@ class Mysql extends Database{
 	function Mysql($dbServer, $dbUser, $dbPassword, $dbName, $debug){
 		$this->setDebugMode($debug);
 		
-		if (defined('SP_DB_CONN_ID')) {
-		    $this->connectionId =  SP_DB_CONN_ID;   
+		// check connection id existing and it is a resource
+		if (defined('SP_DB_CONN_ID') && is_resource(SP_DB_CONN_ID) ) {
+		    $this->connectionId =  SP_DB_CONN_ID;
 		} else {
-		
+		    
     		// if mysql persistent connection enabled
     		if (SP_DB_PERSISTENT_CONNECTION) {
     		    $this->connectionId = @mysql_pconnect($dbServer, $dbUser, $dbPassword, true);
