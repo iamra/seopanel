@@ -59,39 +59,46 @@ class AdminPanelController extends Controller{
             			'name' => $this->spTextPanel['Seo Plugins Manager'],
             			'url_section' => 'seo-plugin-manager'						
 						);
-						
+			
 			$menuList[] = array(
 						'id' => 6,
+            			'name' => $this->spTextPanel['Themes Manager'],
+            			'url_section' => 'themes-manager'						
+						);
+						
+			$menuList[] = array(
+						'id' => 7,
             			'name' => $this->spTextPanel['Directory Manager'],
             			'url_section' => 'directory-manager'						
 						);
 						
 			$menuList[] = array(
-						'id' => 11,
-            			'name' => $this->spTextPanel['Search Engine Manager'],
-            			'url_section' => 'se-manager'						
-						);
-						
-			$menuList[] = array(
-						'id' => 9,
+						'id' => 8,
             			'name' => $this->spTextPanel['Proxy Manager'],
             			'url_section' => 'proxy-manager'						
 						);
 						
 			$menuList[] = array(
-						'id' => 7,
+						'id' => 9,
+            			'name' => $this->spTextPanel['Search Engine Manager'],
+            			'url_section' => 'se-manager'						
+						);
+						
+			$menuList[] = array(
+						'id' => 10,
             			'name' => $this->spTextPanel['System Settings'],
             			'url_section' => 'settings'						
+						);
+		
+		    $menuList[] = array(
+						'id' => 11,
+            			'name' => $this->spTextPanel['My Profile'],
+            			'url_section' => 'my-profile'						
 						);
 		}
 		
 		$menuList[] = array(
-						'id' => 8,
-            			'name' => $this->spTextPanel['My Profile'],
-            			'url_section' => 'my-profile'						
-						);
-		$menuList[] = array(
-						'id' => 10,
+						'id' => 12,
             			'name' => $this->spTextPanel['About Us'],
             			'url_section' => 'about-us'						
 						);
