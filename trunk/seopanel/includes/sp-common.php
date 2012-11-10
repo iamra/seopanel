@@ -255,6 +255,15 @@ function removeNewLines($value) {
 
 # func to get current url
 function getCurrentUrl() {
+    
+    // to fix the issues with IIS
+    if (!isset($_SERVER['REQUEST_URI'])) {
+        $_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'],1 );
+        if (isset($_SERVER['QUERY_STRING'])) {
+            $_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
+        }
+    }
+    
 	$reqUrl = $_SERVER['REQUEST_URI'];
 	$protocol = empty($_SERVER['HTTPS']) ? "http://" : "https://";
 	$port = empty($_SERVER['SERVER_PORT']) ?  "" : (int) $_SERVER['SERVER_PORT'];
@@ -308,6 +317,13 @@ function showPrintHeader($headMsg='', $doPrint=true) {
 	if (!empty($headMsg)) echo showSectionHead($headMsg);
 }
 
+# func to show printer footer
+function showPrintFooter($spText) {
+    ?>
+    <div style="clear: both; margin-top: 10px;"><?php echo str_replace('[year]', date('Y'), $spText['common']['copyright'])?></div>
+	<?php
+}
+
 # func to debug the variables
 function debugVar($value) {
     echo "<pre>";print_r($value);echo "</pre>";
@@ -347,7 +363,7 @@ function sanitizeData($data, $stripTags=true, $addSlashes=false) {
     if (is_array($data)) {
         foreach ($data as $col => $val) {
 
-            if ($val == 'password') {
+            if ( ($col == 'password') ||  ($col== 'confirmPassword') ) {
                 continue;
             }
             
@@ -371,5 +387,31 @@ function sanitizeData($data, $stripTags=true, $addSlashes=false) {
         }
     }
     return $data;
+}
+
+# func to get rounded tab top
+function getRoundTabTop(){
+	
+	$content = '
+		<b class="round_border">
+			<b class="round_border_layer3"></b>
+			<b class="round_border_layer2"></b>
+			<b class="round_border_layer1"></b>
+		</b>
+	';
+	return $content;
+}
+
+# func to get rounded tab bottom
+function getRoundTabBot(){
+	
+	$content = '
+		<b class="round_border">
+			<b class="round_border_layer1"></b>
+			<b class="round_border_layer2"></b>
+			<b class="round_border_layer3"></b>
+		</b>
+	';
+	return $content;
 }
 ?>

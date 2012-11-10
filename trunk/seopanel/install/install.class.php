@@ -211,6 +211,15 @@ class Install {
 	}
 	
 	function getWebPath(){
+	    
+	    // to fix the issue with IIS
+	    if (!isset($_SERVER['REQUEST_URI'])) {
+            $_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1 );
+            if (isset($_SERVER['QUERY_STRING'])) {
+                $_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
+            }
+        }	    
+	    
 		$reqUrl = $_SERVER['REQUEST_URI'];
 		$count = 0;
 		$reqUrl = preg_replace('/\/install\/$/i', '', $reqUrl, 1, $count);		

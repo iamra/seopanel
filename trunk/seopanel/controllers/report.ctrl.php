@@ -560,7 +560,7 @@ class ReportController extends Controller {
 			
 			$searchUrl = str_replace('[--keyword--]', urlencode(stripslashes($keywordInfo['name'])), $this->seList[$seInfoId]['url']);
 			$searchUrl = str_replace('[--lang--]', $keywordInfo['lang_code'], $searchUrl);
-			$searchUrl = str_replace('[--country--]', strtolower($keywordInfo['country_code']), $searchUrl);
+			$searchUrl = str_replace('[--country--]', $keywordInfo['country_code'], $searchUrl);
 			if (empty($keywordInfo['country_code']) && stristr($searchUrl, '&cr=country&')) {
 			    $searchUrl = str_replace('&cr=country&', '&cr=&', $searchUrl);
 			}
@@ -609,6 +609,9 @@ class ReportController extends Controller {
 					foreach($urlList as $i => $url){
 						$url = urldecode(strip_tags($url));
 						if(!preg_match('/^http:\/\/|^https:\/\//i', $url)) continue;
+						
+						// check for to remove msn ad links in page
+						if(stristr($url, 'r.msn.com')) continue;
 
 						// check to remove duplicates from same domain if google is the search engine
 						if ($removeDuplicate && $isGoogle) {

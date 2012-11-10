@@ -186,6 +186,7 @@ class WebsiteController extends Controller{
 		$this->set('post', $listInfo);
 		$errMsg['name'] = formatErrorMsg($this->validate->checkBlank($listInfo['name']));
 		$errMsg['url'] = formatErrorMsg($this->validate->checkBlank($listInfo['url']));
+		$listInfo['url'] = addHttpToUrl($listInfo['url']);
 		if(!$this->validate->flagErr){
 			if (!$this->__checkName($listInfo['name'], $userId)) {
 			    if (!$this->__checkWebsiteUrl($listInfo['url'])) {
@@ -250,6 +251,7 @@ class WebsiteController extends Controller{
 		$this->set('post', $listInfo);
 		$errMsg['name'] = formatErrorMsg($this->validate->checkBlank($listInfo['name']));
 		$errMsg['url'] = formatErrorMsg($this->validate->checkBlank($listInfo['url']));
+		$listInfo['url'] = addHttpToUrl($listInfo['url']);
 		if(!$this->validate->flagErr){
 
 			if($listInfo['name'] != $listInfo['oldName']){

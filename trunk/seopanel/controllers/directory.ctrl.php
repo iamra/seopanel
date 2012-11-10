@@ -29,9 +29,7 @@ class DirectoryController extends Controller{
 	function showSubmissionPage( ) {
 		
 		$userId = isLoggedIn();
-		$this->session->setSession('no_captcha', false);
 		$this->session->setSession('dirsub_pr', '');
-		$this->session->setSession('dirsub_lang', '');
 		
 		$websiteController = New WebsiteController();
 		$this->set('websiteList', $websiteController->__getAllWebsites($userId, true));
@@ -180,6 +178,7 @@ class DirectoryController extends Controller{
 		if(!empty($_SESSION['no_captcha'])) $sql .= " and is_captcha=0";
 		if(!empty($_SESSION['dirsub_pr'])) $sql .= " and google_pagerank={$_SESSION['dirsub_pr']}";
 		if(!empty($_SESSION['dirsub_lang'])) $sql .= " and lang_code='{$_SESSION['dirsub_lang']}'";
+		if(!empty($_SESSION['no_reciprocal'])) $sql .= " and extra_val not like '%LINK_TYPE=reciprocal%'";
 		if(!empty($dirId)) $sql .= " and id=$dirId";
 		if(count($dirList) > 0) $sql .= " and id not in (".implode(',', $dirList).")";
 		$sql .= " order by rank DESC, extra_val ASC, id ASC";
@@ -588,22 +587,22 @@ class DirectoryController extends Controller{
 	# function to show featured directories
 	function showFeaturedSubmission($info="") {
 	    $dirList = $this->getAllFeaturedDirectories();
-	    $this->set('dirList', $dirList);    
-	    if (empty($info['dir_id'])) {
-	        $selDirInfo = $dirList[1];
-	        $selDirId = $selDirInfo['id'];
-	    } else {
-	        $selDirId = intval($info['dir_id']); 
-	        $selDirInfo = $dirList[$selDirId];   
-	    }
-	    $this->set('selDirId', $selDirId);
-	    $this->set('selDirInfo', $selDirInfo); 	    
+	    $this->set('list', $dirList);    
+//	    if (empty($info['dir_id'])) {
+//	        $selDirInfo = $dirList[1];
+//	        $selDirId = $selDirInfo['id'];
+//	    } else {
+//	        $selDirId = intval($info['dir_id']); 
+//	        $selDirInfo = $dirList[$selDirId];   
+//	    }
+//	    $this->set('selDirId', $selDirId);
+//	    $this->set('selDirInfo', $selDirInfo); 	    
 		$this->render('directory/featuredsubmission');
 	}	
 	
 	# function to get all features directories
     function getAllFeaturedDirectories() {
-		$sql = "SELECT * FROM featured_directories where status=1 order by id";		
+		$sql = "SELECT * FROM featured_directories where status=1 order by  google_pagerank DESC";		
 		$list = $this->db->select($sql);
 		$dirList = array();
 		foreach ($list as $listInfo) {

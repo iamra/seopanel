@@ -145,6 +145,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		case "checkcaptcha":
 			$_SESSION['no_captcha'] = $_GET['no_captcha'];
 			break;
+			
+		case "checkreciprocal":
+			$_SESSION['no_reciprocal'] = $_GET['no_reciprocal'];
+			break;
 		
 		default:
 			$controller->showSubmissionPage();

@@ -40,13 +40,24 @@ class Spider{
 	var $_CURL_sleep = 1;
 	var $_CURLOPT_COOKIE = "";
 	var $_CURLOPT_HEADER = 0;
+	var $userAgentList = array();
 
 	# spider constructor
 	function Spider()	{			
 		$this -> _CURLOPT_COOKIEJAR = SP_TMPPATH.'/'.$this -> _CURLOPT_COOKIEJAR;
 		$this -> _CURLOPT_COOKIEFILE = SP_TMPPATH.'/'.$this -> _CURLOPT_COOKIEFILE;		
 		$this -> _CURL_RESOURCE = curl_init( );
-		if(!empty($_SERVER['HTTP_USER_AGENT'])) $this->_CURLOPT_USERAGENT = $_SERVER['HTTP_USER_AGENT'];  				
+		if(!empty($_SERVER['HTTP_USER_AGENT'])) $this->_CURLOPT_USERAGENT = $_SERVER['HTTP_USER_AGENT'];
+
+		// user agents
+		$this->userAgentList[] = "Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)";
+		$this->userAgentList[] = "Mozilla/5.0 (compatible; MSIE 7.0b; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; .NET CLR 3.0.04506.30)";
+		$this->userAgentList[] = "Mozilla/5.0 (Mozilla/5.0; MSIE 7.0; Windows NT 5.1; FDM; SV1; .NET CLR 3.0.04506.30)";
+		$this->userAgentList[] = "Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 5.2; .NET CLR 2.0.50727)";
+		$this->userAgentList[] = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.0; search bar)";
+		$this->userAgentList[] = "Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))";
+		$this->userAgentList[] = defined('SP_USER_AGENT') ? SP_USER_AGENT : $this->_CURLOPT_USERAGENT;
+		
 	}	
 	
 	# func to format urls
@@ -65,6 +76,23 @@ class Spider{
 		return $scheme.$url;
 	}
 	
+	# func to get relative url to append with relative links found in the page 
+	function getRelativeUrl($relativeUrl) {
+	    
+	    $relativeUrl = parse_url($relativeUrl, PHP_URL_PATH);
+        
+	    // if link contains script names
+        if(preg_match('/.htm$|.html$|.php$|.pl$|.jsp$|.asp$|.aspx$|.do$|.cgi$|.cfm$/i', $relativeUrl)) {
+            if (preg_match('/(.*)\//', $relativeUrl, $matches) ) {
+                return $matches[1];
+            }            
+        } elseif (preg_match('/\/$/', $relativeUrl)) { 
+            return $this->removeTrailingSlash($relativeUrl);
+	    } else {
+            return $relativeUrl;
+        }   
+	}
+	
     # func to get backlink page info
 	function getPageInfo($url, $domainUrl, $returnUrls=false){
 	    
@@ -72,6 +100,11 @@ class Spider{
 		$ret = $this->getContent($urlWithTrailingSlash);
 		$pageInfo = array();
 		$checkUrl = formatUrl($domainUrl);
+		
+		// if relative links of a page needs to be checked
+		if (SP_RELATIVE_LINK_CRAWL) {
+		    $relativeUrl = $domainUrl . $this->getRelativeUrl($url);
+		}
 		
 		if( !empty($ret['page'])){
 			$string = str_replace(array("\n",'\n\r','\r\n','\r'), "", $ret['page']);			
@@ -98,6 +131,8 @@ class Spider{
     				            $href = $domainUrl . $href;    
     				        } elseif ( $url == $domainUrl) {
     				            $href = $domainUrl ."/". $href;        
+    				        } elseif ( SP_RELATIVE_LINK_CRAWL) {    				            
+    				            $href = $relativeUrl ."/". $href;        
     				        } else {
     				            $pageInfo['total_links'] -= 1;
     				            continue;
@@ -131,7 +166,7 @@ class Spider{
 				}
 			}			
 		}
-		//echo "<pre>";print_r($pageInfo);exit;
+		
 		return $pageInfo;
 	}
 	
@@ -192,6 +227,13 @@ class Spider{
 		if(isset($matches[1])) return trim($matches[1]) ;
 	}
 	
+	# function to get then useragent
+	function getUserAgent() {
+	    $userAgentKey = array_rand($this->userAgentList, 1);
+	    return $this->userAgentList[$userAgentKey];    
+	}
+	
+	
 	# get contents of a web page	
 	function getContent( $url, $enableProxy=true)	{
 		
@@ -213,6 +255,7 @@ class Spider{
 			curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_POSTFIELDS , $this -> _CURLOPT_POSTFIELDS );
 		}
 
+		// user agent assignment
 		$this->_CURLOPT_USERAGENT = defined('SP_USER_AGENT') ? SP_USER_AGENT : $this->_CURLOPT_USERAGENT;
 		if( strlen( $this -> _CURLOPT_USERAGENT ) > 0 ) {
 			curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_USERAGENT, $this -> _CURLOPT_USERAGENT );
