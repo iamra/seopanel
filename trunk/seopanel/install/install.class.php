@@ -522,6 +522,7 @@ class Install {
 
 		# importing text file
 		$errMsg = $db->importDatabaseFile(SP_UPGRADE_DB_LANG_FILE, false);
+		$_SESSION['text'] = "";
 		
 		# create API Key if not exists
 		$this->createSeoPanelAPIKey($db);
