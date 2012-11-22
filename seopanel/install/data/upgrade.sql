@@ -5,7 +5,7 @@ INSERT INTO `settings`(`set_label`, `set_name`, `set_val`, `set_category`, `set_
 ('Crawl relative links in a page', 'SP_RELATIVE_LINK_CRAWL', '1', 'siteauditor', 'bool', '1');
 
 UPDATE `searchengines` SET 
-`regex` = '<li.*?class="?g.*?<a.*?href="\\/url\\?q=(.*?)&amp;sa=U.*?>(.*?)<\\/a>.*?Cached.*?<span.*?>(.*?)<\\/span>' 
+`regex` = '<li.*?class="?g.*?<a.*?href="\\/url\\?q=(.*?)&amp;sa=U.*?>(.*?)<\\/a>.*?<\\/div><span.*?>(.*?)<\\/span>' 
 WHERE `url` LIKE '%google%';
 
 --
@@ -37,7 +37,7 @@ INSERT INTO `featured_directories` (`id`, `directory_name`, `directory_link`, `g
 --
 -- Table structure for table `themes`
 --
-
+DROP TABLE IF EXISTS `themes`;
 CREATE TABLE IF NOT EXISTS `themes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
