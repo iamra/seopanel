@@ -296,7 +296,7 @@ div#Wrapper {
 	text-decoration: none;
 }
 
-#Tabs {	margin: 14px 0 0 30px;	height: 25px; padding: 0;}
+#Tabs {	margin: 14px 0 0 10px;	height: 25px; padding: 0;}
 #Tabs ul {	margin: 0;	padding: 0;}
 #Tabs li {
 	margin: 0;
@@ -311,7 +311,7 @@ div#Tabs a:link, div#Tabs a:visited {text-decoration: none;}
 	float: left;
 	font-size: 14px;
 	font-weight: normal;
-	padding: 6px 18px;
+	padding: 6px 16px;
 	margin: 0;
 }
 #Tabs ul#MainTabs a:link.current,#Tabs ul#MainTabs a:visited.current {
