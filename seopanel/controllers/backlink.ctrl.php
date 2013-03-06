@@ -87,6 +87,7 @@ class BacklinkController extends Controller{
 				$v = empty($v['page']) ? '' :  $v['page'];
 		        if (preg_match('/([0-9\,]+) results/si', $v, $r)) {
 				} elseif (preg_match('/id="count".*?>.*?\(([0-9\,]+).*?\)/si', $v, $r)) {
+				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $v, $r)) {
 				}
 				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
