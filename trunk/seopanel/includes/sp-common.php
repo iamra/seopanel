@@ -305,6 +305,9 @@ function exportToCsv($fileName, $content) {
 # func to show printer hearder
 function showPrintHeader($headMsg='', $doPrint=true) {
     ?>
+    <head>
+    	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    </head>
 	<script language="Javascript" src="<?=SP_JSPATH?>/common.js"></script>
 	<script type="text/javascript">
 		<?php if ($doPrint) { ?>
