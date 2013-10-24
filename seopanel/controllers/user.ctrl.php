@@ -389,5 +389,43 @@ class UserController extends Controller{
 		$this->set('errMsg', $errMsg);
 		$this->showMyProfile($userInfo);
 	}
+	
+	# forgot password function
+	function forgotPasswordForm(){		
+		$this->render('common/forgot');
+	}
+	
+	# reset password of user
+    function requestPassword($userEmail) {
+        
+		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userEmail));
+		$this->set('post', $_POST);
+		if(!$this->validate->flagErr){
+	        $userId = $this->__checkEmail($userEmail);
+	        if(!empty($userId)){
+	            $userInfo = $this->__getUserInfo($userId);
+	        	$rand = str_shuffle(rand().$userInfo['username']);
+	            $sql = "update users set password=md5('$rand') where id={$userInfo['id']}";
+	            $this->db->query($sql);
+	            
+	            # send password to user
+	            $error = 0;
+	           	$this->set('rand', $rand);
+	           	$this->set('name', $userInfo['first_name']." ".$userInfo['last_name']);
+	           	$content = $this->getViewContent('email/passwordreset');
+	           	$subject = "Seo panel password reset";
+	           	if(!sendMail(SP_SUPPORT_EMAIL, SP_ADMIN_NAME, $userEmail, $subject, $content)){
+	           		$error = showErrorMsg('An internal error occured while sending password reset mail!', false);
+	           	}
+	           	$this->set('error', $error);
+	           	$this->render('common/forgotconfirm');
+	           	exit;
+	        }else{
+	            $errMsg['email'] = formatErrorMsg($_SESSION['text']['login']['user_email_not_exist']);
+	        }
+		}
+		$this->set('errMsg', $errMsg);
+		$this->forgotPasswordForm();
+	}
 }
 ?>
