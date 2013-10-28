@@ -23,7 +23,7 @@ if(!empty($printVersion)) {
     echo showSectionHead($spTextTools['Keyword Position Summary']);
     ?>
 	<form id='search_form'>
-	<table width="98%" border="0" cellspacing="0" cellpadding="0" class="search">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
 			<th width="100px"><?=$spText['common']['Website']?>: </th>
 			<td width="200px">
