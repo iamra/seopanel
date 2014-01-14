@@ -40,7 +40,7 @@ define('SP_PLUGINMENUFILE', 'menu.ctp.php');
 define('SP_DEMO', 0);
 
 # seo panel language testing mode
-define('SP_LANGTESTING', 1);
+define('SP_LANGTESTING', 0);
 
 # seo panel multiple cron execution possible same day
 define('SP_MULTIPLE_CRON_EXEC', 1);
