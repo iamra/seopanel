@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
   PRIMARY KEY (`lang_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `languages` (`lang_code`, `lang_name`, `lang_show`, `RTL`, `translated`) VALUES
+INSERT INTO `languages` VALUES
 ('en', 'English', 'English', 0, 1),
 ('de', 'German', 'Deutsch', 0, 1),
 ('fr', 'French', 'Français', 0, 1),
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `texts` (
   UNIQUE KEY `language_id` (`lang_code`,`category`,`label`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11406 ;
 
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+INSERT INTO `texts` VALUES
 (1, 'en', 'common', 'lang', 'Language', '2010-09-08 07:37:53'),
 (2, 'de', 'common', 'lang', 'Sprache', '2013-05-27 19:02:27'),
 (3, 'fr', 'common', 'lang', 'Langue', '2014-01-13 00:24:07'),
@@ -506,9 +506,9 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (448, 'es', 'label', 'Cron', 'Cron', '2012-05-12 10:54:10'),
 (449, 'es', 'label', 'Description', 'Descripción', '2012-05-12 10:54:10'),
 (450, 'es', 'label', 'Download', 'Descargar', '2012-05-12 10:54:10'),
-(451, 'es', 'label', 'Installation', 'Instalación', '2012-05-12 10:54:10');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
-(452, 'es', 'label', 'Keywords', 'Palabras claves', '2012-05-12 10:54:10'),
+(451, 'es', 'label', 'Installation', 'Instalación', '2012-05-12 10:54:10'),
+(452, 'es', 'label', 'Keywords', 'Palabras claves', '2012-05-12 10:54:10');
+INSERT INTO `texts` VALUES
 (453, 'es', 'label', 'noactiveplugins', 'No se encuentra ningún plugin activo.', '2012-05-12 10:54:10'),
 (454, 'es', 'label', 'Plugin', 'Plugin', '2012-05-12 10:54:10'),
 (455, 'es', 'label', 'Port', 'Port', '2012-05-12 10:54:10'),
@@ -828,9 +828,9 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (765, 'fr', 'seotools', 'Detailed Position Reports', 'Rapports détaillés de position', '2011-07-10 10:50:35'),
 (766, 'fr', 'seotools', 'directory-submission', 'Soumission annuaire', '2011-07-10 10:50:35'),
 (767, 'fr', 'seotools', 'Featured Submission', 'Soumission active', '2011-07-10 10:50:35'),
-(768, 'fr', 'seotools', 'Generate Backlinks Reports', 'Générer les rapports de liens retour', '2011-07-10 10:50:35');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
-(769, 'fr', 'seotools', 'Generate Keyword Reports', 'Générer les rapports sur le mot-clé', '2011-07-10 10:50:35'),
+(768, 'fr', 'seotools', 'Generate Backlinks Reports', 'Générer les rapports de liens retour', '2011-07-10 10:50:35'),
+(769, 'fr', 'seotools', 'Generate Keyword Reports', 'Générer les rapports sur le mot-clé', '2011-07-10 10:50:35');
+INSERT INTO `texts` VALUES
 (770, 'fr', 'seotools', 'Generate Rank Reports', 'Générer les rapports de rangs', '2011-07-10 10:50:35'),
 (771, 'fr', 'seotools', 'Generate Saturation Reports', 'Générer les rapports de saturation', '2011-07-10 10:50:35'),
 (772, 'fr', 'seotools', 'Google Sitemap Generator', 'Générateur de sitemap Google', '2011-07-10 10:50:35'),
@@ -1117,10 +1117,10 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (1053, 'es', 'settings', 'seopanel_description', 'Un completo panel de control gratuito para la gestión de la optimización para buscadores de su sitios. Que contiene un montón de herramientas seo de gran utilidad para realizar el seguimiento del rendimiento de su sitios web. Se trata de un software de código abierto y también ud. puede desarrollar sus propios plugins para el panel de control.', '2012-05-12 11:03:05'),
 (1054, 'es', 'settings', 'seopanel_title', 'Seo Panel: Primero programa del mundo open source para la gestión Seo de varios sitios web', '2012-05-12 11:03:05'),
 (1055, 'fr', 'settings', 'seopanel_description', 'Un panneau de contrôle complet, gratuit, pour gérer le référencement de vos sites internet. Seo Panel inclut de nombreux outils Seo pour suivre et améliorer les performances de vos sites. Il s''agit d''un logiciel open source pour lequel vous pouvez développer vos propres extensions.', '2014-01-13 00:40:55'),
-(1056, 'fr', 'settings', 'seopanel_title', 'Seo Panel: le premier panneau de contrôle de référencement multisite open source au monde', '2014-01-13 00:40:55');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(1056, 'fr', 'settings', 'seopanel_title', 'Seo Panel: le premier panneau de contrôle de référencement multisite open source au monde', '2014-01-13 00:40:55'),
 (1840, 'nl', 'common', 'Invalid code entered', 'Ongeldige code ingevoerd', '2014-01-07 21:29:58'),
-(1841, 'nl', 'common', 'Invalid email address entered', 'Ongeldig e-mailadres ingevoerd', '2014-01-07 21:29:58'),
+(1841, 'nl', 'common', 'Invalid email address entered', 'Ongeldig e-mailadres ingevoerd', '2014-01-07 21:29:58');
+INSERT INTO `texts` VALUES
 (1839, 'nl', 'common', 'Invalid characters', 'Ongeldige karakters', '2014-01-07 21:29:58'),
 (1838, 'nl', 'common', 'Inactive', 'Inactief', '2014-01-07 21:29:58'),
 (1837, 'nl', 'common', 'Inactivate', 'Deactiveren', '2014-01-07 21:29:58'),
@@ -1450,11 +1450,11 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (1404, 'pl', 'home', 'Directory Submission', 'Submisja do Katalogu', '2010-10-09 09:41:25'),
 (1405, 'pl', 'home', 'home_cont1', '<h1 style=\\"text-align: center;margin-bottom: 30px;font-size: 19px;\\">Witamy w Seo Panel - pierwszym na świecie panelu kontrolnym dla wielu Stron</h1> \r\n        <p> \r\n           Kompletne źródło <b> Seo Panel</b> do zarządzania <b>Optymalizacją dla Wyszukiwarek (Search Engine Optimization)</b> twoich Stron.  \r\n            Seo Panel jest to zbiór <b>Narzędzi Seo</b> włączając najnowsze narzędzia aby <b>zwiększyć kontrolę i wydajność</b> twoich Stron. \r\n            Jest to <b>darmowe narzędzie</b> rozpowszechniane na licencji <b>GNU GENERAL PUBLIC LICENSE</b>. \r\n            Główną funkcją Seo Panel jest <b>rozszerzalność</b> o nowe <a href=\\"<?=SP_PLUGINSITE?>\\"\r\ntarget=\\"_blank\\">pluginy Seo</a>. \r\n            Każdy może łatwo <b>tworzyć i instalować</b> pluginy do swojego Seo Panel.  \r\n        </p> \r\n        <p></p> \r\n        <p> \r\n            Jest to Open source\\''owe oprogramowanie <b>wydane w Styczniu 2010</b>. \r\n            W tym <b>krótkim okresie</b> czasu <b>tysiąc</b> of <b>web masterów</b> używają ten software do <b>optymalizowania</b> swoich Stron. \r\n            Uzyj Seo Panel dzisiaj i <b>ciesz</b> się pełną kontrolą Seo w jednym narzędziu</b>. \r\n        </p>', '2010-10-09 09:41:25'),
 (1406, 'pl', 'home', 'home_cont2', '<fieldset> \r\n<legend>Główne fukcje Seo Panel <?=SP_INSTALLED?></legend> \r\n<ul class=\\"infobox\\"> \r\n    <li>         \r\n        <h1>Narzędzie to automatycznej submisji Stron do Katalogów</h1> \r\n        <p> \r\n            Narzędzie to automatycznej submisji Stron do Katalogów pomaga nam  help us to <b>submitować Strony</b> do największych<b> darmowych i płatnych Katalogów</b>. \r\n            Możemy również <b>śledzić status</b> każdej submisji przez <b>okresowe sprawdzania statusów</b>. \r\n            <b>Manadżer Katalogów</b> pomoże nam sprawdzić czy dany <b>katalog jest aktywny</b> czy nie. \r\n        </p> \r\n    </li> \r\n    <li>         \r\n        <h1>Sprawdzenie pozycji keyword\\''ów</h1> \r\n        <p> \r\n            Sprawdzenie pozycji keyword\\''ów  pozwoli znaleźć <b>pozycję w wyszukiwarkach</b> dla <b>zdefiniowanych Keyword\\''ów</b> dla twojej Strony. \r\n           W raportach możemy zobaczyć <b>dzienne pozycje</b> Keyword\\''ów w różnych wyszukiwarkach, <b>piękne wykresy</b> i <b>raport z detalami</b>. \r\n        </p> \r\n    </li> \r\n    <li>         \r\n        <h1>Site Auditor</h1> \r\n        <p>Site Auditor will <b>audit all SEO factors</b> of each pages of a site and will give a <b>detailed report</b> about each page. Pomoże nam generować mapy Strony <b>XML,HTML,TEXT</b> w formie plików gotowe do <b>submitowania</b> do wyszukiwarek.</p> \r\n    </li> \r\n    <li>         \r\n        <h1>Sprawdzanie Google Rank i Alexa Rank</h1> \r\n        <p> \r\n            Sprawdzanie Google Rank i Alexa Rank znajdzie <b>google pagerank</b> i <b>alexa rank</b> naszych stron i <b>zapisze</b> je w systemie. \r\n            W sekcji <b>Raport rankingów</b>, możemy zobaczyć <b>dzienne</b> rankingi google i alexa rank każdej Strony w <b>szczegółowym raporcie</b>. \r\n        </p> \r\n    </li> \r\n    <li>         \r\n        <h1>Sprawdzanie backlinków</h1> \r\n        <p> \r\n            Sprawdzanie backlinków znajdzie <b>liczbę backlinków</b> w różnych wyszukiwarkach <b>(google,yahoo,msn itd.)</b> i <b>zapisuje</b> je w systemie. \r\n            <br>W sekcji <b>Sprawdzanie backlinków</b>, możemy zobaczyć <b>dzienne raporty</b> ze sprawdzania backlinkow każdej Strony <b>ze szczegółami</b>.\r\n        </p> \r\n    </li>     \r\n    <li>         \r\n        <h1>Sprawdzanie Nasycenia w Wyszukiwarkach</h1> \r\n        <p> \r\n            Sprawdzanie Nasycenia w Wyszukiwarkach znajdzie <b>liczbę zaindexowanych podstron</b> naszych Stron w różnych wyszukiwarkach <b>(google,yahoo,msn etc)</b> i <b>zapisze</b> je w systemie. \r\n            W sekcji <b>raport nasycenia w wyszukiwarkach</b> możemy zobaczyć <b>dzienną liczbę zaindeksowanych podstron</b> i <b>szczegółowy raport</b> o każdej Stronie. \r\n        </p> \r\n    </li> \r\n    <li>         \r\n        <h1>Pluginy Seo Panel</h1> \r\n        <p> \r\n            <b>Główną funkcjonalnością</b> Seo Panel jest <b>rozszerzalność</b>. \r\n            Dodaj <b>pluginy Seo</b> do twojego Seo Panel aby <b>rozszerzyć funkcjonalność</b> według twoich potrzeb.\r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Pluginy Seo Panel</a> są dostarczane przez Seo Panel oraz źródła zewnętrzne. \r\n            Możesz łatwo <b>tworzyć</b> pluginy Seo dla swojego Seo Panel. \r\n            możesz <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">submitować</a> twoje pluginy do Seo Panel a my je <b>opublikujemy</b> na naszej stronie po uprzednim <b>sprawdzeniu</b>. \r\n        </p> \r\n    </li> \r\n    <li>         \r\n        <h1>Generator tagów Meta</h1> \r\n        <p> \r\n            Generator tagów Meta jest także <b>pluginem Seo</b> do generowania <b>własnych tagów Metas</b> na naszą Stronę. \r\n           Pomoże nam to dać <b>więcej informacji</b> o naszej Stronie dla <b>robotów wyszukiwarek</b>\r\npodczas indeksowanie Strony. \r\n        </p> \r\n    </li> \r\n</ul> \r\n</fieldset>', '2010-10-09 09:41:25'),
-(1407, 'pl', 'home', 'home_cont3', '<fieldset> \r\n<legend>Zasoby online dla Seo Panel</legend>     \r\n<ul class=\\"infobox\\"> \r\n\r\n    <li> \r\n        <h1>Zasoby online dla Seo Panel dla szybkiej referencji</h1>                 \r\n         \r\n         \r\n        <p> \r\n            <a href=\\"http://www.seopanel.in\\" target=\\"_blank\\">Oficjalna strona Seo Panel</a> \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_DOWNLOAD_LINK?>\\" target=\\"_blank\\">Sciągnij Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_DEMO_LINK?>\\" target=\\"_blank\\">Demo Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Skontaktuj się z Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Pomoc Użytkownika Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Forum Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">System Wsparcia Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Złóż donację dla Seo Panel</a> \r\n        </p> \r\n    </li> \r\n     \r\n</ul> \r\n</fieldset>', '2010-10-09 09:41:25');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(1407, 'pl', 'home', 'home_cont3', '<fieldset> \r\n<legend>Zasoby online dla Seo Panel</legend>     \r\n<ul class=\\"infobox\\"> \r\n\r\n    <li> \r\n        <h1>Zasoby online dla Seo Panel dla szybkiej referencji</h1>                 \r\n         \r\n         \r\n        <p> \r\n            <a href=\\"http://www.seopanel.in\\" target=\\"_blank\\">Oficjalna strona Seo Panel</a> \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_DOWNLOAD_LINK?>\\" target=\\"_blank\\">Sciągnij Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_DEMO_LINK?>\\" target=\\"_blank\\">Demo Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Skontaktuj się z Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Pomoc Użytkownika Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Forum Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">System Wsparcia Seo Panel</a> \r\n        </p> \r\n         \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Złóż donację dla Seo Panel</a> \r\n        </p> \r\n    </li> \r\n     \r\n</ul> \r\n</fieldset>', '2010-10-09 09:41:25'),
 (1408, 'pl', 'home', 'Pages Indexed', 'Zaindexowane Strony', '2010-10-09 09:41:25'),
 (1409, 'pl', 'home', 'Ranks', 'Ranking', '2010-10-09 09:41:25'),
-(1410, 'pl', 'home', 'SiteNameUrl', 'Nazwa Strony/Url', '2010-10-09 09:41:25'),
+(1410, 'pl', 'home', 'SiteNameUrl', 'Nazwa Strony/Url', '2010-10-09 09:41:25');
+INSERT INTO `texts` VALUES
 (1411, 'pl', 'home', 'Website Statistics', 'Statystyki Strony', '2010-10-09 09:41:25'),
 (1412, 'pl', 'keyword', 'Crawling keyword', 'Indeksowanie Keyword\\''u', '2010-10-09 07:24:57'),
 (1413, 'pl', 'keyword', 'Detailed Keyword Position Reports', 'Szczegółowy Raport o Pozycji Keyword\\''u', '2010-10-09 07:24:57'),
@@ -1894,7 +1894,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (1899, 'nl', 'home', 'Account Summary', 'Overzicht accounts', '2011-07-05 21:52:28'),
 (1900, 'nl', 'home', 'Backlinks', 'Backlinks', '2011-07-05 21:52:28'),
 (1901, 'nl', 'home', 'Directory Submission', 'Directory Inschrijving', '2011-07-05 21:52:28');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+INSERT INTO `texts` VALUES
 (1902, 'nl', 'home', 'home_cont1', '<h1 style=\\"text-align: center;margin-bottom: 30px;font-size: 19px;\\">Welkom bij Seo Panel - \\''s Werelds eerste Seo bedieningspaneel voor meerdere Websites</h1>\r\n        <p>\r\n            Een compleet <b>Open Source Seo bedieningspaneel</b> voor <b>zoekmachine optimalisering</b> van uw websites.\r\n           Seo Panel is in feite een <b>Seo Tool Kit</b> met de belangrijkste functies om de <b>zoekmachine optimalisering</b> van uw websites te\r\n<b>observeren en te verbeteren</b>.\r\n            Dit is <b>Gratis Software</b> vrijgegeven onder de <b>GNU GENERAL PUBLIC LICENSE</b>.\r\n            De kracht van Seo Panel ligt in de <b>uitbreidingsmogelijkheden</b>; door gebruik te maken van de <a href=\\"<?=SP_PLUGINSITE?>\\"\r\ntarget=\\"_blank\\">Seo Plugins</a>.\r\n            Iedereen kan eenvoudig nieuwe <b>plugins ontwikkelen en installeren</b> voor Seo Panel.\r\n        </p>\r\n        <p></p>\r\n        <p>\r\n            Deze Open Source software werd <b>januari 2010 uitgegeven</b>.\r\n			In een <b>korte periode</b> zijn er <b>duizenden webmasters</b> die deze software gebruiken om hun websites te <b>optimaliseren</b>. \r\n			Probeer Seo Panel zelf en <b>maak kennis</b> met het platform en alle seo gerelateerde functionaliteit.\r\n        </p>', '2011-07-05 21:52:28'),
 (1903, 'nl', 'home', 'home_cont2', '<fieldset>\r\n<legend>Hoofd functionaliteiten van Seo Panel <?=SP_INSTALLED?></legend>\r\n<ul class=\\"infobox\\">\r\n    <li>        \r\n        <h1>Automatische Directory Inschrijving Tool</h1>\r\n		<p>\r\n			De automatische directory inschrijving tool geeft <b>toegang naar veel gratis en betaalde web-directories</b>. Daarnaast kan de <b>status van elke inschrijving periodiek worden gecontroleerd</b>; met behulp van het <b>Controleer Status Inschrijving script</b>. De <b>Directory Manager</b> helpt aan te tonen in<b>welke directory uw domein actief is en welke niet</b>.\r\n			\r\n		</p>\r\n    </li>\r\n    <li>        \r\n        <h1>Posities van Zoekwoorden</h1>\r\n		<p>\r\n			U kunt de <b>zoekmachine posities</b> van <b>de betreffende zoekwoorden</b> die u heeft toegewezen aan de websites <b>opslaan</b> in het systeem.\r\n			Zo kunt u de <b>dagelijkse posities</b> van zoekwoorden van verschillende zoekmachines <b>gedetailleerd</b> en in <b>grafieken</b> weergeven.			\r\n		</p>\r\n    </li>\r\n    <li>         \r\n        <h1>Site Auditor</h1> \r\n        <p>Site Auditor zal <b>alle SEO factoren controleren</b> van iedere pagina van een site en geeft een \r\n<b>gedetailleerd rapport</b> over iedere pagina. Dit helpt ons om <b>XML,HTML,TEXT</b> sitemap bestanden van de website om <b>toe te voegen</b> aan zoekmachines.</p> \r\n    </li> \r\n    <li>        \r\n    <li>        \r\n        <h1>Sitemap Generator</h1>\r\n		<p>Genereert <b>XML,HTML,TEXT</b> sitemap bestanden voor alle websites. Vervolgens kunt u de bestanden aanbieden aan de zoekmachines.\r\n    </li>\r\n    <li>        \r\n        <h1>Google en Alexa Rank Controle</h1>\r\n		<p>\r\n		Met deze functionaliteit controleert u de <b>Google Pagerank</b> en <b>Alexa Rank</b> van de websites en slaat de gegevens op in het systeem.\r\n		In de <b>Rank Controle</b> sectie, kunnen we dagelijks de <b>Google en Alexa Rank</b> van elke website zien met <b>gedetailleerde informatie</b>.\r\n		</p>\r\n    </li>\r\n    <li>        \r\n        <h1>Backlink Controle</h1>\r\n		<p>\r\n		De Backlink Controle vindt het <b>aantal Backlinks</b> naar de website in de verschillende zoekmachines <b>(google,yahoo,msn etc)</b> en slaat de gegevens op in het systeem.\r\n			<br>\r\n			In de <b>backlink Rapporten</b> sectie, kunnen we de <b>dagelijkse</b> backlink tellingen zien van elke website met <b>gedetailleerde informatie</b>.\r\n		</p>\r\n    </li>    \r\n    <li>        \r\n        <h1>Zoekmachine Verzadiging Controle</h1>\r\n		<p>\r\n		Zoekmachine Verzadiging Controle vindt het <b>aantal geïndexeerde pagina\\''s</b> van de websites in de verschillende zoekmachines <b>(Google, Yahoo, MSN enz)</b> en slaat deze op in het systeem. In de <b>Zoekmachine Verzadiging Controle rapporten</b> sectie, kunnen we de <b>dagelijks</b> geïndexeerde pagina tellingen terugvinden van elke website met <b>gedetailleerde informatie</b>.\r\n			</p>\r\n    </li>\r\n    <li>        \r\n        <h1>Seo Panel Plugins</h1>\r\n        <p>\r\n		Het <b>belangrijkste kenmerk</b> van Seo Panel is de <b>uitbreidingsmogelijkheid</b>. Voeg <b>Seo plugins</b> toe om uw Seo panel <b>functies uit te breiden</b> volgens uw behoefte. <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Seo panel plugins</a> worden geleverd door zowel Seo panel en sites van derden. U kunt zelf ook makkelijk Seo plugins <b>ontwikkelen</b> voor Seo Panel. U kunt uw Seo plugin <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">doorsturen naar Seo Panel</a>. Na deze <b>getest</b> te hebben zullen wij deze vervolgens op de Seo Panel website plubliceren!\r\n        </p>\r\n    </li>\r\n    <li>        \r\n        <h1>Meta Tag Generator</h1>\r\n		<p>\r\n		Meta Tag generator is een <b>Seo Panel Plugin</b> voor het maken van aangepaste <b>Meta Tags</b> voor uw websites. Het helpt u om <b>meer informatie</b> over uw website te geven aan de <b>spiderbots van de zoekmachines</b> terwijl zij de website doorlopen.\r\n		\r\n		</p>\r\n    </li>\r\n</ul>\r\n</fieldset>', '2011-07-05 21:52:28'),
 (1904, 'nl', 'home', 'home_cont3', '<fieldset>\r\n<legend>Seo Panel Online Hulpbronnen</legend>    \r\n<ul class=\\"infobox\\">\r\n\r\n    <li>\r\n        <h1>Seo Panel Online Hulpbronnen ter Referentie</h1>                \r\n        \r\n        \r\n        <p>\r\n            <a href=\\"http://www.seopanel.in\\" target=\\"_blank\\">Officiële Seo Panel Website</a>\r\n        </p>\r\n        <p>\r\n            <a href=\\"<?=SP_DOWNLOAD_LINK?>\\" target=\\"_blank\\">Seo Panel Downloaden</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_DEMO_LINK?>\\" target=\\"_blank\\">Seo Panel Demo</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Seo Panel Contact</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Seo Panel Helpdesk</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Seo Panel Forum</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Seo Panel Support Systeem</a>\r\n        </p>\r\n        \r\n        <p>\r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Seo Panel Donatie</a>\r\n        </p>\r\n    </li>\r\n    \r\n</ul>\r\n</fieldset>', '2011-07-05 21:52:28'),
@@ -2299,9 +2299,9 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (2304, 'zh', 'login', 'Username', '用户名', '2014-01-09 15:07:15'),
 (2305, 'zh', 'login', 'usernameexist', '用户名已存在', '2014-01-09 15:07:15'),
 (2306, 'zh', 'panel', 'About Us', '关于我们', '2014-01-09 15:08:33'),
-(2307, 'zh', 'panel', 'Add following command to your cron tab', '加入以下命令到CRON列表', '2014-01-09 15:08:34');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
-(2308, 'zh', 'panel', 'alsocheckfollowlink', '如果需要更多细节，请检查一下链接', '2014-01-09 15:08:34'),
+(2307, 'zh', 'panel', 'Add following command to your cron tab', '加入以下命令到CRON列表', '2014-01-09 15:08:34'),
+(2308, 'zh', 'panel', 'alsocheckfollowlink', '如果需要更多细节，请检查一下链接', '2014-01-09 15:08:34');
+INSERT INTO `texts` VALUES
 (2309, 'zh', 'panel', 'Check Directory', '检查目录', '2014-01-09 15:08:34'),
 (2310, 'zh', 'panel', 'Cron Command', 'cron命令', '2014-01-09 15:08:34'),
 (2311, 'zh', 'panel', 'Directory Manager', '目录管理', '2014-01-09 15:08:34'),
@@ -2595,11 +2595,11 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (2574, 'ru', 'label', 'Developers', 'Разработчики', '2014-01-10 02:36:19'),
 (2575, 'ru', 'label', 'Download', 'Скачать', '2014-01-10 02:36:19'),
 (2576, 'ru', 'label', 'Installation', 'Установка', '2014-01-10 02:36:19'),
-(2577, 'ru', 'label', 'Keywords', 'Ключевые слова', '2014-01-10 02:36:19');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(2577, 'ru', 'label', 'Keywords', 'Ключевые слова', '2014-01-10 02:36:19'),
 (2578, 'ru', 'label', 'noactiveplugins', 'Нет активных дополнений для Seo panel!', '2014-01-10 02:36:19'),
 (2579, 'ru', 'label', 'Plugin', 'Плагины', '2014-01-10 02:36:19'),
-(2580, 'ru', 'label', 'Port', 'Порт', '2014-01-10 02:36:19'),
+(2580, 'ru', 'label', 'Port', 'Порт', '2014-01-10 02:36:19');
+INSERT INTO `texts` VALUES
 (2581, 'ru', 'label', 'Proxy', 'Прокси', '2014-01-10 02:36:19'),
 (2582, 'ru', 'label', 'Re-install', 'Переустановить', '2014-01-10 02:36:19'),
 (2583, 'ru', 'label', 'Sponsors', 'Спонсоры', '2014-01-10 02:36:19'),
@@ -2938,13 +2938,13 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (2931, 'pt', 'common', 'Inactive', 'Inactivo ', '2012-11-10 20:56:06'),
 (2932, 'pt', 'common', 'Invalid characters', 'caracteres inválidos ', '2012-11-10 20:56:06'),
 (2933, 'pt', 'common', 'Invalid code entered', 'Código inválido entrou ', '2012-11-10 20:56:06'),
-(2934, 'pt', 'common', 'Invalid email address entered', 'Endereço de email inválido entrou ', '2012-11-10 20:56:06');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(2934, 'pt', 'common', 'Invalid email address entered', 'Endereço de email inválido entrou ', '2012-11-10 20:56:06'),
 (2935, 'pt', 'common', 'Invalid value', 'Valor inválido ', '2012-11-10 20:56:06'),
 (2936, 'pt', 'common', 'Keyword', 'Palavra ', '2012-11-10 20:56:06'),
 (2937, 'pt', 'common', 'Keywords', 'Palavras-chave ', '2012-11-10 20:56:06'),
 (2938, 'pt', 'common', 'lang', 'Idioma ', '2012-11-10 20:56:06'),
-(2939, 'pt', 'common', 'My Account', 'Minha Conta ', '2012-11-10 20:56:06'),
+(2939, 'pt', 'common', 'My Account', 'Minha Conta ', '2012-11-10 20:56:06');
+INSERT INTO `texts` VALUES
 (2940, 'pt', 'common', 'Name', 'Nome ', '2012-11-10 20:56:06'),
 (2941, 'pt', 'common', 'No', 'Não ', '2012-11-10 20:56:06'),
 (2942, 'pt', 'common', 'No Keywords Found', 'Nenhuma palavra-chave encontrados ', '2012-11-10 20:56:06'),
@@ -3216,7 +3216,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (3208, 'ro', 'home', 'Ranks', 'Ranks', '2012-05-18 20:57:04'),
 (3209, 'ro', 'home', 'SiteNameUrl', 'Nume Site/Url', '2012-05-18 20:57:04'),
 (3210, 'ro', 'home', 'Website Statistics', 'Statistici Site Web', '2012-05-18 20:57:04');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+INSERT INTO `texts` VALUES
 (3211, 'ro', 'support', 'support_cont1', '<fieldset> \r\n<legend>Centrul de suport Seo Panel</legend> \r\n<ul class=\\"infobox\\"> \r\n    <li> \r\n        <h1>Pachet 1000 de directoare</h1>  \r\n        <p> \r\n            Va oferim <b>1000 de directoare active si pe deasupra gratis</b> un pachet pe care il puteti adauga in panoul SEO la\r\n <b>sectiunea inregistrare in directoare</b>. \r\n            Va vom ajuta sa <b>va cresteti backlink-urile</b> site-ului dvs. \r\n            Deocamdata lista cu 1000 de directoare <b>mai sus mentionata</b> este pentru colectarea de fonduri <b>pentru desvoltarea viitoare a</b> Seo Panel. \r\n            Pentru a lua lista cu 1000 de directoare va rugam <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">donati</a>\r\n$10 sau mai mult pentru a imbunatati caracteristicile pachetului Seo Panel. \r\n            Daca aveti intrebari asupra pachetului de 1000 de directoare, va rugam <a href=\\"<?=SP_CONTACT_LINK?>\\"\r\ntarget=\\"_blank\\">contactati-ne</a> sau deschideti un tiket la <a href=\\"<?=SP_SUPPORT_LINK?>\\"\r\ntarget=\\"_blank\\">centrul de suport</a>.    \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru a dona pentru Seo Panel</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n     \r\n    <li> \r\n        <h1>Pachet motoare de cautare locale</h1>  \r\n        <p> \r\n            Adauga <b>domenii de motoare de cautare locale</b> pentru google,yahoo,msn(<b>eg: www.google.de,www.google.fr, www.google.ro\r\netc</b>) in panoul de control Seo <b>Verificare pozitie cuvinte cheie</b>, pentru a va urmari site-ul personal local. \r\n            Pentru a beneficia de pachetul motarelor de cautare local(in functie de nevoile dvs.) va rugam <a\r\nhref=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">donati</a> $10 sau mai mult pentru a imbunatati caracteristicile pachetului Seo Panel. \r\n           Inainte de a trimite donatii va rugam, <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">contactati-ne</a> pentru a ne da detalii despre motaorele de cautare locale ale dvs.. \r\n            <br><br>               \r\n            Deasemenea pentru a adauga <b>noi motoare de cautare(eg:baidu.com)</b> la verificare pozitionare cuvinte cheie al Panoului Seo al dvs.,\r\nva rugam <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">contactati-ne</a> sau deschideti un tiket la <a\r\nhref=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">centru de suport</a>.  \r\n        </p>         \r\n        <p class=\\"visit\\"> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru a ne contacta</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n     \r\n    <li> \r\n        <h1>Plugin-uri Seo Panel</h1>  \r\n        <p> \r\n            Adauga <b>plugin-uri Seo</b> in panoul de control Seo al dvs. <b>extindeti caracteristicile</b> in functie de necesitatile dvs.. \r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Plugin-uri Seo Panel</a> sunt dezvoltate atat de Seo Panel cat si de alte site-uri afiliate. \r\n            Puteti deasemenea foarte usor <b>sa dezvoltati</b> plugin-uri seo pentru panoul de control al dvs.\r\n            Puteti <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">uploada</a> plugin-urile dvs in panoul de contro Seo si\r\nnoi le vom <b>publica</b> pe site-ul nostru dupa ce le vom  <b>verifica</b>.         \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Vizitati acest link pentru a descarca plugin-uri Seo Panel</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Contactati-ne</h1>  \r\n        <p> \r\n            Contactati-ne pentru orice intrebare despre <b>unelte seo panel,plugin-uri si caracteristici etc</b> utilizind link-ul de mai jos.         \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru a ne contacta</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Suport Tickete</h1>  \r\n        <p> \r\n            Pentru a avea <b>suport tehnict</b> din partea echipei Seo Panel pentru a seta <b>uneltele Seo panel, plugin-urile si facilitati\r\n</b>. Ex: Pentru a seta un cron pentru verificare pozitionare cuvinte cheie. \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru a creea un tiket de suport nou</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Raportai bug-uri</h1>  \r\n        <p> \r\n            rapoortati <b>bug-uri</b> despre<b>unelte seo panel,plugin-uri si caracteristici etc</b> utilizand link-ul de mai jos.  \r\n            va rugam ajutati-ne sa imbunatatim facilitatile din noile versiuni.           \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru raporta un bug nou </a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n</ul> \r\n</fieldset>', '2010-11-05 19:42:48'),
 (3212, 'ro', 'support', 'support_cont2', '<fieldset> \r\n<legend>Panoul Seo resurse Online</legend> \r\n<ul class=\\"infobox\\"> \r\n         \r\n    <li> \r\n        <h1>Ghid ajutor Panoul Seo</h1>  \r\n        <p> \r\n            Puteti vedea <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">documentatia panoului Seo</a> in\r\n<b>Ghidul de ajutor</b>, contine <b>documentatia</b> pentru uneltele panoului seo ,plugin-uri si caracteristici . \r\n            <br>Este cel mai bun loc de pe internet pentru a <b>primi ajutor</b> despre panoul Seo. Speram ca tu vei\r\n<b>contribui</b> la ghidul de ajutor al panoului Seo, daca gasiti erori sau ceva lipsuri.                 \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Vizitati ghidul de ajutor al panoului Seo</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Forum Seo Panel</h1>  \r\n        <p> \r\n            Un loc pentru discutii despre primul opensource <b>panou de control Seo</b>.  \r\n            Este cel mai bun loc pentru a gasi <b>raspunsuri</b> la <b>intrebarile tale</b> despre panoul Seo.  \r\n            <br>Deasemenea poti <b>imparti</b> <b>experienta</b> ta in timp de utilizezi panoul seo pentru site-urile tale.                                \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Vizitati forumul panoului Seo</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n</ul>     \r\n</fieldset>', '2010-11-05 19:42:48'),
 (3213, 'ro', 'support', 'support_cont3', '<fieldset> \r\n<legend>Donati panoului Seo</legend> \r\n<ul class=\\"infobox\\">         \r\n    <li> \r\n        <h1>Donati panoului seo - Primul Open Source panou de control Seo din lume</h1>  \r\n        <p> \r\n            <b>Donati</b> panoului Seo pentru sustinerea primului panou seo din lume. \r\n            Planuim sa  <b>adaugam si imbunatatim</b> caracteristici ale panoului seo pe viitor.  \r\n            <br>Cu ajutorul <b>suportului</b> dvs. ne putem atinge  <b>telul</b>. \r\n            Daca crezi ca panoul de control seo  <b>conteaza</b> pentru tine, va rugam donati cat vreti echipei Seo Panel. \r\n            <br>Va vom <b>publica</b> numele si informatii despre site-ul dvs in <a href=\\"<?=SP_DONATE_LINK?>\\"\r\ntarget=\\"_blank\\">pagina de donatii</a>, de indata ce primim donatia. \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Vizitati acest link pentru a dona Panoului Seo</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n</ul> \r\n</fieldset>', '2010-11-05 19:42:48'),
@@ -3429,7 +3429,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (3420, 'bg', 'home', 'Ranks', 'Ранг', '2011-07-07 01:34:28'),
 (3421, 'bg', 'home', 'SiteNameUrl', 'Име/Адрес', '2011-07-07 01:34:28'),
 (3422, 'bg', 'home', 'Website Statistics', 'Общи статистики', '2011-07-07 01:34:28');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+INSERT INTO `texts` VALUES
 (3423, 'bg', 'support', 'support_cont1', '<fieldset> \r\n<legend>SEO Panel Техническа подръжка</legend> \r\n<ul class=\\"infobox\\"> \r\n    <li> \r\n        <h1>Пакет от 1000 Директории</h1>  \r\n        <p> \r\n            Осигуряваме <b>пакет от 1000 безплатни и потвърдени</b> интернет директории, които можете да добавите към вашият <b>инструмент за регистрация в директории</b> в seo panel. \r\n            Този пакет ще ви помогне <b>да увеличите беклинковете</b> към вашите сайтове. \r\n            Всъщност, списъка с 1000 директории се <b>представя</b> за да съберем средства за <b>бъдеща разработка</b> на seo panel. \r\n            За да получите списъка с 1000 директории, моля <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">направете дарение</a>\r\nот 10 $ или повече. Дарението ще се използва за подобряване на seo panel. \r\n            Ако имате въпроси относно списъка с 1000 директории, моля <a href=\\"<?=SP_CONTACT_LINK?>\\"\r\ntarget=\\"_blank\\">свържете се с нас</a> или създайте билет в <a href=\\"<?=SP_SUPPORT_LINK?>\\"\r\ntarget=\\"_blank\\">системата за техническа подръжка</a>.    \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Посетете този линк за да направите дарение на seo panel</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n     \r\n    <li> \r\n        <h1>Пакет локални търсачки</h1>  \r\n        <p> \r\n            Добавяне <b>локализирани домейни на търсачка</b> - google,yahoo,msn(<b>например: www.google.de,www.google.fr\r\nи др.</b>) към SEO panel за <b>позиция по ключова дума</b>, за да следите локалните резултати за вашите сайтове. \r\n            За да добавим пакета за локални търсачки (според вашите изисквания), моля <a\r\nhref=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">направете дарение</a> от 10 $ или повече. Дарението ще се използва за подобряване на seo panel. \r\n            Преди да изпратите даренията, моля <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">свържете се с нас</a> за да ни предоставите списък с желаните домейни на търсачки за локално търсене. \r\n            <br><br>               \r\n            Също така, за да добавим <b>нови търсачки (напр.:baidu.com)</b> към проверката на позиция по ключова дума към вашият seo panel,\r\nмоля <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">свържете се с нас</a> или създайте билет в <a\r\nhref=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">системата за техническа подръжка</a>.  \r\n        </p>         \r\n        <p class=\\"visit\\"> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Посетете този линк за да се свържете с нас</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n     \r\n    <li> \r\n        <h1>Seo Panel Модули</h1>  \r\n        <p> \r\n            Добавете <b>seo модули</b> към вашият seo panel за да <b>разширите възможностите му</b>, според вашите нужди. \r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Seo panel модулите</a> се разработват, както от екипа на seo panel, така и от други разработчици. \r\n            Можете лесно да <b>разработите</b> seo модули за вашият seo panel. \r\n            Можете да ни <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">изпратите</a> вашият seo модул за seo panel и ние ще го <b>публикуваме</b> на нашият сайт след като го <b>прегледаме</b>.         \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Посетете този линк за да изтеглите последните seo panel модули</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Връзка с нас</h1>  \r\n        <p> \r\n            Свържете се с нас за всякакви въпроси свързани с <b>инструментите, модулите, опциите и т.н. на seo panel </b> като използвате линка по-долу.         \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Посетете този линк за да се свържете с нас</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Система за техническа подръжка</h1>  \r\n        <p> \r\n            За да получите <b>техническа подръжка</b> от екипа на seo panel относно <b>инсталирането, модулите, инструментите и опциите на seo panel</b>. Например: Да настройте cron за проверката на позиция по ключова дума. \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Посетете този линк за да създадете билет в системата за техническа подръжка</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Докладване на бъгове(грешки)</h1>  \r\n        <p> \r\n            Докладвайте за <b>бъгове</b> в <b>инсталирането, модулите, инструментите, опциите и т.н. на seo panel</b> използвайки линка по долу.  \r\n           По този начин, ни помогате да подобрим работата на следащите версии на seo panel.           \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Посетете този линк за да докладвате за бъгове</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n</ul> \r\n</fieldset>', '2010-11-14 19:47:30'),
 (3424, 'bg', 'support', 'support_cont2', '<fieldset> \r\n<legend>SEO Panel - Онлайн ресурси</legend> \r\n<ul class=\\"infobox\\"> \r\n         \r\n    <li> \r\n        <h1>Seo Panel - Помощна информация</h1>  \r\n        <p> \r\n            Можете да разгледате <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">документацията на SEO panel</a> в <b>помощната информация</b>. Съдържа <b>документация</b> за инструментите на SEO panel, модулите и различните функционалности. \r\n            <br>Най доброто място в интернет, където можете да <b>получите помощ</b> относно SEO panel. Надяваме се да\r\n<b>допълвате</b> помощната информация на seo panel, ако намерите някакви грешки или нещо липсва.                 \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Посетете секцията Помощна информация</a> \r\n        </p> \r\n        <br> \r\n    </li>     \r\n    <li> \r\n        <h1>Форум Seo Panel</h1>  \r\n        <p> \r\n            Мястото за дискусии на първият в света <b>seo контролен панел</b> с отворен код.  \r\n            Най-доброто място да откриете <b>отговори</b> на вашите <b>въпроси</b> относно seo panel.  \r\n            <br>Също така можете да <b>споделите</b> вашият <b>опит</b> в използването на seo panel за оптимизиране на вашите уеб сайтове.                                \r\n        </p>         \r\n        <p> \r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Посетете форума на seo panel</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n</ul>     \r\n</fieldset>', '2010-11-14 19:47:30'),
 (3425, 'bg', 'support', 'support_cont3', '<fieldset> \r\n<legend>Направете дарение на SEO Panel</legend> \r\n<ul class=\\"infobox\\">         \r\n    <li> \r\n        <h1>Направете дарение на Seo Panel - Първият в света, SEO контролен панел с отворен код</h1>  \r\n        <p> \r\n            <b>Направете дарение</b> на SEO panel за да подкрепите първият SEO контролен панел с отворен код в света. \r\n            Планираме да <b>добавяме и подобряваме</b> функционалността на SEO panel в бъдеще.  \r\n            <br>Заедно, с <b>вашата подкрепа</b> можем да постигнем нашите <b>цели</b>. \r\n            Ако смятате, че SEO panel си <b>струва</b>, моля дарете някаква сума на екипа на SEO panel. \r\n            <br>Ще <b>публикуваме</b> вашето име и информация за вашият сайт на <a href=\\"<?=SP_DONATE_LINK?>\\"\r\ntarget=\\"_blank\\">страницата с дарители</a>, след като получим дарението ви. \r\n        </p> \r\n        <p> \r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Посетете този линк за да направите дарение на SEO panel</a> \r\n        </p> \r\n        <br> \r\n    </li> \r\n</ul> \r\n</fieldset> ', '2010-11-14 19:47:30'),
@@ -3687,9 +3687,9 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (3677, 'tr', 'label', 'Sponsors', 'Sponsorlar', '2012-11-11 08:14:34'),
 (3678, 'tr', 'label', 'Title', 'Başlık', '2012-11-11 08:14:34'),
 (3679, 'tr', 'label', 'translation by', 'Çeviren', '2012-11-11 08:14:34'),
-(3680, 'tr', 'label', 'Translators', 'Çevirmenler', '2012-11-11 08:14:34');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
-(3681, 'tr', 'label', 'Upgrade', 'Yükselt', '2012-11-11 08:14:34'),
+(3680, 'tr', 'label', 'Translators', 'Çevirmenler', '2012-11-11 08:14:34'),
+(3681, 'tr', 'label', 'Upgrade', 'Yükselt', '2012-11-11 08:14:34');
+INSERT INTO `texts` VALUES
 (3682, 'tr', 'label', 'Version', 'Versiyon', '2012-11-11 08:14:34'),
 (3683, 'tr', 'label', 'wantproceed', 'Devam etmek istiyor musunuz?', '2012-11-11 08:14:34'),
 (3684, 'tr', 'login', 'Confirm Password', 'Şifreyi Onayla', '2010-11-23 11:22:26'),
@@ -4126,9 +4126,9 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (4115, 'el', 'directory', 'Captcha', 'Captcha ', '2012-06-02 21:54:56'),
 (4116, 'el', 'directory', 'categorynote', 'Κατηγορίες, διαχωρισμένες με κόμμα σύμφωνα με την προτεραιότητα. Ξεκινήστε με την κατηγορία Πρώτης προτεραιότητας. ', '2012-06-02 21:54:56'),
 (4117, 'el', 'directory', 'Check Directory Status', 'Έλεγχος κατάστασης καταλόγου', '2012-06-02 21:54:56'),
-(4118, 'el', 'directory', 'Check Directory Submission Status', 'Έλεγχος κατάστασης καταχώρισης καταλόγου', '2012-06-02 21:54:56');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
-(4119, 'el', 'directory', 'clicktoproceeddirsts', 'Επιλέξτε <b>Ανάθεση</b> για τον Έλεγχο Κατάστασης Καταλόγου. ', '2012-06-02 21:54:56'),
+(4118, 'el', 'directory', 'Check Directory Submission Status', 'Έλεγχος κατάστασης καταχώρισης καταλόγου', '2012-06-02 21:54:56'),
+(4119, 'el', 'directory', 'clicktoproceeddirsts', 'Επιλέξτε <b>Ανάθεση</b> για τον Έλεγχο Κατάστασης Καταλόγου. ', '2012-06-02 21:54:56');
+INSERT INTO `texts` VALUES
 (4120, 'el', 'directory', 'Confirmation', 'Επιβεβαίωση', '2012-06-02 21:54:56'),
 (4121, 'el', 'directory', 'desnote', 'Μερικοί κατάλογοι απαιτούν το ελάχιστο 150 χαρακτήρες για το πεδίο περιγραφής.', '2012-06-02 21:54:56'),
 (4122, 'el', 'directory', 'Directories with out captcha', 'Κατάλογοι χωρίς captcha', '2012-06-02 21:54:56'),
@@ -4403,10 +4403,10 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (4654, 'el', 'settings', 'seopanel_description', 'Ένα ολοκληρωμένο και δωρεάν control panel για την διαχείριση της βελτιστοποίησης των ιστοτόπων σας για τις μηχανές αναζήτησης. Περιλαμβάνει πολλά από τα δυνατά seo εργαλεία για την αύξηση και παρακολούθηση της απόδοσης των website σας. Είναι open source λογισμικό και μπορείτε και εσείς επίσης να αναπτύξετε τα δικά σας seo plugins για το Seo Panel.', '2012-06-02 22:52:03'),
 (4655, 'el', 'settings', 'seopanel_title', 'Seo Panel: Το πρώτο open source seo control panel παγκοσμίως, για την διαχείριση πολλαπλών sites.', '2012-06-02 22:52:03'),
 (4656, 'el', 'settings', 'SP_CRAWL_DELAY', 'Καθυστέρηση μεταξύ των spider ανιχνευτών (δευτερόλεπτα)', '2012-06-02 22:52:03'),
-(4657, 'el', 'settings', 'SP_DEFAULTLANG', 'Προκαθορισμένη Γλώσσα', '2012-06-02 22:52:03');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(4657, 'el', 'settings', 'SP_DEFAULTLANG', 'Προκαθορισμένη Γλώσσα', '2012-06-02 22:52:03'),
 (4658, 'el', 'settings', 'SP_DESCRIPTION', 'Περιγραφή του Seo Panel', '2012-06-02 22:52:03'),
-(4659, 'el', 'settings', 'SP_ENABLE_PROXY', 'Ενεργοποίηση Proxy', '2012-06-02 22:52:03'),
+(4659, 'el', 'settings', 'SP_ENABLE_PROXY', 'Ενεργοποίηση Proxy', '2012-06-02 22:52:03');
+INSERT INTO `texts` VALUES
 (4660, 'el', 'settings', 'SP_HOTLINKING', 'Προστασία εικόνας από hotlink', '2012-06-02 22:52:03'),
 (4661, 'el', 'settings', 'SP_KEYWORDS', 'Λέξεις Κλειδιά του Seo Panel', '2012-06-02 22:52:03'),
 (4662, 'el', 'settings', 'SP_PAGINGNO', 'Αριθμός εγγραφών ανά σελίδα', '2012-06-02 22:52:03'),
@@ -4804,10 +4804,10 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (5058, 'en', 'siteauditor', 'Store all links found in a page', 'Store all links found in a page', '2011-07-04 08:52:32'),
 (5059, 'en', 'siteauditor', 'Check broken links in a page', 'Check broken links in a page', '2011-07-04 08:53:05'),
 (5060, 'en', 'siteauditor', 'checkborckenlinkwait', 'Check brocken links will increase the execution time of a project', '2011-07-04 08:53:05'),
-(5061, 'en', 'siteauditor', 'Execute with cron', 'Execute with cron', '2011-07-04 08:53:21');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(5061, 'en', 'siteauditor', 'Execute with cron', 'Execute with cron', '2011-07-04 08:53:21'),
 (5062, 'en', 'siteauditor', 'Number of pages is greater than', 'Number of pages is greater than', '2011-07-04 09:03:18'),
-(5063, 'en', 'siteauditor', 'Number of pages should be greater than', 'Number of pages should be greater than', '2011-07-04 09:05:57'),
+(5063, 'en', 'siteauditor', 'Number of pages should be greater than', 'Number of pages should be greater than', '2011-07-04 09:05:57');
+INSERT INTO `texts` VALUES
 (5064, 'en', 'siteauditor', 'projectalreadyexist', 'Project for this website already exist', '2011-07-04 09:07:07'),
 (5065, 'en', 'label', 'Exclude', 'Exclude', '2011-07-04 09:10:34'),
 (5066, 'en', 'label', 'Include', 'Include', '2011-07-04 09:10:34'),
@@ -5263,11 +5263,11 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (5615, 'bg', 'siteauditor', 'Check broken links in a page', 'Проверка и на повредени линкове по страница', '2011-07-13 01:33:27'),
 (5616, 'bg', 'siteauditor', 'Check google pagerank of pages', 'Проверка на гугъл пейдж ранг на страниците', '2011-07-13 01:33:27'),
 (5617, 'bg', 'siteauditor', 'Check pages indexed or not', 'Проверка на страниците индексирани или не', '2011-07-13 01:33:27'),
-(5618, 'bg', 'siteauditor', 'Check Score', 'Проверка', '2011-07-13 01:33:27');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(5618, 'bg', 'siteauditor', 'Check Score', 'Проверка', '2011-07-13 01:33:27'),
 (5619, 'bg', 'siteauditor', 'checkborckenlinkwait', 'Проверката на повредени линкове, ще увеличи времето за изпълнение на проекта', '2011-07-13 01:33:27'),
 (5620, 'bg', 'siteauditor', 'Completed project execution', 'Завършено изпълнение на проекта', '2011-07-13 01:33:27'),
-(5621, 'bg', 'siteauditor', 'Crawled', 'Обходени', '2011-07-13 01:33:27'),
+(5621, 'bg', 'siteauditor', 'Crawled', 'Обходени', '2011-07-13 01:33:27');
+INSERT INTO `texts` VALUES
 (5622, 'bg', 'siteauditor', 'Crawled Pages', 'Обходени страници', '2011-07-13 01:33:27'),
 (5623, 'bg', 'siteauditor', 'crawledsuccesssfullywaitfornext', 'обходена успешно! Изчакване на обхождането на следващата страница за', '2011-07-13 01:33:27'),
 (5624, 'bg', 'siteauditor', 'Crawling Page', 'Обхождане на страница', '2011-07-13 01:33:27'),
@@ -5703,13 +5703,13 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (6054, 'pt', 'seotools', 'Auditor Projects', 'Auditar Projectos', '2011-07-10 09:45:40'),
 (6055, 'pt', 'seotools', 'Auditor Reports', 'Auditar Relatórios', '2011-07-10 09:45:40'),
 (6056, 'pt', 'seotools', 'Auditor Settings', 'Auditar configurações', '2011-07-10 09:45:40'),
-(6057, 'pt', 'seotools', 'Import Project Links', 'Importar Links de projectos', '2011-07-10 09:45:40');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(6057, 'pt', 'seotools', 'Import Project Links', 'Importar Links de projectos', '2011-07-10 09:45:40'),
 (6058, 'pt', 'seotools', 'site-auditor', 'Auditar Site', '2011-07-10 09:45:40'),
 (6059, 'pt', 'settings', 'Check for Updates', 'Verificar Actualizações', '2012-11-10 21:00:51'),
 (6060, 'pt', 'settings', 'SA_CRAWL_DELAY_TIME', 'Atraso entre páginas do auditar site', '2012-11-10 21:00:51'),
 (6061, 'pt', 'settings', 'SA_MAX_NO_PAGES', 'Numero de paginas permitidas por sites', '2012-11-10 21:00:51'),
-(6062, 'pt', 'settings', 'SP_API_KEY', 'API Key do Seo Panel', '2012-11-10 21:00:51'),
+(6062, 'pt', 'settings', 'SP_API_KEY', 'API Key do Seo Panel', '2012-11-10 21:00:51');
+INSERT INTO `texts` VALUES
 (6063, 'pt', 'settings', 'versionnotuptodatemsg', 'A instalação do seu Seo Panel não está actualizada. <br> faça o download da nova versão', '2012-11-10 21:00:51'),
 (6064, 'pt', 'settings', 'Your Seo Panel installation is up to date', 'Tem o Seo Panel Actualizado', '2012-11-10 21:00:51'),
 (6065, 'tr', 'panel', 'Edit Project', 'Projeyi Düzenle', '2012-11-11 08:16:26'),
@@ -6124,15 +6124,15 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (6577, 'cs', 'label', 'Comments', 'Komentáře', '2011-07-14 11:25:05'),
 (6578, 'cs', 'label', 'Count', 'Počet', '2011-07-14 11:25:05'),
 (6579, 'cs', 'label', 'Cron', 'Cron', '2011-07-14 11:25:05'),
-(6580, 'cs', 'label', 'Description', 'Popis', '2011-07-14 11:25:05');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(6580, 'cs', 'label', 'Description', 'Popis', '2011-07-14 11:25:05'),
 (6581, 'cs', 'label', 'Developers', 'Vývojáři', '2011-07-14 11:25:05'),
 (6582, 'cs', 'label', 'Download', 'Stáhnout', '2011-07-14 11:25:05'),
 (6583, 'cs', 'label', 'Exclude', 'Vyloučit', '2011-07-14 11:25:05'),
 (6584, 'cs', 'label', 'Include', 'Zahrnout', '2011-07-14 11:25:05'),
 (6585, 'cs', 'label', 'Installation', 'Instalace', '2011-07-14 11:25:05'),
 (6586, 'cs', 'label', 'Keywords', 'Klíčová slova', '2011-07-14 11:25:05'),
-(6587, 'cs', 'label', 'noactiveplugins', 'Nebyly nalezeny žádné aktivní SEO pluginy', '2011-07-14 11:25:05'),
+(6587, 'cs', 'label', 'noactiveplugins', 'Nebyly nalezeny žádné aktivní SEO pluginy', '2011-07-14 11:25:05');
+INSERT INTO `texts` VALUES
 (6588, 'cs', 'label', 'Plugin', 'Pluginy', '2011-07-14 11:25:05'),
 (6589, 'cs', 'label', 'Port', 'Port', '2011-07-14 11:25:05'),
 (6590, 'cs', 'label', 'Project', 'Projekt', '2011-07-14 11:25:05'),
@@ -6499,13 +6499,13 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (6849, 'ar', 'seotools', 'Featured Submission', 'تقديم مميز', '2011-07-30 01:28:48'),
 (6850, 'ar', 'seotools', 'Generate Backlinks Reports', 'إنشاء تقارير حول الروابط المتصلة', '2011-07-30 01:28:48'),
 (6851, 'ar', 'seotools', 'Generate Keyword Reports', 'إنشاء تقارير حول كلمات البحث', '2011-07-30 01:28:48'),
-(6852, 'ar', 'seotools', 'Generate Rank Reports', 'إنشاء تقارير حول ترتيب البيج رنك', '2011-07-30 01:28:48');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(6852, 'ar', 'seotools', 'Generate Rank Reports', 'إنشاء تقارير حول ترتيب البيج رنك', '2011-07-30 01:28:48'),
 (6853, 'ar', 'seotools', 'Generate Saturation Reports', 'إنشاء تقارير مشبعة', '2011-07-30 01:28:48'),
 (6854, 'ar', 'seotools', 'Google Sitemap Generator', 'مولد خريطة جوجل', '2011-07-30 01:28:48'),
 (6855, 'ar', 'seotools', 'Graphical Position Reports', 'تقارير المركز الرسومية', '2011-07-30 01:28:48'),
 (6856, 'ar', 'seotools', 'Import Project Links', 'خيارات استيراد المشروع', '2011-07-30 01:28:48'),
-(6857, 'ar', 'seotools', 'Keyword Position Summary', 'ملخص الموقف لكلمات البحث', '2011-07-30 01:28:48'),
+(6857, 'ar', 'seotools', 'Keyword Position Summary', 'ملخص الموقف لكلمات البحث', '2011-07-30 01:28:48');
+INSERT INTO `texts` VALUES
 (6858, 'ar', 'seotools', 'keyword-position-checker', 'التحقق من موقف كلمات البحث', '2011-07-30 01:28:48'),
 (6859, 'ar', 'seotools', 'Keywords Manager', 'إدارة الكلمات الرئيسية', '2011-07-30 01:28:48'),
 (6860, 'ar', 'seotools', 'Quick Backlinks Checker', 'فحص سريع للروابط المتصلة', '2011-07-30 01:28:48'),
@@ -6929,8 +6929,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (7278, 'he', 'siteauditor', 'Total Links', '', '2011-09-06 08:53:27'),
 (7279, 'he', 'siteauditor', 'totallinksgreaterallowed', '', '2011-09-06 08:53:27'),
 (7280, 'vn', 'backlink', 'clickproceedbacklink', 'Hãy nhập đường dẫn để kiểm tra <b>mỗi dòng một đường dẫn</b>. Sau đó nhấp chuột vào <b>Thực hiện</b> để kiểm tra Backlinks', '2012-01-31 20:28:03'),
-(7281, 'vn', 'backlink', 'Saved backlink results of', 'Lưu kết quả kiểm tra backlink của', '2012-01-31 20:28:03');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(7281, 'vn', 'backlink', 'Saved backlink results of', 'Lưu kết quả kiểm tra backlink của', '2012-01-31 20:28:03'),
 (7282, 'vn', 'button', 'Cancel', 'Hủy bỏ', '2014-01-08 19:36:48'),
 (7283, 'vn', 'button', 'Check Status', 'Kiểm tra trạng thái', '2014-01-08 19:36:48'),
 (7284, 'vn', 'button', 'Proceed', 'Thực hiện', '2014-01-08 19:36:48'),
@@ -6939,7 +6938,8 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (7287, 'vn', 'button', 'Show Records', 'Hiển thị các bản ghi', '2014-01-08 19:36:48'),
 (7288, 'vn', 'button', 'Skip', 'Bỏ qua', '2014-01-08 19:36:48'),
 (7289, 'vn', 'button', 'Submit', 'Đồng ý', '2014-01-08 19:36:48'),
-(7290, 'vn', 'common', 'Action', 'Thao tác', '2014-01-10 04:03:12'),
+(7290, 'vn', 'common', 'Action', 'Thao tác', '2014-01-10 04:03:12');
+INSERT INTO `texts` VALUES
 (7291, 'vn', 'common', 'Activate', 'Kích hoạt', '2014-01-10 04:03:12'),
 (7292, 'vn', 'common', 'Active', 'Hoạt động', '2014-01-10 04:03:12'),
 (7293, 'vn', 'common', 'Admin Panel', 'Bảng điều khiển Admin', '2014-01-10 04:03:12'),
@@ -7259,8 +7259,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (7607, 'sl', 'panel', 'Proxy Manager', 'Upravitelj proxijev', '2012-05-12 17:58:34'),
 (7608, 'sl', 'panel', 'Report Generation Manager', 'Upravljanje izdelave poročil', '2012-05-12 17:58:34'),
 (7609, 'sl', 'panel', 'Reports Manager', 'Upravitelj poročil', '2012-05-12 17:58:34'),
-(7610, 'sl', 'panel', 'Seo Plugins Manager', 'Upravitelj SEO dodatkov', '2012-05-12 17:58:34');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(7610, 'sl', 'panel', 'Seo Plugins Manager', 'Upravitelj SEO dodatkov', '2012-05-12 17:58:34'),
 (7611, 'sl', 'panel', 'Seo Tools Manager', 'Upravitelj SEO orodij', '2012-05-12 17:58:34'),
 (7612, 'sl', 'panel', 'System Settings', 'Sistemske nastavitve', '2012-05-12 17:58:34'),
 (7613, 'sl', 'panel', 'User Manager', 'Upravitelj uporabnikov', '2012-05-12 17:58:34'),
@@ -7269,7 +7268,8 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (7616, 'sl', 'proxy', 'Proxy Password', 'Geslo za Proxy', '2012-01-28 09:32:57'),
 (7617, 'sl', 'proxy', 'Proxy Username', 'Uporabniško ime za Proxy', '2012-01-28 09:32:57'),
 (7618, 'sl', 'proxy', 'Proxyalreadyexist', 'Proxy že obstaja', '2012-01-28 09:32:57'),
-(7619, 'sl', 'plugin', 'Edit Seo Plugin', 'Uredi SEO dodatek', '2012-05-12 17:59:13'),
+(7619, 'sl', 'plugin', 'Edit Seo Plugin', 'Uredi SEO dodatek', '2012-05-12 17:59:13');
+INSERT INTO `texts` VALUES
 (7620, 'sl', 'plugin', 'Plugin Name', 'Ime dodatka', '2012-05-12 17:59:13'),
 (7621, 'sl', 'plugin', 'Seo Plugin Details', 'Podrobnosti dodatka', '2012-05-12 17:59:13'),
 (7622, 'sl', 'rank', 'enterurlproceed', 'Vnesite URL naslove <b>vsakega v svojo vrstico</b>. Kliknite na <b>Nadaljuj</b> za preverjanje uvrstitev v Googlu in Alexi.', '2012-01-28 09:39:58'),
@@ -7647,8 +7647,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (7994, 'sl', 'siteauditor', 'Total Links', 'Skupaj povezav', '2012-02-03 19:57:02'),
 (7995, 'sl', 'siteauditor', 'totallinksgreaterallowed', 'Skupno število povezav bo večje kot maksimalno dovoljenih povezav projekta', '2012-02-03 19:57:02'),
 (7996, 'es-ar', 'backlink', 'clickproceedbacklink', 'Ingrese URL\\''s (direcciones) <b>Una por linea</b>. Click en <b>Proceder</b> para verificar Enlaces Externos (Backlinks).', '2012-02-06 10:39:36'),
-(7997, 'es-ar', 'backlink', 'Saved backlink results of', '\r\nResultados de Enlaces externos guardados para ', '2012-02-06 10:39:36');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(7997, 'es-ar', 'backlink', 'Saved backlink results of', '\r\nResultados de Enlaces externos guardados para ', '2012-02-06 10:39:36'),
 (7998, 'es-ar', 'button', 'Cancel', 'Cancelar', '2014-01-08 19:34:42'),
 (7999, 'es-ar', 'button', 'Check Status', 'Verificar Estado', '2014-01-08 19:34:42'),
 (8000, 'es-ar', 'button', 'Proceed', 'Proceder', '2014-01-08 19:34:42'),
@@ -7659,7 +7658,8 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (8005, 'es-ar', 'button', 'Submit', 'Enviar', '2014-01-08 19:34:42'),
 (8006, 'es-ar', 'common', 'Action', 'Accion', '2014-01-06 19:05:07'),
 (8007, 'es-ar', 'common', 'Activate', 'Activar', '2014-01-06 19:05:07'),
-(8008, 'es-ar', 'common', 'Active', 'Activo', '2014-01-06 19:05:07'),
+(8008, 'es-ar', 'common', 'Active', 'Activo', '2014-01-06 19:05:07');
+INSERT INTO `texts` VALUES
 (8009, 'es-ar', 'common', 'Admin Panel', 'Panel de Administracion', '2014-01-06 19:05:07'),
 (8010, 'es-ar', 'common', 'Alexa Rank', 'Ranking Alexa', '2014-01-06 19:05:07'),
 (8011, 'es-ar', 'common', 'All', 'Todo', '2014-01-06 19:05:07'),
@@ -8104,12 +8104,12 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (8450, 'sk', 'siteauditor', 'The page is not indexed in', 'Stránka nie je indexovaná', '2012-02-25 08:05:27'),
 (8451, 'sk', 'siteauditor', 'The page keywords length is not between', 'Dĺžka kľúčových slov stránky nie je medzi', '2012-02-25 08:05:27'),
 (8452, 'sk', 'siteauditor', 'The page title length is not between', 'Dĺžka nadpisu stránky nie je medzi', '2012-02-25 08:05:27'),
-(8453, 'sk', 'siteauditor', 'The total number of links in page is greater than', 'Celkový počet odkazov na stránke je väčší než', '2012-02-25 08:05:27');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(8453, 'sk', 'siteauditor', 'The total number of links in page is greater than', 'Celkový počet odkazov na stránke je väčší než', '2012-02-25 08:05:27'),
 (8454, 'sk', 'siteauditor', 'to run project again if you stopped execution', 'pre opätovné spustenie projektu, ak ste zastavili vykonávanie skriptu', '2012-02-25 08:05:27'),
 (8455, 'sk', 'siteauditor', 'to view the reports', 'pre zobrazenie správy', '2012-02-25 08:05:27'),
 (8456, 'sk', 'siteauditor', 'Total Links', 'Celkový počet odkazov', '2012-02-25 08:05:27'),
-(8457, 'sk', 'siteauditor', 'totallinksgreaterallowed', 'Celkový počet odkazov bude vyšší ako maximum povolených odkazov pre projekt', '2012-02-25 08:05:27'),
+(8457, 'sk', 'siteauditor', 'totallinksgreaterallowed', 'Celkový počet odkazov bude vyšší ako maximum povolených odkazov pre projekt', '2012-02-25 08:05:27');
+INSERT INTO `texts` VALUES
 (8458, 'sk', 'support', 'support_cont1', '<fieldset>\r\n<legend>Technická podpora SEO panelu</legend>\r\n<ul class=\\"infobox\\">\r\n    <li>\r\n        <h1>Balíček 1000 katalógov</h1> \r\n        <p>\r\n            Poskytujeme balíček <b>1000 voľných, aktívnych a overených</b> internetových katalógov, ktorý si môžete pridať do vášho \r\n <b>nástroja na vkladanie do katalógov</b> vo vašom SEO paneli.\r\n            Pomôže vám to <b>zvýšiť množstvo spätných odkazov</b> smerujúcich na vašu webstránku.\r\n            Aktuálny zoznam 1000 katalógov je <b>predstavený</b> na získanie financií pre <b>budúci vývoj</b> SEO panelu.\r\n            Na získanie zoznamu 1000 katalógov prosím <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">darujte</a> 10 dolárov alebo viac na zlepšenie funkcií SEO panelu.\r\n            Ak máte akékoľvek otázky o balíčku 1000 katalógov, prosím <a href=\\"<?=SP_CONTACT_LINK?>\\"\r\ntarget=\\"_blank\\">kontaktujte nás</a> alebo kontaktujte <a href=\\"<?=SP_SUPPORT_LINK?>\\"\r\ntarget=\\"_blank\\">technickú podporu</a>.   \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Kliknite sem na dotáciu SEO panelu</a>\r\n        </p>\r\n        <br>\r\n    </li> \r\n\r\n    <li>\r\n        <h1>Balíček lokálnych vyhľadávačov</h1> \r\n        <p>\r\n            Pridajte si <b>lokálne vyhľadávacie domény</b> google,yahoo,msn (<b>napr. : www.google.de,www.google.fr\r\natď</b>) do <b>kontroly pozícií kľúčových slov</b> v SEO paneli, na sledovanie výkonnosti vašej webstránky v lokálnych vyhľadávačoch.\r\n            Na získanie balíčka lokálnych vyhľadávačov (v závislosti na vašich požiadavkách) prosím <a\r\nhref=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">darujte</a> 10 dolárov, alebo viac na zlepšenie funkcií SEO panelu.\r\n            Pred poslaním dotácie nás prosím <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">kontaktujte</a> a poskytnite nám požadovaný zoznam doménových vyhľadávačov.\r\n            <br><br>              \r\n            Taktiež na pridanie <b>nových vyhľadávačov (eg:baidu.com)</b> do vašej kontroly pozícií kľúčových slov, nás prosím <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">kontaktujte</a>, alebo zadajte požiadavku <a\r\nhref=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">technickej podpore</a>. \r\n        </p>        \r\n        <p class=\\"visit\\">\r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Kontaktujte nás</a>\r\n        </p>\r\n        <br>\r\n    </li> \r\n<li>\r\n        <h1>Seo Panel Pluginy</h1> \r\n        <p>\r\n            Pridajte si <b>SEO pluginy</b> do vášho SEO panelu na <b>rozšírenie funkcií</b> v závislosti na vašich požiadavkách.\r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Seo panel pluginy</a> sú poskytované SEO panelom a tretími stranami.\r\n            Môžete tiež jednoducho <b>vyvíjať</b> SEO pluginy pre váš SEO panel.\r\n            Môžete <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">vložiť</a> váš SEO panel a my ho <b>zverejníme</b> na našej webstránke po našom <b>preverení</b>.        \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_PLUGINSITE?>\\" target=\\"_blank\\">Dostupné pluginy SEO panelu</a>\r\n        </p>\r\n        <br>\r\n    </li> \r\n\r\n    <li>\r\n        <h1>Kontaktujte nás</h1> \r\n        <p>\r\n            Kontaktujte nás v prípade akýchkoľvek otázok o <b>nástrojoch SEO panelu, pluginoch a funkciách atď</b> použitím tohto odkazu.        \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_CONTACT_LINK?>\\" target=\\"_blank\\">Kontaktujte nás</a>\r\n        </p>\r\n        <br>\r\n    </li>\r\n <li>\r\n        <h1>Požiadavky na technickú podporu</h1> \r\n        <p>\r\n            Ak potrebujete <b>technickú podporu</b> od SEO panel tímu na nastavenie <b>nástrojov SEO panelu, pluginov a funkcií</b>. Napr. : nastavenie cronu pre kontrolu pozícií kľúčových slov. \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Kontaktujte technickú podporu</a>\r\n        </p>\r\n        <br>\r\n    </li> \r\n    <li>\r\n        <h1>Hlásenie chýb</h1> \r\n        <p>\r\n            Ohláste <b>chyby</b> v <b>najstrojoch SEO panelu, pluginoch a funkciách atď.</b> použitím nasledujúceho odkazu. \r\n            Prosím pomôžte nám zlepšiť funkcie v ďalších verziách.          \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_SUPPORT_LINK?>\\" target=\\"_blank\\">Hlásenie chýb</a>\r\n        </p>\r\n        <br>\r\n    </li>    \r\n</ul>\r\n</fieldset>            ', '2012-02-23 12:55:15'),
 (8459, 'sk', 'support', 'support_cont2', '<fieldset>\r\n<legend>Online zdroje Seo Panelu</legend>\r\n<ul class=\\"infobox\\">\r\n        \r\n    <li>\r\n        <h1>Sprievodca nápovedou SEO panelu</h1> \r\n        <p>\r\n            Môžete si prezrieť <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">dokumentáciu SEO panelu</a> v\r\n<b>sprievodcovi nápovedou</b>. Obsahuje <b>dokumentáciu</b> pre nástroje SEO panelu, pluginy a súvisice funkcie.\r\n            <br>Je to najlepšie miesto na internete, kde môžete <b>dostať pomocné informácie</b> o SEO paneli. Dúfame, že \r\n<b>prispejete</b> do sprievodcu nápovedou SEO panelu, ak nájdete chyby, alebo chýbajúce veci.                \r\n        </p>\r\n        <p>\r\n            <a href=\\"<?=SP_HELP_LINK?>\\" target=\\"_blank\\">Navštívte sprievodcu nápovedou SEO panelu</a>\r\n        </p>\r\n        <br>\r\n    </li>    \r\n    <li>\r\n        <h1>Fórum SEO panelu</h1> \r\n        <p>\r\n            Miesto na diskusiu o prvom svetovom <b>SEO paneli</b> s otvoreným kódom. \r\n            Je to najlepšie miesto na nájdenie <b>odpovedí</b> na <b>vaše otázky</b> o SEO paneli. \r\n            <br>Môžete tu tiež <b>zdielať</b> vaše <b>skúsenosti</b> s používaním SEO panelu pri optimalizovaní vašich webstránok.                               \r\n        </p>        \r\n        <p>\r\n            <a href=\\"<?=SP_FORUM_LINK?>\\" target=\\"_blank\\">Navštívte fórum SEO panelu</a>\r\n        </p>\r\n        <br>\r\n    </li>\r\n</ul>    \r\n</fieldset>', '2012-02-23 12:55:15'),
 (8460, 'sk', 'support', 'support_cont3', '<fieldset>\r\n<legend>Dotácia SEO Panelu</legend>\r\n<ul class=\\"infobox\\">        \r\n    <li>\r\n        <h1>Dotácia SEO panelu - Prvý SEO panel s otvoreným kódom na svete</h1> \r\n        <p>\r\n            <b>Dotácia</b> SEO panelu na podporu prvého SEO panelu s otvoreným kódom na svete.\r\n            Plánujeme do budúcna <b>pridávať a zlepšovať</b> funkcie SEO panelu. \r\n            <br>Len s vašou <b>podporou</b> môžeme dosiahnuť naše <b>ciele</b>.\r\n            Ak si myslíte, že SEO panel je pre vás <b>hodnotný</b>, tak prosím, darujte nejakú čiastku tímu SEO panelu.\r\n            <br>Ak dostaneme dotáciu, <b>zverejníme</b> vaše meno a informácie o webstránke na <a href=\\"<?=SP_DONATE_LINK?>\\"\r\ntarget=\\"_blank\\">stránke darcov</a>.\r\n        </p>\r\n        <p>\r\n            <a href=\\"<?=SP_DONATE_LINK?>\\" target=\\"_blank\\">Finančne podporiť SEO panel</a>\r\n        </p>\r\n        <br>\r\n    </li>\r\n</ul>\r\n</fieldset>', '2012-02-23 12:55:15'),
@@ -8550,12 +8550,12 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (8895, 'pt-br', 'directory', 'Check Directory Submission Status', 'Checar Status do Diretório de Envio', '2012-05-05 16:41:34'),
 (8896, 'pt-br', 'directory', 'clicktoproceeddirsts', 'Clique em <b>Avançar</b> para Checar o Status do Diretório.', '2012-05-05 16:41:34'),
 (8897, 'pt-br', 'directory', 'Confirmation', 'Confirmação', '2012-05-05 16:41:34'),
-(8898, 'pt-br', 'directory', 'desnote', 'Alguns diretórios requerem um mínimo de 150 caracteres para o campo de descrição.', '2012-05-05 16:41:34');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(8898, 'pt-br', 'directory', 'desnote', 'Alguns diretórios requerem um mínimo de 150 caracteres para o campo de descrição.', '2012-05-05 16:41:34'),
 (8899, 'pt-br', 'directory', 'Directories with out captcha', 'Diretórios <b>sem</b> captcha', '2012-05-05 16:41:34'),
 (8900, 'pt-br', 'directory', 'Directory Submission Reports', 'Relatórios de Envio para Diretórios', '2012-05-05 16:41:34'),
 (8901, 'pt-br', 'directory', 'Enter the code shown', 'Insira o código demonstrado', '2012-05-05 16:41:34'),
-(8902, 'pt-br', 'directory', 'nocatnote', 'A categoria de envio não foi encontrada na página. Por favor, clique em <b>Recarregar</b> ou <b>Pular</b>', '2012-05-05 16:41:34'),
+(8902, 'pt-br', 'directory', 'nocatnote', 'A categoria de envio não foi encontrada na página. Por favor, clique em <b>Recarregar</b> ou <b>Pular</b>', '2012-05-05 16:41:34');
+INSERT INTO `texts` VALUES
 (8903, 'pt-br', 'directory', 'nodirnote', 'Nenhum diretório <b>ativo</b> encontrado', '2012-05-05 16:41:34'),
 (8904, 'pt-br', 'directory', 'nosuccessnote', 'Nenhuma mensagem de sucesso recebida. Por favor, confira o seu e-mail para localizar a mensagem de confirmação.', '2012-05-05 16:41:34'),
 (8905, 'pt-br', 'directory', 'optionalnote', 'Títulos e descrições opcionais para enviar de forma aleatória para os diretórios. Melhores resultados podem ser esperados.', '2012-05-05 16:41:34'),
@@ -8950,15 +8950,15 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (9294, 'it', 'directory', 'couponcodenote', 'Utilizza il codice di sconto e ricevi [REDUCTION_PER] di riduzione in offerta per ogni immissione.', '2012-11-08 19:50:02'),
 (9295, 'it', 'label', 'Daily', 'Quotidiano', '2014-01-08 23:55:41'),
 (9296, 'it', 'label', 'Monthly', 'Mensilmente', '2014-01-08 23:55:41'),
-(9297, 'it', 'label', 'Weekly', 'Settimanalmente', '2014-01-08 23:55:41');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(9297, 'it', 'label', 'Weekly', 'Settimanalmente', '2014-01-08 23:55:41'),
 (9298, 'it', 'panel', 'Archived Reports', 'Archivio report', '2014-01-08 23:58:23'),
 (9299, 'it', 'panel', 'Report Settings', 'Impostazioni report', '2014-01-08 23:58:23'),
 (9300, 'it', 'panel', 'Schedule Reports', 'Report programmati', '2014-01-08 23:58:23'),
 (9301, 'it', 'panel', 'Search Engine Manager', 'Gestione di ricerca', '2014-01-08 23:58:23'),
 (9302, 'it', 'plugin', 'Download Seo Panel Plugins', 'Scarica il plugin seo', '2012-05-12 10:38:03'),
 (9303, 'it', 'report', '2 Days', '2 giorni', '2012-05-12 10:39:27'),
-(9304, 'it', 'report', 'Email notification', 'Notifica email', '2012-05-12 10:39:27'),
+(9304, 'it', 'report', 'Email notification', 'Notifica email', '2012-05-12 10:39:27');
+INSERT INTO `texts` VALUES
 (9305, 'it', 'report', 'keywordnumbercheckedcronnote', 'Nota: Di default il valore 0 significa che tutte le keyword saranno selezionate', '2012-05-12 10:39:27'),
 (9306, 'it', 'report', 'Next report generation time', 'Prossima generazione del report', '2012-05-12 10:39:27'),
 (9307, 'it', 'report', 'Reports generation interval', 'Intervallo di generazione report', '2012-05-12 10:39:27'),
@@ -9394,10 +9394,10 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (9772, 'el', 'report', 'keywordnumbercheckedcronnote', 'Σημείωση: Η Προεπιλογή είναι το 0 που σημαίνει ότι όλες οι λέξεις κλειδιά πρέπει να επιλεγούν', '2012-06-02 22:24:27'),
 (9773, 'el', 'report', 'Next report generation time', 'Χρόνος παραγωγής της επόμενης αναφοράς', '2012-06-02 22:24:27'),
 (9774, 'el', 'report', 'Reports generation interval', 'Χρονικό διάστημα παραγωγής αναφορών', '2012-06-02 22:24:27'),
-(9775, 'el', 'report', 'reportsettingssaved', 'Ρυθμίσεις αναφορών αποθηκεύτηκαν επιτυχώς!\r\n', '2012-06-02 22:24:27');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(9775, 'el', 'report', 'reportsettingssaved', 'Ρυθμίσεις αναφορών αποθηκεύτηκαν επιτυχώς!\r\n', '2012-06-02 22:24:27'),
 (9776, 'el', 'report', 'sheduledsuccessfully', 'Η προγραμματισμένη παραγωγή αναφορών πραγματοποιήθηκε!', '2012-06-02 22:24:27'),
-(9777, 'el', 'reports', 'report_email_body_text1', 'Οι αναφορές σας δημιουργήθηκαν με επιτυχία στο seo panel. Παρακαλώ ελέγξτε τις συνημμένες αναφορές.', '2012-06-02 22:28:09'),
+(9777, 'el', 'reports', 'report_email_body_text1', 'Οι αναφορές σας δημιουργήθηκαν με επιτυχία στο seo panel. Παρακαλώ ελέγξτε τις συνημμένες αναφορές.', '2012-06-02 22:28:09');
+INSERT INTO `texts` VALUES
 (9778, 'el', 'reports', 'report_email_body_text2', 'Αν οι παραπάνω αναφορές δεν είναι ξεκάθαρες, Παρακαλώ [LOGIN_LINK] για να δείτε τις αναφορές απευθείας από τον λογαριασμό σας.', '2012-06-02 22:28:09'),
 (9779, 'el', 'reports', 'report_email_subject', 'Οι SEO αναφορές σας δημιουργήθηκαν με επιτυχία', '2012-06-02 22:28:09'),
 (9780, 'el', 'searchengine', 'max_results', 'Μέγιστος αριθμός αποτελεσμάτων', '2012-06-02 22:29:39'),
@@ -9714,13 +9714,13 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (10089, 'lt', 'seotools', 'Keywords Manager', 'Raktažodžių vadovas', '2012-11-07 18:31:49'),
 (10090, 'lt', 'seotools', 'Quick Backlinks Checker', 'Greitas atgalinis tikrintuvas', '2012-11-07 18:31:49'),
 (10091, 'lt', 'seotools', 'Quick Position Checker', 'Greita Pozicija tikrintuvas', '2012-11-07 18:31:49'),
-(10092, 'lt', 'seotools', 'Quick Rank Checker', 'greitas eilės patikrinimas', '2012-11-07 18:31:49');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(10092, 'lt', 'seotools', 'Quick Rank Checker', 'greitas eilės patikrinimas', '2012-11-07 18:31:49'),
 (10093, 'lt', 'seotools', 'Quick Saturation Checker', 'greitas prisotinimo patikrinimas', '2012-11-07 18:31:49'),
 (10094, 'lt', 'seotools', 'Rank Reports', 'Eilės ataskaitos', '2012-11-07 18:31:49'),
 (10095, 'lt', 'seotools', 'rank-checker', 'Eilės patikrinimas', '2012-11-07 18:31:49'),
 (10096, 'lt', 'seotools', 'Saturation Reports', 'Prisotinimo ataskaita', '2012-11-07 18:31:49'),
-(10097, 'lt', 'seotools', 'saturation-checker', 'Paieškos sistemos Prisotinimas', '2012-11-07 18:31:49'),
+(10097, 'lt', 'seotools', 'saturation-checker', 'Paieškos sistemos Prisotinimas', '2012-11-07 18:31:49');
+INSERT INTO `texts` VALUES
 (10098, 'lt', 'seotools', 'site-auditor', 'Svetainės auditorius', '2012-11-07 18:31:49'),
 (10099, 'lt', 'seotools', 'sitemap-generator', 'sistemos žemėlaio generatorius', '2012-11-07 18:31:49'),
 (10100, 'lt', 'seotools', 'Skipped Directories', 'Trūkstami katalogai', '2012-11-07 18:31:49'),
@@ -10210,15 +10210,15 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (10612, 'ca', 'keyword', 'pleaseselecttool', 'Si us plau selecciona una eina Seo Tools', '2013-01-01 09:35:45'),
 (10613, 'ca', 'keyword', 'Quick Keyword Position Checker', 'Comprovar ràpid la posició d\\''una paraula clau', '2013-01-01 09:35:45'),
 (10614, 'ca', 'keyword', 'results from ', 'resultats de', '2013-01-01 09:35:45'),
-(10615, 'ca', 'keyword', 'Show All results', 'Mostra Tots els resultats', '2013-01-01 09:35:45');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(10615, 'ca', 'keyword', 'Show All results', 'Mostra Tots els resultats', '2013-01-01 09:35:45'),
 (10616, 'ca', 'keyword', 'Successfully crawled keyword', 'S\\''ha obtingut amb èxit la paraula clau', '2013-01-01 09:35:45'),
 (10617, 'ca', 'keyword', 'to create new keywords', 'per crear noves paraules clau', '2013-01-01 09:35:45'),
 (10618, 'ca', 'label', 'already exist', 'ja existeix', '2013-01-01 09:40:39'),
 (10619, 'ca', 'label', 'Authentication', 'Autentificació', '2013-01-01 09:40:39'),
 (10620, 'ca', 'label', 'Author', 'Autor', '2013-01-01 09:40:39'),
 (10621, 'ca', 'label', 'Brocken', 'Trencat', '2013-01-01 09:40:39'),
-(10622, 'ca', 'label', 'Clear All', 'Netejar Tot', '2013-01-01 09:40:39'),
+(10622, 'ca', 'label', 'Clear All', 'Netejar Tot', '2013-01-01 09:40:39');
+INSERT INTO `texts` VALUES
 (10623, 'ca', 'label', 'Click Here', 'Clic Aquí', '2013-01-01 09:40:39'),
 (10624, 'ca', 'label', 'Comments', 'Comentaris', '2013-01-01 09:40:39'),
 (10625, 'ca', 'label', 'Count', 'Compte', '2013-01-01 09:40:39'),
@@ -10651,13 +10651,13 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (11052, 'bg', 'login', 'Your Password Reset Successfully', 'Паролата ви е успешно променена', '2014-01-07 14:25:53'),
 (11053, 'bg', 'panel', 'Existing', 'Съществуващо', '2014-01-07 14:26:53'),
 (11054, 'bg', 'panel', 'Import Proxy', 'Импортиране на прокси', '2014-01-07 14:26:53'),
-(11055, 'bg', 'panel', 'Proxy Settings', 'Настройки на прокси', '2014-01-07 14:26:53');
-INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed`) VALUES
+(11055, 'bg', 'panel', 'Proxy Settings', 'Настройки на прокси', '2014-01-07 14:26:53'),
 (11056, 'bg', 'panel', 'Valid', 'Валидно', '2014-01-07 14:26:53'),
 (11057, 'bg', 'proxy', 'enterproxynote', 'Въведете прокси, по едно на ред в следния формат.', '2014-01-07 14:28:14'),
 (11058, 'bg', 'proxy', 'proxysyntax', 'Прокси хост име, Прокси порт, Прокси потребител, Прокси парола', '2014-01-07 14:28:14'),
 (11059, 'bg', 'settings', 'allsettingssaved', 'Всички настройки са запазени успешно!', '2014-01-07 14:29:49'),
-(11060, 'bg', 'settings', 'CURLOPT_HTTPPROXYTUNNEL_VAL', 'Активиране на HTTP Proxy тунел', '2014-01-07 14:29:49'),
+(11060, 'bg', 'settings', 'CURLOPT_HTTPPROXYTUNNEL_VAL', 'Активиране на HTTP Proxy тунел', '2014-01-07 14:29:49');
+INSERT INTO `texts` VALUES
 (11061, 'bg', 'settings', 'SP_SMTP_PORT', 'SMTP Мейл порт', '2014-01-07 14:29:49'),
 (11062, 'nl', 'common', 'Checked', 'Aangevinkt', '2014-01-07 21:29:58'),
 (11063, 'nl', 'common', 'Dashboard', 'Dashboard', '2014-01-07 21:29:58'),
@@ -11013,7 +11013,7 @@ CREATE TABLE IF NOT EXISTS `translators` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
-INSERT INTO `translators` (`id`, `lang_code`, `trans_name`, `trans_company`, `trans_website`) VALUES
+INSERT INTO `translators` VALUES
 (1, 'de', 'Grauhut', 'ONLINE MARKETING', 'http://www.grauhut.com/'),
 (2, 'es', 'AnunciosEnLinea.es', 'AnunciosEnLinea.es', 'http://www.anunciosenlinea.es/'),
 (3, 'fr', 'Erik De Zeeuw', 'ez-solutions.fr', 'http://www.ez-solutions.fr/'),
@@ -11043,3 +11043,4 @@ INSERT INTO `translators` (`id`, `lang_code`, `trans_name`, `trans_company`, `tr
 (27, 'da', 'Peter Hasselbalch', 'nordicADmedia', 'http://nordicadmedia.com'),
 (28, 'es-ar', 'Federico Franic', 'ffranic.com.ar', 'http://ffranic.com.ar/'),
 (29, 'lt', 'Rokas Globys', 'Auksera', 'http://www.auksera.lt/');
+
