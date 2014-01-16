@@ -280,6 +280,7 @@ function isValidReferer($referer) {
 	
 	if(stristr($referer, SP_WEBPATH)) {
 		if (!stristr($referer, 'install')) {
+			$referer = str_ireplace("&lang_code=", "&", $referer);
 			return $referer;
 		}		
 	}
