@@ -554,6 +554,8 @@ class Install {
 		?>
 		<html>
 			<head>
+				<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+				<link rel="shortcut icon" href="../images/favicon.ico" />
 				<title>Seo Panel installation interface</title>
 				<meta name="description" content="Seo Panel installation Steps to install seo control panel for managing seo of your sites.">
 				<link rel="stylesheet" type="text/css" href="install.css" media="all" />				
