@@ -406,8 +406,6 @@ class UserController extends Controller{
 	        if(!empty($userId)){
 	            $userInfo = $this->__getUserInfo($userId);
 	        	$rand = str_shuffle(rand().$userInfo['username']);
-	            $sql = "update users set password=md5('$rand') where id={$userInfo['id']}";
-	            $this->db->query($sql);
 
 	            // get admin details
 	            $adminInfo = $this->__getUserInfo(1);
@@ -419,9 +417,17 @@ class UserController extends Controller{
 	           	$this->set('name', $name);
 	           	$content = $this->getViewContent('email/passwordreset');
 	           	$subject = "Seo panel password reset";
+	           	
 	           	if(!sendMail($adminInfo["email"], $name, $userEmail, $subject, $content)){
 	           		$error = $_SESSION['text']['login']['internal_error_mail_send'];
+	           	} else {
+	           		
+	           		// update password in DB
+	           		$sql = "update users set password=md5('$rand') where id={$userInfo['id']}";
+	           		$this->db->query($sql);
+	           		
 	           	}
+	           	
 	           	$this->set('error', $error);
 	           	$this->render('common/forgotconfirm');
 	           	exit;
