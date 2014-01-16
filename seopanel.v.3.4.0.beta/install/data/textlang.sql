@@ -11418,7 +11418,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (11403, 'fr', 'settings', 'CURLOPT_HTTPPROXYTUNNEL_VAL', 'Activer le proxy HTTP', '2014-01-13 06:10:55'),
 (11404, 'fr', 'settings', 'PROXY_DEACTIVATE_CRAWL', 'Désactiver le proxy lorsque l''exploration échoue', '2014-01-13 06:10:55'),
 (11405, 'fr', 'settings', 'SP_SMTP_PORT', 'Port SMTP', '2014-01-13 06:10:55'),
-(11406, 'en', 'common', 'CHECK_WITH_ANOTHER_PROXY_IF_FAILED', 'Check With Another Proxy When Crawling Failed', '2014-01-16 02:47:56');
+(11406, 'en', 'settings', 'CHECK_WITH_ANOTHER_PROXY_IF_FAILED', 'Check With Another Proxy When Crawling Failed', '2014-01-16 02:47:56');
 
 
 
