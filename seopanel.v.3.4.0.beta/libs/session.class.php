@@ -25,12 +25,6 @@ class Session extends Seopanel{
 
 	# starts session
 	function startSession(){
-		
-		// to fix the zip encoding issue
-		if (!ob_start("ob_gzhandler")) {
-			ob_start();
-		}
-		
 		ob_end_clean();
 		ini_set("session.gc_probability", 100);
 		ini_set("session.gc_divisor", 100);
