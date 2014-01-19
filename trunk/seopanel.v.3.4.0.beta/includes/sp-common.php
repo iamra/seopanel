@@ -134,7 +134,7 @@ function scriptAJAXLinkHref($file, $area, $args='', $linkText='Click', $class=''
 	if ($file == 'demo') {
 		$link = ' '.$trigger.'="alertDemoMsg()"';
 	} else {
-		$link = ' '.$trigger.'="scriptDoLoad('."'$file', '$area', '$args')".'"';		
+		$link = ' '.$trigger.'="scriptDoLoadDialog('."'$file', '$area', '$args')".'"';		
 	}
 	$link = "<a href='javascript:void(0);'class='$class' $link>$linkText</a>";
 	return $link;

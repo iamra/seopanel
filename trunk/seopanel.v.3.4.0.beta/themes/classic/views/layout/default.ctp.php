@@ -11,6 +11,7 @@
     <title><?=stripslashes($spTitle)?></title>
     <meta name="description" content="<?=$spDescription?>" />
     <meta name="keywords" content="<?=$spKeywords?>" />
+    <link type="text/css" href="<?=SP_WEBPATH?>/jquery-ui-custom/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/screen.css?<?=$spKey?>" media="all" />
     <link rel="stylesheet" type="text/css" href="<?=SP_CSSPATH?>/datepicker.css?<?=$spKey?>" media="all" />
     <?php if (in_array($_SESSION['lang_code'], array('ar', 'he', 'fa'))) {?>
@@ -19,7 +20,9 @@
     <link rel="shortcut icon" href="<?=SP_IMGPATH?>/favicon.ico" />
     <script type="text/javascript" src="<?=SP_JSPATH?>/jquery-1.10.1.min.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/common.js?<?=$spKey?>"></script>
+    <script type="text/javascript" src="<?=SP_JSPATH?>/popup.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/datepicker.js?<?=$spKey?>"></script>
+    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js" />
 </head>
 <body>
 <script>

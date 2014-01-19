@@ -191,3 +191,4 @@ if(!empty($printVersion)) {
 	</tr>
 </table>
 </div>
+<div id="dialogContent" style="display:none;"></div>
