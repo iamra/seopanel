@@ -1,8 +1,13 @@
 var menuList = new Array();
 var buttonList = new Array();
 var scriptList = new Array();
+var needPopup = false;
 
 function scriptDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading) {
+	if(needPopup) {
+		scriptDoLoadPostDialog(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading);
+		return;
+	}
 	 if(!scriptArgs){ var scriptArgs = ''; }
      scriptArgs = jQuery('#'+scriptForm).serialize() + scriptArgs;
      showLoadingIcon(scriptPos, noLoading);
