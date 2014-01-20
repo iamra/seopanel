@@ -40,18 +40,43 @@ function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
 
 function scriptDoLoadPostDialog(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading) {
 	if(!scriptArgs){ var scriptArgs = ''; }
+	var scriptPos = (scriptPos == "content") ? "#dialogContent" : "#dialogContent #" + scriptPos;
 	var dataVals = {
             "method" : "post",
             "dataType" : "html",
             "url" : scriptUrl,
             "data" : $('#'+scriptForm).serialize() + scriptArgs,
             beforeSend: function(){
-            	$("#dialogContent").html("");
+            	$(scriptPos).html("");
             },
             success : function(response) {
     	    	needPopup = true;
-            	$("#dialogContent").html(response);
-            	$("#dialogContent").show();
+            	$(scriptPos).html(response);
+            	$(scriptPos).show();
+            },
+            error : function(xhr, status, error) {
+            },
+            complete : function() {
+            }
+        }
+	$.ajax(dataVals);
+}
+
+function scriptDoLoadGetDialog(scriptUrl, scriptPos, scriptArgs, noLoading) {
+	if(!scriptArgs){ var scriptArgs = ''; }
+	var scriptPos = "#dialogContent #" + scriptPos;
+	var dataVals = {
+            "method" : "get",
+            "dataType" : "html",
+            "url" : scriptUrl,
+            "data" : scriptArgs,
+            beforeSend: function(){
+            	$(scriptPos).html("");
+            },
+            success : function(response) {
+    	    	needPopup = true;
+            	$(scriptPos).html(response);
+            	$(scriptPos).show();
             },
             error : function(xhr, status, error) {
             },
