@@ -25,7 +25,6 @@ class Session extends Seopanel{
 
 	# starts session
 	function startSession(){
-		ob_end_clean();
 		ini_set("session.gc_probability", 100);
 		ini_set("session.gc_divisor", 100);
 		ini_set("session.gc_maxlifetime", SP_TIMEOUT);
