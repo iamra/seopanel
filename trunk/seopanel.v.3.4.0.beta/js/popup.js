@@ -3,8 +3,8 @@ function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
 	$("#website_id").attr("id", "cont_website_id");
 	$('#dialogContent').dialog({
 	    autoOpen : false,
-	    width : 800,
-	    height : 400,
+	    width : 900,
+	    height : 600,
 	    title : 'Keyword Position Report',
 	    modal : true,
 	    close : function() {
