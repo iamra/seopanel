@@ -8,23 +8,31 @@ function scriptDoLoadPost(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoadin
 		scriptDoLoadPostDialog(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading);
 		return;
 	}
-	 if(!scriptArgs){ var scriptArgs = ''; }
-     scriptArgs = jQuery('#'+scriptForm).serialize() + scriptArgs;
-     showLoadingIcon(scriptPos, noLoading);
-     jQuery.ajax({
-         type: "POST",
-         url:scriptUrl,
-         data: scriptArgs, 
-         success: function(data){
-             document.getElementById(scriptPos).innerHTML = data;
-             jQuery("#"+scriptPos).find("script").each(function(i) {
-                eval($(this).text());
-             });
-         }
-     });
+	
+	if(!scriptArgs){ var scriptArgs = ''; }
+	
+	scriptArgs = jQuery('#'+scriptForm).serialize() + scriptArgs;
+	showLoadingIcon(scriptPos, noLoading);
+	jQuery.ajax({
+		type: "POST",
+		url:scriptUrl,
+		data: scriptArgs, 
+		 success: function(data){
+			 document.getElementById(scriptPos).innerHTML = data;
+			 jQuery("#"+scriptPos).find("script").each(function(i) {
+	            eval($(this).text());
+	         });
+	     }
+	});
 }
 
 function scriptDoLoad(scriptUrl, scriptPos, scriptArgs, noLoading) {
+	
+	if(needPopup) {
+		scriptDoLoadGetDialog(scriptUrl, scriptPos, scriptArgs, noLoading);
+		return;
+	}
+	
 	showLoadingIcon(scriptPos, noLoading);
     jQuery.ajax({
          type: "get",
