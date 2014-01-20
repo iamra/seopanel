@@ -149,8 +149,8 @@ if(!empty($printVersion)) {
 					$rankDiff = empty($positionInfo[$seInfo['id']]['rank_diff']) ? '' : $positionInfo[$seInfo['id']]['rank_diff'];
 				    $rankPadding = "";
 				    if ($rank != '-') {
-				        $rankLink = scriptAJAXLinkHref('reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], $rank);
-				        $graphLink = scriptAJAXLinkHref('graphical-reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], '&nbsp;', 'graphicon');
+				        $rankLink = scriptAJAXLinkHrefDialog('reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], $rank);
+				        $graphLink = scriptAJAXLinkHrefDialog('graphical-reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], '&nbsp;', 'graphicon');
 					    $rankPadding = empty($rankDiff) ? "" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 					    $rankLink = $rankPadding . $rankLink;
 				    } else {
@@ -191,3 +191,4 @@ if(!empty($printVersion)) {
 	</tr>
 </table>
 </div>
+<div id="dialogContent" style="display:none;"></div>

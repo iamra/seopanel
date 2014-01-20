@@ -19,7 +19,9 @@
     <link rel="shortcut icon" href="<?=SP_IMGPATH?>/favicon.ico" />
     <script type="text/javascript" src="<?=SP_JSPATH?>/jquery-1.10.1.min.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/common.js?<?=$spKey?>"></script>
+    <script type="text/javascript" src="<?=SP_JSPATH?>/popup.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/datepicker.js?<?=$spKey?>"></script>
+    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js" />
 </head>
 <body>
 <script>
