@@ -129,7 +129,12 @@ function showLoadingIcon(scriptPos,noLoading){
 	}
 	
 	if((loading == 1) && (noLoading != 1)){
-		document.getElementById(scriptPos).innerHTML = contentDiv;
+		if(needPopup) {
+			return contentDiv;
+		} else {
+			document.getElementById(scriptPos).innerHTML = contentDiv;
+		}
+		
 	}
 }
 
@@ -186,8 +191,12 @@ function doAction(scriptUrl, scriptPos, scriptArgs, actionDiv) {
 	}
 }
 
-function doLoad(argVal, scriptUrl, scriptPos, scriptArgs) {
-	actVal = document.getElementById(argVal).value;
+function doLoad(argVal, scriptUrl, scriptPos, scriptArgs) {	
+	if(needPopup) {
+		actVal = $("#dialogContent #" + argVal).val();
+	} else {
+		actVal = document.getElementById(argVal).value;
+	}	
 	scriptArgs += "&"+ argVal +"=" + actVal;
 	scriptDoLoad(scriptUrl, scriptPos, scriptArgs);
 }
