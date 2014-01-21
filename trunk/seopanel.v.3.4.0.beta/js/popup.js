@@ -1,16 +1,12 @@
 function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
-	$("#search_form").attr("id", "cont_search_form");
-	$("#website_id").attr("id", "cont_website_id");
 	$('#dialogContent').dialog({
 	    autoOpen : false,
 	    width : 900,
 	    height : 600,
-	    title : 'Keyword Position Report',
+	    title : 'Seo Panel',
 	    modal : true,
 	    close : function() {
-	    	$("#dialogContent").html("");
-	    	$("#cont_search_form").attr("id", "search_form");
-	    	$("#cont_website_id").attr("id", "website_id");
+	    	$("#dialogContent").html('');
 	    	needPopup = false;
 	    },
 	    open : function() {  
@@ -18,9 +14,9 @@ function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
 	                "method" : "get",
 	                "dataType" : "html",
 	                "url" : scriptUrl,
-	                "data" : scriptArgs,
+	                "data" : scriptArgs + "&fromPopUp=1",
 	                beforeSend: function(){
-	                	$("#dialogContent").html("");
+	                	$("#dialogContent").html('<div id="loading_content"></div>');
 	                },
 	                success : function(response) {
 	        	    	needPopup = true;
@@ -39,15 +35,16 @@ function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
 }
 
 function scriptDoLoadPostDialog(scriptUrl, scriptForm, scriptPos, scriptArgs, noLoading) {
-	if(!scriptArgs){ var scriptArgs = ''; }
+	if(!scriptArgs) { var scriptArgs = ''; }
+	var loadingContent = showLoadingIcon(scriptPos, noLoading);
 	var scriptPos = (scriptPos == "content") ? "#dialogContent" : "#dialogContent #" + scriptPos;
 	var dataVals = {
             "method" : "post",
             "dataType" : "html",
             "url" : scriptUrl,
-            "data" : $('#'+scriptForm).serialize() + scriptArgs,
+            "data" : $('#dialogContent #'+scriptForm).serialize() + scriptArgs + "&fromPopUp=1",
             beforeSend: function(){
-            	$(scriptPos).html("");
+            	$(scriptPos).html(loadingContent);
             },
             success : function(response) {
     	    	needPopup = true;
@@ -64,14 +61,15 @@ function scriptDoLoadPostDialog(scriptUrl, scriptForm, scriptPos, scriptArgs, no
 
 function scriptDoLoadGetDialog(scriptUrl, scriptPos, scriptArgs, noLoading) {
 	if(!scriptArgs){ var scriptArgs = ''; }
+	var loadingContent = showLoadingIcon(scriptPos, noLoading);
 	var scriptPos = "#dialogContent #" + scriptPos;
 	var dataVals = {
             "method" : "get",
             "dataType" : "html",
             "url" : scriptUrl,
-            "data" : scriptArgs,
+            "data" : scriptArgs + "&fromPopUp=1",
             beforeSend: function(){
-            	$(scriptPos).html("");
+            	$(scriptPos).html(loadingContent);
             },
             success : function(response) {
     	    	needPopup = true;
