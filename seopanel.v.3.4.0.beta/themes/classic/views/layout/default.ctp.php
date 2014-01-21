@@ -22,12 +22,12 @@
     <script type="text/javascript" src="<?=SP_JSPATH?>/common.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/popup.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/datepicker.js?<?=$spKey?>"></script>
-    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js" />
+    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js<?=$spKey?>"></script>
 </head>
 <body>
-<script>
-var spdemo = <?=SP_DEMO?>;
-var wantproceed = '<?=$spText['label']['wantproceed']?>';
+<script type="text/javascript">
+var spdemo = <?php echo SP_DEMO; ?>;
+var wantproceed = '<?php  echo $spText['label']['wantproceed']; ?>';
 </script>
 
 <div class="main_container">
