@@ -22,7 +22,7 @@
     <script type="text/javascript" src="<?=SP_JSPATH?>/common.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/popup.js?<?=$spKey?>"></script>
     <script type="text/javascript" src="<?=SP_JSPATH?>/datepicker.js?<?=$spKey?>"></script>
-    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js<?=$spKey?>"></script>
+    <script type="text/javascript" src="<?=SP_WEBPATH?>/jquery-ui-custom/js/jquery-ui-1.10.3.custom.min.js?<?=$spKey?>"></script>
 </head>
 <body>
 <script type="text/javascript">
