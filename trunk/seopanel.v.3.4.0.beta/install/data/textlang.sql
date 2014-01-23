@@ -6,7 +6,7 @@
 
 
 
-DROP TABLE  `languages`;
+DROP TABLE IF EXISTS `languages`;
 CREATE TABLE `languages` (
   `lang_code` varchar(8) CHARACTER SET latin1 NOT NULL,
   `lang_name` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -66,7 +66,7 @@ INSERT INTO `languages` (`lang_code`, `lang_name`, `lang_show`, `RTL`, `translat
 
 
 
-DROP TABLE  `texts`;
+DROP TABLE IF EXISTS `texts`;
 CREATE TABLE `texts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
@@ -11372,7 +11372,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 
 
 
-DROP TABLE  `translators`;
+DROP TABLE IF EXISTS `translators`;
 CREATE TABLE `translators` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` varchar(8) NOT NULL,
