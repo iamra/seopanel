@@ -10,6 +10,7 @@ function scriptDoLoadDialog(scriptUrl, scriptPos, scriptArgs) {
 	    	needPopup = false;
 	    	changeDateInputField('parent_from_time', 'from_time');
 	    	changeDateInputField('parent_to_time', 'to_time');
+	    	$(this).dialog("destroy");
 	    },
 	    open : function() {  
 	    	var dataVals = {
