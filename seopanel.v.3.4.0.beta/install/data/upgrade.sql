@@ -16,4 +16,6 @@ VALUES ('SMTP Mail Port', 'SP_SMTP_PORT', '25', 'system', 'small', '1');
 
 ALTER TABLE `proxylist` ADD `checked` TINYINT( 1 ) NOT NULL DEFAULT '0';
 
+Update `searchengines` set `regex`='<li.*?<h3><a.*?\\*\\*(.*?)".*?>(.*?)<\\/a><\\/h3>.*?<div.*?>(.*?)<\\/div>' where url like '%yahoo.com%';
+
 
