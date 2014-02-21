@@ -299,8 +299,9 @@ function crawlMetaData(url,scriptPos) {
 	if(weburl==null||weburl==""||weburl==0){
 		alert('Website url is empty!');
 	}else{
-		url = url + "&url=" + escape(weburl);
-		scriptDoLoad(url, scriptPos);
+		var urlInfo = url.split("?");
+		scriptArgs = urlInfo[1] + "&url=" + urlencode(weburl);
+		scriptDoLoadPost(urlInfo[0], "tmp", scriptPos, scriptArgs);
 	}
 }
 
@@ -345,4 +346,9 @@ function selectAllOptions(selectBoxId, selectAll) {
 	for (var i = 0; i < selectBox.options.length; i++) { 
 		selectBox.options[i].selected = selectAll; 
 	}
+}
+
+function urlencode(str) {
+	  str = (str + '').toString();
+	  return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
 }
