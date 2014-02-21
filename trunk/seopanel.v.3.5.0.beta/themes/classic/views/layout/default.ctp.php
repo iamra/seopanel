@@ -74,7 +74,7 @@ var wantproceed = '<?php  echo $spText['label']['wantproceed']; ?>';
     </div>
     <?php include_once(SP_VIEWPATH."/common/footer.ctp.php"); ?>
 </div>
-<div id="tmp"></div>
+<div id="tmp"><form name="tmp" id="tmp"></form></div>
 <?php if(empty($_COOKIE['hidenews'])){ ?>
 	<script>scriptDoLoad('<?=SP_WEBPATH?>/index.php?sec=news', 'newsalert');</script>
 <?php }?>
