@@ -599,15 +599,23 @@ class ReportController extends Controller {
 			if(empty($result['error'])){
 			    
 			    // to update cron that report executed for akeyword on a search engine
-			    if (SP_MULTIPLE_CRON_EXEC && $cron) $this->saveCronTrackInfo($keywordInfo['id'], $seInfoId, $time);		
-				
+			    if (SP_MULTIPLE_CRON_EXEC && $cron) $this->saveCronTrackInfo($keywordInfo['id'], $seInfoId, $time);
+			    
 			    if(preg_match_all($this->seList[$seInfoId]['regex'], $pageContent, $matches)){
+			    	
 					$urlList = $matches[$this->seList[$seInfoId]['url_index']];
 					$crawlResult[$seInfoId]['matched'] = array();
 					$rank = 1;
 					$previousDomain = "";
 					foreach($urlList as $i => $url){
 						$url = urldecode(strip_tags($url));
+						
+						// add special condition for baidu
+						if (stristr($this->seList[$seInfoId]['domain'], "baidu")) {
+							$url =  addHttpToUrl($url);
+							$url = str_replace("...", "", $url);
+						}
+						
 						if(!preg_match('/^http:\/\/|^https:\/\//i', $url)) continue;
 						
 						// check for to remove msn ad links in page
