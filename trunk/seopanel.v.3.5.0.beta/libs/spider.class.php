@@ -21,6 +21,7 @@
  ***************************************************************************/
 
 include_once(SP_CTRLPATH."/proxy.ctrl.php");
+include_once(SP_CTRLPATH."/crawllog.ctrl.php");
 
 class Spider{
 
@@ -282,6 +283,10 @@ class Spider{
 		$ret['page'] = curl_exec( $this -> _CURL_RESOURCE );
 		$ret['error'] = curl_errno( $this -> _CURL_RESOURCE );
 		$ret['errmsg'] = curl_error( $this -> _CURL_RESOURCE );
+		
+		// update crawl log in database for future reference
+		$crawlLogCtrl = new CrawlLogController();
+		$crawlLogCtrl->createCrawlLog("keyword", "", $ret['error'], $proxyInfo['id'], $ret['errmsg']);
 		
 		// disable proxy if not working
 		if (SP_ENABLE_PROXY && $enableProxy && !empty($ret['error']) && !empty($proxyInfo['id'])) {
