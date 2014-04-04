@@ -645,19 +645,34 @@ class ReportController extends Controller {
 						}
 						$rank++;							
 					}
-					$crawlStatus = 1;
-				}else{
+					$crawlStatus = 1;					
+					
+				} else {
+					
+					// set crawl log info
+					$crawlInfo['crawl_status'] = 0;
+					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					
 					if(SP_DEBUG){
 						echo "<p class='note' style='text-align:left;'>Error occured while parsing $seUrl ".formatErrorMsg("Regex not matched <br>\n")."</p>";
 					}
 				}	
-			}else{
-				if(SP_DEBUG){
+			} else {
+				if (SP_DEBUG) {
 					echo "<p class='note' style='text-align:left;'>Error occured while crawling $seUrl ".formatErrorMsg($result['errmsg']."<br>\n")."</p>";
 				}
 			}			
 			$crawlResult[$seInfoId]['status'] = $crawlStatus;			
 			sleep(SP_CRAWL_DELAY);
+			
+			// update crawl log
+			$crawlLogCtrl = new CrawlLogController();
+			$logId = $result['log_id'];
+			$crawlInfo['crawl_type'] = 'keyword';
+			$crawlInfo['ref_id'] = empty($keywordInfo['id']) ? $keywordInfo['name'] : $keywordInfo['id'];
+			$crawlInfo['subject'] = $seInfoId;
+			$crawlLogCtrl->updateCrawlLog($logId, $crawlInfo);
+			
 		}
 		return  $crawlResult;
 	}
