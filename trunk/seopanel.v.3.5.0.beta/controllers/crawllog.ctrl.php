@@ -24,18 +24,44 @@
 class CrawlLogController extends Controller {
 	
 	/**
-	 * function to create crawl logs for report generation
-	 * @param String $crawlType		The type of crawl[keyword/rank/backlink/saturation/meta/other]
-	 * @param int $refId			The ref id of crawl purpose
-	 * @param int $crawlStatus		The status of the crawl
-	 * @param int $proxyId			The id of the proxy if proxy used
-	 * @param String $logMessage	The log message of crawl
+	 * the name of the crawl logging database tabel
 	 */
-	function createCrawlLog($crawlType, $refId, $crawlStatus, $proxyId, $logMessage) {
-		$sql = "INSERT INTO crawl_log(`crawl_type`, `ref_id`, `crawl_status`, `proxy_id`, `log_message`)
-		VALUES ('".addslashes($crawlType)."', '".intval($refId)."', '".intval($crawlStatus)."', 
-		'".intval($proxyId)."', '".addslashes($logMessage)."')";
+	var $tablName = "crawl_log";
+	
+	/**
+	 * function to create crawl logs for report generation
+	 * @param $crawlInfo 	The array contains all detaisl of crawl
+	 */
+	function createCrawlLog($crawlInfo) {
+		$sql = "INSERT INTO ". $this->tablName ."(".implode(",", array_keys($crawlInfo)).")";
+		$sql .= " values ('".implode("','", array_values($crawlInfo))."')";
 		$this->db->query($sql);
+		$logId = $this->db->getMaxId($this->tablName);
+		return $logId;
+	}
+	
+	/**
+	 * function to update crawl log
+	 * @param int $logId			The id of the crawl log needs to be updated
+	 * @param Array $crawlInfo		The array contains crawl log details needs to be updated
+	 */
+	function updateCrawlLog($logId, $crawlInfo) {
+		
+		// if log id is not empty
+		if (!empty($logId)) {
+		
+			$sql = "update $this->tablName set ";
+			
+			// for each through the log values
+			foreach($crawlInfo as $key => $value) {
+				$sql .= "$key='". addslashes($value) ."',";
+			}
+			
+			$sql = rtrim($sql, ",");
+			echo $sql .= " where id=$logId";
+			$this->db->query($sql);
+		}
+		
 	}
 	
 }
