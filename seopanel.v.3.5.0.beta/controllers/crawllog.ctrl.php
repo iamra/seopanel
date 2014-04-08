@@ -58,7 +58,7 @@ class CrawlLogController extends Controller {
 			}
 			
 			$sql = rtrim($sql, ",");
-			echo $sql .= " where id=$logId";
+			$sql .= " where id=$logId";
 			$this->db->query($sql);
 		}
 		
