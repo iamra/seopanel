@@ -64,19 +64,24 @@ class BacklinkController extends Controller{
 	
 	function __getBacklinks ($engine) {
 		if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;
+		$backlinkCount = 0;
 		switch ($engine) {
 			
 			#google
 			case 'google':
 				$url = $this->backUrlList[$engine] . urlencode($this->url);			
 				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];
-				if(preg_match('/about ([0-9\,]+) result/si', $v, $r)){					
-				}elseif(preg_match('/<div id=resultStats>([0-9\,]+) result/si', $v, $r)){					
-				}elseif(preg_match('/([0-9\,]+) result/si', $v, $r)){					
-				}elseif(preg_match('/about <b>([0-9\,]+)<\/b> linking/si', $v, $r)){					
+				$pageContent = empty($v['page']) ? '' :  $v['page'];
+				if (preg_match('/about ([0-9\,]+) result/si', $pageContent, $r)) {					
+				} elseif (preg_match('/<div id=resultStats>([0-9\,]+) result/si', $pageContent, $r)) {					
+				} elseif (preg_match('/([0-9\,]+) result/si', $pageContent, $r)) {					
+				} elseif (preg_match('/about <b>([0-9\,]+)<\/b> linking/si', $pageContent, $r)) {					
+				} else {
+					$crawlInfo['crawl_status'] = 0;
+					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";					
 				}
-				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
+				
+				$backlinkCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
 			#msn
@@ -84,25 +89,40 @@ class BacklinkController extends Controller{
 			    $url = formatUrl($this->url, false);
 				$url = $this->backUrlList[$engine] . urlencode(addHttpToUrl($url));
 				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];
-		        if (preg_match('/([0-9\,]+) results/si', $v, $r)) {
-				} elseif (preg_match('/id="count".*?>.*?\(([0-9\,]+).*?\)/si', $v, $r)) {
-				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $v, $r)) {
+				$pageContent = empty($v['page']) ? '' :  $v['page'];
+		        if (preg_match('/([0-9\,]+) results/si', $pageContent, $r)) {
+				} elseif (preg_match('/id="count".*?>.*?\(([0-9\,]+).*?\)/si', $pageContent, $r)) {
+				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $pageContent, $r)) {
+				} else {
+					$crawlInfo['crawl_status'] = 0;
+					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
 				}
-				return ($r[1]) ? str_replace(',', '', $r[1]) : 0;
+				
+				$backlinkCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
 				
 			# alexa
 			case 'alexa':
 				$url = 'http://data.alexa.com/data?cli=10&dat=snbamz&url=' . urlencode($this->url);
 				$v = $this->spider->getContent($url);
-				$v = empty($v['page']) ? '' :  $v['page'];
-				preg_match('/<LINKSIN NUM="(.*?)"/si', $v, $r);
-				return ($r[1]) ? intval($r[1]) : 0;
+				$pageContent = empty($v['page']) ? '' :  $v['page'];
+				if (preg_match('/<LINKSIN NUM="(.*?)"/si', $pageContent, $r) ) {
+					$backlinkCount = !empty($r[1]) ? intval($r[1]) : 0;
+				} else {
+					$crawlInfo['crawl_status'] = 0;
+					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+				}
 				break;
 		}
+
+		// update crawl log
+		$crawlLogCtrl = new CrawlLogController();
+		$crawlInfo['crawl_type'] = 'backlink';
+		$crawlInfo['ref_id'] = $this->url;
+		$crawlInfo['subject'] = $engine;
+		$crawlLogCtrl->updateCrawlLog($v['log_id'], $crawlInfo);
 		
-		return 0;
+		return $backlinkCount;
 	}
 	
 	# func to show genearte reports interface

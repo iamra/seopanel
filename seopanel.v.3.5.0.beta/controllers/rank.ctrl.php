@@ -60,14 +60,30 @@ class RankController extends Controller{
 
 	function __getGooglePageRank ($url) {
 
-	    if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;	    
+	    if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;	
+	    $websiteUrl =  $url;   
 		$url = "http://toolbarqueries.google.com/tbr?client=navclient-auto&ch=".$this->CheckHash($this->hashURL($url))."&features=Rank&q=info:".$url."&num=100&filter=0";
 		$ret = $this->spider->getContent($url);
-		if(!empty($ret['page'])){
-			preg_match('/Rank_([0-9]+):([0-9]+):([0-9]+)/si', $ret['page'], $matches);
-			return ($matches[3]) ? $matches[3] : 0;
+		$rank = 0;
+		
+		// parse rank from the page
+		if (!empty($ret['page'])) {
+			if (preg_match('/Rank_([0-9]+):([0-9]+):([0-9]+)/si', $ret['page'], $matches) ) {
+				$rank = empty($matches[3]) ? 0 : $matches[3];
+			} else {
+				$crawlInfo['crawl_status'] = 0;
+				$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+			}
 		}
-		return 0;
+		
+		// update crawl log
+		$crawlLogCtrl = new CrawlLogController();
+		$crawlInfo['crawl_type'] = 'rank';
+		$crawlInfo['ref_id'] = $websiteUrl;
+		$crawlInfo['subject'] = "google";
+		$crawlLogCtrl->updateCrawlLog($ret['log_id'], $crawlInfo);
+		
+		return $rank;
 	}
 
 	function printAlexaRank($url){
@@ -95,14 +111,31 @@ class RankController extends Controller{
 
 	# alexa_rank
 	function __getAlexaRank ($url) {
-	    if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;
+	    if (SP_DEMO && !empty($_SERVER['REQUEST_METHOD'])) return 0;	
+	    $websiteUrl =  $url;
 		$url = 'http://data.alexa.com/data?cli=10&dat=snbamz&url=' . urlencode($url);
 		$ret = $this->spider->getContent($url);
+		$rank = 0;
+		
+		// parse rank from teh page
 		if(!empty($ret['page'])){
-			preg_match('/\<popularity url\="(.*?)" TEXT\="([0-9]+)"/si', $ret['page'], $matches);
-			return ($matches[2]) ? $matches[2] : 0;
+			if (preg_match('/\<popularity url\="(.*?)" TEXT\="([0-9]+)"/si', $ret['page'], $matches) ) {
+				$rank = empty($matches[2]) ? 0 : $matches[2];	
+			} else {
+				$crawlInfo['crawl_status'] = 0;
+				$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+			}
+			
 		}
-		return 0;
+		
+		// update crawl log
+		$crawlLogCtrl = new CrawlLogController();
+		$crawlInfo['crawl_type'] = 'rank';
+		$crawlInfo['ref_id'] = $websiteUrl;
+		$crawlInfo['subject'] = "alexa";
+		$crawlLogCtrl->updateCrawlLog($ret['log_id'], $crawlInfo);
+		
+		return $rank;
 	}
 
 	function strToNum($Str, $Check, $Magic) {
