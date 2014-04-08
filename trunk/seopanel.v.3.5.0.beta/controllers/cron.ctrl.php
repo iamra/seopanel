@@ -209,7 +209,7 @@ class CronController extends Controller {
 	function backlinkCheckerCron($websiteId){
 		
 		include_once(SP_CTRLPATH."/backlink.ctrl.php");
-		$this->debugMsg("Starting Backlik Checker cron for website: {$this->websiteInfo['name']}....<br>\n");
+		$this->debugMsg("Starting Backlink Checker cron for website: {$this->websiteInfo['name']}....<br>\n");
 		
 		$backlinkCtrler = New BacklinkController();
 		$websiteInfo = $this->websiteInfo;
