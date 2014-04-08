@@ -9,7 +9,7 @@ UPDATE `searchengines` SET `regex` = '<li.*?<h3><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><
 
 CREATE TABLE IF NOT EXISTS `crawl_log` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `crawl_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'keyword',
+  `crawl_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'other',
   `ref_id` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `subject` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `crawl_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
