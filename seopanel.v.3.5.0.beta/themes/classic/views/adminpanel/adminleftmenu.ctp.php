@@ -124,6 +124,15 @@ foreach($menuList as $i => $menuInfo){
 			<?php
 			break;
 			
+		case "log-manager":
+			?>
+			<script type="text/javascript">scriptList[<?=$i?>] = 'log.php?sec=crawl';</script>			
+			<ul id='subui'>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('log.php?sec=crawl', 'content')"><?=$spTextPanel['Crawl Log Manager']?></a></li>
+			</ul>
+			<?php
+			break;
+			
 		case "settings":
 			?>
 			<script type="text/javascript">scriptList[<?=$i?>] = 'settings.php';</script>			
