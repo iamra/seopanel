@@ -64,5 +64,53 @@ class CrawlLogController extends Controller {
 		
 	}
 	
+	
+	/**
+	 * Function to display crawl log details 
+	 * @param Array $info	Contains all search details
+	 */
+	function listCrawlLog($info = ''){
+	
+		$userId = isLoggedIn();
+		$sql = "select * from $this->tablName where 1=1";
+	
+		if (isset($info['status'])) {
+			if (($info['status']== 'success') || ($info['status']== 'fail')) {
+				$statVal = ($info['status']=='success') ? 1 : 0;
+				$conditions .= " and crawl_status=$statVal";
+				$urlParams .= "&status=".$info['status'];
+			}
+		} else {
+			$info['status'] = '';
+		}
+		$this->set('statVal', $info['status']);
+	
+		if (empty($info['keyword'])) {
+			$info['keyword'] =  '';
+		} else {
+			$info['keyword'] = urldecode($info['keyword']);
+			$conditions .= " and (ref_id like '%".addslashes($info['keyword'])."%' or subject like '%".addslashes($info['keyword'])."%'
+			 or crawl_link like '%".addslashes($info['keyword'])."%' or log_message like '%".addslashes($info['keyword'])."%' )";
+			$urlParams .= "&keyword=".urlencode($info['keyword']);
+		}
+		$this->set('keyword', $info['keyword']);
+	
+		$sql .= " $conditions order by id";
+	
+		# pagination setup
+		$this->db->query($sql, true);
+		$this->paging->setDivClass('pagingdiv');
+		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
+		$pagingDiv = $this->paging->printPages('proxy.php', '', 'scriptDoLoad', 'content', $urlParams);
+		$this->set('pagingDiv', $pagingDiv);
+		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
+	
+		$logList = $this->db->select($sql);
+		$this->set('pageNo', $info['pageno']);
+		$this->set('list', $logList);
+		$this->set('urlParams', $urlParams);
+		$this->render('log/crawlloglist');
+	}
+	
 }
 ?>

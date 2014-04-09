@@ -26,4 +26,10 @@ CREATE TABLE IF NOT EXISTS `crawl_log` (
   KEY `crawl_type` (`crawl_type`),
   KEY `ref_id` (`ref_id`),
   KEY `proxy_id` (`proxy_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+---
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Crawl Log Manager', 'Crawl Log Manager');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Success', 'Success');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Fail', 'Fail');
