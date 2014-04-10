@@ -10,7 +10,7 @@ UPDATE `searchengines` SET `regex` = '<li.*?<h3><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><
 CREATE TABLE IF NOT EXISTS `crawl_log` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `crawl_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'other',
-  `ref_id` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `ref_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `subject` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `crawl_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `crawl_referer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -34,3 +34,10 @@ INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Success', 'Success');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Fail', 'Fail');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Reference', 'Reference');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Subject', 'Subject');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Cookie', 'Cookie');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'User agent', 'User agent');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Referer', 'Referer');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Clear All Logs', 'Clear All Logs');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Crawl Log Details', 'Crawl Log Details');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Post Fields', 'Post Fields');

@@ -143,7 +143,7 @@ class CrawlLogController extends Controller {
 		$urlParams .= "&from_time=$fromTimeLabel&to_time=$toTimeLabel";
 		
 		// sql created using param
-		$sql .= " $conditions and crawl_time >='$fromTimeLabel 00:00:00' and crawl_time<='$toTimeLabel 23:59:59' order by id";
+		$sql .= " $conditions and crawl_time >='$fromTimeLabel 00:00:00' and crawl_time<='$toTimeLabel 23:59:59' order by crawl_time DESC";
 		
 		// pagination setup
 		$this->db->query($sql, true);
@@ -158,6 +158,43 @@ class CrawlLogController extends Controller {
 		$this->set('list', $logList);
 		$this->set('urlParams', $urlParams);
 		$this->render('log/crawlloglist');
+	}
+	
+	/**
+	 * fucntion to delete log id
+	 * @param int $logId	The id of the log needs to be deleted
+	 */
+	function deleteCrawlLog($logId) {
+		$sql = "delete from crawl_log where id=".intval($logId);
+		$this->db->query($sql);
+	}
+	
+	/**
+	 * function to clear all logs saved in teh system
+	 */
+	function clearAllLog() {
+		$sql = "delete from crawl_log";
+		$this->db->query($sql);
+	}
+	
+	/**
+	 * function to get crawl log information
+	 * @param int $logId	The id of the log needs to be dispalyed
+	 */
+	function getCrawlLogInfo($logId) {
+		$sql = "select * from crawl_log where id=".intval($logId);
+		$logInfo = $this->db->select($sql, true);
+		return $logInfo;
+	}
+	
+	/**
+	 * fucntion to show crawl log details
+	 * @param int $logId	The id of the log needs to be dispalyed
+	 */
+	function showCrawlLogDetails($logId) {
+		$logInfo = $this->getCrawlLogInfo($logId);
+		$this->set('logInfo', $logInfo);
+		$this->render('log/showcrawllog');
 	}
 	
 }
