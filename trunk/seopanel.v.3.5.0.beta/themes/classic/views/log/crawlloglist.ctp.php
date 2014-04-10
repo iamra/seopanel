@@ -123,9 +123,9 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 				<td class="td_br_right">
 					<?php 
 					if ($listInfo['crawl_status']) {
-						echo "<span class='success'>{$spText['label']['Success']}</span>";
+						echo "<b class='success'>{$spText['label']['Success']}</b>";
 					} else {
-						echo "<span class='error'>{$spText['label']['Fail']}</span>";
+						echo "<b class='error'>{$spText['label']['Fail']}</b>";
 					}
 					?>
 				</td>
