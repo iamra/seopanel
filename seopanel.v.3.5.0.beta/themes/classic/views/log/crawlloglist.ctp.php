@@ -70,7 +70,7 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
 		<td><?=$spText['common']['Id']?></td>		
-		<td><?=$spText['label']['Report Type']?></td>		
+		<td width="80px"><?=$spText['label']['Report Type']?></td>		
 		<td><?=$spText['label']['Reference']?></td>
 		<td><?=$spText['label']['Description']?></td>
 		<td><?=$spText['common']['Status']?></td>
@@ -95,7 +95,7 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
 				<td class="td_br_right"><?=$logLink?></td>
-				<td class="td_br_right" left><?=$listInfo['crawl_type']?></td>
+				<td class="td_br_right left"><?=$listInfo['crawl_type']?></td>
 				<td class="td_br_right left"><?=$listInfo['ref_id']?></td>
 				<td class="td_br_right left"><?=$listInfo['log_message']?></td>
 				<td class="td_br_right"><?php echo $listInfo['crawl_status'] ? $spText['label']["Success"] : $spText['label']["Fail"]; ?></td>
