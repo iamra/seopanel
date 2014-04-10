@@ -71,8 +71,9 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
 		<td><?=$spText['common']['Id']?></td>		
 		<td width="80px"><?=$spText['label']['Report Type']?></td>		
-		<td><?=$spText['label']['Reference']?></td>
-		<td><?=$spText['label']['Description']?></td>
+		<td><?=$spText['label']['Reference']?></td>	
+		<td><?=$spText['label']['Subject']?></td>
+		<td><?=$spText['common']['Details']?></td>
 		<td><?=$spText['common']['Status']?></td>
 		<td><?=$spText['label']['Updated']?></td>
 		<td class="right"><?=$spText['common']['Action']?></td>
@@ -90,20 +91,49 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $logLink = scriptAJAXLinkHref('log.php', 'content', "sec=edit&proxyId={$listInfo['id']}", "{$listInfo['id']}");
+            $logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['id']);
+            
+            // crawl log is for keyword
+            if ($listInfo['crawl_type'] == 'keyword') {
+				
+				// if ref is is integer find keyword name
+				if (preg_match("/^\d+$/", $listInfo['ref_id'])) {
+					$keywordCtrler = new KeywordController();
+					$keyInfo = $keywordCtrler->__getKeywordInfo($listInfo['ref_id']);
+					$listInfo['ref_id'] = $keyInfo['name'];
+				}
+				
+				// find search engine info
+				if (preg_match("/^\d+$/", $listInfo['subject'])) {
+					$seCtrler = new SearchEngineController();
+					$seInfo = $seCtrler->__getsearchEngineInfo($listInfo['subject']);
+					$listInfo['subject'] = $seInfo['domain'];
+				}
+
+			}
+            
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
 				<td class="td_br_right"><?=$logLink?></td>
 				<td class="td_br_right left"><?=$listInfo['crawl_type']?></td>
 				<td class="td_br_right left"><?=$listInfo['ref_id']?></td>
+				<td class="td_br_right left"><?=$listInfo['subject']?></td>
 				<td class="td_br_right left"><?=$listInfo['log_message']?></td>
-				<td class="td_br_right"><?php echo $listInfo['crawl_status'] ? $spText['label']["Success"] : $spText['label']["Fail"]; ?></td>
+				<td class="td_br_right">
+					<?php 
+					if ($listInfo['crawl_status']) {
+						echo "<span class='success'>{$spText['label']['Success']}</span>";
+					} else {
+						echo "<span class='error'>{$spText['label']['Fail']}</span>";
+					}
+					?>
+				</td>
 				<td class="td_br_right"><?=$listInfo['crawl_time']?></td>
 				<td class="<?=$rightBotClass?>" width="100px">
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('log.php', 'content', 'proxyId=<?=$listInfo['id']?>&pageno=<?=$pageNo?><?=$urlParams?>', 'action<?=$listInfo['id']?>')">
+					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('log.php', 'content', 'id=<?=$listInfo['id']?>&pageno=<?=$pageNo?><?=$urlParams?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="delete"><?=$spText['common']['Delete']?></option>
+						<option value="delete_crawl_log"><?=$spText['common']['Delete']?></option>
 					</select>
 				</td>
 			</tr>
@@ -122,7 +152,8 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 if (SP_DEMO) {
     $actFun = $inactFun = $delFun = "alertDemoMsg()";
 } else {
-    $delFun = "confirmSubmit('log.php', 'listform', 'content', '&sec=deleteall&pageno=$pageNo')";
+    $delFun = "confirmSubmit('log.php', 'listform', 'content', '&sec=delete_all_crawl_log&pageno=$pageNo')";
+    $clearAllFun = "confirmLoad('log.php', 'content', '&sec=clear_all_log')";
 }   
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
@@ -131,8 +162,8 @@ if (SP_DEMO) {
          	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
          		<?=$spText['common']['Delete']?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['label']['Clear All']?>
+         	<a onclick="<?=$clearAllFun?>" href="javascript:void(0);" class="actionbut">
+         		<?=$spTextLog['Clear All Logs']?>
          	</a>
     	</td>
 	</tr>
