@@ -185,12 +185,12 @@ class ReportController extends Controller {
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');
 		} else {
-			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
+			$fromTime = @mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
 		}
 		if (!empty ($searchInfo['to_time'])) {
 			$toTime = strtotime($searchInfo['to_time'] . ' 23:59:59');
 		} else {
-			$toTime = mktime();
+			$toTime = @mktime();
 		}
 		$this->set('fromTime', date('Y-m-d', $fromTime));
 		$this->set('toTime', date('Y-m-d', $toTime));
@@ -294,12 +294,12 @@ class ReportController extends Controller {
 		if (!empty ($searchInfo['from_time'])) {
 			$fromTime = strtotime($searchInfo['from_time'] . ' 00:00:00');
 		} else {			
-			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
+			$fromTime = @mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
 		}
 		if (!empty ($searchInfo['to_time'])) {
 			$toTime = strtotime($searchInfo['to_time'] . ' 23:59:59');
 		} else {
-			$toTime = mktime();
+			$toTime = @mktime();
 		}
 		$this->set('fromTime', date('Y-m-d', $fromTime));
 		$this->set('toTime', date('Y-m-d', $toTime));

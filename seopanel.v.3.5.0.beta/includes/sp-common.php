@@ -66,32 +66,32 @@ function showNoRecordsList($colspan, $msg='', $plain=false) {
 	$data['colspan'] = $colspan;
 	$data['msg'] = $msg;
 	$data['plain'] = $plain;
-	return View::fetchViewFile('common/norecords', $data);
+	return @View::fetchViewFile('common/norecords', $data);
 }
 
 # func to show error msg
 function showErrorMsg($errorMsg, $exit=true) {
 	$data['errorMsg'] = $errorMsg;
-	print View::fetchViewFile('common/error', $data);
+	print @View::fetchViewFile('common/error', $data);
 	if($exit) exit;
 }
 
 # func to show success msg
 function showSuccessMsg($successMsg, $exit=true) {
 	$data['successMsg'] = $successMsg;
-	print View::fetchViewFile('common/success', $data);
+	print @View::fetchViewFile('common/success', $data);
 	if($exit) exit;
 }
 
 # func to show no results
 function showSectionHead($sectionHead) {
 	$data['sectionHead'] = $sectionHead;
-	return View::fetchViewFile('common/sectionHead', $data);
+	return @View::fetchViewFile('common/sectionHead', $data);
 }
 
 # function to check whether user logged in
 function checkLoggedIn() {
-	$userInfo = Session::readSession('userInfo');
+	$userInfo = @Session::readSession('userInfo');
 	if(empty($userInfo['userId'])){
 		redirectUrlByScript(SP_WEBPATH."/login.php");
 		exit;
@@ -100,7 +100,7 @@ function checkLoggedIn() {
 
 # function to check whether admin logged in
 function checkAdminLoggedIn() {
-	$userInfo = Session::readSession('userInfo');
+	$userInfo = @Session::readSession('userInfo');
 	if(empty($userInfo['userType']) || ($userInfo['userType'] != 'admin') ) {
 		redirectUrlByScript(SP_WEBPATH."/login.php");
 		exit;
@@ -109,13 +109,13 @@ function checkAdminLoggedIn() {
 
 # function to user is admin or not
 function isAdmin() {
-	$userInfo = Session::readSession('userInfo');
+	$userInfo = @Session::readSession('userInfo');
 	return ($userInfo['userType'] == 'admin') ? $userInfo['userId'] : false;
 }
 
 # function to user logged in or not
 function isLoggedIn() {
-	$userInfo = Session::readSession('userInfo');
+	$userInfo = @Session::readSession('userInfo');
 	return empty($userInfo['userId']) ? false : $userInfo['userId'];
 }
 

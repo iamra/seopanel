@@ -40,7 +40,7 @@ class Seopanel{
 		include_once(SP_LIBPATH.'/xmlparser.class.php');		
 		include_once(SP_LIBPATH.'/captcha.class.php');		
 		include_once(SP_LIBPATH.'/phpmailer.class.php');
-		Session::startSession();
+		@Session::startSession();
 		
 		# include common functions		
 		include_once(SP_INCPATH.'/sp-common.php');
