@@ -33,7 +33,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['label']['Reference']?>:</td>
 		<td class="td_right_col"><?=$logInfo['ref_id']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['label']['Subject']?>:</td>
 		<td class="td_right_col"><?=$logInfo['subject']?></td>
 	</tr>
@@ -41,7 +41,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['common']['Url']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_link']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['label']['Referer']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_referer']?></td>
 	</tr>
@@ -49,7 +49,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['label']['Cookie']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_cookie']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="td_left_col"><?=$spTextLog['Post Fields']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_post_fields']?></td>
 	</tr>
@@ -57,7 +57,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['label']['User agent']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_useragent']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['label']['Proxy']?>:</td>
 		<td class="td_right_col"><?=$logInfo['proxy_id']?></td>
 	</tr>
@@ -65,14 +65,14 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['common']['Details']?>:</td>
 		<td class="td_right_col"><?=$logInfo['log_message']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Status']?>:</td>
 		<td class="td_right_col">
 			<?php 
 			if ($listInfo['crawl_status']) {
-				echo "<span class='success'>{$spText['label']['Success']}</span>";
+				echo "<b class='success'>{$spText['label']['Success']}</b>";
 			} else {
-				echo "<span class='error'>{$spText['label']['Fail']}</span>";
+				echo "<b class='error'>{$spText['label']['Fail']}</b>";
 			}
 			?>
 		</td>
@@ -81,7 +81,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['label']['Updated']?>:</td>
 		<td class="td_right_col"><?=$logInfo['crawl_time']?></td>
 	</tr>
-	<tr class="blue_row">
+	<tr class="white_row">
 		<td class="tab_left_bot_noborder"></td>
 		<td class="tab_right_bot"></td>
 	</tr>
@@ -90,3 +90,4 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="right"></td>
 	</tr>
 </table>
+<br><br>
