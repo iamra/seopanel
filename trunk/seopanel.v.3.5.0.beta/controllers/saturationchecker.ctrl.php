@@ -187,7 +187,7 @@ class SaturationCheckerController extends Controller{
 		if (!empty ($searchInfo['to_time'])) {
 			$toTime = strtotime($searchInfo['to_time'] . ' 23:59:59');
 		} else {
-			$toTime = mktime();
+			$toTime = @mktime();
 		}
 		$this->set('fromTime', date('Y-m-d', $fromTime));
 		$this->set('toTime', date('Y-m-d', $toTime));

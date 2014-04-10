@@ -1,8 +1,8 @@
-<form name="listform" id="listform">
 <?php 
 echo showSectionHead($spTextPanel["Proxy Manager"]);
 $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')"; 
 ?>
+<form name="listform" id="listform" onsubmit="<?=$searchFun?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
 		<th><?=$spText['common']['Keyword']?>: </th>
