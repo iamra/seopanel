@@ -286,7 +286,7 @@ class Spider{
 		// update crawl log in database for future reference
 		$crawlLogCtrl = new CrawlLogController();
 		$crawlInfo['crawl_status'] = $ret['error'] ? 0 : 1;
-		$crawlInfo['crawl_link'] = addslashes($url);
+		$crawlInfo['ref_id'] = $crawlInfo['crawl_link'] = addslashes($url);
 		$crawlInfo['crawl_referer'] = addslashes($this-> _CURLOPT_REFERER);
 		$crawlInfo['crawl_cookie'] = addslashes($this -> _CURLOPT_COOKIE);
 		$crawlInfo['crawl_post_fields'] = addslashes($this -> _CURLOPT_POSTFIELDS);
@@ -300,13 +300,11 @@ class Spider{
 			
 			// deactivate proxy
 			if (PROXY_DEACTIVATE_CRAWL) {
-				echo "Deactivating proxy - ".$proxyInfo['proxy']."....<br>\n";
 				$proxyCtrler->__changeStatus($proxyInfo['id'], 0);
 			}
 			
 			// chekc with another proxy
 			if (CHECK_WITH_ANOTHER_PROXY_IF_FAILED) {
-				echo "Checking with another proxy....<br>\n";
 				$ret = $this->getContent($url, $enableProxy);
 			}
 		}
