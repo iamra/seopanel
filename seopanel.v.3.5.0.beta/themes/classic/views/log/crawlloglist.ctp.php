@@ -45,7 +45,15 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
     		<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/> 
     		<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
     		<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
-    	</td>
+    	</td>	
+		<th><?=$spText['common']['Search Engine']?>: </th>
+		<td>
+			<?php
+			$this->data['onChange'] = $searchFun;
+			$this->data['seNull'] = true;
+			echo $this->render('searchengine/seselectbox', 'ajax');
+			?>
+		</td>
 		<th><?php echo $spText['label']['Proxy']; ?>: </th>
 		<td>
 			<select name="proxy_id" onchange="<?=$searchFun?>">
@@ -59,8 +67,7 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 				}	
 				?>
 			</select>
-		</td>
-		<td colspan="2">
+			&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="javascript:void(0);" onclick="<?=$searchFun?>" class="actionbut"><?=$spText['button']['Show Records']?></a>
 		</td>
 	</tr>
@@ -79,7 +86,7 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 		<td class="right"><?=$spText['common']['Action']?></td>
 	</tr>
 	<?php
-	$colCount = 8; 
+	$colCount = 9; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -97,10 +104,8 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
             if ($listInfo['crawl_type'] == 'keyword') {
 				
 				// if ref is is integer find keyword name
-				if (preg_match("/^\d+$/", $listInfo['ref_id'])) {
-					$keywordCtrler = new KeywordController();
-					$keyInfo = $keywordCtrler->__getKeywordInfo($listInfo['ref_id']);
-					$listInfo['ref_id'] = $keyInfo['name'];
+				if (!empty($listInfo['keyword'])) {
+					$listInfo['ref_id'] = $listInfo['keyword'];
 				}
 				
 				// find search engine info

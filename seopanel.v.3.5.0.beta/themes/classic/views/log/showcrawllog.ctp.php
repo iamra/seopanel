@@ -4,11 +4,9 @@ echo showSectionHead($spTextLog['Crawl Log Details']);
 // crawl log is for keyword
 if ($logInfo['crawl_type'] == 'keyword') {
 
-	// if ref is is integer find keyword name
-	if (preg_match("/^\d+$/", $logInfo['ref_id'])) {
-		$keywordCtrler = new KeywordController();
-		$keyInfo = $keywordCtrler->__getKeywordInfo($logInfo['ref_id']);
-		$logInfo['ref_id'] = $keyInfo['name'];
+	// if ref is is integer get keyword name
+	if (!empty($logInfo['keyword'])) {
+		$listInfo['ref_id'] = $listInfo['keyword'];
 	}
 
 	// find search engine info
@@ -69,7 +67,7 @@ if ($logInfo['crawl_type'] == 'keyword') {
 		<td class="td_left_col"><?=$spText['common']['Status']?>:</td>
 		<td class="td_right_col">
 			<?php 
-			if ($listInfo['crawl_status']) {
+			if ($logInfo['crawl_status']) {
 				echo "<b class='success'>{$spText['label']['Success']}</b>";
 			} else {
 				echo "<b class='error'>{$spText['label']['Fail']}</b>";

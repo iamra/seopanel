@@ -71,7 +71,7 @@ class CrawlLogController extends Controller {
 	function listCrawlLog($info = ''){
 	
 		$userId = isLoggedIn();
-		$sql = "select * from $this->tablName where 1=1";
+		$sql = "select t.*, k.name keyword from $this->tablName t left join keywords k on t.ref_id=k.id where 1=1";
 		$conditions = "";
 	
 		if (isset($info['status'])) {
@@ -90,8 +90,10 @@ class CrawlLogController extends Controller {
 			$info['keyword'] =  '';
 		} else {
 			$info['keyword'] = urldecode($info['keyword']);
-			$conditions .= " and (ref_id like '%".addslashes($info['keyword'])."%' or subject like '%".addslashes($info['keyword'])."%'
-			 or crawl_link like '%".addslashes($info['keyword'])."%' or log_message like '%".addslashes($info['keyword'])."%' )";
+			$searchKeyword = addslashes($info['keyword']);
+			$conditions .= " and (ref_id like '%$searchKeyword%' or subject like '%$searchKeyword%' or crawl_referer like '%$searchKeyword%'
+			or log_message like '%$searchKeyword%' or k.name like '%$searchKeyword%' or crawl_link like '%$searchKeyword%'
+			or crawl_cookie like '%$searchKeyword%' or crawl_post_fields like '%$searchKeyword%' or crawl_useragent like '%$searchKeyword%')";
 			$urlParams .= "&keyword=".urlencode($info['keyword']);
 		}
 		
@@ -123,6 +125,23 @@ class CrawlLogController extends Controller {
 		$proxyList = $this->db->select($proxySql);
 		$this->set('proxyList', $proxyList);
 		$this->set('proxyId', $proxyId);
+		
+		$seId = "";
+		$seController = New SearchEngineController();
+		$seList = $seController->__getAllSearchEngines();
+		$seNameList = array();
+		foreach ($seList as $seInfo) {
+			$seNameList[] = $seInfo['domain'];
+		}
+		
+		if (!empty($info['se_id'])) {
+			$seId = intval($info['se_id']);
+			$conditions .= " and (subject='$seId' or subject in ('".implode(",", $seNameList)."'))";
+			$urlParams .= "&se_id=".$seId;
+		}
+		
+		$this->set('seList', $seList);
+		$this->set('seId', $seId);		
 		
 		if (!empty ($info['from_time'])) {
 			$fromTime = strtotime($info['from_time'] . ' 00:00:00');
@@ -173,7 +192,7 @@ class CrawlLogController extends Controller {
 	 * function to clear all logs saved in teh system
 	 */
 	function clearAllLog() {
-		$sql = "delete from crawl_log";
+		$sql = "truncate crawl_log";
 		$this->db->query($sql);
 	}
 	
