@@ -118,6 +118,7 @@ foreach($menuList as $i => $menuInfo){
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('proxy.php', 'content', 'sec=new')"><?=$spTextPanel['New Proxy']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('proxy.php', 'content', 'sec=import')"><?=$spTextPanel['Import Proxy']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('proxy.php', 'content', 'sec=checkAllstatus')"><?=$spText['button']["Check Status"]?></a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('proxy.php', 'content', 'sec=perfomance')"><?=$spTextPanel['Proxy Perfomance']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php', 'content', 'sec=proxysettings')"><?=$spTextPanel['Proxy Settings']?></a></li>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('proxy.php?sec=croncommand', 'content')"><?=$spTextPanel['Cron Command']?></a></li>
 			</ul>
