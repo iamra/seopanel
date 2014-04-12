@@ -335,5 +335,44 @@ class ProxyController extends Controller{
 	
 		$this->render('proxy/croncommand');
 	}
+	/**
+	 * function to show perfomance of a proxy
+	 * @param Array $info	Contains all search info details
+	 */
+	function showProxyPerfomance($info = '') {
+		
+		$sql = "select t.*, p.id as prxy_id, p.proxy, p.port keyword from $this->tablName t join proxylist p on p.id=t.proxy_id where 1=1";
+		
+		$conditions = "";
+		if (empty($info['keyword'])) {
+			$info['keyword'] =  '';
+		} else {
+			$info['keyword'] = urldecode($info['keyword']);
+			$searchKeyword = addslashes($info['keyword']);
+			$conditions .= " and p.proxy like '%$searchKeyword%'";
+			$urlParams .= "&keyword=".urlencode($info['keyword']);
+		}
+		
+		$this->set('keyword', $info['keyword']);
+		
+		if (!empty ($info['from_time'])) {
+			$fromTime = strtotime($info['from_time'] . ' 00:00:00');
+		} else {
+			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
+		}
+		
+		if (!empty ($info['to_time'])) {
+			$toTime = strtotime($info['to_time'] . ' 00:00:00');
+		} else {
+			$toTime = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+		}
+		
+		$fromTimeLabel = date('Y-m-d', $fromTime);
+		$toTimeLabel = date('Y-m-d', $toTime);
+		$this->set('fromTime', $fromTimeLabel);
+		$this->set('toTime', $toTimeLabel);
+		$urlParams .= "&from_time=$fromTimeLabel&to_time=$toTimeLabel";
+		$this->render('proxy/proxyperfomance');
+	}
 }
 ?>
