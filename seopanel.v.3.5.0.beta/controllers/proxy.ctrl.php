@@ -341,7 +341,8 @@ class ProxyController extends Controller{
 	 */
 	function showProxyPerfomance($info = '') {
 		
-		$sql = "select t.*, p.id as prxy_id, p.proxy, p.port keyword from $this->tablName t join proxylist p on p.id=t.proxy_id where 1=1";
+		$sql = "select p.id as proxy_id, p.proxy, p.port, count(*) count, sum(crawl_status) success, avg(crawl_status) avg_score,
+		count(*) - sum(crawl_status) fail from crawl_log t join proxylist p on p.id=t.proxy_id where 1=1";
 		
 		$conditions = "";
 		if (empty($info['keyword'])) {
@@ -372,6 +373,25 @@ class ProxyController extends Controller{
 		$this->set('fromTime', $fromTimeLabel);
 		$this->set('toTime', $toTimeLabel);
 		$urlParams .= "&from_time=$fromTimeLabel&to_time=$toTimeLabel";
+		
+		
+		// sql created using param
+		$sql .= " $conditions and crawl_time >='$fromTimeLabel 00:00:00' and crawl_time<='$toTimeLabel 23:59:59' group by proxy_id order by avg_score";
+		$sql .= ($info['status'] == 'fail') ? " ASC" : " DESC";
+		
+		// pagination setup
+		$this->db->query($sql, true);
+		$this->paging->setDivClass('pagingdiv');
+		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
+		$pagingDiv = $this->paging->printPages('log.php', '', 'scriptDoLoad', 'content', $urlParams);
+		$this->set('pagingDiv', $pagingDiv);
+		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
+		
+		$logList = $this->db->select($sql);
+		$this->set('pageNo', $info['pageno']);
+		$this->set('list', $logList);
+		$this->set('urlParams', $urlParams);
+		
 		$this->render('proxy/proxyperfomance');
 	}
 }
