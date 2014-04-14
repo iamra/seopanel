@@ -40,11 +40,12 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>		
 		<td width="80px"><?=$spText['label']['Proxy']?></td>
-		<td><?=$spText['label']['Updated']?></td>
-		<td class="right"><?=$spText['common']['Action']?></td>
+		<td><?=$spText['label']['Count']?></td>
+		<td><?=$spText['label']['Success']?></td>
+		<td class="right"><?=$spText['label']['Fail']?></td>
 	</tr>
 	<?php
-	$colCount = 9; 
+	$colCount = 5; 
 	if(count($list) > 0){
 		$catCount = count($list);
 		foreach($list as $i => $listInfo){
@@ -56,49 +57,14 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['id']);
-            
-            // crawl log is for keyword
-            if ($listInfo['crawl_type'] == 'keyword') {
-				
-				// if ref is is integer find keyword name
-				if (!empty($listInfo['keyword'])) {
-					$listInfo['ref_id'] = $listInfo['keyword'];
-				}
-				
-				// find search engine info
-				if (preg_match("/^\d+$/", $listInfo['subject'])) {
-					$seCtrler = new SearchEngineController();
-					$seInfo = $seCtrler->__getsearchEngineInfo($listInfo['subject']);
-					$listInfo['subject'] = $seInfo['domain'];
-				}
-
-			}
-            
-			?>
+            $logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['proxy'].":".$listInfo['port']);
+            ?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
-				<td class="td_br_right"><?=$logLink?></td>
-				<td class="td_br_right left"><?=$listInfo['crawl_type']?></td>
-				<td class="td_br_right left"><?=$listInfo['ref_id']?></td>
-				<td class="td_br_right left"><?=$listInfo['subject']?></td>
-				<td class="td_br_right left"><?=$listInfo['log_message']?></td>
-				<td class="td_br_right">
-					<?php 
-					if ($listInfo['crawl_status']) {
-						echo "<b class='success'>{$spText['label']['Success']}</b>";
-					} else {
-						echo "<b class='error'>{$spText['label']['Fail']}</b>";
-					}
-					?>
-				</td>
-				<td class="td_br_right"><?=$listInfo['crawl_time']?></td>
-				<td class="<?=$rightBotClass?>" width="100px">
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('log.php', 'content', 'id=<?=$listInfo['id']?>&pageno=<?=$pageNo?><?=$urlParams?>', 'action<?=$listInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="delete_crawl_log"><?=$spText['common']['Delete']?></option>
-					</select>
-				</td>
+				<td class="td_br_right left"><?=$logLink?></td>
+				<td class="td_br_right left"><?=$listInfo['count']?></td>
+				<td class="td_br_right left"><?=$listInfo['success']?></td>
+				<td class="<?=$rightBotClass?>"><?=$listInfo['fail']?></td>
 			</tr>
 			<?php
 		}
