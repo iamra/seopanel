@@ -17,7 +17,7 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
     	</td>
 		<th><?=$spText['label']['Order By']?>: </th>
 		<td>
-			<select name="status" onchange="<?=$searchFun?>">
+			<select name="order_by" onchange="<?=$searchFun?>">
 				<?php				
 				$inactCheck = $actCheck = "";
 				if ($statVal == 'success') {
@@ -38,37 +38,43 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 <?=$pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
-		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>		
+		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
+		<td width="80px"><?=$spText['common']['Id']?></td>
 		<td width="80px"><?=$spText['label']['Proxy']?></td>
 		<td><?=$spText['label']['Count']?></td>
 		<td><?=$spText['label']['Success']?></td>
 		<td class="right"><?=$spText['label']['Fail']?></td>
 	</tr>
 	<?php
-	$colCount = 5; 
-	if(count($list) > 0){
+	$colCount = 6; 
+	if (count($list) > 0) {
 		$catCount = count($list);
-		foreach($list as $i => $listInfo){
+		foreach ($list as $i => $listInfo) {
 			$class = ($i % 2) ? "blue_row" : "white_row";
-            if($catCount == ($i + 1)){
+            if ($catCount == ($i + 1)) {
                 $leftBotClass = "tab_left_bot";
                 $rightBotClass = "tab_right_bot";
-            }else{
+            } else {
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['proxy'].":".$listInfo['port']);
+            
+            $logLink = scriptAJAXLinkHrefDialog('proxy.php', 'content', "sec=edit&proxyId=".$listInfo['proxy_id'], $listInfo['proxy'].":".$listInfo['port']);
+            $countLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log"."$urlParams&status=&proxy_id=".$listInfo['proxy_id'], $listInfo['count'], '', 'OnClick', 1000);
+			$successLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log"."$urlParams&status=success&proxy_id=".$listInfo['proxy_id'], $listInfo['success'], '', 'OnClick', 1000);
+			$failLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log"."$urlParams&status=fail&proxy_id=".$listInfo['proxy_id'], $listInfo['fail'], '', 'OnClick', 1000);
             ?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
+				<td class="td_br_right"><?=$listInfo['proxy_id']?></td>
 				<td class="td_br_right left"><?=$logLink?></td>
-				<td class="td_br_right left"><?=$listInfo['count']?></td>
-				<td class="td_br_right left"><?=$listInfo['success']?></td>
-				<td class="<?=$rightBotClass?>"><?=$listInfo['fail']?></td>
+				<td class="td_br_right left"><?=$countLink?></td>
+				<td class="td_br_right left"><?=$successLink?></td>
+				<td class="<?=$rightBotClass?>"><?=$failLink?></td>
 			</tr>
 			<?php
 		}
-	}else{	 
+	} else {	 
 		echo showNoRecordsList($colCount-2);		
 	} 
 	?>

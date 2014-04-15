@@ -295,6 +295,7 @@ class ProxyController extends Controller{
 				$sql = "update proxylist set
 						proxy = '".addslashes($listInfo['proxy'])."',
 						port = '".intval($listInfo['port'])."',
+						status = '".intval($listInfo['status'])."',
 						proxy_auth = $proxyAuth,
 						proxy_username = '".addslashes($listInfo['proxy_username'])."',
 						proxy_password = '".addslashes($listInfo['proxy_password'])."'
@@ -359,7 +360,7 @@ class ProxyController extends Controller{
 		if (!empty ($info['from_time'])) {
 			$fromTime = strtotime($info['from_time'] . ' 00:00:00');
 		} else {
-			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
+			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 90, date('Y'));
 		}
 		
 		if (!empty ($info['to_time'])) {
@@ -374,16 +375,19 @@ class ProxyController extends Controller{
 		$this->set('toTime', $toTimeLabel);
 		$urlParams .= "&from_time=$fromTimeLabel&to_time=$toTimeLabel";
 		
+		// set status
+		$urlParams .= "&order_by=".$info['order_by'];
+		$this->set('statVal', $info['order_by']);		
 		
 		// sql created using param
 		$sql .= " $conditions and crawl_time >='$fromTimeLabel 00:00:00' and crawl_time<='$toTimeLabel 23:59:59' group by proxy_id order by avg_score";
-		$sql .= ($info['status'] == 'fail') ? " ASC" : " DESC";
+		$sql .= ($info['order_by'] == 'fail') ? " ASC" : " DESC";
 		
 		// pagination setup
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('log.php', '', 'scriptDoLoad', 'content', $urlParams);
+		$pagingDiv = $this->paging->printPages('proxy.php?sec=perfomance', '', 'scriptDoLoad', 'content', $urlParams);
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
 		
