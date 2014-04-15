@@ -140,11 +140,11 @@ function scriptAJAXLinkHref($file, $area, $args='', $linkText='Click', $class=''
 	return $link;
 }
 
-function scriptAJAXLinkHrefDialog($file, $area, $args='', $linkText='Click', $class='', $trigger='OnClick'){
+function scriptAJAXLinkHrefDialog($file, $area, $args='', $linkText='Click', $class='', $trigger='OnClick', $widthVal = 900, $heightVal = 600){
 	if ($file == 'demo') {
 		$link = ' '.$trigger.'="alertDemoMsg()"';
 	} else {
-		$link = ' '.$trigger.'="scriptDoLoadDialog('."'$file', '$area', '$args')".'"';		
+		$link = ' '.$trigger.'="scriptDoLoadDialog('."'$file', '$area', '$args', $widthVal, $heightVal)".'"';		
 	}
 	$link = "<a href='javascript:void(0);'class='$class' $link>$linkText</a>";
 	return $link;

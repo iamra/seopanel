@@ -31,7 +31,7 @@ $controller->spTextProxy = $controller->getLanguageTexts('proxy', $_SESSION['lan
 $controller->set('spTextProxy', $controller->spTextProxy);
 $controller->set('spTextSA', $controller->getLanguageTexts('siteauditor', $_SESSION['lang_code']));
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	switch ($_POST['sec']) {
 		
@@ -88,6 +88,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		case "importproxy":
 			$controller->importProxy($_POST);
 			break;
+		
+		case "perfomance":
+			$controller->showProxyPerfomance($_POST);
+			break;
 			
 		default:
 			$controller->listProxy($_POST);
@@ -95,8 +99,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		    
 	}
 
-}else{
-	switch($_GET['sec']){
+} else {
+	
+	switch ($_GET['sec']) {
 		
 		case "Activate":
 			$controller->__changeStatus($_GET['proxyId'], 1);			
@@ -140,6 +145,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 		case "croncommand":
 			$controller->showCronCommand();
+			break;
+		
+		case "perfomance":
+			$controller->showProxyPerfomance($_GET);
 			break;
 			
 		default:
