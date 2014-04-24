@@ -34,6 +34,11 @@ class SettingsController extends Controller{
     		$langCtrler = New LanguageController();
     		$langList = $langCtrler->__getAllLanguages(" where translated=1");
     		$this->set('langList', $langList);
+    		
+    		$timezoneCtrler = New TimeZoneController();
+    		$timezoneList = $timezoneCtrler->__getAllTimezones();
+    		$this->set('timezoneList', $timezoneList);
+    		
 		}
 		
 		$this->set('category', $category);
