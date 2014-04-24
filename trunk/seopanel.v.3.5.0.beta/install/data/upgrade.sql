@@ -127,6 +127,9 @@ INSERT INTO `timezone` (`id`, `timezone_name`, `timezone_label`) VALUES
 (89, 'Pacific/Tongatapu', '(GMT+13:00) Nuku''alofa'),
 (90, 'Pacific/Kiritimati', '(GMT+14:00) Kiritimati');
 
+INSERT INTO `settings`(`set_label`, `set_name`, `set_val`, `set_category`, `set_type`, `display`) VALUES 
+('Time Zone', 'SP_TIME_ZONE', '', 'system', 'medium', '1');
+
 ---
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Crawl Log Manager', 'Crawl Log Manager');
@@ -142,3 +145,5 @@ INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Clear All Logs', 'Clear All Logs');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Crawl Log Details', 'Crawl Log Details');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Post Fields', 'Post Fields');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'settings', 'SP_TIME_ZONE', 'Time Zone');
