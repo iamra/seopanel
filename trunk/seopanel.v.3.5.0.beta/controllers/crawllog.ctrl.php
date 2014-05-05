@@ -33,8 +33,9 @@ class CrawlLogController extends Controller {
 	 * @param $crawlInfo 	The array contains all detaisl of crawl
 	 */
 	function createCrawlLog($crawlInfo) {
-		$sql = "INSERT INTO ". $this->tablName ."(".implode(",", array_keys($crawlInfo)).")";
-		$sql .= " values ('".implode("','", array_values($crawlInfo))."')";
+		$dateTime = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO ". $this->tablName ."(".implode(",", array_keys($crawlInfo)).", crawl_time)";
+		$sql .= " values ('".implode("','", array_values($crawlInfo))."', '$dateTime')";
 		$this->db->query($sql);
 		$logId = $this->db->getMaxId($this->tablName);
 		return $logId;
