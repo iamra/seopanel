@@ -58,6 +58,12 @@ class UserController extends Controller{
                 	        
                 	        $userInfo['lang_code'] = $_POST['lang_code'];
                 	    }
+                	    
+                	    // update timezone
+                	    if (!empty($_POST['time_zone'])) {
+                	    	$sql = "UPDATE `settings` SET set_val='".addslashes($_POST['time_zone'])."' WHERE set_name='SP_TIME_ZONE'";
+                	    	$this->db->query($sql);
+                	    }
 					    
 						$uInfo['userId'] = $userInfo['id'];
 						$uInfo['userType'] = $userInfo['user_type']; 

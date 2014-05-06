@@ -305,7 +305,11 @@ class Install {
 		
 		// select languages list
 		$sql = "select * from languages where translated=1";
-		$langList = $db->select($sql);		
+		$langList = $db->select($sql);
+
+		// select timezones
+		$sql = "select * from timezone order by id";
+		$timezoneList = $db->select($sql);
 		?>		
 		<form method="post" action="<?php echo $info['web_path']."/login.php"; ?>">
 		<h1 class="BlockHeader">Seo Panel Installation Success</h1>
@@ -334,6 +338,22 @@ class Install {
             				$selected = ($langInfo['lang_code'] == 'en') ? "selected" : "";
             				?>			
             				<option value="<?=$langInfo['lang_code']?>" <?=$selected?>><?=$langInfo['lang_name']?></option>
+            				<?php
+            			}
+            			?>
+            		</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-left: none;">Default Time Zone:</td>
+				<td>
+					<select name="time_zone">
+            			<?php
+            			$listInfo['set_val'] = ini_get('date.timezone');
+            			foreach ($timezoneList as $timezoneInfo) {
+            				$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? "selected" : "";
+            				?>
+            				<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?>><?=$timezoneInfo['timezone_label']?></option>
             				<?php
             			}
             			?>
