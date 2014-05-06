@@ -77,7 +77,7 @@ INSERT INTO `timezone` (`id`, `timezone_name`, `timezone_label`) VALUES
 (39, 'Europe/Lisbon', '(GMT) Greenwich Mean Time : Lisbon'),
 (40, 'Europe/London', '(GMT) Greenwich Mean Time : London'),
 (41, 'Africa/Abidjan', '(GMT) Monrovia, Reykjavik'),
-(42, 'Europe/Amsterdam', '(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna'),
+(42, 'Europe/Berlin', '(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna'),
 (43, 'Europe/Belgrade', '(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague'),
 (44, 'Europe/Brussels', '(GMT+01:00) Brussels, Copenhagen, Madrid, Paris'),
 (45, 'Africa/Algiers', '(GMT+01:00) West Central Africa'),

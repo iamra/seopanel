@@ -293,7 +293,7 @@ class Install {
 			$installUpdateUrl = "http://www.seopanel.in/installupdate.php?url=".urlencode($info['web_path'])."&ip=".$_SERVER['SERVER_ADDR']."&email=".urlencode($info['email']);
 			$installUpdateUrl .= "&version=".SP_INSTALLED;
 			$spider = New Spider();
-			$spider->getContent($installUpdateUrl, false);
+			$spider->getContent($installUpdateUrl, false, false);
 		}
 		
 		$db = New DB();
@@ -347,13 +347,13 @@ class Install {
 			<tr>
 				<td style="border-left: none;">Default Time Zone:</td>
 				<td>
-					<select name="time_zone">
+					<select name="time_zone" style="width: 260px;">
             			<?php
             			$listInfo['set_val'] = ini_get('date.timezone');
             			foreach ($timezoneList as $timezoneInfo) {
-            				$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? "selected" : "";
+            				$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? 'selected="selected"' : "";
             				?>
-            				<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?>><?=$timezoneInfo['timezone_label']?></option>
+            				<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?> ><?=$timezoneInfo['timezone_label']?></option>
             				<?php
             			}
             			?>
