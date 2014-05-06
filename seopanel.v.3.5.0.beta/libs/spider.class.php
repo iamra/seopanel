@@ -235,7 +235,7 @@ class Spider{
 	
 	
 	# get contents of a web page	
-	function getContent( $url, $enableProxy=true)	{
+	function getContent( $url, $enableProxy=true, $logCrawl = true)	{
 		
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_URL , $url );
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_FAILONERROR , $this -> _CURLOPT_FAILONERROR );
@@ -284,16 +284,18 @@ class Spider{
 		$ret['errmsg'] = curl_error( $this -> _CURL_RESOURCE );
 		
 		// update crawl log in database for future reference
-		$crawlLogCtrl = new CrawlLogController();
-		$crawlInfo['crawl_status'] = $ret['error'] ? 0 : 1;
-		$crawlInfo['ref_id'] = $crawlInfo['crawl_link'] = addslashes($url);
-		$crawlInfo['crawl_referer'] = addslashes($this-> _CURLOPT_REFERER);
-		$crawlInfo['crawl_cookie'] = addslashes($this -> _CURLOPT_COOKIE);
-		$crawlInfo['crawl_post_fields'] = addslashes($this -> _CURLOPT_POSTFIELDS);
-		$crawlInfo['crawl_useragent'] = addslashes($this->_CURLOPT_USERAGENT);
-		$crawlInfo['proxy_id'] = $proxyInfo['id'];
-		$crawlInfo['log_message'] = addslashes($ret['errmsg']);
-		$ret['log_id'] = $crawlLogCtrl->createCrawlLog($crawlInfo);
+		if ($logCrawl) {
+			$crawlLogCtrl = new CrawlLogController();
+			$crawlInfo['crawl_status'] = $ret['error'] ? 0 : 1;
+			$crawlInfo['ref_id'] = $crawlInfo['crawl_link'] = addslashes($url);
+			$crawlInfo['crawl_referer'] = addslashes($this-> _CURLOPT_REFERER);
+			$crawlInfo['crawl_cookie'] = addslashes($this -> _CURLOPT_COOKIE);
+			$crawlInfo['crawl_post_fields'] = addslashes($this -> _CURLOPT_POSTFIELDS);
+			$crawlInfo['crawl_useragent'] = addslashes($this->_CURLOPT_USERAGENT);
+			$crawlInfo['proxy_id'] = $proxyInfo['id'];
+			$crawlInfo['log_message'] = addslashes($ret['errmsg']);
+			$ret['log_id'] = $crawlLogCtrl->createCrawlLog($crawlInfo);
+		}
 		
 		// disable proxy if not working
 		if (SP_ENABLE_PROXY && $enableProxy && !empty($ret['error']) && !empty($proxyInfo['id'])) {
