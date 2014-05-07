@@ -1005,6 +1005,7 @@ class ReportController extends Controller {
 	
     # func to get report settings data
 	function getUserReportSettings($userId) {
+		$userId = intval($userId);
 		$sql = "select * from reports_settings where user_id=$userId";
 		$repSetInfo = $this->db->select($sql, true);
 		
