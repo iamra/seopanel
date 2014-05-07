@@ -195,13 +195,13 @@ class ProxyController extends Controller{
 
 	# func to change status
 	function __changeStatus($proxyId, $status){
-		$sql = "update proxylist set status=$status where id=$proxyId";
+		$sql = "update proxylist set status=$status where id=".intval($proxyId);
 		$this->db->query($sql);
 	}
 
 	# func to change status
 	function __deleteProxy($proxyId){
-		$sql = "delete from proxylist where id=$proxyId";
+		$sql = "delete from proxylist where id=".intval($proxyId);
 		$this->db->query($sql);
 	}
 
@@ -250,7 +250,7 @@ class ProxyController extends Controller{
 	}
 
 	function __getProxyInfo($proxyId){
-		$sql = "select * from proxylist where id=$proxyId";
+		$sql = "select * from proxylist where id=".intval($proxyId);
 		$listInfo = $this->db->select($sql, true);
 		$listInfo['proxy_username'] = stripslashes($listInfo['proxy_username']);
 		$listInfo['proxy_password'] = stripslashes($listInfo['proxy_password']);
