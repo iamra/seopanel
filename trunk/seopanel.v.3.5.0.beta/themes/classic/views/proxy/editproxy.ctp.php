@@ -1,7 +1,7 @@
 <?php echo showSectionHead($spTextProxy['Edit Proxy']); ?>
 <form id="editProxy">
 <input type="hidden" name="sec" value="update"/>
-<input type="hidden" name="oldProxy" value="<?=$post['oldProxy']?>"/>
+<input type="hidden" name="oldProxy" value="<?=$post['oldProxy']?>" />
 <input type="hidden" name="id" value="<?=$post['id']?>"/>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
