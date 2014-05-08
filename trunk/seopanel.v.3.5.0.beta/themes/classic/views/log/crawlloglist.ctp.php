@@ -163,7 +163,7 @@ if (SP_DEMO) {
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>
-    	<td style="padding-top: 6px;">
+    	<td style="padding-top: 6px;" class="left">
          	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
          		<?=$spText['common']['Delete']?>
          	</a>&nbsp;&nbsp;

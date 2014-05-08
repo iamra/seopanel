@@ -147,3 +147,4 @@ INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Post Fields', 'Post Fields');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
 INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'settings', 'SP_TIME_ZONE', 'Time Zone');
+INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'proxy', 'Request Count', 'Request Count');
