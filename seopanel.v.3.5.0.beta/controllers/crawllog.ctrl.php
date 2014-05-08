@@ -147,7 +147,7 @@ class CrawlLogController extends Controller {
 		if (!empty ($info['from_time'])) {
 			$fromTime = strtotime($info['from_time'] . ' 00:00:00');
 		} else {
-			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 1, date('Y'));
+			$fromTime = mktime(0, 0, 0, date('m'), date('d') - 30, date('Y'));
 		}
 		
 		if (!empty ($info['to_time'])) {
