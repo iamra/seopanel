@@ -6,7 +6,7 @@ $searchFun = "scriptDoLoadPost('keywords.php', 'listform', 'content')";
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
 		<th><?=$spText['common']['Keyword']?>: </th>
-		<td><input type="text" name="keyword" value="<?=$keyword?>" onblur="<?=$searchFun?>"></td>
+		<td><input type="text" name="keyword" value="<?=htmlentities($keyword, ENT_QUOTES)?>" onblur="<?=$searchFun?>"></td>
 		<th><?=$spText['common']['Website']?>: </th>
 		<td>
 			<select name="website_id" id="website_id" onchange="<?=$searchFun?>">
