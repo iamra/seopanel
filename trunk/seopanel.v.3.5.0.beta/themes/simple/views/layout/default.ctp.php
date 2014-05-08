@@ -3,10 +3,10 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <?php
-    	$spTitle = empty($spTitle) ? SP_TITLE : $spTitle;
-    	$spDescription = empty($spDescription) ? SP_DESCRIPTION : $spDescription;
-    	$spKeywords = empty($spKeywords) ? SP_KEYWORDS : $spKeywords;
-    	$spKey = "v" . substr(SP_INSTALLED, 2);  
+    $spTitle = empty($spTitle) ? SP_TITLE : $spTitle;
+    $spDescription = empty($spDescription) ? SP_DESCRIPTION : $spDescription;
+    $spKeywords = empty($spKeywords) ? SP_KEYWORDS : $spKeywords;
+    $spKey = "v" . substr(SP_INSTALLED, 2);  
     ?>
     <title><?=stripslashes($spTitle)?></title>
     <meta name="description" content="<?=$spDescription?>" />
@@ -46,7 +46,7 @@ var wantproceed = '<?php  echo $spText['label']['wantproceed']; ?>';
             <div id="Tabs">
                 <ul id="MainTabs">
                     <?php
-                    $userInfo = Session::readSession('userInfo');
+                    $userInfo = @Session::readSession('userInfo');
                     $userType = empty($userInfo['userType']) ? "guest" : $userInfo['userType'];
                     include(SP_VIEWPATH.'/menu/'.$userType.'menu.ctp.php');
                     ?>
@@ -75,6 +75,7 @@ var wantproceed = '<?php  echo $spText['label']['wantproceed']; ?>';
     <?php include_once(SP_VIEWPATH."/common/footer.ctp.php"); ?>
 </div>
 <div id="tmp"><form name="tmp" id="tmp"></form></div>
+<div id="dialogContent" style="display:none;"></div>
 <?php if(empty($_COOKIE['hidenews'])){ ?>
 	<script>scriptDoLoad('<?=SP_WEBPATH?>/index.php?sec=news', 'newsalert');</script>
 <?php }?>

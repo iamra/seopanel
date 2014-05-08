@@ -1,12 +1,12 @@
-<form name="listform" id="listform">
 <?php 
 echo showSectionHead($spTextPanel["Proxy Manager"]);
 $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')"; 
 ?>
+<form name="listform" id="listform" onsubmit="<?=$searchFun?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
 		<th><?=$spText['common']['Keyword']?>: </th>
-		<td><input type="text" name="keyword" value="<?=$keyword?>" onblur="<?=$searchFun?>"></td>
+		<td><input type="text" name="keyword" value="<?=htmlentities($keyword, ENT_QUOTES)?>" onblur="<?=$searchFun?>"></td>
 		<th><?=$spText['common']['Status']?>: </th>
 		<td>
 			<select name="status" onchange="<?=$searchFun?>">
