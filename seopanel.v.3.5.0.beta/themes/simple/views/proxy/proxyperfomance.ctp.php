@@ -39,9 +39,9 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td width="80px"><?=$spText['common']['Id']?></td>
-		<td width="80px"><?=$spText['label']['Proxy']?></td>
-		<td><?=$spText['label']['Count']?></td>
+		<td><?=$spText['common']['Id']?></td>
+		<td><?=$spText['label']['Proxy']?></td>
+		<td><?=$spTextProxy['Request Count']?></td>
 		<td><?=$spText['label']['Success']?></td>
 		<td class="right"><?=$spText['label']['Fail']?></td>
 	</tr>
@@ -68,8 +68,8 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
 				<td class="td_br_right"><?=$listInfo['proxy_id']?></td>
 				<td class="td_br_right left"><?=$logLink?></td>
-				<td class="td_br_right left"><?=$countLink?></td>
-				<td class="td_br_right left"><?=$successLink?></td>
+				<td class="td_br_right"><?=$countLink?></td>
+				<td class="td_br_right"><?=$successLink?></td>
 				<td class="<?=$rightBotClass?>"><?=$failLink?></td>
 			</tr>
 			<?php
@@ -81,26 +81,6 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 	<tr class="listBot">
 		<td class="left" colspan="<?=($colCount-1)?>"></td>
 		<td class="right"></td>
-	</tr>
-</table>
-<?php
-if (SP_DEMO) {
-    $actFun = $inactFun = $delFun = "alertDemoMsg()";
-} else {
-    $delFun = "confirmSubmit('log.php', 'listform', 'content', '&sec=delete_all_crawl_log&pageno=$pageNo')";
-    $clearAllFun = "confirmLoad('log.php', 'content', '&sec=clear_all_log')";
-}   
-?>
-<table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
-	<tr>
-    	<td style="padding-top: 6px;">
-         	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']['Delete']?>
-         	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$clearAllFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spTextLog['Clear All Logs']?>
-         	</a>
-    	</td>
 	</tr>
 </table>
 </form>

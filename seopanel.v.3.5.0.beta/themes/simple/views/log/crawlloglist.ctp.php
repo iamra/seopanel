@@ -87,18 +87,24 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 	</tr>
 	<?php
 	$colCount = 9; 
-	if(count($list) > 0){
+	if (count($list) > 0) {
 		$catCount = count($list);
-		foreach($list as $i => $listInfo){
+		foreach ($list as $i => $listInfo) {
 			$class = ($i % 2) ? "blue_row" : "white_row";
-            if($catCount == ($i + 1)){
+            if ($catCount == ($i + 1)) {
                 $leftBotClass = "tab_left_bot";
                 $rightBotClass = "tab_right_bot";
-            }else{
+            } else {
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['id']);
+            
+            // if from popup
+			if ($fromPopUp) {
+            	$logLink = scriptAJAXLinkHref('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['id']);
+            } else {
+				$logLink = scriptAJAXLinkHrefDialog('log.php', 'content', "sec=crawl_log_details&id=".$listInfo['id'], $listInfo['id']);
+			}
             
             // crawl log is for keyword
             if ($listInfo['crawl_type'] == 'keyword') {
@@ -155,7 +161,7 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 </table>
 <?php
 if (SP_DEMO) {
-    $actFun = $inactFun = $delFun = "alertDemoMsg()";
+    $clearAllFun = $delFun = "alertDemoMsg()";
 } else {
     $delFun = "confirmSubmit('log.php', 'listform', 'content', '&sec=delete_all_crawl_log&pageno=$pageNo')";
     $clearAllFun = "confirmLoad('log.php', 'content', '&sec=clear_all_log')";
@@ -163,13 +169,15 @@ if (SP_DEMO) {
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>
-    	<td style="padding-top: 6px;">
+    	<td style="padding-top: 6px;" class="left">
          	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
          		<?=$spText['common']['Delete']?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$clearAllFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spTextLog['Clear All Logs']?>
-         	</a>
+         	<?php if (empty($fromPopUp)) {?>
+	         	<a onclick="<?=$clearAllFun?>" href="javascript:void(0);" class="actionbut">
+	         		<?=$spTextLog['Clear All Logs']?>
+	         	</a>
+	         <?php }?>
     	</td>
 	</tr>
 </table>

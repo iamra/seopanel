@@ -101,7 +101,7 @@ if (SP_DEMO) {
 ?>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>
-    	<td style="padding-top: 6px;">
+    	<td style="padding-top: 6px;" class='left'>
          	<a onclick="scriptDoLoad('proxy.php', 'content', 'sec=new')" href="javascript:void(0);" class="actionbut">
          		<?=$spTextPanel['New Proxy']?>
          	</a>&nbsp;&nbsp;

@@ -177,6 +177,7 @@ class CrawlLogController extends Controller {
 		$this->set('pageNo', $info['pageno']);
 		$this->set('list', $logList);
 		$this->set('urlParams', $urlParams);
+		$this->set('fromPopUp', $info['fromPopUp']);
 		$this->render('log/crawlloglist');
 	}
 	
