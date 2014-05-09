@@ -129,22 +129,3 @@ INSERT INTO `timezone` (`id`, `timezone_name`, `timezone_label`) VALUES
 
 INSERT INTO `settings`(`set_label`, `set_name`, `set_val`, `set_category`, `set_type`, `display`) VALUES 
 ('Time Zone', 'SP_TIME_ZONE', '', 'system', 'medium', '1');
-
----
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Crawl Log Manager', 'Crawl Log Manager');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Proxy Perfomance', 'Proxy Perfomance');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Success', 'Success');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Fail', 'Fail');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Reference', 'Reference');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Subject', 'Subject');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Cookie', 'Cookie');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'User agent', 'User agent');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Referer', 'Referer');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'label', 'Order By', 'Order By');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Clear All Logs', 'Clear All Logs');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Crawl Log Details', 'Crawl Log Details');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'log', 'Post Fields', 'Post Fields');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'panel', 'Log Manager', 'Log Manager');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'settings', 'SP_TIME_ZONE', 'Time Zone');
-INSERT INTO `texts` (`lang_code`, `category`, `label`, `content`) VALUES ('en', 'proxy', 'Request Count', 'Request Count');
