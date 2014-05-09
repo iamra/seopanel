@@ -85,7 +85,7 @@ class Controller extends Seopanel{
 		if ($userId = isLoggedIn()) {
 			$sql = "update users set lang_code='$langCode' where id=$userId";
 			$res = $this->db->query($sql);			
-			Session::setSession('text', '');
+			@Session::setSession('text', '');
 		}
 	}
 	

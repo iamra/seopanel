@@ -43,9 +43,9 @@ class Session extends Seopanel{
 
 	# fucntion to destroy session
 	function destroySession() {	    
-		Session::setSession('userInfo', "");
-		Session::setSession('lang_code', "");
-		Session::setSession('text', "");
+		@Session::setSession('userInfo', "");
+		@Session::setSession('lang_code', "");
+		@Session::setSession('text', "");
         session_destroy();	    
 	}
 }

@@ -67,9 +67,9 @@ class UserController extends Controller{
 					    
 						$uInfo['userId'] = $userInfo['id'];
 						$uInfo['userType'] = $userInfo['user_type']; 
-						Session::setSession('userInfo', $uInfo);
-						Session::setSession('lang_code', $userInfo['lang_code']);
-                	    Session::setSession('text', '');
+						@Session::setSession('userInfo', $uInfo);
+						@Session::setSession('lang_code', $userInfo['lang_code']);
+                	    @Session::setSession('text', '');
 						if ($referer = isValidReferer($_POST['referer'])) {
 							redirectUrl($referer);
 						} else {
