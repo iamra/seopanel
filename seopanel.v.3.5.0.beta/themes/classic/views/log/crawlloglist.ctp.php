@@ -21,22 +21,6 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 				?>
 			</select>
 		</td>
-		<th><?=$spText['common']['Status']?>: </th>
-		<td>
-			<select name="status" onchange="<?=$searchFun?>">
-				<option value="">-- <?=$spText['common']['Select']?> --</option>
-				<?php				
-				$inactCheck = $actCheck = "";
-				if ($statVal == 'success') {
-				    $actCheck = "selected";
-				} elseif($statVal == 'fail') {
-				    $inactCheck = "selected";
-				}
-				?>
-				<option value="success" <?=$actCheck?> ><?=$spText['label']["Success"]?></option>
-				<option value="fail" <?=$inactCheck?> ><?=$spText['label']["Fail"]?></option>
-			</select>
-		</td>
 	</tr>
 	<tr>
 		<th width="100px;"><?=$spText['common']['Period']?>:</th>
@@ -53,6 +37,24 @@ $searchFun = "scriptDoLoadPost('log.php', 'listform', 'content')";
 			$this->data['seNull'] = true;
 			echo $this->render('searchengine/seselectbox', 'ajax');
 			?>
+		</td>
+	</tr>
+	<tr>
+		<th><?=$spText['common']['Status']?>: </th>
+		<td>
+			<select name="status" onchange="<?=$searchFun?>">
+				<option value="">-- <?=$spText['common']['Select']?> --</option>
+				<?php				
+				$inactCheck = $actCheck = "";
+				if ($statVal == 'success') {
+				    $actCheck = "selected";
+				} elseif($statVal == 'fail') {
+				    $inactCheck = "selected";
+				}
+				?>
+				<option value="success" <?=$actCheck?> ><?=$spText['label']["Success"]?></option>
+				<option value="fail" <?=$inactCheck?> ><?=$spText['label']["Fail"]?></option>
+			</select>
 		</td>
 		<th><?php echo $spText['label']['Proxy']; ?>: </th>
 		<td>

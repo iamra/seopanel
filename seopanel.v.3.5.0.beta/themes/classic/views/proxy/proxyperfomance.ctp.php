@@ -31,7 +31,7 @@ $searchFun = "scriptDoLoadPost('proxy.php', 'listform', 'content')";
 			</select>
 		</td>
 		<td>
-			<a href="javascript:void(0);" onclick="<?=$searchFun?>" class="actionbut"><?=$spText['button']['Show Records']?></a>
+			<a href="javascript:void(0);" onclick="<?=$searchFun?>" class="actionbut"><?=$spText['button']['Search']?></a>
 		</td>
 	</tr>
 </table>
