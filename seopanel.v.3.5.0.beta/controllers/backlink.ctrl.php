@@ -56,7 +56,7 @@ class BacklinkController extends Controller{
 	function printBacklink($backlinkInfo){
 		$this->url = $backlinkInfo['url'];
 		$backlinkCount = $this->__getBacklinks($backlinkInfo['engine']);		
-		$websiteUrl = Spider::removeTrailingSlash(formatUrl($backlinkInfo['url']));
+		$websiteUrl = @Spider::removeTrailingSlash(formatUrl($backlinkInfo['url']));
 		$websiteUrl = urldecode($websiteUrl);
 		$backlinkUrl = $this->backUrlList[$backlinkInfo['engine']] . $websiteUrl;
 		echo "<a href='$backlinkUrl' target='_blank'>$backlinkCount</a>";
