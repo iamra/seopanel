@@ -75,17 +75,13 @@ class SaturationCheckerController extends Controller{
 				} elseif (preg_match('/<div id=resultStats>([0-9\,]+) result/si', $pageContent, $r)){					
 				} elseif (preg_match('/([0-9\,]+) result/si', $pageContent, $r)){					
 				} elseif (preg_match('/about <b>([0-9\,]+)<\/b> from/si', $pageContent, $r)){					
+				} elseif (preg_match('/of <b>([0-9\,]+)<\/b>/si', $pageContent, $r) ) {
+				} else {
+					$crawlInfo['crawl_status'] = 0;
+					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
 				}
 								
 				$saturationCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
-				if (empty($rank)) {
-					if (preg_match('/of <b>([0-9\,]+)<\/b>/si', $v, $r) ) {
-						$saturationCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
-					} else {
-						$crawlInfo['crawl_status'] = 0;
-						$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
-					}
-				}
 				break;
 				
 			#msn
