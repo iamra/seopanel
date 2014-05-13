@@ -579,10 +579,17 @@ class ReportController extends Controller {
 			}
 			
 			$result = $this->spider->getContent($seUrl);
-			$pageContent = $this->formatPageContent($seInfoId, $result['page']);
+			$pageContent = $this->formatPageContent($seInfoId, $result['page']);			
+
+			$crawlLogCtrl = new CrawlLogController();
+			$crawlInfo['crawl_type'] = 'keyword';
+			$crawlInfo['ref_id'] = empty($keywordInfo['id']) ? $keywordInfo['name'] : $keywordInfo['id'];
+			$crawlInfo['subject'] = $seInfoId;
 			
 			$seStart = $this->seList[$seInfoId]['start'] + $this->seList[$seInfoId]['start_offset'];
 			while(empty($result['error']) && ($seStart < $this->seList[$seInfoId]['max_results']) ){
+				$logId = $result['log_id'];
+				$crawlLogCtrl->updateCrawlLog($logId, $crawlInfo);
 				sleep(SP_CRAWL_DELAY);
 				$seUrl = str_replace('[--start--]', $seStart, $searchUrl);
 				$result = $this->spider->getContent($seUrl);
@@ -666,11 +673,7 @@ class ReportController extends Controller {
 			sleep(SP_CRAWL_DELAY);
 			
 			// update crawl log
-			$crawlLogCtrl = new CrawlLogController();
 			$logId = $result['log_id'];
-			$crawlInfo['crawl_type'] = 'keyword';
-			$crawlInfo['ref_id'] = empty($keywordInfo['id']) ? $keywordInfo['name'] : $keywordInfo['id'];
-			$crawlInfo['subject'] = $seInfoId;
 			$crawlLogCtrl->updateCrawlLog($logId, $crawlInfo);
 			
 		}
