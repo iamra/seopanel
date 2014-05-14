@@ -3,6 +3,8 @@
 --
 UPDATE `searchengines` SET `regex` = '<li.*?<h3><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><\\/h3>.*?<div.*?>(.*?)<\\/div>' WHERE url like '%yahoo%';
 
+UPDATE `searchengines` SET `max_results` = '50' WHERE url like '%bing.com%';
+
 --
 -- Table structure for table `crawl_log`
 --
