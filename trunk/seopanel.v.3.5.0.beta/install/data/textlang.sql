@@ -4,6 +4,7 @@
 /*!40101 SET NAMES utf8 */;
 
 
+DROP TABLE IF EXISTS `languages`;
 CREATE TABLE IF NOT EXISTS `languages` (
   `lang_code` varchar(8) CHARACTER SET latin1 NOT NULL,
   `lang_name` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -60,6 +61,7 @@ INSERT INTO `languages` (`lang_code`, `lang_name`, `lang_show`, `RTL`, `translat
 ('lt', 'Lithuanian', 'lietuvių kalba', 0, 1),
 ('ca', 'Catalan', 'Català', 0, 0);
 
+DROP TABLE IF EXISTS `texts`;
 CREATE TABLE IF NOT EXISTS `texts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
@@ -10939,7 +10941,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (10936, 'en', 'login', 'Request Password', 'Request Password', '2014-01-06 18:45:58'),
 (10937, 'en', 'login', 'Your Password Reset Failed', 'Your Password Reset Failed', '2014-01-06 18:45:58'),
 (10938, 'en', 'login', 'Your Password Reset Successfully', 'Your Password Reset Successfully', '2014-01-06 18:45:58'),
-(10939, 'en', 'login', 'user_email_not_exist', 'User email is not exiting in system!', '2014-01-06 18:45:58'),
+(10939, 'en', 'login', 'user_email_not_exist', 'User email is not existing in system!', '2014-01-06 18:45:58'),
 (10940, 'en', 'login', 'password_reset_success_message', 'Your password reset successfully. A confirmation mail send to email address. <br>Please check your inbox to get your new password.', '2014-01-06 18:45:58'),
 (10941, 'en', 'login', 'internal_error_mail_send', 'An internal error occured while sending password reset mail!', '2014-01-06 18:45:58'),
 (10942, 'en', 'login', 'to login to your account', 'to login to your account', '2014-01-06 18:45:58'),
@@ -11961,6 +11963,7 @@ INSERT INTO `texts` (`id`, `lang_code`, `category`, `label`, `content`, `changed
 (11956, 'pt', 'settings', 'SP_TIME_ZONE', 'Zona Horária', '2014-05-14 00:46:33'),
 (11957, 'ru', 'panel', 'Crawl Log Manager', 'Менеджер сканирования логов', '2014-05-14 04:34:20');
 
+DROP TABLE IF EXISTS `translators`;
 CREATE TABLE IF NOT EXISTS `translators` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` varchar(8) NOT NULL,
