@@ -34,14 +34,14 @@ class ReportController extends Controller {
 			$this->seLIst = $seController->__getAllSearchEngines();
 		}
 		
+		$fromTimeLabel = date('Y-m-d', $fromTime);
+		$toTimeLabel = date('Y-m-d', $toTime);
 		foreach($this->seLIst as $seInfo){
 			$sql = "select min(rank) as rank 
 					from searchresults 
 					where keyword_id=$keywordId and searchengine_id=".$seInfo['id']."
-					and (time=$fromTime or time=$toTime)
-					group by time 
-					order by time DESC
-					limit 0, 2";
+					and (FROM_UNIXTIME(time, '%Y-%m-%d')='$fromTimeLabel' or FROM_UNIXTIME(time, '%Y-%m-%d')='$toTimeLabel')
+					group by time order by time DESC limit 0, 2";
 			$reportList = $this->db->select($sql);
 			$reportList = array_reverse($reportList);
 			
