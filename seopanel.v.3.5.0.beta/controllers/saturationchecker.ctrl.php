@@ -246,13 +246,12 @@ class SaturationCheckerController extends Controller{
 	
 	# func to get reports of saturation of a website
 	function __getWebsiteSaturationReport($websiteId, $fromTime, $toTime) {
-				
-		$sql = "select s.* ,w.name
-				from saturationresults s,websites w 
-				where s.website_id=w.id 
-				and s.website_id=$websiteId	and (result_time=$fromTime or result_time=$toTime)     
-				order by result_time DESC
-				Limit 0,2";
+
+		$fromTimeLabel = date('Y-m-d', $fromTime);
+		$toTimeLabel = date('Y-m-d', $toTime);
+		$sql = "select s.* ,w.name from saturationresults s,websites w where s.website_id=w.id and s.website_id=$websiteId
+				and (FROM_UNIXTIME(result_time, '%Y-%m-%d')='$fromTimeLabel' or FROM_UNIXTIME(result_time, '%Y-%m-%d')='$toTimeLabel')     
+				order by result_time DESC Limit 0,2";
 		$reportList = $this->db->select($sql);
 		$reportList = array_reverse($reportList);
 		

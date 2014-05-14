@@ -262,13 +262,15 @@ class BacklinkController extends Controller{
 	
 	# func to get backlink report for a website
 	function __getWebsitebacklinkReport($websiteId, $fromTime, $toTime) {
-		
+
+		$fromTimeLabel = date('Y-m-d', $fromTime);
+		$toTimeLabel = date('Y-m-d', $toTime);
 		$conditions = empty ($websiteId) ? "" : " and s.website_id=$websiteId";		
 		$sql = "select s.* ,w.name
 				from backlinkresults s,websites w 
 				where s.website_id=w.id 
 				and s.website_id=$websiteId
-				and (result_time=$fromTime or result_time=$toTime)    
+				and (FROM_UNIXTIME(result_time, '%Y-%m-%d')='$fromTimeLabel' or FROM_UNIXTIME(result_time, '%Y-%m-%d')='$toTimeLabel')
 				order by result_time DESC
 				Limit 0,2";
 		$reportList = $this->db->select($sql);
