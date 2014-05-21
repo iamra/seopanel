@@ -66,6 +66,14 @@ class Controller extends Seopanel{
 		if (defined('SP_TIME_ZONE')) {
 			if (SP_TIME_ZONE != '') {
 				@ini_set( 'date.timezone', SP_TIME_ZONE);
+				
+				// set timezone for mysql
+				$sql = "select * from timezone where timezone_name='".SP_TIME_ZONE."'";
+				$timezoneInfo = $this->db->select($sql, true);				
+				if (preg_match('/\(GMT(.+)\)/', $timezoneInfo['timezone_label'], $matches)) {
+					$this->db->query("set time_zone = '".$matches[1]."'");
+				}
+				
 			}
 		}
 		
