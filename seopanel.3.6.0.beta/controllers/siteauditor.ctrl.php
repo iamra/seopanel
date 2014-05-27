@@ -106,12 +106,14 @@ class SiteAuditorController extends Controller{
 		    
 		    $webCtrler = New WebsiteController();
 		    $websiteInfo = $webCtrler->__getWebsiteInfo($listInfo['website_id']);
-		    $excludeInfo = $this->checkExcludeLinks($listInfo['exclude_links'], $websiteInfo['url']);
+		    
+		    // commented to exclude site auditor with query arguments also by with out adding fulll url
+		    /*$excludeInfo = $this->checkExcludeLinks($listInfo['exclude_links'], $websiteInfo['url']);
 		    if (!empty($excludeInfo['err_msg'])) {
 		        $errorFlag = 1;
 		        $errMsg['exclude_links'] = formatErrorMsg($excludeInfo['err_msg']);		        
 		    }
-		    $listInfo['exclude_links'] = $excludeInfo['exclude_links'];
+		    $listInfo['exclude_links'] = $excludeInfo['exclude_links'];*/
 		    
 		    if (!$errorFlag) {
     			if (!$this->isProjectExists($listInfo['website_id'])) {
@@ -219,12 +221,14 @@ class SiteAuditorController extends Controller{
 		    
 		    $webCtrler = New WebsiteController();
 		    $websiteInfo = $webCtrler->__getWebsiteInfo($listInfo['website_id']);
-		    $excludeInfo = $this->checkExcludeLinks($listInfo['exclude_links'], $websiteInfo['url']);
+		    
+		    // commented to exclude site auditor with query arguments also by with out adding fulll url
+		    /*$excludeInfo = $this->checkExcludeLinks($listInfo['exclude_links'], $websiteInfo['url']);
 		    if (!empty($excludeInfo['err_msg'])) {
 		        $errorFlag = 1;
 		        $errMsg['exclude_links'] = formatErrorMsg($excludeInfo['err_msg']);		        
 		    }
-		    $listInfo['exclude_links'] = $excludeInfo['exclude_links'];
+		    $listInfo['exclude_links'] = $excludeInfo['exclude_links'];*/
 		    
 		    if (!$errorFlag) {
     			if (!$this->isProjectExists($listInfo['website_id'], $listInfo['id'])) {
