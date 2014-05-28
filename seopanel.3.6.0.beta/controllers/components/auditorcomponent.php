@@ -165,7 +165,7 @@ class AuditorComponent extends Controller{
         if (!empty($excludeList)) {
             $excludeList = explode(',', $excludeList);
             foreach ($excludeList as $exUrl) {
-                if (stristr($link, $exUrl)) {
+                if (stristr($link, trim($exUrl))) {
                     $exclude = true;
                     break;    
                 }    
