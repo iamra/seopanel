@@ -5,6 +5,8 @@
 -- Table structure for table `timezone`
 --
 
+UPDATE searchengines SET regex = '<li.*?<h2><a.*?href="(.*?)".*?>(.*?)<\\/a><\\/h2>.*?<p.*?>(.*?)<\\/p>' WHERE url like '%bing.com%';
+
 DROP TABLE IF EXISTS `timezone`;
 CREATE TABLE IF NOT EXISTS `timezone` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
