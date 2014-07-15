@@ -26,7 +26,7 @@ class BacklinkController extends Controller{
 	var $colList = array('google' => 'google', 'alexa' => 'alexa', 'msn' => 'msn');
 	var $backUrlList = array(
 		'google' => 'http://www.google.com/search?hl=en&q=link%3A',
-		'alexa' => 'http://www.alexa.com/site/linksin/',
+		'alexa' => 'http://www.alexa.com/siteinfo/',
 		'msn' => 'http://www.bing.com/search?setmkt=en&q=link%3A',
 	);
 	
@@ -55,8 +55,15 @@ class BacklinkController extends Controller{
 	
 	function printBacklink($backlinkInfo){
 		$this->url = $backlinkInfo['url'];
-		$backlinkCount = $this->__getBacklinks($backlinkInfo['engine']);		
-		$websiteUrl = @Spider::removeTrailingSlash(formatUrl($backlinkInfo['url']));
+		$backlinkCount = $this->__getBacklinks($backlinkInfo['engine']);
+		
+		// if msn engine
+		if ($backlinkInfo['engine'] == 'msn') {
+			$websiteUrl = addHttpToUrl($backlinkInfo['url']);
+		} else {		
+			$websiteUrl = @Spider::removeTrailingSlash(formatUrl($backlinkInfo['url']));
+		}
+
 		$websiteUrl = urldecode($websiteUrl);
 		$backlinkUrl = $this->backUrlList[$backlinkInfo['engine']] . $websiteUrl;
 		echo "<a href='$backlinkUrl' target='_blank'>$backlinkCount</a>";
