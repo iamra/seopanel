@@ -344,7 +344,7 @@ function debugVar($value) {
 }
 
 # func to send mail
-function sendMail($from, $fromName, $to ,$subject,$content){
+function sendMail($from, $fromName, $to ,$subject,$content, $attachment = ''){
 	$mail = new PHPMailer();
 	
 	# check whether the mail send by smtp or not
@@ -365,6 +365,12 @@ function sendMail($from, $fromName, $to ,$subject,$content){
 
 	$mail->Subject = $subject;
 	$mail->Body = $content;
+	
+	// if attachments are there
+	if (!empty($attachment)) {
+		$mail->AddAttachment($attachment);
+	}
+	
 	if(!$mail->Send()){
 		return 0;
 	}else{
