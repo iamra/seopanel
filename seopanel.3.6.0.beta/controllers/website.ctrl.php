@@ -351,7 +351,7 @@ class WebsiteController extends Controller{
 		$value = removeNewLines($value);
 		?>
 		<script type="text/javascript">
-			document.getElementById('<?php echo $col;?>').value = '<?php echo addslashes($value);?>';
+			document.getElementById('<?php echo $col;?>').value = '<?php echo str_replace("'", "\'", $value);?>';
 		</script>
 		<?php
 	}
