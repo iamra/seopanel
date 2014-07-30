@@ -45,7 +45,7 @@ class SaturationCheckerController extends Controller{
 			    if ($i++ > 10) break;
 			}
 			if(!stristr($url, 'http://')) $url = "http://".$url;
-			$list[] = $url;
+			$list[] = str_replace(array("\n", "\r", "\r\n", "\n\r"), "", trim($url));
 		}
 
 		$this->set('list', $list);
