@@ -85,11 +85,14 @@ class AuditorComponent extends Controller{
             if ($projectInfo['check_brocken']) {
                 $reportInfo['brocken'] = Spider::isLInkBrocken($linkInfo['link_url']);    
             }
+            
             $this->saveReportInfo($reportInfo, 'update');
             
-            $i = 0;
             // to store sitelinks in page and links reports
+            $i = 0;
             if (count($pageInfo['site_links']) > 0) {
+            	
+            	// loo through site links
                 foreach ($pageInfo['site_links'] as $linkInfo) {
                     // if store links 
                     if ($projectInfo['store_links_in_page']) {
@@ -100,10 +103,18 @@ class AuditorComponent extends Controller{
                     
                     // if total links saved less than max links allowed for a project
                     if ($totalLinks < $projectInfo['max_links']) { 
-                        if(preg_match('/\.zip$|\.gz$|\.tar$|\.png$|\.jpg$|\.jpeg$|\.gif$|\.mp3$|\.flv$/i', $linkInfo['link_url'])) continue;
+                    	
+                    	// check whether valid html serving link
+                        if(preg_match('/\.zip$|\.gz$|\.tar$|\.png$|\.jpg$|\.jpeg$|\.gif$|\.mp3$|\.flv$|\.pdf/i', $linkInfo['link_url'])) continue;
+                        
+                        // if found any space in the link
                         $linkInfo['link_url'] = Spider::formatUrl($linkInfo['link_url']);
                         if (!preg_match('/\S+/', $linkInfo['link_url'])) continue;                        
+                        
+                        // check whether url needs to be excluded
                         if ($this->isExcludeLink($linkInfo['link_url'], $projectInfo['exclude_links'])) continue;
+                        
+                        // save links for the project report
                         if (!$this->getReportInfo(" and project_id={$projectInfo['id']} and page_url='{$linkInfo['link_url']}'")) {
         		            $repInfo['page_url'] = $linkInfo['link_url'];
         		            $repInfo['project_id'] = $projectInfo['id'];
