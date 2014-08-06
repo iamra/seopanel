@@ -5,7 +5,7 @@ if(empty($projectId)) {
 } 
 $submitJsFunc = "scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&sec=showreport')";
 ?>
-<form id='search_form'>
+<form id='search_form' onsubmit="<?php echo $submitJsFunc; ?>; return false;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>				
 		<th><?=$spText['label']['Project']?>: </th>
