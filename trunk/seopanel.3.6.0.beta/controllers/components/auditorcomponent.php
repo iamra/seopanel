@@ -105,7 +105,7 @@ class AuditorComponent extends Controller{
                     if ($totalLinks < $projectInfo['max_links']) { 
                     	
                     	// check whether valid html serving link
-                        if(preg_match('/\.zip$|\.gz$|\.tar$|\.png$|\.jpg$|\.jpeg$|\.gif$|\.mp3$|\.flv$|\.pdf/i', $linkInfo['link_url'])) continue;
+                        if(preg_match('/\.zip$|\.gz$|\.tar$|\.png$|\.jpg$|\.jpeg$|\.gif$|\.mp3$|\.flv$|\.pdf$|\.m4a$|#$/i', $linkInfo['link_url'])) continue;
                         
                         // if found any space in the link
                         $linkInfo['link_url'] = Spider::formatUrl($linkInfo['link_url']);
