@@ -100,5 +100,19 @@ class SearchEngineController extends Controller{
 		}		
 		
 	}
+	
+	# function to check whether captcha found in search engine results
+	function isCaptchInSearchResults($searchContent) {
+
+		$captchFound = false;
+		
+		// if captcha input field is found
+		if (stristr($searchContent, 'name="captcha"') || stristr($searchContent, 'id="captcha"')) {
+			$captchFound = true;
+		}
+		
+		return $captchFound;
+	}
+	
 }
 ?>
