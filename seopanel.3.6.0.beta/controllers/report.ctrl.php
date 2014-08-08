@@ -658,7 +658,7 @@ class ReportController extends Controller {
 					
 					// set crawl log info
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 					
 					if(SP_DEBUG){
 						echo "<p class='note' style='text-align:left;'>Error occured while parsing $seUrl ".formatErrorMsg("Regex not matched <br>\n")."</p>";
