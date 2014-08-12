@@ -78,7 +78,7 @@ class SaturationCheckerController extends Controller{
 				} elseif (preg_match('/of <b>([0-9\,]+)<\/b>/si', $pageContent, $r) ) {
 				} else {
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 				}
 								
 				$saturationCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
@@ -94,7 +94,7 @@ class SaturationCheckerController extends Controller{
 				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $pageContent, $r)) {
 				} else {
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 				}
 				$saturationCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
 				break;
