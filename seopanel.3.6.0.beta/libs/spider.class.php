@@ -61,7 +61,7 @@ class Spider{
 	}	
 	
 	# func to format urls
-	public function formatUrl($url){	    
+	function formatUrl($url){	    
 	    $scheme = "";
 		if(stristr($url,'http://')){
 			$scheme = "http://";
@@ -193,13 +193,13 @@ class Spider{
 	}
 	
 	# function to remove last trailing slash
-	public function removeTrailingSlash($url) {		
+	function removeTrailingSlash($url) {		
 		$url = preg_replace('/\/$/', '', $url);
 		return $url;
 	}
 	
     # function to remove last trailing slash
-	public function addTrailingSlash($url) {
+	function addTrailingSlash($url) {
 	    if (!stristr($url, '?') && !stristr($url, '#')) {
 	        if (!preg_match("/\.([^\/]+)$/", $url)) {		
         		if (!preg_match('/\/$/', $url)) {
@@ -258,6 +258,8 @@ class Spider{
 	
 	# get contents of a web page	
 	function getContent( $url, $enableProxy=true, $logCrawl = true)	{
+		
+		$url = "http://localhost/seopanel.3.6.0.beta/tmp/google_captcha.html";
 		
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_URL , $url );
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_FAILONERROR , $this -> _CURLOPT_FAILONERROR );
@@ -377,7 +379,7 @@ class Spider{
 	}
 	
 	// function to get the header of url
-    public function getHeader($url){
+    function getHeader($url){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -396,7 +398,7 @@ class Spider{
 	}
 	
 	// function to check whether link is brocke
-	public function isLInkBrocken($url) {
+	function isLInkBrocken($url) {
 	    $header = Spider::getHeader($url);
 	    if (stristr($header, '404 Not Found')) {
 	        return true;

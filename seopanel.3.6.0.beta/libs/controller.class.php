@@ -229,14 +229,14 @@ class Controller extends Seopanel{
 	}
 
 	# to create component object
-	public function createComponent($compName) {
+	function createComponent($compName) {
 	    include_once(SP_CTRLPATH."/components/".strtolower($compName).".php");
 	    $componentObj = new $compName();
 	    return $componentObj;
 	}
 
 	# to create cotroller object
-	public function createController($ctrlName) {
+	function createController($ctrlName) {
 	    include_once(SP_CTRLPATH."/".strtolower($ctrlName).".ctrl.php");
 	    $ctrlName .= "Controller"; 
 	    $controllerObj = new $ctrlName();
