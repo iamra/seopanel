@@ -259,8 +259,6 @@ class Spider{
 	# get contents of a web page	
 	function getContent( $url, $enableProxy=true, $logCrawl = true)	{
 		
-		$url = "http://localhost/seopanel.3.6.0.beta/tmp/google_captcha.html";
-		
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_URL , $url );
 		curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_FAILONERROR , $this -> _CURLOPT_FAILONERROR );
 		@curl_setopt( $this -> _CURL_RESOURCE , CURLOPT_FOLLOWLOCATION , $this -> _CURLOPT_FOLLOWLOCATION );
