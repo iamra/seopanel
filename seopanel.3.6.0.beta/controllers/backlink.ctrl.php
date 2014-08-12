@@ -85,7 +85,7 @@ class BacklinkController extends Controller{
 				} elseif (preg_match('/about <b>([0-9\,]+)<\/b> linking/si', $pageContent, $r)) {					
 				} else {
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";					
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";					
 				}
 				
 				$backlinkCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
@@ -102,7 +102,7 @@ class BacklinkController extends Controller{
 				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $pageContent, $r)) {
 				} else {
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 				}
 				
 				$backlinkCount = !empty($r[1]) ? str_replace(',', '', $r[1]) : 0;
@@ -117,7 +117,7 @@ class BacklinkController extends Controller{
 					$backlinkCount = !empty($r[1]) ? intval($r[1]) : 0;
 				} else {
 					$crawlInfo['crawl_status'] = 0;
-					$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 				}
 				break;
 		}

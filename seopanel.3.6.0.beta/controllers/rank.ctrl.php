@@ -74,7 +74,7 @@ class RankController extends Controller{
 				$rank = empty($matches[3]) ? 0 : $matches[3];
 			} else {
 				$crawlInfo['crawl_status'] = 0;
-				$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+				$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($ret['page']) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 			}
 		}
 		
@@ -125,7 +125,7 @@ class RankController extends Controller{
 				$rank = empty($matches[2]) ? 0 : $matches[2];	
 			} else {
 				$crawlInfo['crawl_status'] = 0;
-				$crawlInfo['log_message'] = "Regex not matched error occured while parsing search results!";
+				$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($ret['page']) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
 			}
 			
 		}
