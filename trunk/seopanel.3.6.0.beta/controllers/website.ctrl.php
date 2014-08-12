@@ -285,7 +285,7 @@ class WebsiteController extends Controller{
 	}
 	
 	# func to crawl meta data of a website
-	public function crawlMetaData($websiteUrl, $keyInput='', $pageContent='', $returVal=false) {
+	function crawlMetaData($websiteUrl, $keyInput='', $pageContent='', $returVal=false) {
 	    if (empty($pageContent)) {
     		if(!preg_match('/\w+/', $websiteUrl)) return;
     		if(!stristr($websiteUrl, 'http://')) $websiteUrl = "http://".$websiteUrl;
@@ -346,7 +346,7 @@ class WebsiteController extends Controller{
 		return $metaInfo; 
 	}
 	
-	public function addInputValue($value, $col) {
+	function addInputValue($value, $col) {
 
 		$value = removeNewLines($value);
 		?>
