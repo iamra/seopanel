@@ -435,4 +435,32 @@ function getRoundTabBot(){
 	';
 	return $content;
 }
+
+# function to convert to pdf  from view file
+function exportToPdf($content) {
+	include_once(SP_LIBPATH . "/mpdf/mpdf.php");
+	$mpdf = new mPDF();
+	$stylesheet = file_get_contents('http://localhost/seopanel.3.6.0.beta/themes/classic/css/screen.css');
+	$mpdf->WriteHTML($stylesheet,1);
+	$mpdf->WriteHTML($content, 2);
+	$mpdf->Output();
+	exit;
+}
+
+# func to show pdf header
+function showPdfHeader($headMsg = '') {
+	?>
+    <head>
+    	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    </head>
+	<?php
+	if (!empty($headMsg)) echo showSectionHead($headMsg);
+}
+
+# func to show pdf footer
+function showPdfFooter($spText) {
+    ?>
+    <div style="clear: both; margin-top: 10px;"><?php echo str_replace('[year]', date('Y'), $spText['common']['copyright'])?></div>
+	<?php
+}
 ?>
