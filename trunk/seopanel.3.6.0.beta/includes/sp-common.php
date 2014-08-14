@@ -439,7 +439,7 @@ function getRoundTabBot(){
 # function to convert to pdf  from view file
 function exportToPdf($content) {
 	include_once(SP_LIBPATH . "/mpdf/mpdf.php");
-	$mpdf = new mPDF();
+	$mpdf = new mPDF($_SESSION['lang_code']);
 	$stylesheet = file_get_contents('http://localhost/seopanel.3.6.0.beta/themes/classic/css/screen.css');
 	$mpdf->WriteHTML($stylesheet,1);
 	$mpdf->WriteHTML($content, 2);
