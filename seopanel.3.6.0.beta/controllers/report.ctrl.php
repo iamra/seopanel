@@ -80,6 +80,10 @@ class ReportController extends Controller {
 				$exportContent = "";
 				break;
 			
+			case "pdf":
+				$this->set('pdfVersion', true);
+				break;
+			
 			case "print":
 				$this->set('printVersion', true);
 				break;
@@ -173,8 +177,15 @@ class ReportController extends Controller {
 			}
 			exportToCsv('keyword_report_summary', $exportContent);
 		} else {
+			
 			$this->set('list', $keywordList);
-			$this->render('report/reportsummary');	
+			
+			// if pdf export
+			if ($searchInfo['doc_type'] == "pdf") {
+				exportToPdf($this->getViewContent('report/reportsummary'));
+			} else {
+				$this->render('report/reportsummary');
+			}	
 		}		
 	}
 	

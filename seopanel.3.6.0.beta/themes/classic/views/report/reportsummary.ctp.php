@@ -1,6 +1,6 @@
 <?php
-if(!empty($printVersion)) {
-    showPrintHeader($spTextTools['Keyword Position Summary']);
+if(!empty($printVersion) || !empty($pdfVersion)) {
+    $pdfVersion ? showPdfHeader($spTextTools['Keyword Position Summary']) : showPrintHeader($spTextTools['Keyword Position Summary']);
     ?>
     <table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
     	<?php if (!empty($websiteUrl)) {?>
@@ -65,8 +65,9 @@ if(!empty($printVersion)) {
 	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal";
 	?>
 	<div style="float:right;margin-right: 10px;">
+		<a href="<?=$directLink?>&doc_type=pdf"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
 		<a href="<?=$directLink?>&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
+		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif?1"></a>
 	</div>
 <?php }?>
 
@@ -191,3 +192,9 @@ if(!empty($printVersion)) {
 	</tr>
 </table>
 </div>
+
+<?php
+if(!empty($printVersion) || !empty($pdfVersion)) {
+	echo $pdfVersion ? showPdfFooter($spText) : showPrintFooter($spText);
+}
+?>
