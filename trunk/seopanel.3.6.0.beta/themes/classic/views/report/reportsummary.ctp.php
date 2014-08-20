@@ -1,4 +1,7 @@
 <?php
+
+$borderCollapseVal = $pdfVersion ? "border-collapse: collapse;" : "";
+
 if(!empty($printVersion) || !empty($pdfVersion)) {
     $pdfVersion ? showPdfHeader($spTextTools['Keyword Position Summary']) : showPrintHeader($spTextTools['Keyword Position Summary']);
     ?>
@@ -75,7 +78,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 <table width="100%" border="0" cellspacing="0" cellpadding="2px;" class="list">
 	<tr>
 	<td width='33%'>
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list" style="<?php echo $borderCollapseVal; ?>">
 	<tr class="listHead">
 		<?php
 		$linkClass = "";

@@ -99,8 +99,11 @@ class ReportController extends Controller {
 		} else {
 			$toTime = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
 		}
-		$this->set('fromTime', date('Y-m-d', $fromTime));
-		$this->set('toTime', date('Y-m-d', $toTime));
+		
+		$fromTimeTxt = date('Y-m-d', $fromTime);
+		$toTimeTxt = date('Y-m-d', $toTime);
+		$this->set('fromTime', $fromTimeTxt);
+		$this->set('toTime', $toTimeTxt);
 		
 		$websiteController = New WebsiteController();
 		$websiteList = $websiteController->__getAllWebsitesWithActiveKeywords($userId, true);
@@ -182,7 +185,7 @@ class ReportController extends Controller {
 			
 			// if pdf export
 			if ($searchInfo['doc_type'] == "pdf") {
-				exportToPdf($this->getViewContent('report/reportsummary'));
+				exportToPdf($this->getViewContent('report/reportsummary'), "keyword_report_summary_$fromTimeTxt-$toTimeTxt.pdf");
 			} else {
 				$this->render('report/reportsummary');
 			}	
