@@ -88,7 +88,10 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
         } else {
             $oVal = 'ASC';
         }
-		$linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
+        
+        $hrefAttr = $pdfVersion ? "" : "href='javascript:void(0)'";
+        
+		$linkName = "<a id='sortLink' class='$linkClass' $hrefAttr onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
 		?>		
 		<?php if (empty($websiteId)) {?>
 			<td class="left"><?=$spText['common']['Website']?></td>
@@ -107,7 +110,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
             } else {
                 $oVal = 'ASC';
             }
-            $linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col={$seInfo['id']}&order_val=$oVal', 'content')\">{$seInfo['domain']}</a>";
+            $linkName = "<a id='sortLink' class='$linkClass' $hrefAttr onclick=\"scriptDoLoad('$mainLink&order_col={$seInfo['id']}&order_val=$oVal', 'content')\">{$seInfo['domain']}</a>";
 		    
 			if( ($i+1) == $seCount){			
 				?>
@@ -157,6 +160,13 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 				        $graphLink = scriptAJAXLinkHrefDialog('graphical-reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], '&nbsp;', 'graphicon');
 					    $rankPadding = empty($rankDiff) ? "" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 					    $rankLink = $rankPadding . $rankLink;
+					    
+					    // if pdf report remove links
+					    if ($pdfVersion) {
+							$rankLink = str_replace("href='javascript:void(0);'", "", $rankLink);
+							$graphLink = str_replace("href='javascript:void(0);'", "", $graphLink);
+						}
+					    
 				    } else {
 				        $rankDiff = $graphLink = "";
 				        $rankLink = $rank;
@@ -195,7 +205,6 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	</tr>
 </table>
 </div>
-
 <?php
 if(!empty($printVersion) || !empty($pdfVersion)) {
 	echo $pdfVersion ? showPdfFooter($spText) : showPrintFooter($spText);
