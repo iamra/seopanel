@@ -794,6 +794,10 @@ class ReportController extends Controller {
 				$exportContent = "";
 				break;
 			
+			case "pdf":
+				$this->set('pdfVersion', true);
+				break;
+			
 			case "print":
 				$this->set('printVersion', true);
 				break;
@@ -1015,7 +1019,13 @@ class ReportController extends Controller {
 			if (!empty($cronUserId)) {
 			    return $this->getViewContent('report/archive');
 			} else {
-			    $this->render('report/archive');
+				
+				// if pdf export
+				if ($searchInfo['doc_type'] == "pdf") {
+					exportToPdf($this->getViewContent('report/archive'), "overall_summary_$fromTimeShort-$toTimeShort.pdf");
+				} else {
+			    	$this->render('report/archive');
+				}
 			}
 		}	
 	}

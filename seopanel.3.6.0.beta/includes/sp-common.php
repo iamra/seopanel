@@ -136,7 +136,8 @@ function scriptAJAXLinkHref($file, $area, $args='', $linkText='Click', $class=''
 	} else {
 		$link = ' '.$trigger.'="scriptDoLoad('."'$file', '$area', '$args')".'"';		
 	}
-	$link = "<a href='javascript:void(0);'class='$class' $link>$linkText</a>";
+	
+	$link = "<a href='javascript:void(0);' class='$class' $link>$linkText</a>";
 	return $link;
 }
 
@@ -146,13 +147,14 @@ function scriptAJAXLinkHrefDialog($file, $area, $args='', $linkText='Click', $cl
 	} else {
 		$link = ' '.$trigger.'="scriptDoLoadDialog('."'$file', '$area', '$args', $widthVal, $heightVal)".'"';		
 	}
-	$link = "<a href='javascript:void(0);'class='$class' $link>$linkText</a>";
+	
+	$link = "<a href='javascript:void(0);' class='$class' $link>$linkText</a>";
 	return $link;
 }
 
 function confirmScriptAJAXLinkHref($file, $area, $args='', $linkText='Click', $trigger='OnClick'){
 	$link = ' '.$trigger.'="confirmLoad('."'$file', '$area', '$args')".'"';
-	$link = "<a href='javascript:void(0);'class='$class' $link>$linkText</a>";
+	$link = "<a href='javascript:void(0);' class='$class' $link>$linkText</a>";
 	return $link;
 }
 
@@ -438,14 +440,11 @@ function getRoundTabBot(){
 
 # function to convert to pdf  from view file
 function exportToPdf($content, $fileName = "reports.pdf") {
+	
 	include_once(SP_LIBPATH . "/mpdf/mpdf.php");
 	$mpdf = new mPDF();
-	
-	$mpdf->useAdobeCJK = true;		// Default setting in config.php
-	// You can set this to false if you have defined other CJK fonts
-	
+	$mpdf->useAdobeCJK = true;
 	$mpdf->SetAutoFont(AUTOFONT_ALL);
-	
 	$spider = new Spider();
 	$ret = $spider->getContent(SP_CSSPATH . "/screen.css");
 	$stylesheet = str_replace("../../../images", SP_IMGPATH, $ret['page']);

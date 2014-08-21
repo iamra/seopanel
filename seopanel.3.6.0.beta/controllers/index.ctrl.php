@@ -38,6 +38,10 @@ class IndexController extends Controller{
 					$exportVersion = true;
 					$exportContent = "";
 					break;
+			
+				case "pdf":
+					$this->set('pdfVersion', true);
+					break;
 				
 				case "print":
 					$this->set('printVersion', true);
@@ -152,10 +156,20 @@ class IndexController extends Controller{
 					$exportContent .= createExportContent( $valueList);
 				}
 				exportToCsv('website_statistics', $exportContent);
-			} else {			
+			} else {
+							
 				$this->set('websiteList', $websiteList);
-				$layout = ($searchInfo['doc_type'] == "print") ? "ajax" : "";
-				$this->render('user/userhome', $layout);
+				
+				// if pdf export
+				if ($searchInfo['doc_type'] == "pdf") {
+					$fromTimeTxt = date('Y-m-d', $fromTime);
+					$toTimeTxt = date('Y-m-d', $toTime);
+					exportToPdf($this->getViewContent('user/userhome'), "account_summary_$fromTimeTxt-$toTimeTxt.pdf");
+				} else {
+					$layout = ($searchInfo['doc_type'] == "print") ? "ajax" : "";
+					$this->render('user/userhome', $layout);
+				}
+				
 			}			
 			
 		}else{

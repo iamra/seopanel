@@ -1,6 +1,7 @@
-<?php 
-if(!empty($printVersion)) {
-    showPrintHeader($spTextHome['Account Summary']);
+<?php
+$borderCollapseVal = $pdfVersion ? "border-collapse: collapse;" : ""; 
+if(!empty($printVersion) || !empty($pdfVersion)) {
+    $pdfVersion ? showPdfHeader($spTextHome['Account Summary']) : showPrintHeader($spTextHome['Account Summary']);
 } else {
     ?>
 	<div class="Center" style='width:100%;'>
@@ -38,6 +39,7 @@ if(!empty($printVersion)) {
     <?php } ?>
 	</div>
 	<div style="float:right;margin-right: 10px;">
+		<a href="<?=SP_WEBPATH?>/index.php?doc_type=pdf&user_id=<?=$webUserId?>"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
 		<a href="<?=SP_WEBPATH?>/index.php?doc_type=export&user_id=<?=$webUserId?>"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
 		<a target="_blank" href="<?=SP_WEBPATH?>/index.php?doc_type=print&user_id=<?=$webUserId?>"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
 	</div>
@@ -47,7 +49,7 @@ if(!empty($printVersion)) {
 	<?php
 	$colSpan = 11; 
 	?>
-	<table width="100%" cellspacing="0" cellpadding="0" class="summary">
+	<table width="100%" cellspacing="0" cellpadding="0" class="summary" style="<?php echo $borderCollapseVal; ?>">
 		<tr><td class="topheader" colspan="<?=$colSpan?>"><?=$spTextHome['Website Statistics']?></td></tr>
 		<tr>
 			<td class="subheader" style="border: none;" width="5%" rowspan="2"><?=$spText['common']['Id']?></td>
@@ -102,14 +104,14 @@ if(!empty($printVersion)) {
 </div>
 
 <?php 
-if(empty($printVersion)) {
-    ?>
+if(!empty($printVersion) || !empty($pdfVersion)) {
+	echo $pdfVersion ? showPdfFooter($spText) : showPrintFooter($spText);
+} else {
+	?>
     </div>
     <?php echo getRoundTabBot(); ?>
     </div>
     </div>
-    <?php
-} else {
-    echo showPrintFooter($spText);    
+    <?php   
 }
 ?>
