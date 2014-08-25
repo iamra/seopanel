@@ -471,6 +471,10 @@ class SiteAuditorController extends Controller{
 				$exportVersion = true;
 				break;
 			
+			case "pdf":
+				$this->set('pdfVersion', true);
+				break;
+			
 			case "print":
 				$this->set('printVersion', true);
 				break;
@@ -545,7 +549,8 @@ class SiteAuditorController extends Controller{
 		$pagingDiv = $this->paging->printPages($pgScriptPath, '', 'scriptDoLoad', 'subcontent', 'layout=ajax');		
 		$this->set('pagingDiv', $pagingDiv);		
 		$sql .= " order by ".addslashes($orderCol)." ".addslashes($orderVal);		
-		if(!$exportVersion) $sql .= " limit ".$this->paging->start .",". $this->paging->per_page; 
+		
+		$sql .= in_array($data['doc_type'], array('pdf', 'print', 'export')) ? "" : " limit ".$this->paging->start .",". $this->paging->per_page; 
 		
 		$reportList = $this->db->select($sql);
 		$spTextHome = $this->getLanguageTexts('home', $_SESSION['lang_code']);
@@ -596,8 +601,14 @@ class SiteAuditorController extends Controller{
 			$this->set('list', $reportList);
 			$this->set('pageNo', $_GET['pageno']);
 			$this->set('data', $data);
-    	    $this->set('headArr', $headArr);					
-			$this->render('siteauditor/reportlinks');
+    	    $this->set('headArr', $headArr);
+
+    	    // if pdf export
+    	    if ($data['doc_type'] == "pdf") {
+    	    	exportToPdf($this->getViewContent('siteauditor/reportlinks'), "site_auditor_report_links.pdf");
+    	    } else {
+				$this->render('siteauditor/reportlinks');
+    	    }
 		}
 		
 	}
@@ -698,8 +709,14 @@ class SiteAuditorController extends Controller{
     		$this->set('projectInfo', $projectInfo);
     		$this->set('metaArr', $metaArr);
     		$this->set('seArr', $this->seArr);
-    		$this->set('mainLink', $mainLink);        
-            $this->render('siteauditor/projectreportsummary');
+    		$this->set('mainLink', $mainLink);            
+            
+            // if pdf export
+            if ($data['doc_type'] == "pdf") {
+            	exportToPdf($this->getViewContent('siteauditor/projectreportsummary'), "site_auditor_report_summary.pdf");
+            } else {
+            	$this->render('siteauditor/projectreportsummary');
+            }
 		}
     }
     
@@ -736,7 +753,7 @@ class SiteAuditorController extends Controller{
 		$pagingDiv = $this->paging->printPages($pgScriptPath, '', 'scriptDoLoad', 'subcontent', 'layout=ajax');		
 		$this->set('pagingDiv', $pagingDiv);		
 		$sql .= " order by ".addslashes($orderCol)." ".addslashes($orderVal);		
-		if(!$exportVersion) $sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
+		$sql .= in_array($data['doc_type'], array('pdf', 'print', 'export')) ? "" : " limit ".$this->paging->start .",". $this->paging->per_page;
 		
 	    $totalResults = $this->db->noRows;
 	    $headArr =  array(
@@ -779,7 +796,13 @@ class SiteAuditorController extends Controller{
     	    $this->set('list', $dupInfo[$repType]);
     	    $this->set('repType', $repType);
     	    $this->set('headArr', $headArr);
-    	    $this->render('siteauditor/showduplicatemetainfo');
+    	    
+    	    // if pdf export
+    	    if ($data['doc_type'] == "pdf") {
+    	    	exportToPdf($this->getViewContent('siteauditor/showduplicatemetainfo'), "site_auditor_report_duplicate_meta.pdf");
+    	    } else {
+    	    	$this->render('siteauditor/showduplicatemetainfo');
+    	    }
 		}        
     }
     
