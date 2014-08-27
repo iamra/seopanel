@@ -87,17 +87,42 @@ if(file_exists(SP_ABSPATH."/config/sp-config.php")){
 	define('SP_JSPATH', SP_WEBPATH."/js");
 	define('SP_IMGPATH', SP_WEBPATH."/images");	
 	
-	#create database object	
+	# create database object
 	include_once(SP_LIBPATH."/database.class.php");
 	$dbObj = New Database(DB_ENGINE);
 	$dbConn = $dbObj->dbConnect();
 	
-	# web settings
+	// set system settings variables
+	$sql = "select * from settings order by id";
+	$settingsList = $dbConn->select($sql);
+	foreach($settingsList as $settingsInfo){
+		if(!defined($settingsInfo['set_name'])){
+			define($settingsInfo['set_name'], $settingsInfo['set_val']);
+		}
+	}
+	
+	// set system timezone
+	if (defined('SP_TIME_ZONE') && (SP_TIME_ZONE != '') ) {
+	
+		// set timezone for mysql
+		@ini_set( 'date.timezone', SP_TIME_ZONE);
+		$sql = "select * from timezone where timezone_name='". SP_TIME_ZONE ."'";
+		$timezoneInfo = $dbConn->select($sql, true);
+	
+		// set gmt difference
+		if (!empty($timezoneInfo['gmt_diff'])) {
+			$sql = "set time_zone = '".$timezoneInfo['gmt_diff']."'";
+			$dbConn->query($sql);
+		}
+		
+	}
+	
+	# web theme settings
 	$sql = "select * from themes where status=1 order by id";
 	$themeInfo = $dbConn->select($sql, true);
 	$themeLocation = empty($themeInfo['folder']) ? "themes/classic" : "themes/".$themeInfo['folder'];
 	define('SP_VIEWPATH', SP_ABSPATH."/$themeLocation/views");
-	define('SP_CSSPATH', SP_WEBPATH."/$themeLocation/css");
+	define('SP_CSSPATH', SP_WEBPATH."/$themeLocation/css");	
 
 	# to prevent sql injection
 	if(!empty($_SERVER['REQUEST_METHOD']) && SP_PREVENT_SQL_INJECTION){

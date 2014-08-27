@@ -32,26 +32,15 @@ class Controller extends Seopanel{
 	var $sessionCats = array('common','login','button','label');
 
 	function Controller(){
-		# create database object
-		if(!is_object($this->db)){
-			include_once(SP_LIBPATH."/database.class.php");
-			$dbObj = New Database(DB_ENGINE);
-			$this->db = $dbObj->dbConnect();
-			
-			$this->db->query("show tables", true);
-			if($this->db->noRows <= 0){
-				showErrorMsg("<p>The database tables could not be found.</p><p><a href=\"install/index.php\">Click here to install Seo Panel.</a></p>");
-			}
-		}
 		
+		# create database object
+		$dbObj = New Database(DB_ENGINE);
+		$this->db = $dbObj->dbConnect();
 		$this->view = New View();
 		$this->session = New Session();
 		$this->validate = New Validation();
 		$this->spider = New Spider();
 		$this->paging = New Paging();
-		
-		# to define all system variables
-		$this->defineAllSystemSettings();
 
 		# to define all system variables
 		$force = false;
@@ -60,21 +49,6 @@ class Controller extends Seopanel{
 			$this->assignLangCode(trim($_GET['lang_code']));
 			$_GET['lang_code'] = '';
 			$force = true;
-		}
-		
-		// set system timezone
-		if (defined('SP_TIME_ZONE')) {
-			if (SP_TIME_ZONE != '') {
-				@ini_set( 'date.timezone', SP_TIME_ZONE);
-				
-				// set timezone for mysql
-				$sql = "select * from timezone where timezone_name='".SP_TIME_ZONE."'";
-				$timezoneInfo = $this->db->select($sql, true);				
-				if (preg_match('/\(GMT(.+?)\)/', $timezoneInfo['timezone_label'], $matches)) {
-					$this->db->query("set time_zone = '".$matches[1]."'");
-				}
-				
-			}
 		}
 		
 		# func to assign texts to session
