@@ -55,7 +55,6 @@ class Seopanel{
 		include_once(SP_CTRLPATH.'/timezone.ctrl.php');
 		include_once(SP_CTRLPATH.'/searchengine.ctrl.php');
 		
-		//header ('Content-type: text / html; charset = utf-8');
 	}	
 	
 	# to set variable to render
