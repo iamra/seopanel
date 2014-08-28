@@ -27,7 +27,7 @@ class BacklinkController extends Controller{
 	var $backUrlList = array(
 		'google' => 'http://www.google.com/search?hl=en&q=link%3A',
 		'alexa' => 'http://www.alexa.com/siteinfo/',
-		'msn' => 'http://www.bing.com/search?setmkt=en&q=link%3A',
+		'msn' => 'http://www.bing.com/search?setmkt=en-us&q=link%3A',
 	);
 	
 	function showBacklink() {
@@ -100,6 +100,7 @@ class BacklinkController extends Controller{
 		        if (preg_match('/([0-9\,]+) results/si', $pageContent, $r)) {
 				} elseif (preg_match('/id="count".*?>.*?\(([0-9\,]+).*?\)/si', $pageContent, $r)) {
 				} elseif (preg_match('/id="count".*?>.*?([0-9\,]+).*?/si', $pageContent, $r)) {
+				} elseif (preg_match('/class="sb_count".*?>.*?([0-9\,]+).*?<\/span>/si', $pageContent, $r)) {
 				} else {
 					$crawlInfo['crawl_status'] = 0;
 					$crawlInfo['log_message'] = SearchEngineController::isCaptchInSearchResults($pageContent) ? "<font class=error>Captcha found</font> in search result page" : "Regex not matched error occured while parsing search results!";
