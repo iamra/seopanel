@@ -1,6 +1,9 @@
 <?php
-if(!empty($printVersion)) {
-    showPrintHeader($spTextTools['Keyword Position Summary']);
+
+$borderCollapseVal = $pdfVersion ? "border-collapse: collapse;" : "";
+
+if(!empty($printVersion) || !empty($pdfVersion)) {
+    $pdfVersion ? showPdfHeader($spTextTools['Keyword Position Summary']) : showPrintHeader($spTextTools['Keyword Position Summary']);
     ?>
     <table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
     	<?php if (!empty($websiteUrl)) {?>
@@ -65,8 +68,9 @@ if(!empty($printVersion)) {
 	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal";
 	?>
 	<div style="float:right;margin-right: 10px;">
+		<a href="<?=$directLink?>&doc_type=pdf"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
 		<a href="<?=$directLink?>&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
+		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif?1"></a>
 	</div>
 <?php }?>
 
@@ -74,7 +78,7 @@ if(!empty($printVersion)) {
 <table width="100%" border="0" cellspacing="0" cellpadding="2px;" class="list">
 	<tr>
 	<td width='33%'>
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list" style="<?php echo $borderCollapseVal; ?>">
 	<tr class="listHead">
 		<?php
 		$linkClass = "";
@@ -84,7 +88,10 @@ if(!empty($printVersion)) {
         } else {
             $oVal = 'ASC';
         }
-		$linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
+        
+        $hrefAttr = $pdfVersion ? "" : "href='javascript:void(0)'";
+        
+		$linkName = "<a id='sortLink' class='$linkClass' $hrefAttr onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
 		?>		
 		<?php if (empty($websiteId)) {?>
 			<td class="left"><?=$spText['common']['Website']?></td>
@@ -103,7 +110,7 @@ if(!empty($printVersion)) {
             } else {
                 $oVal = 'ASC';
             }
-            $linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoad('$mainLink&order_col={$seInfo['id']}&order_val=$oVal', 'content')\">{$seInfo['domain']}</a>";
+            $linkName = "<a id='sortLink' class='$linkClass' $hrefAttr onclick=\"scriptDoLoad('$mainLink&order_col={$seInfo['id']}&order_val=$oVal', 'content')\">{$seInfo['domain']}</a>";
 		    
 			if( ($i+1) == $seCount){			
 				?>
@@ -153,6 +160,13 @@ if(!empty($printVersion)) {
 				        $graphLink = scriptAJAXLinkHrefDialog('graphical-reports.php', 'content', $scriptLink."&se_id=".$seInfo['id'], '&nbsp;', 'graphicon');
 					    $rankPadding = empty($rankDiff) ? "" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 					    $rankLink = $rankPadding . $rankLink;
+					    
+					    // if pdf report remove links
+					    if ($pdfVersion) {
+							$rankLink = str_replace("href='javascript:void(0);'", "", $rankLink);
+							$graphLink = str_replace("href='javascript:void(0);'", "", $graphLink);
+						}
+					    
 				    } else {
 				        $rankDiff = $graphLink = "";
 				        $rankLink = $rank;
@@ -191,3 +205,8 @@ if(!empty($printVersion)) {
 	</tr>
 </table>
 </div>
+<?php
+if(!empty($printVersion) || !empty($pdfVersion)) {
+	echo $pdfVersion ? showPdfFooter($spText) : showPrintFooter($spText);
+}
+?>

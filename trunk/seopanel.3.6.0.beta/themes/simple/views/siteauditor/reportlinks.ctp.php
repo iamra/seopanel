@@ -7,6 +7,8 @@
 		</td>
 
 <?php
+$borderCollapseVal = "";
+$hrefAction = 'href="javascript:void(0)"';
 $mainLink = SP_WEBPATH."/siteauditor.php?project_id=$projectId&pageno=$pageNo"."$filter";
 foreach ($headArr as $col => $val) {
     $linkName = $col."Link";
@@ -18,12 +20,23 @@ foreach ($headArr as $col => $val) {
         $oVal = $orderVal;
     }
     $$linkName = "<a id='sortLink' class='$linkClass' href='javascript:void(0)' onclick=\"scriptDoLoadPost('siteauditor.php', 'search_form', 'subcontent', '&sec=showreport&order_col=$col&order_val=$oVal')\">$val</a>";
-} 
-if(!empty($printVersion)) {
-    showPrintHeader("Link Reports");	
+}
+
+if(!empty($pdfVersion) || !empty($printVersion)) {
+
+	// if pdf report to be generated
+	if ($pdfVersion) {
+		showPdfHeader($spTextTools['Auditor Reports']);
+		$borderCollapseVal = "border-collapse: collapse;";
+		$hrefAction = "";
+	} else {
+		showPrintHeader($spTextTools['Auditor Reports']);
+	}
+
 } else {    
     ?>	
 	<td align="right" valign="bottom">
+		<a href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=pdf"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
 		<a href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
 		<a target="_blank" href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
 		<?=$pagingDiv?>
@@ -32,7 +45,7 @@ if(!empty($printVersion)) {
 	</tr>
 </table>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list" style="<?php echo $borderCollapseVal; ?>">
 	<tr class="plainHead">
 		<td class="left" style="width: 30%;"><?=$page_urlLink?></td>
 		<td><?=$pagerankLink?></td>
@@ -44,7 +57,9 @@ if(!empty($printVersion)) {
 		<td><?=$total_linksLink?></td>
 		<td><?=$scoreLink?></td>
 		<td><?=$brockenLink?></td>
-		<td class="right"><?=$spText['common']['Action']?></td>
+		<?php if (empty($pdfVersion) && empty($printVersion)) {?>
+			<td class="right"><?=$spText['common']['Action']?></td>
+		<?php }?>
 	</tr>
 	<?php
 	$colCount = 11; 
@@ -56,7 +71,9 @@ if(!empty($printVersion)) {
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $pageLink = scriptAJAXLinkHref('siteauditor.php', 'subcontent', "sec=pagedetails&report_id={$listInfo['id']}&pageno=$pageNo&order_col=$orderCol&order_val=$orderVal", wordwrap($listInfo['page_url'], 100, "<br>", true))             
+            
+            $pageLink = scriptAJAXLinkHref('siteauditor.php', 'subcontent', "sec=pagedetails&report_id={$listInfo['id']}&pageno=$pageNo&order_col=$orderCol&order_val=$orderVal", wordwrap($listInfo['page_url'], 100, "<br>", true));             
+            $pageLink = !empty($pdfVersion) ? str_replace("href='javascript:void(0);'", "", $pageLink) : $pageLink;
             ?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?> left"><?=$pageLink?></td>
@@ -69,26 +86,37 @@ if(!empty($printVersion)) {
 				<td class="td_br_right"><?=$listInfo['total_links']?></td>
 				<td class="td_br_right" style="text-align: right;">
 				    <?php
-				        if ($listInfo['score'] < 0) {
-				            $scoreClass = 'minus';
-				            $listInfo['score'] = $listInfo['score'] * -1;
-				        } else {
-				            $scoreClass = 'plus';
+				    	if ($pdfVersion) {
+							echo "<b>{$listInfo['score']}</b>";
+						} else {
+				    
+					        if ($listInfo['score'] < 0) {
+					            $scoreClass = 'minus';
+					            $listInfo['score'] = $listInfo['score'] * -1;
+					        } else {
+					            $scoreClass = 'plus';
+					        }
+					        
+					        for($b = 0; $b <= $listInfo['score']; $b++) {
+								echo "<span class='$scoreClass'>&nbsp;</span>";
+							}
+							
 				        }
-				        for($b=0;$b<=$listInfo['score'];$b++) echo "<span class='$scoreClass'>&nbsp;</span>";
 				    ?>
 				</td>
 				<td class="td_br_right">
 				    <?php echo $listInfo['brocken'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
 				</td>
-				<td class="<?=$rightBotClass?>">
-				    <select style="width: 80px;" name="action" id="action<?=$listInfo['id']?>" onchange="doAction('siteauditor.php', 'subcontent', 'report_id=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&order_col=<?=$orderCol?>&order_val=<?=$orderVal?>', 'action<?=$listInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="pagedetails"><?=$spTextSA['Page Details']?></option>
-						<option value="checkscore"><?=$spTextSA['Check Score']?></option>
-						<option value="deletepage"><?=$spText['common']['Delete']?></option>
-					</select>
-				</td>
+				<?php if (empty($pdfVersion) && empty($printVersion)) {?>
+					<td class="<?=$rightBotClass?>">
+					    <select style="width: 80px;" name="action" id="action<?=$listInfo['id']?>" onchange="doAction('siteauditor.php', 'subcontent', 'report_id=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&order_col=<?=$orderCol?>&order_val=<?=$orderVal?>', 'action<?=$listInfo['id']?>')">
+							<option value="select">-- <?=$spText['common']['Select']?> --</option>
+							<option value="pagedetails"><?=$spTextSA['Page Details']?></option>
+							<option value="checkscore"><?=$spTextSA['Check Score']?></option>
+							<option value="deletepage"><?=$spText['common']['Delete']?></option>
+						</select>
+					</td>
+				<?php }?>
 			</tr>
 			<?php
 		}
@@ -101,7 +129,10 @@ if(!empty($printVersion)) {
 		<td class="right"></td>
 	</tr>
 </table>
-<?php if(empty($printVersion)) {?>
+<?php
+if(!empty($printVersion) || !empty($pdfVersion)) {
+	echo $pdfVersion ? showPdfFooter($spText) : showPrintFooter($spText);
+} else if(empty($printVersion)) {?>
     <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
     	<tr>
         	<td style="padding-top: 6px;">
@@ -111,4 +142,4 @@ if(!empty($printVersion)) {
         	</td>
     	</tr>
     </table>
-<?php }?>
+<?php } ?>
