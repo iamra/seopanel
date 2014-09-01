@@ -36,7 +36,7 @@
 			<br><?=$errMsg['exclude_links']?>
 			<p><?=$spTextSA['insertlinkssepcoma']?>.</p>
 			<p><b>Note:</b> <?=$spTextSA['anylinkcontainabovelinks']?>.</p>
-			<p><b>Eg:</b> http://www.seopanel.in/plugin/l/, http://www.seopanel.in/plugin/d/</p>
+			<p><b>Eg:</b> /plugin/l/, &lang_code=</p>
 		</td>
 	</tr>
 	<tr class="blue_row">
