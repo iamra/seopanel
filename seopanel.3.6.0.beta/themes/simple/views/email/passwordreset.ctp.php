@@ -1,5 +1,6 @@
 <?=$spText['common']['Hello']?> <?=$name?>,<br><br>
 
+<?php echo $spText['login']['Username']; ?>: <?php echo $userName; ?><br><br>
 <?=$spText['login']['Your account password is resetted and new password is']?>: <?=$rand?><br><br>
 
 <a href='<?=SP_WEBPATH?>/login.php'><?=$spText['label']['Click Here']?></a> <?=$spText['login']['to login to your account']?><br><br>
