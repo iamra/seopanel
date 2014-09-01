@@ -421,6 +421,7 @@ class UserController extends Controller{
 	           	$this->set('rand', $rand);
 	           	$name = $userInfo['first_name']." ".$userInfo['last_name'];
 	           	$this->set('name', $name);
+	           	$this->set('userName', $userInfo['username']);
 	           	$content = $this->getViewContent('email/passwordreset');
 	           	$subject = "Seo panel password reset";
 	           	
