@@ -1015,3 +1015,5 @@ A.graphicon{
 
 #powered {margin-top: 6px;}
 #powered A {color: #0033CC; font-size: 12px; text-decoration: underline;}
+
+input.long{width: 280px;} 
