@@ -196,6 +196,7 @@ class KeywordController extends Controller{
 			$listInfo['website_id'] = intval($listInfo['website_id']);
 			$keywords = explode(",", $listInfo['keywords']);
 			$keyExist = false;
+			$keywordList = array();
 			foreach ($keywords as $i => $keyword) {
 				$keyword = addslashes(trim($keyword));
 				if ($this->__checkName($keyword, $listInfo['website_id'])) {
@@ -203,13 +204,17 @@ class KeywordController extends Controller{
 					$keyExist = true;
 					break;
 				}
-				$keywords[$i] = $keyword;
-			}
+				
+				// if keyword is not empty
+				if (!empty($keyword)) {
+					$keywordList[$i] = $keyword;
+				}
+			}			
 			
 			if (!$keyExist) {
 				
 				$listInfo['searchengines'] = is_array($listInfo['searchengines']) ? $listInfo['searchengines'] : array();
-				foreach ($keywords as $keyword) {				
+				foreach ($keywordList as $keyword) {				
 					$sql = "insert into keywords(name,lang_code,country_code,website_id,searchengines,status)
 								values('$keyword','".$listInfo['lang_code']."','".$listInfo['country_code']."',".$listInfo['website_id'].",'".implode(':', $listInfo['searchengines'])."',1)";
 					$this->db->query($sql);

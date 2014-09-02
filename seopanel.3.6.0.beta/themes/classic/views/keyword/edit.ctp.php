@@ -10,7 +10,7 @@
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?=$spText['common']['Name']?>:</td>
-		<td class="td_right_col"><input type="text" name="name" value="<?=$post['name']?>"><?=$errMsg['name']?></td>
+		<td class="td_right_col"><input type="text" name="name" value="<?=$post['name']?>" class="long"><?=$errMsg['name']?></td>
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col"><?=$spText['common']['Website']?>:</td>
