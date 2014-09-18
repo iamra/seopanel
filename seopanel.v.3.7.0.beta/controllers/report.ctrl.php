@@ -556,7 +556,7 @@ class ReportController extends Controller {
 	# func to crawl keyword
 	function crawlKeyword( $keywordInfo, $seId='', $cron=false, $removeDuplicate=true) {
 		$crawlResult = array();
-		$websiteUrl = formatUrl($keywordInfo['url'], false);
+		$websiteUrl = $keywordInfo['url'];
 		if(empty($websiteUrl)) return $crawlResult;
 		if(empty($keywordInfo['name'])) return $crawlResult;	
 		
