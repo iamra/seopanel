@@ -549,7 +549,7 @@ class Install {
 		
 		?>
 		<form method="post" action="<?php echo SP_WEBPATH."/login.php"; ?>">
-		<h1 class="BlockHeader">Suuccess Seo Panel v.<?php echo SP_INSTALLED;?> Upgrade</h1>
+		<h1 class="BlockHeader">Success Seo Panel v.<?php echo SP_INSTALLED;?> Upgrade</h1>
 		<table width="100%" cellspacing="8px" cellpadding="0px" class="formtab">
 			<tr><th colspan="2" class="headersuccess">Seo Panel upgraded successfully!</th></tr>
 			<tr>
