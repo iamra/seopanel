@@ -24,7 +24,7 @@
 class ReportController extends Controller {
 	var $seLIst;
 	var $showAll = false;
-	var $proxyCheckCount = 0;
+	var $proxyCheckCount = 1;
 
 	# func to get keyword report summary
 	function __getKeywordSearchReport($keywordId, $fromTime, $toTime){
@@ -700,13 +700,15 @@ class ReportController extends Controller {
 			if ($this->proxyCheckCount < CHECK_MAX_PROXY_COUNT_IF_FAILED) {
 			
 				// if proxy is available for execution
+				$proxyCtrler = New ProxyController();
 				if ($proxyInfo = $proxyCtrler->getRandomProxy()) {
 					$this->proxyCheckCount++;
+					sleep(SP_CRAWL_DELAY);
 					$crawlResult = $this->crawlKeyword($keywordInfo, $seId, $cron, $removeDuplicate);		
 				}
 				
 			} else {
-				$this->proxyCheckCount = 0;
+				$this->proxyCheckCount = 1;
 			}
 		}
 		
