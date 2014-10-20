@@ -157,7 +157,7 @@ class SeoPluginsController extends Controller{
 
 	#function to change status of seo plugins
 	function changeStatus($seoPluginId, $status){
-		
+		$status = intval($status);		
 		$seoPluginId = intval($seoPluginId);
 		$sql = "update seoplugins set status=$status where id=$seoPluginId";
 		$this->db->query($sql);
@@ -165,7 +165,7 @@ class SeoPluginsController extends Controller{
 	
 	#function to change installed status of seo plugins
 	function __changeInstallStatus($seoPluginId, $status){
-		
+		$status = intval($status);		
 		$seoPluginId = intval($seoPluginId);
 		$sql = "update seoplugins set installed=$status where id=$seoPluginId";
 		$this->db->query($sql);
@@ -173,6 +173,7 @@ class SeoPluginsController extends Controller{
 	
 	# func to get seo plugin info
 	function __getSeoPluginInfo($val, $col='id') {
+		$val = ($col == 'id') ? intval($val) : addslashes($val);
 		$sql = "select * from seoplugins where $col='$val'";
 		$seoPluginInfo = $this->db->select($sql, true);
 		return $seoPluginInfo;
