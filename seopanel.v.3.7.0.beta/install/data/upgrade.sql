@@ -8,7 +8,18 @@ VALUES ('Maximum number of proxies used in single execution', 'CHECK_MAX_PROXY_C
 UPDATE `settings` SET `set_category` = 'proxy' WHERE set_name='SP_ENABLE_PROXY';
 UPDATE `settings` SET `set_category` = 'report' WHERE set_name='SP_CRAWL_DELAY';
 UPDATE `settings` SET `set_category` = 'report' WHERE set_name='SP_USER_GEN_REPORT';
+UPDATE `settings` SET `set_category` = 'report' WHERE set_name='SP_USER_AGENT';
+
+UPDATE `settings` SET `set_category` = 'api' WHERE set_name='SP_API_KEY';
+
+UPDATE `settings` SET `set_val` = '0' WHERE set_name='SP_USER_REGISTRATION';
+
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
+('en', 'settings', 'CHECK_MAX_PROXY_COUNT_IF_FAILED', 'Maximum number of proxies used in single execution');
 
 
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
+('en', 'panel', 'API Settings', 'API Settings');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
+('en', 'panel', 'API Manager', 'API Manager');
 
-INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES ('en', 'settings', 'CHECK_MAX_PROXY_COUNT_IF_FAILED', 'Maximum number of proxies used in single execution');
