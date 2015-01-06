@@ -4,7 +4,7 @@ echo showSectionHead($headLabel);
 
 // if saved successfully
 if (!empty($saved)) {
-    showSuccessMsg($spTextSettings['syssettingssaved'], false);
+    showSuccessMsg($spTextSettings['allsettingssaved'], false);
 }
 
 // save process failed

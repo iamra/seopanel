@@ -62,7 +62,20 @@ class SettingsController extends Controller{
             $spTextProxy = $this->getLanguageTexts('proxy', $_SESSION['lang_code']);
             $this->set('spTextProxy', $spTextProxy);		    
 	        $this->render('settings/showproxysettings');
-		} else {	
+		} else {
+
+			// switch through category
+			switch ($category) {
+				
+				case "api":
+					$this->set('headLabel', 'API Settings');					
+					break;
+					
+				default:					
+					break;
+				
+			}
+			
 		    $this->render('settings/showsettings');
 		}
 	}
