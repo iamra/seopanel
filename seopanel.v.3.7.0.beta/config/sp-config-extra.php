@@ -66,6 +66,9 @@ define('SP_PREVENT_SQL_INJECTION', true);
 # database persistent connection
 define('SP_DB_PERSISTENT_CONNECTION', false);
 
+# The seo panel api file
+define('SP_API_FILE', 'api.php');
+
 # The seo panel help page
 define('SP_HELP_LINK', 'http://help.seopanel.in/');
 
