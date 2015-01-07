@@ -139,6 +139,7 @@ foreach($menuList as $i => $menuInfo){
 			<script type="text/javascript">scriptList[<?=$i?>] = 'apimanager.php';</script>			
 			<ul id='subui'>
 				<?php if (isAdmin()) {?>
+					<li><a href="javascript:void(0);" onclick="scriptDoLoad('apimanager.php?sec=showconnect', 'content')"><?=$spTextPanel['API Connection']?></a></li>
     				<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=apisettings', 'content')"><?=$spTextPanel['API Settings']?></a></li>
 				<?php }?>
 			</ul>
