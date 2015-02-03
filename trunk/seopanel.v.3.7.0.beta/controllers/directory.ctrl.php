@@ -335,7 +335,10 @@ class DirectoryController extends Controller{
 		    $scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
 		    $dirInfo['extra_val'] = preg_replace("/&{$scriptInfo['reciprocal_col']}=(.*)/", "&{$scriptInfo['reciprocal_col']}=$reciprocalUrl", $dirInfo['extra_val']);
 		}		
-		$postData .= "&".$dirInfo['extra_val'];
+		
+		$postData .= "&".$dirInfo['extra_val'];		
+		$postData .= "&OWNER_NEWSLETTER_ALLOW=on&META_KEYWORDS={$websiteInfo['keywords']}
+		&META_DESCRIPTION=" . substr($websiteInfo['description'], 0, 249) . "&META_DESCRIPTION_limit=250&formSubmitted=1";
 		
 		$spider = new Spider(); 
 		$spider->_CURLOPT_POSTFIELDS = $postData;
@@ -350,7 +353,7 @@ class DirectoryController extends Controller{
 			$this->set('msg', $ret['errmsg']);
 		}else{
 			$page = $ret['page'];
-			// if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
+			//if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
 			if(preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)){
 				$this->set('msg', $matches[1]);
 				$status = 1;
