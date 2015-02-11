@@ -181,7 +181,7 @@ foreach($menuList as $i => $menuInfo){
 			<script type="text/javascript">scriptList[<?=$i?>] = 'user-types-manager.php';</script>			
 			<ul id='subui'>
 				<li><a href="javascript:void(0);" onclick="scriptDoLoad('user-types-manager.php', 'content')"><?=$spTextPanel['User Type Manager']?></a></li>
-				<li><a href="javascript:void(0);" onclick="scriptDoLoad('user-types-manager.php', 'content')"><?=$spTextPanel['New User Type']?></a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('user-types-manager.php', 'content', 'sec=new')"><?=$spTextPanel['New User Type']?></a></li>
 			</ul>
 			<?php
 			break;
