@@ -36,3 +36,14 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'api', 'API Url', 'API Url');
 
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'panel', 'User Type Manager', 'User Type Manager');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'panel', 'New User Type', 'New User Type');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'User Type', 'User Type');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Keywords Count', 'Keywords Count');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Websites Count', 'Websites Count');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Price', 'Price');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'New User Type', 'New User Type');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Edit User Type', 'Edit User Type');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'website', 'User Type already exist', 'User Type already exist');
+
+ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;

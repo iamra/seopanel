@@ -37,6 +37,13 @@ class AdminPanelController extends Controller{
             			'name' => $this->spTextPanel['User Manager'],
             			'url_section' => 'users'						
 						);
+		}		
+		if (isAdmin()) {
+			$menuList[] = array(
+						'id' => 15,
+            			'name' => $this->spTextPanel['User Type Manager'],
+            			'url_section' => 'user-types-manager'						
+						);
 		}
 
 		if (isLoggedIn()) {
