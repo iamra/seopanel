@@ -267,7 +267,7 @@ class DirectoryController extends Controller{
 			$scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
 			$checkArg = $scriptInfo['link_type_col']."=".$scriptInfo['reciprocal'];
 			$reciprocalUrl = false;
-			if (stristr($dirInfo['extra_val'], $checkArg)) {			    
+			if (!empty($dirInfo['is_reciprocal']) || stristr($dirInfo['extra_val'], $checkArg)) {			    
                 $reciprocalUrl =  $websiteInfo['reciprocal_url'];
                 if (empty($reciprocalUrl)) {
                     if (preg_match("/&{$scriptInfo['reciprocal_col']}=(.*)/", $dirInfo['extra_val'], $matches)) { 
@@ -330,15 +330,26 @@ class DirectoryController extends Controller{
 		}
 		
 		// check for reciprocal link
+		$scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
 		if (!empty($submitInfo['reciprocal_url'])) {
-		    $reciprocalUrl = addHttpToUrl($submitInfo['reciprocal_url']);
-		    $scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
-		    $dirInfo['extra_val'] = preg_replace("/&{$scriptInfo['reciprocal_col']}=(.*)/", "&{$scriptInfo['reciprocal_col']}=$reciprocalUrl", $dirInfo['extra_val']);
+		    
+		    // if extra values contain the reciprocal col name
+			$reciprocalUrl = addHttpToUrl($submitInfo['reciprocal_url']);
+		    if (stristr($dirInfo['extra_val'], $scriptInfo['reciprocal_col'])) {
+		    	$dirInfo['extra_val'] = preg_replace("/&{$scriptInfo['reciprocal_col']}=(.*)/", "&{$scriptInfo['reciprocal_col']}=$reciprocalUrl", $dirInfo['extra_val']);
+		    } else {
+		    	$postData .= "&".$dirInfo['reciprocal_col']."=$reciprocalUrl";
+		    }
+		    
 		}		
 		
-		$postData .= "&".$dirInfo['extra_val'];		
-		$postData .= "&OWNER_NEWSLETTER_ALLOW=on&META_KEYWORDS={$websiteInfo['keywords']}
-		&META_DESCRIPTION=" . substr($websiteInfo['description'], 0, 249) . "&META_DESCRIPTION_limit=250&formSubmitted=1";
+		$postData .= "&".$dirInfo['extra_val'];
+		
+		// check phpLD directory. Then add extra values
+		if ($scriptInfo['name'] == 'phpLD') {
+			$postData .= "&OWNER_NEWSLETTER_ALLOW=on&META_KEYWORDS={$websiteInfo['keywords']}
+			&META_DESCRIPTION=" . substr($websiteInfo['description'], 0, 249) . "&META_DESCRIPTION_limit=250&formSubmitted=1";
+		}
 		
 		$spider = new Spider(); 
 		$spider->_CURLOPT_POSTFIELDS = $postData;
@@ -352,8 +363,12 @@ class DirectoryController extends Controller{
 			$this->set('error', 1);
 			$this->set('msg', $ret['errmsg']);
 		}else{
+			
 			$page = $ret['page'];
+			
 			//if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
+			
+			// check success messages
 			if(preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)){
 				$this->set('msg', $matches[1]);
 				$status = 1;
