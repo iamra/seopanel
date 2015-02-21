@@ -223,9 +223,10 @@ class DirectoryController extends Controller{
 				if($count <= 0){
 					$categorysel = $matches[0];
 				}
-			}						
+			}
+
+			$categorysel = str_replace("ADD_CATEGORY_ID[]", $dirInfo['category_col'], $categorysel);
 			$this->set('categorySel', $categorysel);
-			
 			
 			$captchaUrl = '';
 			if(stristr($page, $dirInfo['captcha_script'])){
@@ -366,21 +367,26 @@ class DirectoryController extends Controller{
 			
 			$page = $ret['page'];
 			
-			//if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
+			if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
 			
 			// check success messages
-			if(preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)){
+			if (preg_match('/<td.*?class="msg".*?>(.*?)<\/td>/is', $page, $matches)) {
+			} elseif (preg_match('/<p.*?class="box success".*?>(.*?)<\/p>/is', $page, $matches)) {
+			} else{
+				$status = 0;
+				$this->set('msg', $this->spTextDir['nosuccessnote']);
+			}			
+			
+			// if $matches[1] is not empty
+			if (!empty($matches[1])) {
 				$this->set('msg', $matches[1]);
 				$status = 1;
 				
 				// to update the rank of directory
 				$sql = "update directories set rank=rank+1 where id=".$submitInfo['dir_id'];
-				$this->db->query($sql);
-				
-			}else{
-				$status = 0;
-				$this->set('msg', $this->spTextDir['nosuccessnote']);
+				$this->db->query($sql);				
 			}
+			
 			
 			$sql = "select id from dirsubmitinfo where website_id={$submitInfo['website_id']} and directory_id={$submitInfo['dir_id']}";
 			$subInfo = $this->db->select($sql);
