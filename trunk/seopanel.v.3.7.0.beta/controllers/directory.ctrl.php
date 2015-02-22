@@ -377,8 +377,6 @@ class DirectoryController extends Controller{
 			
 			$page = $ret['page'];
 			
-			print $page;
-			
 			if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
 			
 			// check success messages
