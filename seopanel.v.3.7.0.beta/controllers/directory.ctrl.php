@@ -143,10 +143,14 @@ class DirectoryController extends Controller{
 		
 		$spider = new Spider();
 		$spider->_CURLOPT_REFERER = $submitUrl;
+		$spider->_CURLOPT_TIMEOUT = 30;
+		
 		if(!empty($phpsessid)){
 			$spider->_CURLOPT_COOKIE = 'PHPSESSID=' . $phpsessid . '; path=/';	
-		} 
+		}
+		
 		$ret = $spider->getContent($captchaUrl);
+		
 		if(!empty($ret['page'])){
 			$captchaFile = $this->capchaFile .isLoggedIn() . ".jpg";
 			$fp = fopen(SP_TMPPATH."/".$captchaFile, 'w');
@@ -154,6 +158,7 @@ class DirectoryController extends Controller{
 			fclose($fp);
 			$captchaUrl = SP_WEBPATH. "/tmp/" .$captchaFile ."?rand=".mktime();	
 		}
+		
 		return $captchaUrl; 
 	}
 	
@@ -246,8 +251,9 @@ class DirectoryController extends Controller{
 				$dirInfo['domain'] = addHttpToUrl($dirInfo['domain']);
 				if(preg_match('/\/$/', $dirInfo['domain'])){
 					$captchaUrl = $dirInfo['domain']. $captchaUrl;
-				}else 
-					$captchaUrl =  $dirInfo['domain']."/". $captchaUrl;				
+				} else { 
+					$captchaUrl =  $dirInfo['domain']."/". $captchaUrl;	
+				}			
 				
 				if(!stristr($captchaUrl, '?')){
 					if(!empty($imageHash)) {
@@ -267,8 +273,10 @@ class DirectoryController extends Controller{
 			// function check whether recriprocal directory
 			$scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
 			$checkArg = $scriptInfo['link_type_col']."=".$scriptInfo['reciprocal'];
-			$reciprocalUrl = false;
-			if (!empty($dirInfo['is_reciprocal']) || stristr($dirInfo['extra_val'], $checkArg)) {			    
+			$reciprocalUrl = '';
+			$reciprocalDir = false;
+			if (!empty($dirInfo['is_reciprocal']) || stristr($dirInfo['extra_val'], $checkArg)) {
+				$reciprocalDir = true;
                 $reciprocalUrl =  $websiteInfo['reciprocal_url'];
                 if (empty($reciprocalUrl)) {
                     if (preg_match("/&{$scriptInfo['reciprocal_col']}=(.*)/", $dirInfo['extra_val'], $matches)) { 
@@ -276,6 +284,8 @@ class DirectoryController extends Controller{
                     }
                 }
 			}
+			
+			$this->set('reciprocalDir', $reciprocalDir);
 			$this->set('reciprocalUrl', $reciprocalUrl);
 			
 		}else{
@@ -366,6 +376,8 @@ class DirectoryController extends Controller{
 		}else{
 			
 			$page = $ret['page'];
+			
+			print $page;
 			
 			if(SP_DEBUG) $this->logSubmissionResult($page, $submitInfo['dir_id'], $submitInfo['website_id']);		
 			
