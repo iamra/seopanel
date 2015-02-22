@@ -31,7 +31,7 @@
 		<td class="td_left_col"><?=$spText['common']['Category']?>:</td>
 		<td class="td_right_col"><?=$categorySel?></td>
 	</tr>
-	<? if(!empty($reciprocalUrl)){ ?>
+	<? if (!empty($reciprocalDir)) { ?>
 		<tr class="blue_row">
 			<td class="td_left_col"><?=$spTextDir['Reciprocal Link']?>:</td>
 			<td class="td_right_col">
