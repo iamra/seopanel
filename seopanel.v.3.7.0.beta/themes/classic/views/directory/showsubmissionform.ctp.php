@@ -11,9 +11,12 @@
 <input type="hidden" name="sec" value="submitsite"/>
 <input type="hidden" name="website_id" value="<?=$websiteId?>"/>
 <input type="hidden" name="dir_id" value="<?=$dirInfo['id']?>"/>
+<input type="hidden" name="add_params" value="<?=$addParams?>">
+
 <?php if(!empty($phpsessid)){?>
     <input type="hidden" name="phpsessid" value="<?=$phpsessid?>">
 <?php }?>
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="left" style="width: 30%"><?=$spTextTools['directory-submission']?></td>

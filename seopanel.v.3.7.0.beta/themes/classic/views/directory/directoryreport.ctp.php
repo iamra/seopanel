@@ -77,7 +77,9 @@
             $statusId = "status_".$listInfo['id'];
 			?>
 			<tr class="<?=$class?>">
-				<td class="<?=$leftBotClass?>" style='text-align:left;padding-left:10px;'><?=$listInfo['domain']?></td>
+				<td class="<?=$leftBotClass?>" style='text-align:left;padding-left:10px;'>
+					<a href="<?=$listInfo['submit_url']?>" target="_blank"><?=$listInfo['domain']?></a>
+				</td>
 				<td class='td_br_right'><?php echo date('Y-m-d', $listInfo['submit_time']); ?></td>
 				<td class='td_br_right'><?=$listInfo['google_pagerank']?></td>
 				<td class='td_br_right' id='<?=$confirmId?>'><?=$confirmLink?></td>

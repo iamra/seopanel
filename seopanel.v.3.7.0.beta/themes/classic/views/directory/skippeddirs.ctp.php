@@ -47,7 +47,9 @@
 			?>
 			<tr class="<?=$class?>">
 				<td class="<?=$leftBotClass?>"><?=$listInfo['id']?></td>
-				<td class='td_br_right'  style='text-align:left;padding-left:10px;'><?=$listInfo['domain']?></td>
+				<td class='td_br_right'  style='text-align:left;padding-left:10px;'>
+					<a href="<?=$listInfo['submit_url']?>" target="_blank"><?=$listInfo['domain']?></a>
+				</td>
 				<td class='td_br_right'><?=$listInfo['google_pagerank']?></td>
 				<td class="<?=$rightBotClass?>"><?=$includeLink?></td>
 			</tr>
