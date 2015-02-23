@@ -238,7 +238,7 @@ class DirectoryController extends Controller{
 				$captchaUrl = $dirInfo['captcha_script'];
 			}
 			
-			$imageHash = "";
+			$imageHash = $addParams = "";
 			if(preg_match('/name="'.$dirInfo['imagehash_col'].'".*?value="(.*?)"/is', $page, $hashMatch)){
 				$imageHash = $hashMatch[1];
 			}
@@ -267,8 +267,19 @@ class DirectoryController extends Controller{
 
 				# to get stored image path if hot linking is prevented
 				$captchaUrl = $this->__getCreatedCaptchaUrl($captchaUrl, $dirInfo['submit_url'], $phpsessid);
-			}
+				
+			} else {
+
+				// check for number question existing there
+				if (preg_match('/(\d+) \+ (\d+) =/is', $page, $numMatch)) {
+					$sumMath = intval($numMatch[1]) + intval($numMatch[2]);
+					$addParams = "&DO_MATH=$sumMath&Anti_Spam_Field=$sumMath";
+				}
+				
+			}			
+			
 			$this->set('captchaUrl', $captchaUrl);
+			$this->set('addParams', $addParams);
 
 			// function check whether recriprocal directory
 			$scriptInfo = $this->getDirectoryScriptMetaInfo($dirInfo['script_type_id']);
@@ -336,6 +347,9 @@ class DirectoryController extends Controller{
 		$postData .= "&".$dirInfo['email_col']."=".$websiteInfo['owner_email'];
 		$postData .= "&".$dirInfo['category_col']."=".$submitInfo[$dirInfo['category_col']];
 		$postData .= "&".$dirInfo['cptcha_col']."=".$submitInfo[$dirInfo['cptcha_col']];
+		$postData .= $submitInfo['add_params'];
+		
+		// check image hash there
 		if(!empty($submitInfo[$dirInfo['imagehash_col']])){
 			$postData .= "&".$dirInfo['imagehash_col']."=".$submitInfo[$dirInfo['imagehash_col']];
 		}
@@ -461,11 +475,8 @@ class DirectoryController extends Controller{
 		$this->set('onChange', "scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=skipped')");		
 		
 		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";		
-		$sql = "select ds.* ,d.domain,d.google_pagerank
-								from skipdirectories ds,directories d 
-								where ds.directory_id=d.id 
-								$conditions  
-								order by id desc,d.domain";
+		$sql = "select ds.* ,d.domain,d.google_pagerank, d.submit_url
+		from skipdirectories ds,directories d where ds.directory_id=d.id $conditions order by id desc,d.domain";
 								
 		# pagination setup		
 		$this->db->query($sql, true);
@@ -496,11 +507,8 @@ class DirectoryController extends Controller{
 		
 		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";
 		$conditions .= empty ($searchInfo['active']) ? "" : " and ds.active=".($searchInfo['active']=='pending' ? 0 : 1);		
-		$sql = "select ds.* ,d.domain,d.google_pagerank
-								from dirsubmitinfo ds,directories d 
-								where ds.directory_id=d.id 
-								$conditions  
-								order by submit_time desc,d.domain";
+		$sql = "select ds.* ,d.domain,d.google_pagerank, d.submit_url from dirsubmitinfo ds,directories d 
+		where ds.directory_id=d.id $conditions order by submit_time desc,d.domain";
 								
 		# pagination setup		
 		$this->db->query($sql, true);
