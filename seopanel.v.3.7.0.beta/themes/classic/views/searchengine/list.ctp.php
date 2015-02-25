@@ -1,5 +1,32 @@
 <form name="listform" id="listform">
 <?php echo showSectionHead($spTextPanel['Search Engine Manager']); ?>
+<table width="88%" border="0" cellspacing="0" cellpadding="0" class="search">
+	<?php $submitLink = "scriptDoLoadPost('searchengine.php', 'listform', 'content')";?>
+	<tr>
+		<th><?=$spText['common']['Search Engine']?>: </th>
+		<td width="100px">
+			<input type="text" name="se_name" value="<?=htmlentities($info['se_name'], ENT_QUOTES)?>" onblur="<?=$submitLink?>">
+		</td>
+		<th><?=$spText['common']['Status']?>: </th>
+		<td width="100px">
+			<select name="stscheck" onchange="<?=$submitLink?>">
+				<?php foreach($statusList as $key => $val){?>
+					<?php if($info['stscheck'] == $val){?>
+						<option value="<?=$val?>" selected><?=$key?></option>
+					<?php }else{?>
+						<option value="<?=$val?>"><?=$key?></option>
+					<?php }?>
+				<?php }?>
+			</select>
+		</td>
+		<td style="text-align: center;">
+			<a href="javascript:void(0);" onclick="<?php echo $submitLink; ?>" class="actionbut">
+				<?=$spText['button']['Show Records']?>
+			</a>
+		</td>
+	</tr>
+</table>
+<br>
 <?=$pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">

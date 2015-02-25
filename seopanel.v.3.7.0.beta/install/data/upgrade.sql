@@ -49,3 +49,7 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'w
 ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
 
 ALTER TABLE `directories`  ADD `is_reciprocal` TINYINT(1) NOT NULL DEFAULT '0';
+
+UPDATE searchengines SET `cookie_send` = 'sB=v=1&n=100&sh=1&rw=new',
+`regex` = '<li.*?<h3.*?><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><\\/h3>.*?<p.*?>(.*?)<\\/p>'
+WHERE url like '%yahoo%'
