@@ -20,48 +20,48 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// class defines all api controller functions
-class APIController extends Controller {
+/**
+ * Class defines all functions for managing user API
+ * 
+ * @author Seo panel
+ *
+ */
+class UserAPI extends Seopanel{
 	
-	// function to show api connection details
-	function showAPIConnectionManager($info) {
-		$settingCtrler = new SettingsController();
-		$stnList = $settingCtrler->__getAllSettings(true, 1, 'api');
-		
-		// loop through settings
-		$apiInfo = array();
-		foreach ($stnList as $settingInfo) {
-			$apiInfo[$settingInfo['set_name']] = $settingInfo['set_val'];
-		}
-		
-		$apiInfo['api_url'] = SP_WEBPATH . "/" . SP_API_FILE;
-		$this->set('apiInfo', $apiInfo);
-		$this->render('api/showapiconnect');
+	/**
+	 * the main controller to get details for api
+	 * @var Object
+	 */
+	var $ctrler;
+	
+	function UserAPI() {
+		include_once(SP_CTRLPATH . "/user.ctrl.php");
+		$this->ctrler = new UserController();
 	}
-	
-	// get api credentails of the system
-	function getAPICredentials() {
-		$apiCredInfo =  array();
-		$settingCtrler = new SettingsController();
-		$stList = $settingCtrler->__getAllSettings(true, 1, 'api');
+
+	/**
+	 * function to get user information 
+	 * @param Array $info		The input details to process the api
+	 * 		$info['user_id']  	The id of the user
+	 * @return Array $userInfo  Contains informations about user
+	 */
+	function getUserInfo($info) {
+		$userId = intval($info['user_id']);
+		$returnInfo = array();
 		
-		// loop through settings values
-		foreach ($stList as $stInfo) {
-			$apiCredInfo[$stInfo['set_name']] = $stInfo['set_val'];
+		// validate the user ifd and user info
+		if (!empty($userId)) {
+			if ($userInfo = $this->ctrler->__getUserInfo($userId)) {
+				$userInfo['password'] = '';
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $userInfo;
+				return $returnInfo;
+			}
 		}
 		
-		return $apiCredInfo;
-	}
-	
-	// function to verify api credentials passed
-	function verifyAPICredentials($info) {
-		$apiCredInfo = $this->getAPICredentials();
-		
-		if ( ($apiCredInfo['SP_API_KEY'] == $info['SP_API_KEY']) && ($apiCredInfo['API_SECRET'] == $info['API_SECRET']) ) {
-			return true;
-		}
-		
-		return false;
+		$returnInfo['response'] = 'Error';
+		$returnInfo['error_msg'] = "The invalid user id provided";		
+		return 	$returnInfo;
 	}
 	
 }
