@@ -139,15 +139,35 @@ class UserController extends Controller{
 	function listUsers($info=''){
 		
 	    $info['pageno'] = intval($info['pageno']);
-		$sql = "select * from users where utype_id=2 order by username";
+		$info['stscheck'] = isset($info['stscheck']) ? intval($info['stscheck']) : 1;
+		$pageScriptPath = 'users.php?stscheck=' . $info['stscheck'];
+		$sql = "select * from users where utype_id=2 and status='{$info['stscheck']}'";
+		
+		// search for user name
+		if (!empty($info['user_name'])) {
+			$sql .= " and (username like '%".addslashes($info['user_name'])."%' 
+			or first_name like '%".addslashes($info['user_name'])."%'
+			or last_name like '%".addslashes($info['user_name'])."%')";
+			$pageScriptPath .= "&user_name=" . $info['user_name'];
+		}
+		
+		$sql .= " order by username";
 		
 		# pagination setup		
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('users.php', '', 'scriptDoLoad', 'content', 'layout=ajax');		
+		$pagingDiv = $this->paging->printPages($pageScriptPath, '', 'scriptDoLoad', 'content', 'layout=ajax');		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
+
+		$statusList = array(
+			$_SESSION['text']['common']['Active'] => 1,
+			$_SESSION['text']['common']['Inactive'] => 0,
+		);
+		
+		$this->set('statusList', $statusList);
+		$this->set('info', $info);
 		
 		$userList = $this->db->select($sql);
 		$this->set('userList', $userList);

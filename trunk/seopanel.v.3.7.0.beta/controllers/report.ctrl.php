@@ -137,7 +137,7 @@ class ReportController extends Controller {
 		$this->set('orderVal', $orderVal);
 		
 		$keywordController = New KeywordController();
-		$list = $keywordController->__getAllKeywords($userId, $websiteId, true, true, $orderVal);
+		$list = $keywordController->__getAllKeywords($userId, $websiteId, true, true, $orderVal, $searchInfo['search_name']);
 		$indexList = array();
 		foreach($list as $keywordInfo){
 			$positionInfo = $this->__getKeywordSearchReport($keywordInfo['id'], $fromTime, $toTime);
@@ -187,6 +187,7 @@ class ReportController extends Controller {
 			if ($searchInfo['doc_type'] == "pdf") {
 				exportToPdf($this->getViewContent('report/reportsummary'), "keyword_report_summary_$fromTimeTxt-$toTimeTxt.pdf");
 			} else {
+				$this->set('searchInfo', $searchInfo);
 				$this->render('report/reportsummary');
 			}	
 		}		

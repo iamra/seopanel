@@ -21,7 +21,7 @@
 		</td>
 		<td style="text-align: center;">
 			<a href="javascript:void(0);" onclick="<?php echo $submitLink; ?>" class="actionbut">
-				<?=$spText['button']['Show Records']?>
+				<?=$spText['button']['Search']?>
 			</a>
 		</td>
 	</tr>
