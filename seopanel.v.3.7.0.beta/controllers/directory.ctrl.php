@@ -33,7 +33,6 @@ class DirectoryController extends Controller{
 		
 		$websiteController = New WebsiteController();
 		$this->set('websiteList', $websiteController->__getAllWebsites($userId, true));
-		$this->set('websiteNull', true);
 		
 		$langCtrler = New LanguageController();
 		$langList = $langCtrler->__getAllLanguages();

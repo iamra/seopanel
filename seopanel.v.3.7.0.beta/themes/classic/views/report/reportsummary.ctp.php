@@ -26,11 +26,16 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     echo showSectionHead($spTextTools['Keyword Position Summary']);
     ?>
 	<form id='search_form'>
+	<?php $submitLink = "scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')";?>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
+			<th><?=$spText['common']['Name']?>: </th>
+			<td>
+				<input type="text" name="search_name" value="<?=htmlentities($searchInfo['search_name'], ENT_QUOTES)?>" onblur="<?=$submitLink?>">
+			</td>
 			<th width="100px"><?=$spText['common']['Website']?>: </th>
 			<td width="160px">
-				<select name="website_id" id="website_id" style='width:160px;' onchange="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')">
+				<select name="website_id" id="website_id" style='width:100px;' onchange="<?=$submitLink?>">
 					<option value="">-- <?=$spText['common']['All']?> --</option>
 					<?php foreach($websiteList as $websiteInfo){?>
 						<?php if($websiteInfo['id'] == $websiteId){?>
@@ -48,7 +53,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
     			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
     		</td>
-			<td><a href="javascript:void(0);" onclick="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')" class="actionbut"><?=$spText['button']['Search']?></a></td>
+			<td><a href="javascript:void(0);" onclick="<?=$submitLink?>" class="actionbut"><?=$spText['button']['Search']?></a></td>
 		</tr>
 	</table>
 	</form>
@@ -64,7 +69,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	}
 
 	// url parameters
-	$mainLink = SP_WEBPATH."/reports.php?sec=reportsum&website_id=$websiteId&from_time=$fromTime&to_time=$toTime";
+	$mainLink = SP_WEBPATH."/reports.php?sec=reportsum&website_id=$websiteId&from_time=$fromTime&to_time=$toTime&search_name=" . $searchInfo['search_name'];
 	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal";
 	?>
 	<div style="float:right;margin-right: 10px;">

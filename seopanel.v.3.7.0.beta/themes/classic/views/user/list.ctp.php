@@ -1,5 +1,31 @@
 <form name="listform" id="listform">
 <?php echo showSectionHead($spTextPanel['User Manager']); ?>
+<table width="88%" border="0" cellspacing="0" cellpadding="0" class="search">
+	<?php $submitLink = "scriptDoLoadPost('users.php', 'listform', 'content')";?>
+	<tr>
+		<th><?=$spText['common']['Name']?>: </th>
+		<td width="100px">
+			<input type="text" name="user_name" value="<?=htmlentities($info['user_name'], ENT_QUOTES)?>" onblur="<?=$submitLink?>">
+		</td>
+		<th><?=$spText['common']['Status']?>: </th>
+		<td width="100px">
+			<select name="stscheck" onchange="<?=$submitLink?>">
+				<?php foreach($statusList as $key => $val){?>
+					<?php if($info['stscheck'] == $val){?>
+						<option value="<?=$val?>" selected><?=$key?></option>
+					<?php }else{?>
+						<option value="<?=$val?>"><?=$key?></option>
+					<?php }?>
+				<?php }?>
+			</select>
+		</td>
+		<td style="text-align: center;">
+			<a href="javascript:void(0);" onclick="<?php echo $submitLink; ?>" class="actionbut">
+				<?=$spText['button']['Search']?>
+			</a>
+		</td>
+	</tr>
+</table>
 <?=$pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">

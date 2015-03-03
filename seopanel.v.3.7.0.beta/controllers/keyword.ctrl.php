@@ -237,12 +237,18 @@ class KeywordController extends Controller{
 	}
 
 	# func to get all keywords
-	function __getAllKeywords($userId='', $websiteId='', $isAdminCheck=false, $orderByWeb=false, $orderByValue='ASC'){
+	function __getAllKeywords($userId='', $websiteId='', $isAdminCheck=false, $orderByWeb=false, $orderByValue='ASC', $searchName = ''){
 		$sql = "select k.*,w.name website,w.url weburl from keywords k,websites w where k.website_id=w.id and k.status=1";		
 		if(!$isAdminCheck || !isAdmin() ){
 			if(!empty($userId)) $sql .= " and w.user_id=$userId";
 		}
+		
 		if(!empty($websiteId)) $sql .= " and k.website_id=$websiteId";
+		
+		if (!empty($searchName)) {
+			$sql .= " and k.name like '%".addslashes($searchName)."%'";
+		}
+		
 		$sql .= $orderByWeb ? " order by w.id, k.name $orderByValue" : " order by k.name $orderByValue";
 		$keywordList = $this->db->select($sql);
 		return $keywordList;

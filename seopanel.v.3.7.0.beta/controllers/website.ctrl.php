@@ -27,29 +27,55 @@ class WebsiteController extends Controller{
 	function listWebsites($info=''){		
 		
 		$userId = isLoggedIn();
+		$info['stscheck'] = isset($info['stscheck']) ? intval($info['stscheck']) : 1;
 		$info['pageno'] = intval($info['pageno']);
+		$pageScriptPath = 'websites.php?stscheck=' . $info['stscheck'];
+		
+		// if admin add user filter
 		if(isAdmin()){
 			$sql = "select w.*,u.username from websites w,users u where u.id=w.user_id";
-			$sql .= empty($info['userid']) ? "" : " and w.user_id=".intval($info['userid']); 
-			$sql .= " order by w.name";			
 			$this->set('isAdmin', 1);
+			
+			// if user id is not empty
+			if (!empty($info['userid'])) {
+				$sql .= " and w.user_id=".intval($info['userid']);
+				$pageScriptPath .= "&userid=" . intval($info['userid']);
+			}
 			
 			$userCtrler = New UserController();
 			$userList = $userCtrler->__getAllUsers();
 			$this->set('userList', $userList);
 			
 		}else{
-			$sql = "select * from websites where user_id=$userId order by name";	
-		}		
+			$sql = "select * from websites w where user_id=$userId";	
+		}
+
+		// search for user name
+		if (!empty($info['search_name'])) {
+			$sql .= " and (w.name like '%".addslashes($info['search_name'])."%'
+			or w.url like '%".addslashes($info['search_name'])."%')";
+			$pageScriptPath .= "&search_name=" . $info['search_name'];
+		}
+
+		$sql .= " and w.status='{$info['stscheck']}' order by w.name"; 
+		
 		$this->set('userId', empty($info['userid']) ? 0 : $info['userid']);		
 		
 		# pagination setup		
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('websites.php?userid='.$info['userid']);		
+		$pagingDiv = $this->paging->printPages($pageScriptPath);		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
+
+		$statusList = array(
+			$_SESSION['text']['common']['Active'] => 1,
+			$_SESSION['text']['common']['Inactive'] => 0,
+		);
+		
+		$this->set('statusList', $statusList);
+		$this->set('info', $info);
 				
 		$websiteList = $this->db->select($sql);	
 		$this->set('pageNo', $info['pageno']);		

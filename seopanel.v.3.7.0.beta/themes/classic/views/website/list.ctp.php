@@ -1,11 +1,16 @@
 <form name="listform" id="listform">
 <?php echo showSectionHead($spTextPanel['Website Manager']); ?>
-<?php if(!empty($isAdmin)){ ?>
-	<table width="50%" border="0" cellspacing="0" cellpadding="0" class="search">
-		<tr>
+<?php $submitLink = "scriptDoLoadPost('websites.php', 'listform', 'content')";?>
+<table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
+	<tr>
+		<th><?=$spText['common']['Name']?>: </th>
+		<td width="100px">
+			<input type="text" name="search_name" value="<?=htmlentities($info['search_name'], ENT_QUOTES)?>" onblur="<?=$submitLink?>">
+		</td>
+		<?php if(!empty($isAdmin)){ ?>
 			<th><?=$spText['common']['User']?>: </th>
 			<td>
-				<select name="userid" id="userid" onchange="doLoad('userid', 'websites.php', 'content')">
+				<select name="userid" id="userid" onchange="<?=$submitLink?>">
 					<option value="">-- <?=$spText['common']['Select']?> --</option>
 					<?php foreach($userList as $userInfo){?>
 						<?php if($userInfo['id'] == $userId){?>
@@ -16,9 +21,26 @@
 					<?php }?>
 				</select>
 			</td>
-		</tr>
-	</table>
-<?php } ?>
+		<?php }?>
+		<th><?=$spText['common']['Status']?>: </th>
+		<td>
+			<select name="stscheck" onchange="<?=$submitLink?>">
+				<?php foreach($statusList as $key => $val){?>
+					<?php if($info['stscheck'] == $val){?>
+						<option value="<?=$val?>" selected><?=$key?></option>
+					<?php }else{?>
+						<option value="<?=$val?>"><?=$key?></option>
+					<?php }?>
+				<?php }?>
+			</select>
+		</td>
+		<td style="text-align: center;">
+			<a href="javascript:void(0);" onclick="<?php echo $submitLink; ?>" class="actionbut">
+				<?=$spText['button']['Search']?>
+			</a>
+		</td>
+	</tr>
+</table>
 <?=$pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
