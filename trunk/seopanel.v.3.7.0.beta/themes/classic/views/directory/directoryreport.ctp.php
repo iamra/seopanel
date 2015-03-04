@@ -2,13 +2,17 @@
 <form id='search_form'>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
+		<th><?=$spText['common']['Name']?>: </th>
+		<td width="100px">
+			<input type="text" name="search_name" value="<?=htmlentities($searchInfo['search_name'], ENT_QUOTES)?>" onblur="<?=$onChange?>">
+		</td>
 		<th><?=$spText['common']['Website']?>: </th>
 		<td>
 			<?php echo $this->render('website/websiteselectbox', 'ajax'); ?>
 		</td>
 		<th><?=$spText['common']['Status']?>: </th>
 		<td>
-			<select name="active" style="width:150px;" onchange="scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=reports')">
+			<select name="active" style="width:150px;" onchange="<?=$onChange?>">
 				<option value="">-- Select --</option>
 				<?php 
 				$activeList = array('pending', 'approved');
@@ -26,7 +30,9 @@
 				?>
 			</select>
 		</td>		
-		<td colspan="2"><a href="javascript:void(0);" onclick="scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=reports')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
+		<td colspan="2">
+			<a href="javascript:void(0);" onclick="<?=$onChange?>" class="actionbut"><?=$spText['button']['Search']?></a>
+		</td>
 	</tr>
 </table>
 </form>
@@ -85,7 +91,7 @@
 				<td class='td_br_right' id='<?=$confirmId?>'><?=$confirmLink?></td>
 				<td class='td_br_right' id='<?=$statusId?>'><?=$status?></td>
 				<td class="<?=$rightBotClass?>">
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('directories.php', '<?=$statusId?>', 'id=<?=$listInfo['id']?>', 'action<?=$listInfo['id']?>')">
+					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('<?=$pageScriptPath?>&pageno=<?=$pageNo?>', '<?=$statusId?>', 'id=<?=$listInfo['id']?>', 'action<?=$listInfo['id']?>')">
 						<option value="select">-- <?=$spText['common']['Select']?> --</option>
 						<option value="checkstatus"><?=$spText['button']['Check Status']?></option>
 						<option value="delete"><?=$spText['common']['Delete']?></option>

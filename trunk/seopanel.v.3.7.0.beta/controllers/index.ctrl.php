@@ -71,7 +71,7 @@ class IndexController extends Controller{
 			
 			$websiteCtrler = New WebsiteController();
 			$adminCheck = (isAdmin() && empty($webUserId)) ? true : false;
-			$list = $websiteCtrler->__getAllWebsites($webUserId, $adminCheck);
+			$list = $websiteCtrler->__getAllWebsites($webUserId, $adminCheck, $searchInfo['search_name']);
 			
 			include_once(SP_CTRLPATH."/saturationchecker.ctrl.php");
 			include_once(SP_CTRLPATH."/rank.ctrl.php");
@@ -167,6 +167,7 @@ class IndexController extends Controller{
 					exportToPdf($this->getViewContent('user/userhome'), "account_summary_$fromTimeTxt-$toTimeTxt.pdf");
 				} else {
 					$layout = ($searchInfo['doc_type'] == "print") ? "ajax" : "";
+					$this->set('searchInfo', $searchInfo);
 					$this->render('user/userhome', $layout);
 				}
 				

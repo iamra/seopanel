@@ -84,11 +84,17 @@ class WebsiteController extends Controller{
 	}
 
 	# func to get all Websites
-	function __getAllWebsites($userId='', $isAdminCheck=false){
+	function __getAllWebsites($userId = '', $isAdminCheck = false, $searchName = '') {
 		$sql = "select * from websites where status=1";
 		if(!$isAdminCheck || !isAdmin() ){
 			if(!empty($userId)) $sql .= " and user_id=$userId";
 		} 
+		
+		// if search string is not empty
+		if (!empty($searchName)) {
+			$sql .= " and (name like '%".addslashes($searchName)."%' or url like '%".addslashes($searchName)."%')";
+		}
+		
 		$sql .= " order by name";
 		$websiteList = $this->db->select($sql);
 		return $websiteList;

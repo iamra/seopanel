@@ -473,7 +473,16 @@ class DirectoryController extends Controller{
 		$this->set('websiteId', $websiteId);
 		$this->set('onChange', "scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=skipped')");		
 		
-		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";		
+		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";
+		$pageScriptPath = 'directories.php?sec=skipped&website_id='.$websiteId;
+		$this->set('searchInfo', $searchInfo); 
+
+		// search for name
+		if (!empty($searchInfo['search_name'])) {
+			$conditions .= " and d.submit_url like '%".addslashes($searchInfo['search_name'])."%'";
+			$pageScriptPath .= "&search_name=" . $searchInfo['search_name'];
+		}
+				
 		$sql = "select ds.* ,d.domain,d.google_pagerank, d.submit_url
 		from skipdirectories ds,directories d where ds.directory_id=d.id $conditions order by id desc,d.domain";
 								
@@ -481,7 +490,7 @@ class DirectoryController extends Controller{
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('directories.php?sec=skipped', '', 'scriptDoLoad', 'content', 'website_id='.$websiteId);		
+		$pagingDiv = $this->paging->printPages($pageScriptPath, '', 'scriptDoLoad', 'content');		
 		$this->set('pagingDiv', $pagingDiv);
 		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;						
 								
@@ -506,6 +515,16 @@ class DirectoryController extends Controller{
 		
 		$conditions = empty ($websiteId) ? "" : " and ds.website_id=$websiteId";
 		$conditions .= empty ($searchInfo['active']) ? "" : " and ds.active=".($searchInfo['active']=='pending' ? 0 : 1);		
+
+		$pageScriptPath = 'directories.php?sec=reports&website_id='.$websiteId.'&active='.$searchInfo['active'];
+		$this->set('searchInfo', $searchInfo);
+		
+		// search for name
+		if (!empty($searchInfo['search_name'])) {
+			$conditions .= " and d.submit_url like '%".addslashes($searchInfo['search_name'])."%'";
+			$pageScriptPath .= "&search_name=" . $searchInfo['search_name'];
+		}
+		
 		$sql = "select ds.* ,d.domain,d.google_pagerank, d.submit_url from dirsubmitinfo ds,directories d 
 		where ds.directory_id=d.id $conditions order by submit_time desc,d.domain";
 								
@@ -513,12 +532,13 @@ class DirectoryController extends Controller{
 		$this->db->query($sql, true);
 		$this->paging->setDivClass('pagingdiv');
 		$this->paging->loadPaging($this->db->noRows, SP_PAGINGNO);
-		$pagingDiv = $this->paging->printPages('directories.php?sec=reports', '', 'scriptDoLoad', 'content', 'website_id='.$websiteId.'&active='.$searchInfo['active']);		
+		$pagingDiv = $this->paging->printPages($pageScriptPath, '', 'scriptDoLoad', 'content');		
 		$this->set('pagingDiv', $pagingDiv);
-		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;						
+		$sql .= " limit ".$this->paging->start .",". $this->paging->per_page;
 								
 		$reportList = $this->db->select($sql);
-		
+		$this->set('pageScriptPath', $pageScriptPath);
+		$this->set('pageNo', $_GET['pageno']);
 		$this->set('activeVal', $searchInfo['active']);
 		$this->set('list', $reportList);
 		$this->render('directory/directoryreport');	
@@ -629,15 +649,15 @@ class DirectoryController extends Controller{
 	function showFeaturedSubmission($info="") {
 	    $dirList = $this->getAllFeaturedDirectories();
 	    $this->set('list', $dirList);    
-//	    if (empty($info['dir_id'])) {
-//	        $selDirInfo = $dirList[1];
-//	        $selDirId = $selDirInfo['id'];
-//	    } else {
-//	        $selDirId = intval($info['dir_id']); 
-//	        $selDirInfo = $dirList[$selDirId];   
-//	    }
-//	    $this->set('selDirId', $selDirId);
-//	    $this->set('selDirInfo', $selDirInfo); 	    
+	    /*if (empty($info['dir_id'])) {
+	        $selDirInfo = $dirList[1];
+	        $selDirId = $selDirInfo['id'];
+	    } else {
+	        $selDirId = intval($info['dir_id']); 
+	        $selDirInfo = $dirList[$selDirId];   
+	    }
+	    $this->set('selDirId', $selDirId);
+	    $this->set('selDirInfo', $selDirInfo);*/ 	    
 		$this->render('directory/featuredsubmission');
 	}	
 	
