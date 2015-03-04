@@ -1,12 +1,18 @@
 <?php echo showSectionHead($spTextTools['Skipped Directories']); ?>
 <form id='search_form'>
-<table width="60%" border="0" cellspacing="0" cellpadding="0" class="search">
+<table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
 	<tr>
+		<th><?=$spText['common']['Name']?>: </th>
+		<td width="100px">
+			<input type="text" name="search_name" value="<?=htmlentities($searchInfo['search_name'], ENT_QUOTES)?>" onblur="<?=$onChange?>">
+		</td>
 		<th><?=$spText['common']['Website']?>: </th>
 		<td>
 			<?php echo $this->render('website/websiteselectbox', 'ajax'); ?>
 		</td>
-		<td colspan="2"><a href="javascript:void(0);" onclick="scriptDoLoadPost('directories.php', 'search_form', 'content', '&sec=skipped')" class="actionbut"><?=$spText['button']['Show Records']?></a></td>
+		<td colspan="2">
+			<a href="javascript:void(0);" onclick="<?=$onChange?>" class="actionbut"><?=$spText['button']['Search']?></a>
+		</td>
 	</tr>
 </table>
 </form>
@@ -41,8 +47,10 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
-            $includeLink = "<a href='javascript:void(0);' onclick=\"scriptDoLoad('directories.php', 'content', 'sec=unskip&id={$listInfo['id']}&pageno=$pageNo&website_id=$websiteId')\">".$spTextDir['Add back to directory list']."</a>";
+            }
+
+            $argStr = "sec=unskip&id={$listInfo['id']}&pageno=$pageNo&website_id=$websiteId&search_name=".$searchInfo['search_name'];
+            $includeLink = "<a href='javascript:void(0);' onclick=\"scriptDoLoad('directories.php', 'content', '$argStr')\">".$spTextDir['Add back to directory list']."</a>";
             
 			?>
 			<tr class="<?=$class?>">
