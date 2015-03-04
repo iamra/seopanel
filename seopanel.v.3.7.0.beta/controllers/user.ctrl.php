@@ -258,7 +258,7 @@ class UserController extends Controller{
 		return $userList;
 	}
 	
-	function createUser($userInfo){
+	function createUser($userInfo, $renderResults = true){
 	    $userInfo = sanitizeData($userInfo);
 		$this->set('post', $userInfo);
 		$errMsg['userName'] = formatErrorMsg($this->validate->checkUname($userInfo['userName']));
@@ -266,14 +266,25 @@ class UserController extends Controller{
 		$errMsg['firstName'] = formatErrorMsg($this->validate->checkBlank($userInfo['firstName']));
 		$errMsg['lastName'] = formatErrorMsg($this->validate->checkBlank($userInfo['lastName']));
 		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userInfo['email']));
+		$userTypeId = empty($userInfo['type_id']) ? 2 : intval($userInfo['user_type_id']);
+		$userStatus = isset($userInfo['status']) ? intval($userInfo['status']) : 1;
+		
+		// check error flag is on
 		if(!$this->validate->flagErr){
 			if (!$this->__checkUserName($userInfo['userName'])) {
 				if (!$this->__checkEmail($userInfo['email'])) {
 					$sql = "insert into users(utype_id,username,password,first_name,last_name,email,created,status) 
-							values(2,'".addslashes($userInfo['userName'])."','".md5($userInfo['password'])."','".addslashes($userInfo['firstName'])."','".addslashes($userInfo['lastName'])."','".addslashes($userInfo['email'])."',UNIX_TIMESTAMP(),1)";
+						values($userTypeId,'".addslashes($userInfo['userName'])."','".md5($userInfo['password'])."','".addslashes($userInfo['firstName'])."',
+						'".addslashes($userInfo['lastName'])."','".addslashes($userInfo['email'])."',UNIX_TIMESTAMP(),$userStatus)";
 					$this->db->query($sql);
-					$this->listUsers('ajax');
-					exit;
+					
+					// if render results
+					if ($renderResults) {					
+						$this->listUsers('ajax');
+						exit;
+					} else {
+						return array('success', 'Successfully created user');
+					}
 				}else{
 					$errMsg['email'] = formatErrorMsg($_SESSION['text']['login']['emailexist']);
 				}
@@ -281,8 +292,14 @@ class UserController extends Controller{
 				$errMsg['userName'] = formatErrorMsg($_SESSION['text']['login']['usernameexist']);
 			}
 		}
-		$this->set('errMsg', $errMsg);
-		$this->newUser();
+		
+		// if render results
+		if ($renderResults) {
+			$this->set('errMsg', $errMsg);
+			$this->newUser();
+		} else {
+			return array('error', $errMsg);
+		}
 	}
 	
 	function editUser($userId, $userInfo=''){		

@@ -41,9 +41,9 @@ class UserAPI extends Seopanel{
 
 	/**
 	 * function to get user information 
-	 * @param Array $info		The input details to process the api
-	 * 		$info['user_id']  	The id of the user
-	 * @return Array $userInfo  Contains informations about user
+	 * @param Array $info			The input details to process the api
+	 * 		$info['user_id']  		The id of the user
+	 * @return Array $returnInfo  	Contains informations about user
 	 */
 	function getUserInfo($info) {
 		$userId = intval($info['user_id']);
@@ -62,6 +62,36 @@ class UserAPI extends Seopanel{
 		$returnInfo['response'] = 'Error';
 		$returnInfo['error_msg'] = "The invalid user id provided";		
 		return 	$returnInfo;
+	}
+	
+	/**
+	 * function to create user
+	 * @param Array $info			The input details to process the api
+	 * 		$info['userName']		The username of the user
+	 * 		$info['password']		The password of the user
+	 * 		$info['firstName']		The first name f teh user
+	 * 		$info['lastName']		The last name of user
+	 * 		$info['email']			The user email
+	 * 		$info['type_id']		The user type id of user - default[2]
+	 * 		$info['status']			The status of the user - default[1]
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function createUser($info) {
+		$userInfo = $info;
+		$userInfo['confirmPassword'] = $userInfo['password'];
+		$return = $this->ctrler->createUser($userInfo, false);
+		
+		// if user creation is success
+		if ($return[0] == 'success') {
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = $return[1];
+		} else {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = $return[1];
+		}
+		
+		return 	$returnInfo;
+		
 	}
 	
 }
