@@ -142,7 +142,7 @@ class SettingsController extends Controller{
 	function getSponsors() {		
 		
 		if(empty($_COOKIE['sponsors'])){
-			$ret = $this->spider->getContent(SP_SPONSOR_PAGE . "?lang=". $_SESSION['lang_code']);			
+			$ret = $this->spider->getContent(SP_SPONSOR_PAGE . "?lang=". $_SESSION['lang_code'], true, false);			
 			setcookie("sponsors", $ret['page'], time()+ (60*60*24));
 		} else {
 			$ret['page'] = $_COOKIE['sponsors'];
