@@ -42,7 +42,7 @@ class UserAPI extends Seopanel{
 	/**
 	 * function to get user information 
 	 * @param Array $info			The input details to process the api
-	 * 		$info['user_id']  		The id of the user
+	 * 		$info['user_id']  		The id of the user	- Mandatory
 	 * @return Array $returnInfo  	Contains informations about user
 	 */
 	function getUserInfo($info) {
@@ -67,17 +67,20 @@ class UserAPI extends Seopanel{
 	/**
 	 * function to create user
 	 * @param Array $info			The input details to process the api
-	 * 		$info['userName']		The username of the user
-	 * 		$info['password']		The password of the user
-	 * 		$info['firstName']		The first name f teh user
-	 * 		$info['lastName']		The last name of user
-	 * 		$info['email']			The user email
-	 * 		$info['type_id']		The user type id of user - default[2]
-	 * 		$info['status']			The status of the user - default[1]
+	 * 		$info['username']		The username of the user	- Mandatory
+	 * 		$info['password']		The password of the user	- Mandatory
+	 * 		$info['first_name']		The first name f the user	- Mandatory
+	 * 		$info['last_name']		The last name of user	- Optional
+	 * 		$info['email']			The user email	- Mandatory
+	 * 		$info['type_id']		The user type id of user - default[2]	- Optional
+	 * 		$info['status']			The status of the user - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
 	function createUser($info) {
 		$userInfo = $info;
+		$userInfo['userName'] = $info['username'];
+		$userInfo['firstName'] = $info['first_name'];
+		$userInfo['lastName'] = $info['last_name'];
 		$userInfo['confirmPassword'] = $userInfo['password'];
 		$return = $this->ctrler->createUser($userInfo, false);
 		
@@ -88,6 +91,60 @@ class UserAPI extends Seopanel{
 		} else {
 			$returnInfo['response'] = 'Error';
 			$returnInfo['error_msg'] = $return[1];
+		}
+		
+		return 	$returnInfo;
+		
+	}
+	
+	/**
+	 * function to update user
+	 * @param Array $info			The input details to process the api
+	 * 		$info['id']				The id of the user	- Mandatory
+	 * 		$info['username']		The username of the user	- Optional
+	 * 		$info['password']		The password of the user	- Optional
+	 * 		$info['first_name']		The first name f the user	- Optional
+	 * 		$info['last_name']		The last name of user	- Optional
+	 * 		$info['email']			The user email	- Optional
+	 * 		$info['type_id']		The user type id of user 	- Optional
+	 * 		$info['status']			The status of the user	- Optional
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function updateUser($info) {
+		
+		$userId = intval($info['id']);
+		
+		// if user exists
+		if ($userInfo = $this->ctrler->__getUserInfo($userId)) {
+			
+			$userInfo['oldName'] = $userInfo['username'];
+			$userInfo['oldEmail'] = $userInfo['email'];
+			
+			// loop through inputs
+			foreach ($info as $key => $val) {
+				$userInfo[$key] = $val;
+			}
+			
+			// updte user info
+			$userInfo['userName'] = $userInfo['username'];
+			$userInfo['firstName'] = $userInfo['first_name'];
+			$userInfo['lastName'] = $userInfo['last_name'];
+			$userInfo['confirmPassword'] = $userInfo['password'];
+			$return = $this->ctrler->updateUser($userInfo, false);
+			
+			// if user creation is success
+			if ($return[0] == 'success') {
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $return[1];
+			} else {
+				$returnInfo['response'] = 'Error';
+				$returnInfo['error_msg'] = $return[1];
+			}
+			
+		} else {
+
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid user id provided";
 		}
 		
 		return 	$returnInfo;
