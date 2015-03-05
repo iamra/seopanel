@@ -69,6 +69,9 @@ define('SP_DB_PERSISTENT_CONNECTION', false);
 # The seo panel api file
 define('SP_API_FILE', 'api/api.php');
 
+# The crawl log clear interval in days
+define('SP_CRAWL_LOG_CLEAR_TIME', 90);
+
 # The seo panel help page
 define('SP_HELP_LINK', 'http://help.seopanel.in/');
 
