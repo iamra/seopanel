@@ -322,15 +322,23 @@ class UserController extends Controller{
 		$this->listUsers('ajax');		
 	}
 	
-	function updateUser($userInfo){
+	function updateUser($userInfo, $renderResults = true){
 	    $userInfo = sanitizeData($userInfo);
 		$userInfo['id'] = intval($userInfo['id']);
 		$this->set('post', $userInfo);
 		$errMsg['userName'] = formatErrorMsg($this->validate->checkUname($userInfo['userName']));
+		
+		// if password needs to be reset
 		if(!empty($userInfo['password'])){
 			$errMsg['password'] = formatErrorMsg($this->validate->checkPasswords($userInfo['password'], $userInfo['confirmPassword']));
 			$passStr = "password = '".md5($userInfo['password'])."',";
 		}
+		
+		// if change status of user
+		if (isset($userInfo['status'])) {
+			$activeStr = "status = '".intval($userInfo['status'])."',";
+		}
+		
 		$errMsg['firstName'] = formatErrorMsg($this->validate->checkBlank($userInfo['firstName']));
 		$errMsg['lastName'] = formatErrorMsg($this->validate->checkBlank($userInfo['lastName']));
 		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userInfo['email']));
@@ -350,21 +358,37 @@ class UserController extends Controller{
 				}
 			}
 			
+			// if no error to inputs
 			if (!$this->validate->flagErr) {
 				$sql = "update users set
 						username = '".addslashes($userInfo['userName'])."',
 						first_name = '".addslashes($userInfo['firstName'])."',
 						last_name = '".addslashes($userInfo['lastName'])."',
 						$passStr
+						$activeStr
 						email = '".addslashes($userInfo['email'])."'
 						where id={$userInfo['id']}";
 				$this->db->query($sql);
-				$this->listUsers('ajax');
-				exit;
+				
+				// if render results
+				if ($renderResults) {
+					$this->listUsers('ajax');
+					exit;
+				} else {
+					return array('success', 'Successfully updated user');
+				}
+				
 			}
 		}
-		$this->set('errMsg', $errMsg);
-		$this->editUser($userInfo['id'], $userInfo);
+		
+		if ($renderResults) {
+			$this->set('errMsg', $errMsg);
+			$this->editUser($userInfo['id'], $userInfo);
+		} else {
+			return array('error', $errMsg);
+		}
+		
+		
 	}
 	
 	function showMyProfile($userInfo=''){
