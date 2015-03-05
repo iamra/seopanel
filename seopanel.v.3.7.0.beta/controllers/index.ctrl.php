@@ -195,7 +195,7 @@ class IndexController extends Controller{
 			
 			default:
 				if(empty($_COOKIE['default_news'])){
-					$ret = $this->spider->getContent(SP_NEWS_PAGE . "?lang=". $_SESSION['lang_code']);
+					$ret = $this->spider->getContent(SP_NEWS_PAGE . "?lang=". $_SESSION['lang_code'], true, false);
 					setcookie("default_news", $ret['page'], time()+ (60*60*24));
 				} else {
 					$ret['page'] = $_COOKIE['default_news'];
