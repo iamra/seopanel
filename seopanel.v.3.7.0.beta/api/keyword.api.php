@@ -81,7 +81,7 @@ class KeywordAPI extends Seopanel{
 			$toTime = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
 		}
 		
-		return $fromTime;;
+		return $toTime;;
 	}	
 	
 	/**
@@ -96,8 +96,8 @@ class KeywordAPI extends Seopanel{
 		
 		$fromTime = $this->getFromTime($info);
 		$toTime = $this->getToTime($info);		
-		$positionInfo = $this->reportCtrler->__getKeywordSearchReport($info['id'], $fromTime, $toTime);
-
+		$positionInfo = $this->reportCtrler->__getKeywordSearchReport($info['id'], $fromTime, $toTime, true);
+				
 		// if position information is not empty
 		if (empty($positionInfo)) {
 			$returnInfo['response'] = 'Error';;
@@ -121,7 +121,7 @@ class KeywordAPI extends Seopanel{
 	 */
 	function getReportByWebsiteId($info) {
 		
-		$websiteId = intval($info['website_id']);
+		$websiteId = intval($info['id']);
 		if (empty($websiteId)) {
 			return array(
 				'response' => 'Error',
@@ -134,7 +134,7 @@ class KeywordAPI extends Seopanel{
 		$list = $this->ctrler->__getAllKeywords('', $websiteId);
 		$keywordList = array();
 		foreach($list as $keywordInfo){
-			$positionInfo = $this->ctrler->__getKeywordSearchReport($keywordInfo['id'], $fromTime, $toTime);
+			$positionInfo = $this->reportCtrler->__getKeywordSearchReport($keywordInfo['id'], $fromTime, $toTime, true);
 			$keywordInfo['position_info'] = $positionInfo;
 			$keywordList[$keywordInfo['id']] = $keywordInfo;
 		}

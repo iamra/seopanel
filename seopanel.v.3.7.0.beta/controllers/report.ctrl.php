@@ -27,7 +27,7 @@ class ReportController extends Controller {
 	var $proxyCheckCount = 1;
 
 	# func to get keyword report summary
-	function __getKeywordSearchReport($keywordId, $fromTime, $toTime){
+	function __getKeywordSearchReport($keywordId, $fromTime, $toTime, $apiCall = false){
 		$positionInfo = array();
 		
 		if(empty($this->seLIst)){
@@ -52,9 +52,9 @@ class ReportController extends Controller {
 				if ($i > 0) {
 					$rankDiff = $prevRank - $repInfo['rank'];
 					if ($rankDiff > 0) {
-						$rankDiff = "<font class='green'>($rankDiff)</font>";
-					}elseif ($rankDiff < 0) {
-						$rankDiff = "<font class='red'>($rankDiff)</font>";
+						$rankDiff = $apiCall ? $rankDiff : "<font class='green'>($rankDiff)</font>";
+					} elseif ($rankDiff < 0) {
+						$rankDiff = $apiCall ? $rankDiff : "<font class='red'>($rankDiff)</font>";
 					}
 				}
 				$positionInfo[$seInfo['id']]['rank_diff'] = empty ($rankDiff) ? '' : $rankDiff;
