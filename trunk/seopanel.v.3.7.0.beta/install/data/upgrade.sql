@@ -20,6 +20,8 @@ UPDATE `settings` SET `set_category` = 'api' WHERE set_name='SP_API_KEY';
 
 UPDATE `settings` SET `set_val` = '0' WHERE set_name='SP_USER_REGISTRATION';
 
+UPDATE `settings` SET `set_val` = '1' WHERE set_name='SP_NUMBER_KEYWORDS_CRON';
+
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'settings', 'CHECK_MAX_PROXY_COUNT_IF_FAILED', 'Maximum number of proxies used in single execution');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
