@@ -23,6 +23,7 @@
 include_once("../includes/sp-load.php");
 include_once(SP_CTRLPATH."/api.ctrl.php");
 include_once(SP_CTRLPATH."/settings.ctrl.php");
+include(SP_ABSPATH . "/api/api.functions.php");
 $controller = New APIController();
 
 $inputInfo = ($_SERVER['REQUEST_METHOD'] == 'POST') ? $_POST : $_GET;
