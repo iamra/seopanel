@@ -41,6 +41,12 @@ class KeywordAPI extends Seopanel{
 	var $reportCtrler;
 	
 	/**
+	 * The list contains search engine details
+	 * @var Array
+	 */
+	var $seList;
+	
+	/**
 	 * The constructor of API
 	 */
 	function KeywordAPI() {
@@ -48,6 +54,14 @@ class KeywordAPI extends Seopanel{
 		include_once(SP_CTRLPATH . "/report.ctrl.php");
 		$this->ctrler = new KeywordController();
 		$this->reportCtrler = New ReportController();
+		$seController = New SearchEngineController();
+		$list = $seController->__getAllSearchEngines();
+		$this->seList = array();
+		
+		// loop through the search engine and assign id as key
+		foreach ($list as $listInfo) {
+			$this->seList[$listInfo['id']] = $listInfo;
+		}
 	}
 	
 	/**
@@ -82,6 +96,26 @@ class KeywordAPI extends Seopanel{
 		}
 		
 		return $toTime;;
+	}
+
+	/**
+	 * function to get keyword report and format it
+	 * @param id $keywordInfo		The information about keyword
+	 * @param int $fromTime			The time stamp of from time
+	 * @param int $toTime			The time stamp of to time
+	 * @return $keywordInfo			The formatted keyword info with position details
+	 */
+	function getFormattedReport($keywordInfo, $fromTime, $toTime) {
+		$positionInfo = $this->reportCtrler->__getKeywordSearchReport($keywordInfo['id'], $fromTime, $toTime, true);
+				
+		// loop through and add search engine name
+		foreach ($positionInfo as $seId => $info) {
+			$positionInfo[$seId]['search_engine'] = $this->seList[$seId]['domain'];
+			$positionInfo[$seId]['date'] = date('Y-m-d', $toTime);
+		}
+		
+		$keywordInfo['position_info'] = $positionInfo;
+		return $keywordInfo; 
 	}	
 	
 	/**
@@ -95,8 +129,9 @@ class KeywordAPI extends Seopanel{
 	function getReportById($info) {
 		
 		$fromTime = $this->getFromTime($info);
-		$toTime = $this->getToTime($info);		
-		$positionInfo = $this->reportCtrler->__getKeywordSearchReport($info['id'], $fromTime, $toTime, true);
+		$toTime = $this->getToTime($info);
+		$keywordInfo = $this->ctrler->__getKeywordInfo($info['id']);
+		$positionInfo = $this->getFormattedReport($keywordInfo, $fromTime, $toTime);
 				
 		// if position information is not empty
 		if (empty($positionInfo)) {
@@ -109,12 +144,12 @@ class KeywordAPI extends Seopanel{
 		
 		return 	$returnInfo;
 		
-	}	
+	}
 	
 	/**
 	 * function to get keyword report using website id
 	 * @param Array $info			The input details to process the api
-	 * 		$info['website_id']  	The id of the website	- Mandatory
+	 * 		$info['id']  			The id of the website	- Mandatory
 	 * 		$info['from_time']  	The from time of report in (yyyy-mm-dd) Eg: 2014-12-24	- Optional - (default => Yesterday)
 	 * 		$info['to_time']  		The to time of report in (yyyy-mm-dd) Eg: 2014-12-28	- Optional - (default => Today)
 	 * @return Array $returnInfo  	Contains informations about keyword reports
@@ -132,11 +167,59 @@ class KeywordAPI extends Seopanel{
 		$fromTime = $this->getFromTime($info);
 		$toTime = $this->getToTime($info);
 		$list = $this->ctrler->__getAllKeywords('', $websiteId);
+
+		// lopp through keywords
 		$keywordList = array();
-		foreach($list as $keywordInfo){
-			$positionInfo = $this->reportCtrler->__getKeywordSearchReport($keywordInfo['id'], $fromTime, $toTime, true);
-			$keywordInfo['position_info'] = $positionInfo;
-			$keywordList[$keywordInfo['id']] = $keywordInfo;
+		foreach ($list as $keywordInfo) {
+			$keywordList[$keywordInfo['id']] = $this->getFormattedReport($keywordInfo, $fromTime, $toTime);
+		}
+
+		// if position information is not empty
+		if (empty($keywordList)) {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['result'] = "No reports found!";
+		} else {
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = $keywordList;
+		}
+		
+		return 	$returnInfo;
+		
+	}	
+	
+	/**
+	 * function to get keyword report using user id
+	 * @param Array $info			The input details to process the api
+	 * 		$info['id']  			The id of the user	- Mandatory
+	 * 		$info['from_time']  	The from time of report in (yyyy-mm-dd) Eg: 2014-12-24	- Optional - (default => Yesterday)
+	 * 		$info['to_time']  		The to time of report in (yyyy-mm-dd) Eg: 2014-12-28	- Optional - (default => Today)
+	 * @return Array $returnInfo  	Contains informations about keyword reports
+	 */
+	function getReportByUserId($info) {
+		
+		$userId = intval($info['id']);
+		if (empty($userId)) {
+			return array(
+				'response' => 'Error',
+				'result' => 'Invalid user id'
+			);
+		}		
+		
+		$fromTime = $this->getFromTime($info);
+		$toTime = $this->getToTime($info);
+		
+		// get all active websites
+		$websiteController = New WebsiteController();
+		$websiteList = $websiteController->__getAllWebsitesWithActiveKeywords($userId, true);
+		
+		// loop through websites
+		$keywordList = array();
+		foreach ($websiteList as $websiteInfo) {
+			$websiteId = $websiteInfo['id'];
+			$list = $this->ctrler->__getAllKeywords('', $websiteId);
+			foreach ($list as $keywordInfo) {
+				$keywordList[$keywordInfo['id']] = $this->getFormattedReport($keywordInfo, $fromTime, $toTime);
+			}
 		}
 
 		// if position information is not empty
