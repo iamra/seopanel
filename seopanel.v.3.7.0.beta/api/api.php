@@ -72,6 +72,7 @@ if ($controller->verifyAPICredentials($inputInfo)) {
 	$returnInfo['error_msg'] = "API Authentication failed. Please provide valid API key and secret!";
 }
 
+// for debugging added below line
 // debugVar($returnInfo);exit;
 
 // encode as json and print 
