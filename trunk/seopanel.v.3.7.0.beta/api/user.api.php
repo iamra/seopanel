@@ -42,11 +42,11 @@ class UserAPI extends Seopanel{
 	/**
 	 * function to get user information 
 	 * @param Array $info			The input details to process the api
-	 * 		$info['user_id']  		The id of the user	- Mandatory
+	 * 		$info['id']  		    The id of the user	- Mandatory
 	 * @return Array $returnInfo  	Contains informations about user
 	 */
 	function getUserInfo($info) {
-		$userId = intval($info['user_id']);
+		$userId = intval($info['id']);
 		$returnInfo = array();
 		
 		// validate the user ifd and user info

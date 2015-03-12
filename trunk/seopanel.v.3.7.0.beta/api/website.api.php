@@ -45,6 +45,7 @@ class WebsiteAPI extends Seopanel{
 	 */
 	function WebsiteAPI() {
 		$this->ctrler = new WebsiteController();
+		$seController = New SearchEngineController();
 		$list = $seController->__getAllSearchEngines();
 		$this->seList = array();
 		
@@ -60,22 +61,50 @@ class WebsiteAPI extends Seopanel{
 	}
 
 	/**
-	 * function to get website report and format it
+	 * function to get website reports rank, backlinks, saturation and directory submission
 	 * @param id $websiteInfo		The information about website
 	 * @param int $fromTime			The time stamp of from time
 	 * @param int $toTime			The time stamp of to time
 	 * @return $websiteInfo			The formatted website info with position details
 	 */
 	function getFormattedReport($websiteInfo, $fromTime, $toTime) {
-		$positionInfo = $this->reportCtrler->__getWebsiteSearchReport($websiteInfo['id'], $fromTime, $toTime, true);
-				
-		// loop through and add search engine name
-		foreach ($positionInfo as $seId => $info) {
-			$positionInfo[$seId]['search_engine'] = $this->seList[$seId]['domain'];
-			$positionInfo[$seId]['date'] = date('Y-m-d', $toTime);
-		}
 		
-		$websiteInfo['position_info'] = $positionInfo;
+		// create required controllers
+		$rankCtrler = New RankController();
+		$backlinlCtrler = New BacklinkController();
+		$saturationCtrler = New SaturationCheckerController();
+		$dirCtrler = New DirectoryController();
+		
+		// rank reports
+		$report = $rankCtrler->__getWebsiteRankReport($websiteInfo['id'], $fromTime, $toTime);
+		$report = $report[0];
+		$websiteInfo['alexa']['alexarank']['rank'] = empty($report['alexa_rank']) ? "-" : $report['alexa_rank'];
+		$websiteInfo['alexa']['alexarank']['diff'] = removeBraces($report['rank_diff_alexa']);
+		$websiteInfo['google']['pagerank']['rank'] = empty($report['google_pagerank']) ? "-" : $report['google_pagerank'];
+		$websiteInfo['google']['pagerank']['diff'] = removeBraces($report['rank_diff_google']);
+		
+		// back links reports
+		$report = $backlinlCtrler->__getWebsitebacklinkReport($websiteInfo['id'], $fromTime, $toTime);
+		$report = $report[0];
+		$websiteInfo['google']['backlinks']['rank'] = empty($report['google']) ? "-" : $report['google'];
+		$websiteInfo['google']['backlinks']['diff'] = $report['rank_diff_google'];		
+		$websiteInfo['alexa']['backlinks']['rank'] = empty($report['alexa']) ? "-" : $report['alexa'];
+		$websiteInfo['alexa']['backlinks']['diff'] = $report['rank_diff_alexa'];
+		$websiteInfo['bing']['backlinks']['rank'] = empty($report['msn']) ? "-" : $report['msn'];
+		$websiteInfo['bing']['backlinks']['diff'] = $report['rank_diff_msn'];
+			
+		// saturaton rank reports
+		$report = $saturationCtrler->__getWebsiteSaturationReport($websiteInfo['id'], $fromTime, $toTime);
+		$report = $report[0];
+		$websiteInfo['google']['indexed']['rank'] = empty($report['google']) ? "-" : $report['google'];
+		$websiteInfo['google']['indexed']['diff'] = $report['rank_diff_google'];
+		$websiteInfo['bing']['indexed']['rank'] = empty($report['msn']) ? "-" : $report['msn'];
+		$websiteInfo['bing']['indexed']['diff'] = $report['rank_diff_msn'];
+			
+		// directory submission stats
+		$websiteInfo['dirsub']['total'] = $dirCtrler->__getTotalSubmitInfo($websiteInfo['id']);
+		$websiteInfo['dirsub']['active'] = $dirCtrler->__getTotalSubmitInfo($websiteInfo['id'], true);
+		
 		return $websiteInfo; 
 	}	
 	
@@ -89,58 +118,23 @@ class WebsiteAPI extends Seopanel{
 	 */
 	function getReportById($info) {
 		
-		$fromTime = $this->getFromTime($info);
-		$toTime = $this->getToTime($info);
+		$fromTime = getFromTime($info);
+		$toTime = getToTime($info);
 		$websiteInfo = $this->ctrler->__getWebsiteInfo($info['id']);
 		
-		
-		$rankCtrler = New RankController();
-		$backlinlCtrler = New BacklinkController();
-		$saturationCtrler = New SaturationCheckerController();
-		$dirCtrler = New DirectoryController();
-			
-		$websiteRankList = array();
-		foreach($websiteList as $listInfo){
-		
-			// if only needs to show onewebsite selected
-			if (!empty($websiteId) && ($listInfo['id'] != $websiteId)) continue;
-			 
-			# rank reports
-			$report = $rankCtrler->__getWebsiteRankReport($listInfo['id'], $fromTime, $toTime);
-			$report = $report[0];
-			$listInfo['alexarank'] = empty($report['alexa_rank']) ? "-" : $report['alexa_rank']." ".$report['rank_diff_alexa'];
-				$listInfo['googlerank'] = empty($report['google_pagerank']) ? "-" : $report['google_pagerank']." ".$report['rank_diff_google'];
-		
-				# back links reports
-			$report = $backlinlCtrler->__getWebsitebacklinkReport($listInfo['id'], $fromTime, $toTime);
-			$report = $report[0];
-			$listInfo['google']['backlinks'] = empty($report['google']) ? "-" : $report['google']." ".$report['rank_diff_google'];
-			$listInfo['alexa']['backlinks'] = empty($report['alexa']) ? "-" : $report['alexa']." ".$report['rank_diff_alexa'];
-					$listInfo['msn']['backlinks'] = empty($report['msn']) ? "-" : $report['msn']." ".$report['rank_diff_msn'];
-		
-							# rank reports
-				$report = $saturationCtrler->__getWebsiteSaturationReport($listInfo['id'], $fromTime, $toTime);
-						$report = $report[0];
-						$listInfo['google']['indexed'] = empty($report['google']) ? "-" : $report['google']." ".$report['rank_diff_google'];
-								$listInfo['msn']['indexed'] = empty($report['msn']) ? "-" : $report['msn']." ".$report['rank_diff_msn'];
-		
-										$listInfo['dirsub']['total'] = $dirCtrler->__getTotalSubmitInfo($listInfo['id']);
-										$listInfo['dirsub']['active'] = $dirCtrler->__getTotalSubmitInfo($listInfo['id'], true);
-										$websiteRankList[] = $listInfo;
-		}		
-				
-		// if position information is not empty
-		if (empty($positionInfo)) {
-			$returnInfo['response'] = 'Error';;
-			$returnInfo['result'] = "No reports found!";
+		// if website not exists
+		if (empty($websiteInfo['id'])) {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid website id provided";
 		} else {
 			$returnInfo['response'] = 'success';
-			$returnInfo['result'] = $websiteRankList[0];
+			$returnInfo['result'] = $this->getFormattedReport($websiteInfo, $fromTime, $toTime);
 		}
-		
+			
 		return 	$returnInfo;
 		
-	}	
+	}
+	
 	
 	/**
 	 * function to get website report using user id
@@ -152,6 +146,7 @@ class WebsiteAPI extends Seopanel{
 	 */
 	function getReportByUserId($info) {
 		
+		// if not valid user
 		$userId = intval($info['id']);
 		if (empty($userId)) {
 			return array(
@@ -160,21 +155,15 @@ class WebsiteAPI extends Seopanel{
 			);
 		}		
 		
-		$fromTime = $this->getFromTime($info);
-		$toTime = $this->getToTime($info);
-		
 		// get all active websites
-		$websiteController = New WebsiteController();
-		$websiteList = $websiteController->__getAllWebsitesWithActiveWebsites($userId, true);
-		
+		$wbList = $this->ctrler->__getAllWebsites($userId);
+		$fromTime = getFromTime($info);
+		$toTime = getToTime($info);
+				
 		// loop through websites
 		$websiteList = array();
-		foreach ($websiteList as $websiteInfo) {
-			$websiteId = $websiteInfo['id'];
-			$list = $this->ctrler->__getAllWebsites('', $websiteId);
-			foreach ($list as $websiteInfo) {
-				$websiteList[$websiteInfo['id']] = $this->getFormattedReport($websiteInfo, $fromTime, $toTime);
-			}
+		foreach ($wbList as $websiteInfo) {
+			$websiteList[$websiteInfo['id']] = $this->getFormattedReport($websiteInfo, $fromTime, $toTime);
 		}
 
 		// if position information is not empty
@@ -188,6 +177,108 @@ class WebsiteAPI extends Seopanel{
 		
 		return 	$returnInfo;
 		
+	}
+	
+	
+	/**
+	 * function to get website information
+	 * @param Array $info			The input details to process the api
+	 * 		$info['id']  		    The id of the website	- Mandatory
+	 * @return Array $returnInfo  	Contains informations about website
+	 */
+	function getWebsiteInfo($info) {
+		$websiteId = intval($info['id']);
+		$returnInfo = array();
+	
+		// validate the website ifd and website info
+		if (!empty($websiteId)) {
+			if ($websiteInfo = $this->ctrler->__getWebsiteInfo($websiteId)) {
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $websiteInfo;
+				return $returnInfo;
+			}
+		}
+	
+		$returnInfo['response'] = 'Error';
+		$returnInfo['error_msg'] = "The invalid website id provided";
+		return 	$returnInfo;
+	}
+	
+	/**
+	 * function to create website
+	 * @param Array $info				The input details to process the api
+	 * 		$info['name']				The name of the website	- Mandatory
+	 * 		$info['url']				The url of the website	- Mandatory
+	 * 		$info['title']				The title of the website - Optional
+	 * 		$info['description']		The description of website - Optional
+	 * 		$info['keywords']			The keyword of the website	- Optional
+	 * 		$info['user_id']			The user id of website - Mandatory
+	 * 		$info['status']				The status of the website - default[1]	- Optional
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function createWebsite($info) {
+		$websiteInfo = $info;
+		$websiteInfo['userid'] = $info['user_id'];
+		$return = $this->ctrler->createWebsite($websiteInfo, true);
+	
+		// if website creation is success
+		if ($return[0] == 'success') {
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = $return[1];
+		} else {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = $return[1];
+		}
+	
+		return 	$returnInfo;
+	
+	}
+	
+	/**
+	 * function to update website
+	 * @param Array $info				The input details to process the api
+	 * 		$info['id']					The id of the website	- Mandatory
+	 * 		$info['name']				The name of the website	- Optional
+	 * 		$info['url']				The url of the website	- Optional
+	 * 		$info['title']				The title of the website - Optional
+	 * 		$info['description']		The description of website - Optional
+	 * 		$info['keywords']			The keyword of the website	- Optional
+	 * 		$info['user_id']			The user id of website - Mandatory
+	 * 		$info['status']				The status of the website - default[1]	- Optional
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function updateWebsite($info) {
+	
+		$websiteId = intval($info['id']);
+	
+		// if website exists
+		if ($websiteInfo = $this->ctrler->__getWebsiteInfo($websiteId)) {
+			
+			// loop through inputs
+			foreach ($info as $key => $val) {
+				$websiteInfo[$key] = $val;
+			}
+
+			// update website call as api call
+			$return = $this->ctrler->updateWebsite($websiteInfo, true);
+				
+			// if website creation is success
+			if ($return[0] == 'success') {
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $return[1];
+			} else {
+				$returnInfo['response'] = 'Error';
+				$returnInfo['error_msg'] = $return[1];
+			}
+				
+		} else {
+	
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid website id provided";
+		}
+	
+		return 	$returnInfo;
+	
 	}
 	
 }
