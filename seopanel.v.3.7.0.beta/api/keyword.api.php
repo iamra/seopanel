@@ -183,6 +183,8 @@ class KeywordAPI extends Seopanel{
 		foreach ($websiteList as $websiteInfo) {
 			$websiteId = $websiteInfo['id'];
 			$list = $this->ctrler->__getAllKeywords('', $websiteId);
+			
+			// loop through keywords
 			foreach ($list as $keywordInfo) {
 				$keywordList[$keywordInfo['id']] = $this->getFormattedReport($keywordInfo, $fromTime, $toTime);
 			}
@@ -199,6 +201,105 @@ class KeywordAPI extends Seopanel{
 		
 		return 	$returnInfo;
 		
+	}
+
+	/**
+	 * function to get keyword information
+	 * @param Array $info			The input details to process the api
+	 * 		$info['id']  		    The id of the keyword	- Mandatory
+	 * @return Array $returnInfo  	Contains informations about keyword
+	 */
+	function getKeywordInfo($info) {
+		$keywordId = intval($info['id']);
+		$returnInfo = array();
+	
+		// validate the keyword ifd and keyword info
+		if (!empty($keywordId)) {
+			if ($keywordInfo = $this->ctrler->__getKeywordInfo($keywordId)) {
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $keywordInfo;
+				return $returnInfo;
+			}
+		}
+	
+		$returnInfo['response'] = 'Error';
+		$returnInfo['error_msg'] = "The invalid keyword id provided";
+		return 	$returnInfo;
+	}
+	
+	/**
+	 * function to create keyword
+	 * @param Array $info				The input details to process the api
+	 * 		$info['name']				The name of the keyword	- Mandatory
+	 * 		$info['lang_code']			The language code of the keyword	- Optional
+	 * 		$info['country_code']		The country code of the keyword - Optional
+	 * 		$info['website_id']			The description of keyword - Mandatory
+	 * 		$info['searchengines']		The keyword of the keyword	- Mandatory
+	 * 		$info['status']				The status of the keyword - default[1]	- Optional
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function createKeyword($info) {
+		$keywordInfo = $info;
+		$keywordInfo['userid'] = $info['user_id'];
+		$return = $this->ctrler->createKeyword($keywordInfo, true);
+	
+		// if keyword creation is success
+		if ($return[0] == 'success') {
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = $return[1];
+		} else {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = $return[1];
+		}
+	
+		return 	$returnInfo;
+	
+	}
+	
+	/**
+	 * function to update keyword
+	 * @param Array $info				The input details to process the api
+	 * 		$info['id']					The id of the keyword	- Mandatory
+	 * 		$info['name']				The name of the keyword	- Optional
+	 * 		$info['lang_code']			The language code of the keyword	- Optional
+	 * 		$info['country_code']		The country code of the keyword - Optional
+	 * 		$info['website_id']			The description of keyword - Optional
+	 * 		$info['searchengines']		The keyword of the keyword	- Optional
+	 * 		$info['status']				The status of the keyword - default[1]	- Optional
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function updateKeyword($info) {
+	
+		$keywordId = intval($info['id']);
+	
+		// if keyword exists
+		if ($keywordInfo = $this->ctrler->__getKeywordInfo($keywordId)) {
+			
+			// loop through inputs
+			foreach ($info as $key => $val) {
+				$keywordInfo[$key] = $val;
+			}
+	
+			// update keyword call as api call
+			$return = $this->ctrler->updateKeyword($keywordInfo, true);
+	
+			// if keyword creation is success
+			if ($return[0] == 'success') {
+				$returnInfo['response'] = 'success';
+				$returnInfo['result'] = $return[1];
+			} else {
+				$returnInfo['response'] = 'Error';
+				$returnInfo['error_msg'] = $return[1];
+			}
+	
+		} else {
+	
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid keyword id provided";
+		}
+	
+		return 	$returnInfo;
+	
 	}
 	
 }
