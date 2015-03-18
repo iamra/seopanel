@@ -231,16 +231,26 @@ class KeywordAPI extends Seopanel{
 	 * function to create keyword
 	 * @param Array $info				The input details to process the api
 	 * 		$info['name']				The name of the keyword	- Mandatory
-	 * 		$info['lang_code']			The language code of the keyword	- Optional
-	 * 		$info['country_code']		The country code of the keyword - Optional
-	 * 		$info['website_id']			The description of keyword - Mandatory
-	 * 		$info['searchengines']		The keyword of the keyword	- Mandatory
+	 * 		$info['website_id']			The website id of keyword - Mandatory
+	 * 		$info['searchengines']		The search engine ids of the keyword	- Mandatory[id1:id2]
+	 * 		$info['lang_code']			The language code of the keyword	- Optional[de,fr]
+	 * 		$info['country_code']		The country code of the keyword - Optional[ar,in]
 	 * 		$info['status']				The status of the keyword - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
 	function createKeyword($info) {
+		
+		// if empty website id provided
+		if (empty($info['website_id'])) {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "Please provide valid website id.";
+			return $returnInfo;
+		}
+
 		$keywordInfo = $info;
 		$keywordInfo['userid'] = $info['user_id'];
+		$this->ctrler->spTextKeyword = $this->ctrler->getLanguageTexts('keyword', SP_API_LANG_CODE);
+		$keywordInfo['searchengines'] = explode(':', $keywordInfo['searchengines']); 
 		$return = $this->ctrler->createKeyword($keywordInfo, true);
 	
 		// if keyword creation is success
@@ -261,10 +271,10 @@ class KeywordAPI extends Seopanel{
 	 * @param Array $info				The input details to process the api
 	 * 		$info['id']					The id of the keyword	- Mandatory
 	 * 		$info['name']				The name of the keyword	- Optional
-	 * 		$info['lang_code']			The language code of the keyword	- Optional
-	 * 		$info['country_code']		The country code of the keyword - Optional
+	 * 		$info['lang_code']			The language code of the keyword	- Optional[de,fr]
+	 * 		$info['country_code']		The country code of the keyword - Optional[ar,in]
 	 * 		$info['website_id']			The description of keyword - Optional
-	 * 		$info['searchengines']		The keyword of the keyword	- Optional
+	 * 		$info['searchengines']		The search engine ids of the keyword	- Optional[id1:id2]
 	 * 		$info['status']				The status of the keyword - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
@@ -275,12 +285,16 @@ class KeywordAPI extends Seopanel{
 		// if keyword exists
 		if ($keywordInfo = $this->ctrler->__getKeywordInfo($keywordId)) {
 			
+			$keywordInfo['oldName'] = $keywordInfo['name'];
+			
 			// loop through inputs
 			foreach ($info as $key => $val) {
 				$keywordInfo[$key] = $val;
 			}
 	
 			// update keyword call as api call
+			$keywordInfo['searchengines'] = explode(':', $keywordInfo['searchengines']); 
+			$this->ctrler->spTextKeyword = $this->ctrler->getLanguageTexts('keyword', SP_API_LANG_CODE);
 			$return = $this->ctrler->updateKeyword($keywordInfo, true);
 	
 			// if keyword creation is success
@@ -300,6 +314,34 @@ class KeywordAPI extends Seopanel{
 	
 		return 	$returnInfo;
 	
+	}
+	
+	/**
+	 * function to delete keyword
+	 * @param Array $info				The input details to process the api
+	 * 		$info['id']					The id of the keyword	- Mandatory
+	 * @return Array $returnInfo  	Contains details about the operation succes or not
+	 */
+	function deleteKeyword($info) {
+		
+		$keywordId = intval($info['id']);
+		
+		// if keyword exists
+		if ($keywordInfo = $this->ctrler->__getKeywordInfo($keywordId)) {
+			
+			// update keyword call as api call
+			$this->ctrler->__deleteKeyword($keywordId);
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = "Successfully deleted keyword";
+			
+		} else {
+	
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid keyword id provided";
+		}
+	
+		return 	$returnInfo;
+		
 	}
 	
 }

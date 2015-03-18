@@ -58,6 +58,7 @@ class WebsiteAPI extends Seopanel{
 		include_once(SP_CTRLPATH."/rank.ctrl.php");
 		include_once(SP_CTRLPATH."/backlink.ctrl.php");
 		include_once(SP_CTRLPATH."/directory.ctrl.php");
+		include_once(SP_CTRLPATH."/keyword.ctrl.php");
 	}
 
 	/**
@@ -78,32 +79,41 @@ class WebsiteAPI extends Seopanel{
 		// rank reports
 		$report = $rankCtrler->__getWebsiteRankReport($websiteInfo['id'], $fromTime, $toTime);
 		$report = $report[0];
+		$toTimeDate =  date('Y-m-d', $toTime);
 		$websiteInfo['alexa']['alexarank']['rank'] = empty($report['alexa_rank']) ? "-" : $report['alexa_rank'];
 		$websiteInfo['alexa']['alexarank']['diff'] = removeBraces($report['rank_diff_alexa']);
+		$websiteInfo['alexa']['alexarank']['date'] = $toTimeDate; 
 		$websiteInfo['google']['pagerank']['rank'] = empty($report['google_pagerank']) ? "-" : $report['google_pagerank'];
 		$websiteInfo['google']['pagerank']['diff'] = removeBraces($report['rank_diff_google']);
+		$websiteInfo['google']['pagerank']['date'] = $toTimeDate;
 		
 		// back links reports
 		$report = $backlinlCtrler->__getWebsitebacklinkReport($websiteInfo['id'], $fromTime, $toTime);
 		$report = $report[0];
 		$websiteInfo['google']['backlinks']['rank'] = empty($report['google']) ? "-" : $report['google'];
-		$websiteInfo['google']['backlinks']['diff'] = $report['rank_diff_google'];		
+		$websiteInfo['google']['backlinks']['diff'] = $report['rank_diff_google'];
+		$websiteInfo['google']['backlinks']['date'] = $toTimeDate;
 		$websiteInfo['alexa']['backlinks']['rank'] = empty($report['alexa']) ? "-" : $report['alexa'];
 		$websiteInfo['alexa']['backlinks']['diff'] = $report['rank_diff_alexa'];
+		$websiteInfo['alexa']['backlinks']['date'] = $toTimeDate;
 		$websiteInfo['bing']['backlinks']['rank'] = empty($report['msn']) ? "-" : $report['msn'];
 		$websiteInfo['bing']['backlinks']['diff'] = $report['rank_diff_msn'];
+		$websiteInfo['bing']['backlinks']['date'] = $toTimeDate;
 			
 		// saturaton rank reports
 		$report = $saturationCtrler->__getWebsiteSaturationReport($websiteInfo['id'], $fromTime, $toTime);
 		$report = $report[0];
 		$websiteInfo['google']['indexed']['rank'] = empty($report['google']) ? "-" : $report['google'];
 		$websiteInfo['google']['indexed']['diff'] = $report['rank_diff_google'];
+		$websiteInfo['google']['indexed']['date'] = $toTimeDate;
 		$websiteInfo['bing']['indexed']['rank'] = empty($report['msn']) ? "-" : $report['msn'];
 		$websiteInfo['bing']['indexed']['diff'] = $report['rank_diff_msn'];
+		$websiteInfo['bing']['indexed']['date'] = $toTimeDate;
 			
 		// directory submission stats
 		$websiteInfo['dirsub']['total'] = $dirCtrler->__getTotalSubmitInfo($websiteInfo['id']);
 		$websiteInfo['dirsub']['active'] = $dirCtrler->__getTotalSubmitInfo($websiteInfo['id'], true);
+		$websiteInfo['dirsub']['date'] = $toTimeDate;
 		
 		return $websiteInfo; 
 	}	
@@ -209,16 +219,25 @@ class WebsiteAPI extends Seopanel{
 	 * @param Array $info				The input details to process the api
 	 * 		$info['name']				The name of the website	- Mandatory
 	 * 		$info['url']				The url of the website	- Mandatory
+	 * 		$info['user_id']			The user id of website - Mandatory
 	 * 		$info['title']				The title of the website - Optional
 	 * 		$info['description']		The description of website - Optional
 	 * 		$info['keywords']			The keyword of the website	- Optional
-	 * 		$info['user_id']			The user id of website - Mandatory
 	 * 		$info['status']				The status of the website - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
 	function createWebsite($info) {
 		$websiteInfo = $info;
+		
+		// check for user id
+		if (empty($info['user_id'])) {
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = 'Invalid user id';
+			return $returnInfo;
+		}
+		
 		$websiteInfo['userid'] = $info['user_id'];
+		$this->ctrler->spTextWeb = $this->ctrler->getLanguageTexts('website', SP_API_LANG_CODE);
 		$return = $this->ctrler->createWebsite($websiteInfo, true);
 	
 		// if website creation is success
@@ -243,7 +262,7 @@ class WebsiteAPI extends Seopanel{
 	 * 		$info['title']				The title of the website - Optional
 	 * 		$info['description']		The description of website - Optional
 	 * 		$info['keywords']			The keyword of the website	- Optional
-	 * 		$info['user_id']			The user id of website - Mandatory
+	 * 		$info['user_id']			The user id of website - Optional
 	 * 		$info['status']				The status of the website - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
@@ -254,12 +273,15 @@ class WebsiteAPI extends Seopanel{
 		// if website exists
 		if ($websiteInfo = $this->ctrler->__getWebsiteInfo($websiteId)) {
 			
+			$websiteInfo['oldName'] = $websiteInfo['name'];
+			
 			// loop through inputs
 			foreach ($info as $key => $val) {
 				$websiteInfo[$key] = $val;
 			}
-
+			
 			// update website call as api call
+			$this->ctrler->spTextWeb = $this->ctrler->getLanguageTexts('website', SP_API_LANG_CODE);
 			$return = $this->ctrler->updateWebsite($websiteInfo, true);
 				
 			// if website creation is success
@@ -279,6 +301,32 @@ class WebsiteAPI extends Seopanel{
 	
 		return 	$returnInfo;
 	
+	}
+	
+	/**
+	 * function to delete website
+	 * @param Array $info				The input details to process the api
+	 * 		$info['id']					The id of the website	- Mandatory
+	 * @return Array $returnInfo  	Contains details about the operation success or not
+	 */
+	function deleteWebsite($info) {
+	
+		$websiteId = intval($info['id']);
+	
+		// if website exists
+		if ($websiteInfo = $this->ctrler->__getWebsiteInfo($websiteId)) {
+			
+			
+			$this->ctrler->__deleteWebsite($websiteId);
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = "Successfully deleted website and related data.";
+			
+		} else {	
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid website id provided";
+		}
+	
+		return 	$returnInfo;
 	}
 	
 }

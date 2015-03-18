@@ -306,7 +306,7 @@ class KeywordController extends Controller{
 		$this->listKeywords();
 	}
 
-	function updateKeyword($listInfo){
+	function updateKeyword($listInfo, $apiCall = false){
 		$userId = isLoggedIn();
 		$this->set('post', $listInfo);
 		$errMsg['name'] = formatErrorMsg($this->validate->checkBlank($listInfo['name']));

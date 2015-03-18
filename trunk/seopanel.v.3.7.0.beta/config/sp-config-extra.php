@@ -72,6 +72,9 @@ define('SP_API_FILE', 'api/api.php');
 # The crawl log clear interval in days
 define('SP_CRAWL_LOG_CLEAR_TIME', 90);
 
+# The api language code
+define('SP_API_LANG_CODE', 'en');
+
 # The seo panel help page
 define('SP_HELP_LINK', 'http://help.seopanel.in/');
 
