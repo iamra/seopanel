@@ -247,7 +247,7 @@ class WebsiteController extends Controller{
 			}else{
 				$errMsg['name'] = formatErrorMsg($this->spTextWeb['Website already exist']);
 			}
-		}
+		}		
 		
 		// if api call
 		if ($apiCall) {
