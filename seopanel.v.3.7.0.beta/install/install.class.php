@@ -337,7 +337,7 @@ class Install {
             			foreach ($langList as $langInfo) {
             				$selected = ($langInfo['lang_code'] == 'en') ? "selected" : "";
             				?>			
-            				<option value="<?=$langInfo['lang_code']?>" <?=$selected?>><?=$langInfo['lang_name']?></option>
+            				<option value="<?php echo $langInfo['lang_code']?>" <?php echo $selected?>><?php echo $langInfo['lang_name']?></option>
             				<?php
             			}
             			?>
@@ -353,7 +353,7 @@ class Install {
             			foreach ($timezoneList as $timezoneInfo) {
             				$selected = ($timezoneInfo['timezone_name'] == $listInfo['set_val']) ? 'selected="selected"' : "";
             				?>
-            				<option value="<?=$timezoneInfo['timezone_name']?>" <?=$selected?> ><?=$timezoneInfo['timezone_label']?></option>
+            				<option value="<?php echo $timezoneInfo['timezone_name']?>" <?php echo $selected?> ><?php echo $timezoneInfo['timezone_label']?></option>
             				<?php
             			}
             			?>
@@ -511,7 +511,7 @@ class Install {
 		<input type="hidden" value="<?php echo $dbClass;?>" name="db_support">
 		<input type="hidden" value="proceedupgrade" name="sec">
 		<?php $submitLabel = defined('SP_INSTALLED') ? "Upgrade to Seo Panel v.".SP_INSTALLED : "Upgrade Seo Panel"; ?>
-		<input type="submit" value="<?=$submitLabel?> >>" name="submit" class="button">
+		<input type="submit" value="<?php echo $submitLabel?> >>" name="submit" class="button">
 		</form>
 		<?php
 	}

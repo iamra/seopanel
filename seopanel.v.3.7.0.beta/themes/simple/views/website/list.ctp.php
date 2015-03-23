@@ -3,15 +3,15 @@
 <?php if(!empty($isAdmin)){ ?>
 	<table width="50%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
-			<th><?=$spText['common']['User']?>: </th>
+			<th><?php echo $spText['common']['User']?>: </th>
 			<td>
 				<select name="userid" id="userid" onchange="doLoad('userid', 'websites.php', 'content')">
-					<option value="">-- <?=$spText['common']['Select']?> --</option>
+					<option value="">-- <?php echo $spText['common']['Select']?> --</option>
 					<?php foreach($userList as $userInfo){?>
 						<?php if($userInfo['id'] == $userId){?>
-							<option value="<?=$userInfo['id']?>" selected><?=$userInfo['username']?></option>
+							<option value="<?php echo $userInfo['id']?>" selected><?php echo $userInfo['username']?></option>
 						<?php }else{?>
-							<option value="<?=$userInfo['id']?>"><?=$userInfo['username']?></option>
+							<option value="<?php echo $userInfo['id']?>"><?php echo $userInfo['username']?></option>
 						<?php }?>
 					<?php }?>
 				</select>
@@ -19,18 +19,18 @@
 		</tr>
 	</table>
 <?php } ?>
-<?=$pagingDiv?>
+<?php echo $pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>		
-		<td><?=$spText['common']['Website']?></td>
+		<td><?php echo $spText['common']['Id']?></td>		
+		<td><?php echo $spText['common']['Website']?></td>
 		<?php if(!empty($isAdmin)){ ?>		
-			<td><?=$spText['common']['User']?></td>
+			<td><?php echo $spText['common']['User']?></td>
 		<?php } ?>
-		<td><?=$spText['common']['Url']?></td>
-		<td><?=$spText['common']['Status']?></td>
-		<td class="right"><?=$spText['common']['Action']?></td>
+		<td><?php echo $spText['common']['Url']?></td>
+		<td><?php echo $spText['common']['Status']?></td>
+		<td class="right"><?php echo $spText['common']['Action']?></td>
 	</tr>
 	<?php
 	$colCount = empty($isAdmin) ? 6 : 7; 
@@ -47,16 +47,16 @@
             }
             $websiteLink = scriptAJAXLinkHref('websites.php', 'content', "sec=edit&websiteId={$listInfo['id']}", "{$listInfo['name']}")
 			?>
-			<tr class="<?=$class?>">
-				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
-				<td class="td_br_right"><?=$listInfo['id']?></td>				
-				<td class="td_br_right left"><?=$websiteLink?></td>
+			<tr class="<?php echo $class?>">
+				<td class="<?php echo $leftBotClass?>"><input type="checkbox" name="ids[]" value="<?php echo $listInfo['id']?>"></td>
+				<td class="td_br_right"><?php echo $listInfo['id']?></td>				
+				<td class="td_br_right left"><?php echo $websiteLink?></td>
 				<?php if(!empty($isAdmin)){ ?>
-					<td class="td_br_right left"><?=$listInfo['username']?></td>
+					<td class="td_br_right left"><?php echo $listInfo['username']?></td>
 				<?php } ?>
 				<td class="td_br_right left"><?php echo wordwrap($listInfo['url'], 70, "<br>", true); ?></td>
 				<td class="td_br_right"><?php echo $listInfo['status'] ? $spText['common']["Active"] : $spText['common']["Inactive"];	?></td>
-				<td class="<?=$rightBotClass?>" width="100px">
+				<td class="<?php echo $rightBotClass?>" width="100px">
 					<?php
 						if($listInfo['status']){
 							$statVal = "Inactivate";
@@ -66,11 +66,11 @@
 							$statLabel = $spText['common']["Activate"];
 						} 
 					?>
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('websites.php', 'content', 'websiteId=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&userid=<?=$userId?>', 'action<?=$listInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="<?=$statVal?>"><?=$statLabel?></option>
-						<option value="edit"><?=$spText['common']['Edit']?></option>
-						<option value="delete"><?=$spText['common']['Delete']?></option>
+					<select name="action" id="action<?php echo $listInfo['id']?>" onchange="doAction('websites.php', 'content', 'websiteId=<?php echo $listInfo['id']?>&pageno=<?php echo $pageNo?>&userid=<?php echo $userId?>', 'action<?php echo $listInfo['id']?>')">
+						<option value="select">-- <?php echo $spText['common']['Select']?> --</option>
+						<option value="<?php echo $statVal?>"><?php echo $statLabel?></option>
+						<option value="edit"><?php echo $spText['common']['Edit']?></option>
+						<option value="delete"><?php echo $spText['common']['Delete']?></option>
 					</select>
 				</td>
 			</tr>
@@ -81,7 +81,7 @@
 	} 
 	?>
 	<tr class="listBot">
-		<td class="left" colspan="<?=($colCount-1)?>"></td>
+		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
 		<td class="right"></td>
 	</tr>
 </table>
@@ -98,16 +98,16 @@ if (SP_DEMO) {
 	<tr>
     	<td style="padding-top: 6px;">
          	<a onclick="scriptDoLoad('websites.php', 'content', 'sec=new')" href="javascript:void(0);" class="actionbut">
-         		<?=$spTextPanel['New Website']?>
+         		<?php echo $spTextPanel['New Website']?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$actFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Activate"]?>
+         	<a onclick="<?php echo $actFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Activate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$inactFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Inactivate"]?>
+         	<a onclick="<?php echo $inactFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Inactivate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']['Delete']?>
+         	<a onclick="<?php echo $delFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']['Delete']?>
          	</a>
     	</td>
 	</tr>

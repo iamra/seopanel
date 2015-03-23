@@ -9,16 +9,16 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     <table width="80%" border="0" cellspacing="0" cellpadding="0" class="search">
     	<?php if (!empty($websiteUrl)) {?>
     		<tr>
-    			<th><?=$spText['common']['Website']?>:</th>
+    			<th><?php echo $spText['common']['Website']?>:</th>
         		<td>
         			<?php echo $websiteUrl; ?>
     			</td>
     		</tr>
 		<?php }?>
 		<tr>
-			<th><?=$spText['common']['Period']?>:</th>
+			<th><?php echo $spText['common']['Period']?>:</th>
     		<td>
-    			<?=$fromTime?> - <?=$toTime?>
+    			<?php echo $fromTime?> - <?php echo $toTime?>
 			</td>
 		</tr>
 	</table>
@@ -27,41 +27,41 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	<form id='search_form'>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">		
 		<tr>			
-			<th><?=$spText['common']['Period']?>:</th>
+			<th><?php echo $spText['common']['Period']?>:</th>
     		<td>
-    			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$fromTime?>" name="from_time"/> 
-    			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/> 
-    			<input type="text" style="width: 80px;margin-right:0px;" value="<?=$toTime?>" name="to_time"/> 
-    			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?=SP_IMGPATH?>/cal.gif"/>
+    			<input type="text" style="width: 80px;margin-right:0px;" value="<?php echo $fromTime?>" name="from_time"/> 
+    			<img align="bottom" onclick="displayDatePicker('from_time', false, 'ymd', '-');" src="<?php echo SP_IMGPATH?>/cal.gif"/> 
+    			<input type="text" style="width: 80px;margin-right:0px;" value="<?php echo $toTime?>" name="to_time"/> 
+    			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?php echo SP_IMGPATH?>/cal.gif"/>
     		</td>
-		    <th><?=$spText['common']['Website']?>: </th>
+		    <th><?php echo $spText['common']['Website']?>: </th>
 			<td>
     			<select name="website_id" id="website_id"  onchange="scriptDoLoadPost('archive.php', 'search_form', 'content')" style="width: 120px;">
     				<option value="">-- Select --</option>
     				<?php foreach($siteList as $websiteInfo){?>
     					<?php if($websiteInfo['id'] == $websiteId){?>
-    						<option value="<?=$websiteInfo['id']?>" selected><?=$websiteInfo['name']?></option>
+    						<option value="<?php echo $websiteInfo['id']?>" selected><?php echo $websiteInfo['name']?></option>
     					<?php }else{?>
-    						<option value="<?=$websiteInfo['id']?>"><?=$websiteInfo['name']?></option>
+    						<option value="<?php echo $websiteInfo['id']?>"><?php echo $websiteInfo['name']?></option>
     					<?php }?>
     				<?php }?>
     			</select>				
 			</td>
-			<th><?=$spText['label']['Report Type']?>: </th>
+			<th><?php echo $spText['label']['Report Type']?>: </th>
 			<td width="200px">
 				<select name="report_type" id="report_type" onchange="scriptDoLoadPost('archive.php', 'search_form', 'content')" style="width: 150px;">
 					<option value="">-- Select --</option>
     				<?php foreach($reportTypes as $type => $info){?>
 						<?php if($type == $searchInfo['report_type']){?>
-							<option value="<?=$type?>" selected><?=$info?></option>
+							<option value="<?php echo $type?>" selected><?php echo $info?></option>
 						<?php }else{?>
-							<option value="<?=$type?>"><?=$info?></option>
+							<option value="<?php echo $type?>"><?php echo $info?></option>
 						<?php }?>
 					<?php }?>
 				</select>
 			</td>
 			<td width="120px">
-				<a href="javascript:void(0);" onclick="scriptDoLoadPost('archive.php', 'search_form', 'content')" class="actionbut"><?=$spText['button']['Search']?></a>
+				<a href="javascript:void(0);" onclick="scriptDoLoadPost('archive.php', 'search_form', 'content')" class="actionbut"><?php echo $spText['button']['Search']?></a>
 			</td>
 		</tr>
 	</table>
@@ -73,9 +73,9 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal"; 
 	?>
 	<div style="float:right;margin-right: 10px;margin-top: 20px; clear: both;">
-		<a href="<?=$directLink?>&doc_type=pdf"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
-		<a href="<?=$directLink?>&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?=$directLink?>&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
+		<a href="<?php echo $directLink?>&doc_type=pdf"><img src="<?php echo SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
+		<a href="<?php echo $directLink?>&doc_type=export"><img src="<?php echo SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
+		<a target="_blank" href="<?php echo $directLink?>&doc_type=print"><img src="<?php echo SP_IMGPATH?>/print_button.gif"></a>
 	</div>
 <?php }?>
 
@@ -100,10 +100,10 @@ if (!empty($keywordPos)) {
     		$linkName = "<a id='sortLink' class='$linkClass' $hrefAttr onclick=\"scriptDoLoad('$mainLink&order_col=keyword&order_val=$oVal', 'content')\">{$spText['common']['Keyword']}</a>"; 
     		?>		
     		<?php if (empty($websiteId)) {?>
-    			<td class="left"><?=$spText['common']['Website']?></td>
-    			<td><?=$linkName?></td>
+    			<td class="left"><?php echo $spText['common']['Website']?></td>
+    			<td><?php echo $linkName?></td>
     		<?php } else { ?>
-    			<td class="left"><?=$linkName?></td>
+    			<td class="left"><?php echo $linkName?></td>
     		<?php }?>
     		<?php
     		$seCount = count($seList);
@@ -149,12 +149,12 @@ if (!empty($keywordPos)) {
                 }
                 $scriptLink = "website_id={$listInfo['website_id']}&keyword_id={$listInfo['id']}&rep=1";           
     			?>
-    			<tr class="<?=$class?>">				
+    			<tr class="<?php echo $class?>">				
     				<?php if (empty($websiteId)) {?>
-    					<td class="<?=$leftBotClass?> left" width='250px;'><?php echo $listInfo['weburl']; ?></td>
+    					<td class="<?php echo $leftBotClass?> left" width='250px;'><?php echo $listInfo['weburl']; ?></td>
     					<td class='td_br_right left'><?php echo $listInfo['name'] ?></td>
     				<?php } else { ?>
-    					<td class="<?=$leftBotClass?> left" width='100px;'><?php echo $listInfo['name']; ?></td>
+    					<td class="<?php echo $leftBotClass?> left" width='100px;'><?php echo $listInfo['name']; ?></td>
     				<?php }?>				
     				<?php
     				foreach ($seList as $index => $seInfo){
@@ -185,7 +185,7 @@ if (!empty($keywordPos)) {
     				    }					
     					if( ($index+1) == $seCount){			
     						?>
-    						<td class="<?=$rightBotClass?>" style='width:100px' nowrap><?php echo "$rankLink $graphLink $rankDiff"; ?></td>	
+    						<td class="<?php echo $rightBotClass?>" style='width:100px' nowrap><?php echo "$rankLink $graphLink $rankDiff"; ?></td>	
     						<?php	
     					}else{
     						?>
@@ -202,14 +202,14 @@ if (!empty($keywordPos)) {
     		?>
     		<tr class="blue_row">
     		    <td class="tab_left_bot_noborder">&nbsp;</td>
-    		    <td class="td_bottom_border" colspan="<?=($colCount-2)?>"><?=$spText['common']['No Records Found']?>!</td>
+    		    <td class="td_bottom_border" colspan="<?php echo ($colCount-2)?>"><?php echo $spText['common']['No Records Found']?>!</td>
     		    <td class="tab_right_bot">&nbsp;</td>
     		</tr>
     		<?		
     	} 
     	?>
     	<tr class="listBot">
-    		<td class="left" colspan="<?=($colCount-1)?>"></td>
+    		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
     		<td class="right"></td>
     	</tr>
     	</table>
@@ -228,14 +228,14 @@ if (!empty($keywordPos)) {
     	$colSpan = 11; 
     	?>
     	<table width="100%" cellspacing="0" cellpadding="0" class="summary" style="<?php echo $borderCollapseVal; ?>">
-    		<tr><td class="topheader" colspan="<?=$colSpan?>"><?=$spTextHome['Website Statistics']?></td></tr>
+    		<tr><td class="topheader" colspan="<?php echo $colSpan?>"><?php echo $spTextHome['Website Statistics']?></td></tr>
     		<tr>
-    			<td class="subheader" style="border: none;" width="5%" rowspan="2"><?=$spText['common']['Id']?></td>
-    			<td class="subheader" rowspan="2"><?=$spTextHome['SiteNameUrl']?></td>
-    			<td class="subheaderdark" colspan="2"><?=$spTextHome['Ranks']?></td>
-    			<td class="subheaderdark" colspan="3"><?=$spTextHome['Backlinks']?></td>
-    			<td class="subheaderdark" colspan="2"><?=$spTextHome['Pages Indexed']?></td>
-    			<td class="subheaderdark" colspan="2"><?=$spTextHome['Directory Submission']?></td>
+    			<td class="subheader" style="border: none;" width="5%" rowspan="2"><?php echo $spText['common']['Id']?></td>
+    			<td class="subheader" rowspan="2"><?php echo $spTextHome['SiteNameUrl']?></td>
+    			<td class="subheaderdark" colspan="2"><?php echo $spTextHome['Ranks']?></td>
+    			<td class="subheaderdark" colspan="3"><?php echo $spTextHome['Backlinks']?></td>
+    			<td class="subheaderdark" colspan="2"><?php echo $spTextHome['Pages Indexed']?></td>
+    			<td class="subheaderdark" colspan="2"><?php echo $spTextHome['Directory Submission']?></td>
     		</tr>		
     		<tr>
     			<td class="subheader">Google</td>
@@ -245,8 +245,8 @@ if (!empty($keywordPos)) {
     			<td class="subheader">Bing</td>			
     			<td class="subheader">Google</td>
     			<td class="subheader">Bing</td>
-    			<td class="subheader"><?=$spText['common']['Total']?></td>
-    			<td class="subheader"><?=$spText['common']['Active']?></td>
+    			<td class="subheader"><?php echo $spText['common']['Total']?></td>
+    			<td class="subheader"><?php echo $spText['common']['Active']?></td>
     		</tr>
     		<?php if(count($websiteRankList) > 0){
     		    $mainLink = SP_WEBPATH."/seo-tools.php?menu_sec="; 
@@ -264,19 +264,19 @@ if (!empty($keywordPos)) {
     						<?php echo $websiteInfo['name'];?><br>
     						<a href="<?php echo $websiteInfo['url'];?>" target="_blank"><?php echo $websiteInfo['url'];?></a>
     					</td>
-    					<td class="content"><a href="<?=$rankLink?>"><?php echo $websiteInfo['googlerank'];?></a></td>
-    					<td class="content"><a href="<?=$rankLink?>"><?php echo $websiteInfo['alexarank'];?></a></td>
-    					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['google']['backlinks'];?></a></td>
-    					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['alexa']['backlinks'];?></a></td>
-    					<td class="content"><a href="<?=$backlinkLink?>"><?php echo $websiteInfo['msn']['backlinks'];?></a></td>
-    					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['google']['indexed'];?></a></td>				
-    					<td class="content"><a href="<?=$indexedLink?>"><?php echo $websiteInfo['msn']['indexed'];?></a></td>
-    					<td class="contentmid"><a href="<?=$totaldirLink?>"><?php echo $websiteInfo['dirsub']['total'];?></a></td>					
-    					<td class="contentmid"><a href="<?=$activeDirLink?>"><?php echo $websiteInfo['dirsub']['active'];?></a></td>
+    					<td class="content"><a href="<?php echo $rankLink?>"><?php echo $websiteInfo['googlerank'];?></a></td>
+    					<td class="content"><a href="<?php echo $rankLink?>"><?php echo $websiteInfo['alexarank'];?></a></td>
+    					<td class="content"><a href="<?php echo $backlinkLink?>"><?php echo $websiteInfo['google']['backlinks'];?></a></td>
+    					<td class="content"><a href="<?php echo $backlinkLink?>"><?php echo $websiteInfo['alexa']['backlinks'];?></a></td>
+    					<td class="content"><a href="<?php echo $backlinkLink?>"><?php echo $websiteInfo['msn']['backlinks'];?></a></td>
+    					<td class="content"><a href="<?php echo $indexedLink?>"><?php echo $websiteInfo['google']['indexed'];?></a></td>				
+    					<td class="content"><a href="<?php echo $indexedLink?>"><?php echo $websiteInfo['msn']['indexed'];?></a></td>
+    					<td class="contentmid"><a href="<?php echo $totaldirLink?>"><?php echo $websiteInfo['dirsub']['total'];?></a></td>					
+    					<td class="contentmid"><a href="<?php echo $activeDirLink?>"><?php echo $websiteInfo['dirsub']['active'];?></a></td>
     				</tr> 
     			<?php } ?>
     		<?php }else{ ?>
-    			<tr><td colspan="<?=$colSpan?>" class="norecord"><?=$spText['common']['nowebsites']?></td></tr>
+    			<tr><td colspan="<?php echo $colSpan?>" class="norecord"><?php echo $spText['common']['nowebsites']?></td></tr>
     		<?php } ?>		
     	</table>
 		<?php
