@@ -1,0 +1,279 @@
+##########################################################################
+##################  #####################
+#
+# To add a new listing here, try submitting manually once. Find out
+# submitting method, target url and the message shown if the submission
+# was successfull. arrange these data in the format given below.
+#
+# Format : 
+# enginename, fullengineurl, method, success string, user-agent, referer
+#
+# if the method is POST, then you have to look at the engine form source.
+# write down each variable-value pairs and join them with '='  and
+# attach it with target url using '?'.
+# Replace the value of url with [URL] and email with [EMAIL]
+# 
+
+Google.com	, http://www.google.com/addurl?q=[URL]&dq=&submit=Add+url, GET, successfully added, Mozilla/4.0 (compatible; MSIE 5.0; Windows NT),http://www.google.com/addurl.html,
+Google	PK	, http://www.google.com.pk/addurl?q=[URL]&dq=&submit=Add+url, GET, successfully added, Mozilla/4.0 (compatible; MSIE 5.0; Windows NT),http://www.google.com/addurl.html,
+Google	SA	, http://www.google.com.sa/addurl?q=[URL]&dq=&submit=Add+url, GET, successfully added, Mozilla/4.0 (compatible; MSIE 5.0; Windows NT),http://www.google.com/addurl.html,
+
+# MyEngine3	, http://localhost/test3.php?url=[URL]&email=[EMAIL],POST,Thank you
+# MyEngine	, http://localhost/test.php?url=[URL]&email=[EMAIL],POST,Thank you
+# MyEngine2ERR	, http://localhost/test2.php?url=[URL]&email=[EMAIL],POST,Thank you
+# MyEngine	, http://localhost/test.php?url=[URL]&email=[EMAIL],POST,Thank you
+# stopped AllTheWeb.com	, http://www.alltheweb.com/add_url.php?url=[URL]&email=[EMAIL]&submit= Submit URL , POST,Thank you  , 
+WhatUseek.com	, http://add.whatuseek.com/cgi-bin/addurl.cgi?url=[URL]&email=[EMAIL]&newsoptout=1&submit=Add+This+URL, GET, Thank you, ,  
+InfoTiger.com	, http://www.infotiger.com/addurl.html?url=[URL]&email=[EMAIL], GET, Successfully added
+Rediff.com	, http://cgi.rediff.com/cgi-programs/search/submiturl.cgi?sitename=[URL]&submit=SUBMIT,
+ScrubTheWeb.com	, http://www.scrubtheweb.com/cgi-bin/addurl.cgi?URL=[URL]&Email=[EMAIL]&SUBMIT=Submit%20URL&submit=Submit%20URL,POST, Thanks,
+EntireWeb.com	, http://addurl.entireweb.com/main.php?URL=[URL]&Email=[EMAIL]&SubButton=%20Submit%20URL%20&action=confirm&confirm=yes , GET,Thank
+SearchIt.com	, http://index.searchit.com/add-site.php?url=[URL]&email=[EMAIL]&submit=Send, POST, shortly
+Abacho.co.uk	, http://www.abacho.co.uk/funktionen/url_anmelden_01.phtml?submit_url=1&url=[URL]&submit=Submit, POST,Thank you,
+SearchUK.com	, http://SearchUK.com/List_Your_Site/Basic_Submit/addURL.asp?URL=[URL]&eMail=[MAIL], GET, Your URL has been submitted,
+AxxaSearch	, http://www.axxasearch.com/add_url2.cgi?required-www=[URL]&required-email=[EMAIL]&Add%20URL=Add%20URL, GET, Thank,
+Al-Bawaba(Arabic),http://www.albawaba.com/websearch/search/userAddSite.php3?lang=e&action=add&cat=&url=[URL]&title=[TITLE]&email=[EMAIL]&author=webmaster&country=General&desc, POST,accepted,
+
+
+
+AllTheWeb.com	, http://www.ussc.alltheweb.com/add_url.php3?url=[URL]&email=[EMAIL]&submit=SUBMIT,
+Altavista.com	, http://add-url.altavista.com/cgi-bin/newurl?ad=1&q=[URL]&submit=SUBMIT,
+Altavista DE	, http://www.altavista.de/newurl.jsp?url=[URL]&submit=SUBMIT,
+Altavista UK	, http://uk.altavista.com/newurl.jsp?ad=1&url=[URL]&submit=SUBMIT,
+Anzwers		, http://www.Anzwers.com/cgi-bin/print_addurl.pl?Submit=Submit&url=[URL]&email=[EMAIL]&submit=SUBMIT,
+Canada		, http://www.canada.com/search/web/addurl.asp?AddURL2=[URL]&email=[EMAIL]&todo=add&GO=search&x=13&y=16&submit=SUBMIT,
+Direct Hit	, http://www.directhit.com/fcgi-bin/DirectHitWeb.fcg?fmt=disp&template=addurl&src=DH_ADDURL&URL=[URL]&email=[EMAIL]&submit=SUBMIT,
+Excite		, http://www.excite.com/cgi/add_url.cgi?look=excite&url=[URL]&email=[EMAIL]&submit=SUBMIT,
+Excite UK	, http://www.excite.com/cgi/add_url.cgi?look=excite&url=[URL]&email=[EMAIL]&submit=SUBMIT,
+Fireball	, http://www.fireball.de/fcgi/register.fcg?action=register&url=[URL]&SUBMIT=URL+melden&submit=SUBMIT,
+Go		, http://www.go.com/AddUrl/AddingURL?url=[URL]&CAT=Add/Update%20Site&sv=AD&lk=noframes&submit=SUBMIT,
+
+Hotbot		, http://www.hotbot.com/addurl.asp?newurl=[URL]&MM=1&output=success&email=[EMAIL]&submit=SUBMIT,
+Infomak		, http://www.infomak.com/add_url.sh?Page=url&url=[URL]&submit=SUBMIT, POST,
+Infoseek	, http://www.infoseek.com/AddUrl/AddingURL?sv=IS&lk=noframes&nh=10&url=[URL]&CAT=Add/Update+URL&submit=SUBMIT,
+Lycos		, http://www.lycos.com/cgi-bin/spider_now.pl?query=[URL]&email=[EMAIL]&submit=SUBMIT,
+Lycos EU	, http://spidernow.lycos.com/cgi-bin/spidernow-EU.pl?query=[URL]&email=[EMAIL]&submit=Url+anmelden&submit=SUBMIT,
+National Dir	, http://www.nationaldirectory.com/addurl.cgi?url=[URL]&submit=SUBMIT, POST,
+Northernlight	, http://urls.northernlight.com/cgi-bin/urlsubmit.pl?page=[URL]&contact=Webmaster&email=[EMAIL]&submit=SUBMIT,
+Voila		, http://www.voila.fr/submit?url=[URL]&email=[EMAIL]&submit2=Soumettre&submit=SUBMIT,
+Web Crawle	, http://www.webcrawler.com/cgi-bin/add_url_new.cgi?action=add&url=[URL]?url=[URL]&email=[EMAIL]&country=US&brand=webcrawler&look=excite&channel=local&submit=SUBMIT,
+Web Top		, http://www.webtop.com/cgi-bin/addurl?NEWURL=[URL]&EMAIL=[EMAIL]&submit=SUBMIT,
+Web Wombat	, http://www.webwombat.com.au/Wregister?newurl=[URL]&email=[EMAIL]&submit=Register&submit=SUBMIT,
+
+Abacho          , http://www.abacho.co.uk/funktionen/url_anmelden_01.phtml?submit_url=1&amp;url=[URL]&amp;submit=Submit,POST, Thank you, ,
+
+Abacho.de       , http://funktionen.abacho.de/seite_anmelden/bestaetigung/?URL=[URL],POST,Ihre URL-Anmeldung war erfolgreich
+
+Aesop.com	, http://www.aesop.com/cgi-bin/sub/submiturl.cgi?url=[URL]&amp;email=[EMAIL]&amp;fname=Web&amp;lname=Master&amp;ktj=0&amp;step=check&amp;serv=5,POST,Your Site Has Been Added To Our Database
+
+Active7         , http://www.active7.com/freelisting.php?urll=[URL]&amp;submit=Suggest,post, Active7, ,
+
+Aeiwi           , http://www.aeiwi.com/cgi-bin/submit?url=[URL]&amp;email=[EMAIL]&amp;submit=Submit,get, Your page is accepted
+
+Al-Bawaba	, http://www.albawaba.com/websearch/search/userAddSite.php3?lang=e&amp;action=add&amp;cat=&amp;url=[URL]&amp;title=[TITLE]&amp;email=[EMAIL]&amp;author=webmaster&amp;country=General&amp;desc, POST,accepted,
+
+Alexa           , http://cgi.alexa.com/client/www/cgi-bin/request_bot.cgi?url=[URL]&amp;email=[EMAIL], POST, successful.html
+
+Amfibi          , http://addurl.amfibi.com/index.pl?url=[URL]&amp;email=[EMAIL], ,POST,The web, ,
+
+Amidalla        , http://www.amidalla.com/cgi-bin/amiadd.cgi?add&amp;amp;addurl=[URL], POST ,thank you
+
+AxxaSearch      , http://www.axxasearch.com/add_url2.cgi?required-www=[URL]&amp;required-email=[EMAIL]&amp;submit=Add+URL,get, Thank,
+ 
+Beena.com       , http://find.beena.com/cgi-bin/search.pl?URL=[URL]&amp;Mode=AnonAdd&amp;Action=AddURL&amp;Realm=Anon,POST,Thank you
+
+BestYellow      , http://www.action2000.com/cgi-bin/bysearch/search.pl?AddSite=[URL]&amp;Realm=Best+Yellow&amp;submit=Add+New+Page,POST, Adding, ,
+
+BigFinder       , http://www.bigfinder.com/spider.cfm?adult=1&amp;url=[URL]&amp;email=[EMAIL]&amp;submit=Submit+URL,POST, Status, ,
+
+Blinkx.com      , http://www2.blinkx.com/addurl.php?url=[URL]&amp;action=addurl.php,POST,
+
+Claymont.com    , http://www.claymont.com/cgi-bin/addurlsform.pl?url=[URL]&amp;email=[EMAIL]&amp;action=submit, POST, Successful
+
+Cipinet.com     , http://www.cipinet.com/cgi-bin/submit.pl?Email=[EMAIL]&amp;Url=[URL]&amp;submit=submit,post, Your URL, ,
+
+CozyCabin       , http://www.cozycabin.com/cgi-bin/engine/add.cgi?linkurl=[URL]&amp;linkemail=[EMAIL],POST,thanks
+
+CurryGuide      , http://curryguide.com/execute/add_url/add_url?ref=1630762562&amp;url=[URL]&amp;email=[EMAIL]&amp;stage=2&amp;submit=Add+This+URL,POST, Add, ,
+ 
+Crucesonline.com , http://www.crucesonline.com/cgi-local/search.pl?AddSite=[URL]&amp;Realm=CrucesOnline,POST,Adding Web
+
+Debra4homes      , http://www.debra4homes.com/f/Add%20URL.html?required-URL=[URL]&amp;Site_Type=[Estate Related]&amp;required-EMAIL=[EMAIL]&amp;required-NAME=[NAME]&amp;stage=4&amp;submit=URL+Estate Related+EMAIL+NAME+,POST, Add, ,
+
+Derfinder.at    , http://www.derfinder.at/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.derfinder.at/cgi-bin/spider.pl
+
+DMchat          , http://www.dmchat.com/search/search.cgi?Mode=AnonAdd&amp;URL=[URL]&amp;action=search.cgi, post, Mode=AnonAdd
+ 
+EntireWeb       , http://addurl.entireweb.com/main.php?URL=[URL]&amp;Email=[EMAIL]&amp;SubButton=+Submit+URL+,post, The URL, ,
+
+Epicurus.com    , http://www.epicurus.com/cgi-bin/2000/cougalinks.cgi?action=add-url&amp;_ruURL=[URL]&amp;_rNAME=[NAME]&amp;CATEGORY=Art &amp; Architecture&amp;_rDESCRIPTION=Contact Me, post, _new
+
+Evisum.com	, http://www.evisum.com/cgi-bin/addsite.cgi?URL=[URL]&amp;email=[EMAIL] ,POST, Your site will be reviewed
+
+Free-1.com      , http://www.free-1.com/cgi-bin/search/search.pl?action=spider&amp;email=[EMAIL]&amp;url=[URL],POST,Thank You
+
+Gigablast       , http://www.gigablast.com/addurl?u=[URL]&amp;c=&amp;ans=GDBN&amp;qid=8867&amp;submit=add+url,get, Add, ,
+
+Google   	, http://www.google.com/addurl?q=[URL]&amp;dq=&amp;submit=Add+url, GET, successfully added, Mozilla/4.0 (compatible; MSIE 5.0; Windows NT),http://www.google.com/addurl.html,
+
+Hawaianportal   , http://www.thehawaiianportal.com/addurl.php?action=spider&amp;url=[URL]&amp;name=[NAME]&amp;description=[DESCRIPTION]&amp;category=[CATEGORY], GET, Thank You
+
+Hitseek.de      , http://www.hitseek.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.hitseek.de/cgi-bin/spider.pl
+
+Hypermaze.com   , http://www.hypermaze.com/cgi-bin/hypermaze/addurl.pl?url[URL], POST
+
+Iguana.com.mx	, http://www.iguana.com.mx/cgi-bin/s.reg?site=[URL], POST, Gracias
+
+Internet Cruiser, http://www.krstarica.com/eng/url/url.php?url=[URL]&amp;e-mail=[EMAIL],POST,Thank you
+
+Internetvitrine.de  , http://www.internetvitrine.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.internetvitrine.de/cgi-bin/spider.pl
+
+InfoProbe.net     , http://www.infoprobe.net/addurl.htm?action=spider&amp;homepage=[URL]&amp;email=[EMAIL]&amp;cname=[Contact]&amp;Category=[Business]&amp;stage=4&amp;Submit=URL+EMAIL+Contact+Business+,post, Add, ,   
+
+InfoSniff       , http://www.infosniff.com/addurl.php?u=[URL]&amp;d=NewSite&amp;submit=Add+URL,get,Thank
+
+InfoTiger 	, http://www.infotiger.com/addurl.html?url=[URL]&amp;email=[EMAIL], GET, Successfully added
+
+Jerkasmarknad  , http://www.jerkasmarknad.com/linkm/addlinks.php?action=spider&amp;url=[URL]&amp;name=[NAME_3]&amp;description=[DESCRIPTION_3]&amp;category=[CATEGORY], GET, Thank You
+
+Kaufen.ch  , http://www.kaufen.ch/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.kaufen.ch/cgi-bin/spider.pl
+
+Kel.nl		, http://www.kel.nl/search/search.cgi?URL=[URL]&amp;Mode=AnonAdd&amp;Action=AddURL&amp;Realm=Algemeen,POST,Klaar met crawling
+
+KnowBe          , http://knowbe.com/addurl.php?action=list&amp;url=[URL]&amp;email=[EMAIL]&amp;refby=2510038900001338&amp;submit=++Submit++,post, KnowBe.com, ,
+
+List-Team   ,  http://utse.list-team.com/add.php?PHPSESSID=c3aefa65b79cd9d3af13e5d62ccd09ef=[URL], GET, Thank You
+
+Linkball.de  , http://www.linkball.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.linkball.de/cgi-bin/spider.pl
+
+Logo22.de  ,   http://www.logo22.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.logo22.de/cgi-bin/spider.pl
+
+Lookseek.com	, http://209.177.62.142/cgi-bin/form.cgi?name=webmaster&amp;email=[EMAIL]&amp;url=[URL],POST,Entry successful
+
+Maxishop.de  , http://www.maxishop.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.maxishop.de/cgi-bin/spider.pl
+
+Meet.de , http://web56.www01.meet.de/cgi-bin/p1199/spider.cgi?meet=an&amp;todo=addUrl&amp;url=[URL]&amp;email=[EMAIL], POST, Wir haben ihre Anmeldung erhalten ,http://web56.www01.meet.de/cgi-bin/p1199/spider.cgi
+
+Metaeureka.com    , http://www.metaeureka.com/cgi-bin/addurl3.pl?url=[URL]&amp;email=[EMAIL], POST, Just click on link to add your URL in selected search engine
+
+MixCat  	, http://mixcat.com/addurl.php?do=2&amp;url2=[URL]&amp;email=[EMAIL]&amp;submit=Add+to+Mixcat,post, Thank you, ,
+
+MSN (BCentral),	http://submitit.bcentral.com/system/msnaddpublic.cfm?msnurl=[URL]&amp;email=[EMAIL]&amp;Mode=AnonAdd,GET,1
+
+MyProwler       , http://www.myprowler.com/cgi-bin/MS1/x.cgi?NAVG=AddURL&amp;url=[URL]&amp;email=[EMAIL]&amp;submit=Add+Site,POST, Thanks!, ,
+
+Nathan.de   , http://www.nathan.de/cgi-bin/display.cgi?LT=nathan.de/cp.html&amp;LP=/submit/result.ihtml&amp;ID=?URL=[URL],POST,Wir haben Ihre Nachricht erhalten
+
+Noago           , http://www.noago.com/cgi-bin/addurl.pl?url=[URL]&amp;category=biz&amp;submit=add+url,post,On
+
+Objects Search  , http://www.objectssearch.com/submit.jsp?url=[URL]&amp;submit=Submit+URL, , Your, ,
+
+Paginanl.nl   , http://www.paginanl.nl/add/add_good/index.qtml?address=[URL],POST,De Url is goed toegevoegd
+
+Promosearch.de  , http://www.promosearch.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.promosearch.de/cgi-bin/spider.pl
+
+Quicksurfer.de  , http://www.quicksurfer.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.quicksurfer.de/cgi-bin/spider.pl
+
+Railler.nl      , http://www.railler.nl/cgi-bin/search/search.pl?URL=[URL]&amp;EMAIL=[EMAIL]&amp;Mode=AnonAdd&amp;Action=AddURL&amp;Realm=Fast,POST,Klaar met crawling
+
+Ravencom.net   , http://search.ravencom.net/addurl.cfm?url=[URL]&amp;url=WebSite, Post, CheckIt
+
+Rediff.com	      , http://cgi.rediff.com/cgi-programs/search/submiturl.cgi?sitename=[URL]&amp;submit=SUBMIT, POST, thanks.htm, , http://www.rediff.com/search/submit.htm
+
+Search.ch      , http://www.search.ch/addurl.en.html?url_string=[URL]&amp;addurl_submit=Add+URL, POST, Thank You
+
+Search2003.de  , http://www.search2003.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.search2003.de/cgi-bin/spider.pl
+
+Search Ave      , http://www.searchave.com/SubmitURLExpressSave.asp?txtEmail=[EMAIL]&amp;txtURL=[URL]&amp;submit3=Submit+Information,POST, Thank, ,
+
+searchdepo.com   , http://searchramp.com/Add.asp?site=[URL]&amp;email=[EMAIL]&amp;LocalSubmission=670,GET,Thank you
+
+SearchEngine    , http://searchengine.com/addURL.asp?URL=[URL]&amp;eMail=[EMAIL]&amp;submit=add+URL,get, searchengine.com, ,
+
+SearchIt        , http://index.searchit.com/add-site.php?url=[URL]&amp;email=[EMAIL]&amp;submit=Send,POST, Your Site
+
+Searchmaster.de  , http://www.searchmaster.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.searchmaster.de/cgi-bin/spider.pl
+
+Searchmax.de  , http://www.searchmax.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.searchmax.de/cgi-bin/spider.pl
+
+search-o-rama  , http://www.search-o-rama.com/submit.asp?site=[URL]&amp;email=[EMAIL],GET,Thank you
+
+Searchramp.com   , http://searchramp.com/Add.asp?site=[URL]&amp;email=[EMAIL],POST,Thank you for your submission
+
+#SearchSight     , http://www.searchsight.com/receive.htm?LocalSubmission=979&amp;sURL=[URL]&amp;sEmail=[EMAIL]&amp;B1=Submit,POST, Thank You, ,
+
+SearchStar.de  , http://www.searchstar.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.searchstar.de/cgi-bin/spider.pl
+
+SearchUK.com	, http://SearchUK.com/List_Your_Site/Basic_Submit/addURL.asp?URL=[URL]&amp;eMail=[MAIL], GET, Your URL has been submitted
+
+Searchweb		, http://users2.cgiforme.com/chrisdill/addurl.cgi?url=[URL]&amp;description=tryit, POST, Thanks for your submission
+
+SearchWho       , http://searchwho.com/cgi-bin/addsite.pl?db=general&amp;v_title=""&amp;v_directory=""&amp;v_comments=""&amp;v_url=[URL]&amp;v_email=[EMAIL]&amp;submit=Submit+Your+Site,post, We, ,
+
+#SitesOnDisplay  , http://207.36.33.133/cgi-bin/add.cgi?EMAIL=[EMAIL]&amp;VERIFIER=0262-178&amp;action=submit&amp;URL=[URL]&amp;NAME=anonooy&amp;terms=Yes&amp;submit=verify&amp;verify=Yes,post, Thank you,
+
+Sootle          , http://www.sootle.com/submit/punchemin.php?name=Annon&amp;email=[EMAIL]&amp;url=[URL]&amp;submit=submit,POST, All, ,
+
+Spider.de	, http://funktionen.abacho.de/seite_anmelden/bestaetigung/?URL=[URL],GET,Ihre URL
+
+Splatsearch.com	, http://www.splatsearch.com/cgi-bin/spider.cgi?url=[URL]&amp;instant=1, POST, thank,Mozilla/4.0 (compatible; MSIE 5.0; Windows NT),http://www.splatsearch.com/submit.html
+
+Subjex          , http://www.subjex.net/servlet/SubjexSubmitterServlet?email=[EMAIL]&amp;url=[URL]&amp;submit=Submit,post, Hi
+
+Suchefix.de  , http://www.suchefix.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.suchefix.de/cgi-bin/spider.pl
+
+Surfgopher      , http://www.surfgopher.com/cgi-bin/submit.cgi?url=[URL]&amp;email=[EMAIL]&amp;i_rank=yes&amp;submit=ADD/UPDATE+URL,GET, Thank You, ,
+
+SusySearch	, http://www.susysearch.com/addsite/?url=[URL]&amp;sub.x=24&amp;sub.y=8, GET,Thank you,
+
+Technikfuchs24.de  , http://www.technikfuchs24.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Internet.pip.Sonstige&amp;email2=buchhaltung@yammo.de, POST, Die Anmeldung war erfolgreich, http://www.technikfuchs24.de/cgi-bin/spider.pl
+
+Tooga.de  , http://www.tooga.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.tooga.de/cgi-bin/spider.pl
+
+Topica.de  , http://www.topica.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.topica.de/cgi-bin/spider.pl
+
+Tripple.net , http://www.tripple.net/contator/webwizard/addurl.asp?q=[URL]&amp;email=[EMAIL]&amp;at=true&amp;sub=URL+eintragen, GET, URL wird eingetragen, http://www.tripple.net/contator/webwizard/addurl.asp
+
+Verdwaald.nl    , http://www.verdwaald.nl/cgi-bin/submit.cgi?url=[URL],POST,Uw link is opgenomen in de database
+
+W8.net        , http://w8.net/search/s-ctm.cgi?s-addurl.ctm?recipient=[EMAIL]&amp;linkaddr=[URL]&amp;category=News&amp;password=interbtr, GET, Thank You , ,
+
+Walhello        , http://addurl.walhello.info/urlgl.cgi?url=[URL]&amp;button=Free+URL+Submission, GET, Thank, ,
+
+Webaapje.com  , http://www.webaapje.com/cgi-bin/zoeken/search/search.pl?URL=[URL]&amp;EMAIL=[EMAIL]&amp;Mode=AnonAdd&amp;Action=AddURL&amp;Realm=WWW,POST,Klaar met crawling
+
+WebCactus       , http://webcactus.com/library/submithandler.asp?contact=Anon+Add&amp;submiturl=[URL]&amp;email=[EMAIL]&amp;Submit=Submit+website,post, Thank, ,
+
+Webdich.de  , http://www.webdich.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.webdich.de/cgi-bin/spider.pl
+
+Web-friend.com  ,   http://www.web-friend.com/addme.html?submit=Add+My+Site&amp;submit=?AddURL=[URL]&amp;returnmail=[EMAIL]&amp;Name=[NAME]&amp;action=mailto:webmaster@web-friend.com?subject=**** Add URL FORM: ****, POST, 
+
+WebSquash       , http://www.websquash.com/cgi-bin/search/search.pl?Mode=AnonAdd&amp;URL=[URL]&amp;EMAIL=[EMAIL]&amp;Realm=Internet&amp;submit=Add+New+URL,post, Adding, ,
+
+WebWizard       , http://www.tripple.net/contator/webwizard/addurl.asp?q=[URL]&amp;email=[EMAIL]&amp;at=true&amp;sub=URL+eintragen,GET, URL
+
+WhatUseek	, http://add.whatuseek.com/cgi-bin/addurl.cgi?url=[URL]&amp;email=[EMAIL]&amp;newsoptout=1&amp;submit=Add+This+URL, GET, Thank you, ,
+
+Witch.de , http://www.witch.de/add-result.php?Kategorie=Sonstiges&amp;Titel=Titel&amp;Email=[EMAIL]&amp;URL=[URL]&amp;BL=0, POST,Vielen Dank, http://www.witch.de/add-result.php
+
+WotBox          , http://www.wotbox.com/addurl?url=[URL]&amp;email=[EMAIL]&amp;submit=Add+Url,,has been added, ,
+
+Wuup.de	, http://www.wuup.de/cgi-bin/search/search.pl?URL=[URL]&amp;EMAIL=[EMAIL]&amp;Mode=AnonAdd&amp;Action=AddURL&amp;Realm=Alles,POST,Das Durchsuchen
+
+XXLnet.de  , http://www.xxlnet24.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.xxlnet24.de/cgi-bin/spider.pl
+
+Yammo.de  , http://www.yammo.de/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Internet.pip.Sonstige&amp;email2=buchhaltung@yammo.de, POST, Die Anmeldung war erfolgreich, http://www.yammo.de/cgi-bin/spider.pl
+
+Yatus.de  , http://www.yatus.de/index.pl?action=spider&amp;category=none&amp;email=[EMAIL]&amp;url=[URL], POST, Das hat geklappt,http://www.yatus.de/index.pl
+
+Yaq.com     , http://www.yaq.com/link/links.cgi?title=[Name]&amp;url=[URL]&amp;section=Personal&amp;submit=url+title+section, POST, ;
+
+Yoodel.com  , http://www.yoodel.com/cgi-bin/spider.pl?action=spider&amp;url=[URL]&amp;email=[EMAIL]&amp;agbs=checked&amp;category=Sonstige.pip.Sonstige.spa.Links, POST, Die Anmeldung war erfolgreich,http://www.yoodel.com/cgi-bin/spider.pl
+
+Zoeky.nl        ,http://www.zoeky.nl/add_url/?url=[URL],POST, - Uw site 
+
+
+
+
+
+
