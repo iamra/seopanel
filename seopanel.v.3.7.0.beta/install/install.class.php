@@ -49,12 +49,12 @@ class Install {
 			$curlClass = "green";
 		}
 		
-		$shorttagClass = "red";
+		/*$shorttagClass = "red";
 		$shorttagSupport = "Disabled";
 		if(ini_get('short_open_tag')){
 			$shorttagSupport = "Enabled";
 			$shorttagClass = "green";
-		}
+		}*/
 		
 		$gdClass = "red";
 		$gdSupport = "No";
@@ -118,10 +118,12 @@ class Install {
 				<th>CURL Support</th>
 				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
+			<?php /* ?>
 			<tr>
 				<th>PHP short_open_tag</th>
 				<td class="<?php echo $shorttagClass;?>"><?php echo $shorttagSupport; ?></td>
 			</tr>
+			<?php */ ?>
 			<tr>
 				<th>GD graphics support</th>
 				<td class="<?php echo $gdClass;?>"><?php echo $gdSupport; ?></td>
@@ -138,7 +140,7 @@ class Install {
 		<input type="hidden" value="<?php echo $phpClass;?>" name="php_support">
 		<input type="hidden" value="<?php echo $mysqlClass;?>" name="mysql_support">
 		<input type="hidden" value="<?php echo $curlClass;?>" name="curl_support">
-		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
+		<?php /* ?><input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag"><?php */ ?>
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="startinstall" name="sec">
 		<input type="submit" value="Proceed to next step >>" name="submit" class="button">
@@ -148,7 +150,8 @@ class Install {
 	
 	# func to start installation
 	function startInstallation($info='', $errMsg='') {
-		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') ){
+		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red')
+		|| ($info['config'] == 'red') ){
 			$this->checkRequirements(true);
 			return;
 		}
@@ -404,12 +407,13 @@ class Install {
 			$curlClass = "green";
 		}
 		
+		/*
 		$shorttagClass = "red";
 		$shorttagSupport = "Disabled";
 		if(ini_get('short_open_tag')){
 			$shorttagSupport = "Enabled";
 			$shorttagClass = "green";
-		}
+		}*/
 		
 		$gdClass = "red";
 		$gdSupport = "No";
@@ -456,7 +460,8 @@ class Install {
 		$errMsg = "";
 		if($error){
 			if(empty($errorMsg)){
-				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') || ($shorttagClass == 'red') || ($configClass == 'red') || ($dbClass == 'red') ){
+				if( ($phpClass == 'red') || ($mysqlClass == 'red') || ($curlClass == 'red') 
+				|| ($configClass == 'red') || ($dbClass == 'red') ){
 					$errMsg = "Please fix the following errors to proceed to next step!";
 				}
 			}else{
@@ -482,10 +487,12 @@ class Install {
 				<th>CURL Support</th>
 				<td class="<?php echo $curlClass;?>"><?php echo $curlSupport; ?></td>
 			</tr>
+			<?php /*?>
 			<tr>
 				<th>PHP short_open_tag</th>
 				<td class="<?php echo $shorttagClass;?>"><?php echo $shorttagSupport; ?></td>
 			</tr>
+			<?php */ ?>
 			<tr>
 				<th>GD graphics support</th>
 				<td class="<?php echo $gdClass;?>"><?php echo $gdSupport; ?></td>
@@ -506,7 +513,7 @@ class Install {
 		<input type="hidden" value="<?php echo $phpClass;?>" name="php_support">
 		<input type="hidden" value="<?php echo $mysqlClass;?>" name="mysql_support">
 		<input type="hidden" value="<?php echo $curlClass;?>" name="curl_support">
-		<input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag">
+		<?php /* ?><input type="hidden" value="<?php echo $shorttagClass;?>" name="short_open_tag"><?php */ ?>
 		<input type="hidden" value="<?php echo $configClass;?>" name="config">
 		<input type="hidden" value="<?php echo $dbClass;?>" name="db_support">
 		<input type="hidden" value="proceedupgrade" name="sec">
@@ -517,7 +524,8 @@ class Install {
 	}
 	
 	function proceedUpgrade($info=''){ 
-		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red') || ($info['short_open_tag'] == 'red') || ($info['config'] == 'red') || ($info['db_support'] == 'red')){
+		if( ($info['php_support'] == 'red') || ($info['mysql_support'] == 'red') || ($info['curl_support'] == 'red')
+		|| ($info['config'] == 'red') || ($info['db_support'] == 'red')){
 			$this->checkUpgradeRequirements(true);
 			return;
 		}		
