@@ -824,13 +824,13 @@ class DirectoryController extends Controller{
 			$captchaLabel = $captcha ? $_SESSION['text']['common']['Yes'] : $_SESSION['text']['common']['No'];
 			?>
 			<script type="text/javascript">
-				document.getElementById('captcha_<?=$dirId?>').innerHTML = '<?=$captchaLabel?>';
+				document.getElementById('captcha_<?php echo $dirId?>').innerHTML = '<?php echo $captchaLabel?>';
 			</script>
 			<?php
 			if ($this->checkPR) {
 				?>
 				<script type="text/javascript">
-					document.getElementById('pr_<?=$dirId?>').innerHTML = '<?=$pagerank?>';
+					document.getElementById('pr_<?php echo $dirId?>').innerHTML = '<?php echo $pagerank?>';
 				</script>
 				<?php
 			}

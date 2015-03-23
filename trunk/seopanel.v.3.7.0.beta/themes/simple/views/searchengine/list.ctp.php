@@ -1,15 +1,15 @@
 <form name="listform" id="listform">
 <?php echo showSectionHead($spTextPanel['Search Engine Manager']); ?>
-<?=$pagingDiv?>
+<?php echo $pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>
-		<td><?=$spText['common']['Name']?></td>
-		<td><?=$spTextSE['no_of_results_page']?></td>
-		<td><?=$spTextSE['max_results']?></td>
-		<td><?=$spText['common']['Status']?></td>
-		<td class="right"><?=$spText['common']['Action']?></td>
+		<td><?php echo $spText['common']['Id']?></td>
+		<td><?php echo $spText['common']['Name']?></td>
+		<td><?php echo $spTextSE['no_of_results_page']?></td>
+		<td><?php echo $spTextSE['max_results']?></td>
+		<td><?php echo $spText['common']['Status']?></td>
+		<td class="right"><?php echo $spText['common']['Action']?></td>
 	</tr>
 	<?php
 	$colCount = 7; 
@@ -25,14 +25,14 @@
                 $rightBotClass = "td_br_right";
             }
 			?>
-			<tr class="<?=$class?>">				
-				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$seInfo['id']?>"></td>
-				<td class="td_br_right"><?=$seInfo['id']?></td>
-				<td class="td_br_right left"><?=$seInfo['domain']?></td>
-				<td class="td_br_right"><?=$seInfo['no_of_results_page']?></td>
-				<td class="td_br_right"><?=$seInfo['max_results']?></td>
+			<tr class="<?php echo $class?>">				
+				<td class="<?php echo $leftBotClass?>"><input type="checkbox" name="ids[]" value="<?php echo $seInfo['id']?>"></td>
+				<td class="td_br_right"><?php echo $seInfo['id']?></td>
+				<td class="td_br_right left"><?php echo $seInfo['domain']?></td>
+				<td class="td_br_right"><?php echo $seInfo['no_of_results_page']?></td>
+				<td class="td_br_right"><?php echo $seInfo['max_results']?></td>
 				<td class="td_br_right"><?php echo $seInfo['status'] ? $spText['common']["Active"] : $spText['common']["Inactive"];	?></td>
-				<td class="<?=$rightBotClass?>" width="100px">
+				<td class="<?php echo $rightBotClass?>" width="100px">
 					<?php
 						if($seInfo['status']){
 							$statVal = "Inactivate";
@@ -42,10 +42,10 @@
 							$statLabel = $spText['common']["Activate"];
 						} 
 					?>
-					<select name="action" id="action<?=$seInfo['id']?>" onchange="doAction('searchengine.php', 'content', 'seId=<?=$seInfo['id']?>&pageno=<?=$pageNo?>', 'action<?=$seInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="<?=$statVal?>"><?=$statLabel?></option>
-						<option value="delete"><?=$spText['common']['Delete']?></option>
+					<select name="action" id="action<?php echo $seInfo['id']?>" onchange="doAction('searchengine.php', 'content', 'seId=<?php echo $seInfo['id']?>&pageno=<?php echo $pageNo?>', 'action<?php echo $seInfo['id']?>')">
+						<option value="select">-- <?php echo $spText['common']['Select']?> --</option>
+						<option value="<?php echo $statVal?>"><?php echo $statLabel?></option>
+						<option value="delete"><?php echo $spText['common']['Delete']?></option>
 					</select>
 				</td>
 			</tr>
@@ -56,7 +56,7 @@
 	} 
 	?>
 	<tr class="listBot">
-		<td class="left" colspan="<?=($colCount-1)?>"></td>
+		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
 		<td class="right"></td>
 	</tr>
 </table>
@@ -72,14 +72,14 @@ if (SP_DEMO) {
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
 	<tr>
     	<td style="padding-top: 6px;">
-         	<a onclick="<?=$actFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Activate"]?>
+         	<a onclick="<?php echo $actFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Activate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$inactFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Inactivate"]?>
+         	<a onclick="<?php echo $inactFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Inactivate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']['Delete']?>
+         	<a onclick="<?php echo $delFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']['Delete']?>
          	</a>
     	</td>
 	</tr>

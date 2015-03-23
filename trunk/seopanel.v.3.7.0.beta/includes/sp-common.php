@@ -321,12 +321,12 @@ function showPrintHeader($headMsg='', $doPrint=true) {
     <head>
     	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     </head>
-	<script language="Javascript" src="<?=SP_JSPATH?>/common.js"></script>
+	<script language="Javascript" src="<?php echo SP_JSPATH?>/common.js"></script>
 	<script type="text/javascript">
 		<?php if ($doPrint) { ?>
 			window.print();
 		<?php }?>
-		loadJsCssFile("<?=SP_CSSPATH?>/screen.css", "css");
+		loadJsCssFile("<?php echo SP_CSSPATH?>/screen.css", "css");
 	</script>	
     <style>BODY{background-color:white;padding:50px 10px;}</style>
 	<?php

@@ -11,7 +11,7 @@
                 		</td>
                 	</tr>
                 	<tr>
-                		<td colspan="2"><a class="actionbut" href="<?=SP_WEBPATH?>/login.php"><?=$spText['login']['Sign in to your account']?> >></a></td>
+                		<td colspan="2"><a class="actionbut" href="<?php echo SP_WEBPATH?>/login.php"><?php echo $spText['login']['Sign in to your account']?> >></a></td>
                 	</tr>
             	</table>     
             </div>

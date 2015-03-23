@@ -1,6 +1,6 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
-		<td class="left"><?=$spText['common']['Url']?></td>
+		<td class="left"><?php echo $spText['common']['Url']?></td>
 		<td>Google</td>
 		<td>Alexa</td>
 		<td class="right">Bing</td>
@@ -22,21 +22,21 @@
             }
             $tdWidth = "80px";            
 			?>
-			<tr class="<?=$class?>">
-				<td class="<?=$leftBotClass?>" style="text-align:left;padding-left:10px;"><?=$url?></td>
-				<td class="td_br_right" width="<?=$tdWidth?>" id='googlerank<?=$i?>'>
+			<tr class="<?php echo $class?>">
+				<td class="<?php echo $leftBotClass?>" style="text-align:left;padding-left:10px;"><?php echo $url?></td>
+				<td class="td_br_right" width="<?php echo $tdWidth?>" id='googlerank<?php echo $i?>'>
 					<script type="text/javascript">
-						scriptDoLoadPost('backlinks.php', 'tmp', 'googlerank<?=$i?>', 'sec=backlink&engine=google&url=<? echo urlencode($url); ?>');
+						scriptDoLoadPost('backlinks.php', 'tmp', 'googlerank<?php echo $i?>', 'sec=backlink&engine=google&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
-				<td class="td_br_right" width="<?=$tdWidth?>" id='alexa<?=$i?>'>
+				<td class="td_br_right" width="<?php echo $tdWidth?>" id='alexa<?php echo $i?>'>
 					<script type="text/javascript">
-						scriptDoLoadPost('backlinks.php', 'tmp', 'alexa<?=$i?>', 'sec=backlink&engine=alexa&url=<? echo urlencode($url); ?>');
+						scriptDoLoadPost('backlinks.php', 'tmp', 'alexa<?php echo $i?>', 'sec=backlink&engine=alexa&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
-				<td class="<?=$rightBotClass?>" width="<?=$tdWidth?>" id='msnrank<?=$i?>'>
+				<td class="<?php echo $rightBotClass?>" width="<?php echo $tdWidth?>" id='msnrank<?php echo $i?>'>
 					<script type="text/javascript">
-						scriptDoLoadPost('backlinks.php', 'tmp', 'msnrank<?=$i?>', 'sec=backlink&engine=msn&url=<? echo urlencode($url); ?>');
+						scriptDoLoadPost('backlinks.php', 'tmp', 'msnrank<?php echo $i?>', 'sec=backlink&engine=msn&url=<? echo urlencode($url); ?>');
 					</script>
 				</td>
 			</tr>
@@ -48,7 +48,7 @@
 	} 
 	?>
 	<tr class="listBot">
-		<td class="left" colspan="<?=($colCount-1)?>"></td>
+		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
 		<td class="right"></td>
 	</tr>
 </table>

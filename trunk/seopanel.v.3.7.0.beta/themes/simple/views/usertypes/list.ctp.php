@@ -1,17 +1,17 @@
 <form name="listform" id="listform">
 <?php echo showSectionHead($spTextPanel['User Type Manager']); ?>
-<?=$pagingDiv?>
+<?php echo $pagingDiv?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="leftid"><input type="checkbox" id="checkall" onclick="checkList('checkall')"></td>
-		<td><?=$spText['common']['Id']?></td>			
-		<td><?=$spText['common']['User Type']?></td>
-		<td><?=$spText['label']['Description']?></td>
-		<td><?=$spText['common']['Keywords Count']?></td>
-		<td><?=$spText['common']['Websites Count']?></td>
-		<td><?=$spText['common']['Price']?></td>
-		<td><?=$spText['common']['Status']?></td>
-		<td class="right"><?=$spText['common']['Action']?></td>
+		<td><?php echo $spText['common']['Id']?></td>			
+		<td><?php echo $spText['common']['User Type']?></td>
+		<td><?php echo $spText['label']['Description']?></td>
+		<td><?php echo $spText['common']['Keywords Count']?></td>
+		<td><?php echo $spText['common']['Websites Count']?></td>
+		<td><?php echo $spText['common']['Price']?></td>
+		<td><?php echo $spText['common']['Status']?></td>
+		<td class="right"><?php echo $spText['common']['Action']?></td>
 	</tr>
 	<?php
 	$colCount = 9; 
@@ -28,16 +28,16 @@
             }
             $websiteLink = scriptAJAXLinkHref('user-types-manager.php', 'content', "sec=edit&userTypeId={$listInfo['id']}", "{$listInfo['user_type']}")
 			?>
-			<tr class="<?=$class?>">
-				<td class="<?=$leftBotClass?>"><input type="checkbox" name="ids[]" value="<?=$listInfo['id']?>"></td>
-				<td class="td_br_right"><?=$listInfo['id']?></td>								
-				<td class="td_br_right left"><?=$listInfo['user_type']?></td>		
-				<td class="td_br_right left"><?=$listInfo['description']?></td>		
-				<td class="td_br_right left"><?=$listInfo['num_keywords']?></td>	
-				<td class="td_br_right left"><?=$listInfo['num_websites']?></td>
-				<td class="td_br_right left"><?=$listInfo['price']?></td>
+			<tr class="<?php echo $class?>">
+				<td class="<?php echo $leftBotClass?>"><input type="checkbox" name="ids[]" value="<?php echo $listInfo['id']?>"></td>
+				<td class="td_br_right"><?php echo $listInfo['id']?></td>								
+				<td class="td_br_right left"><?php echo $listInfo['user_type']?></td>		
+				<td class="td_br_right left"><?php echo $listInfo['description']?></td>		
+				<td class="td_br_right left"><?php echo $listInfo['num_keywords']?></td>	
+				<td class="td_br_right left"><?php echo $listInfo['num_websites']?></td>
+				<td class="td_br_right left"><?php echo $listInfo['price']?></td>
 				<td class="td_br_right"><?php echo $listInfo['status'] ? $spText['common']["Active"] : $spText['common']["Inactive"];	?></td>
-				<td class="<?=$rightBotClass?>" width="100px">
+				<td class="<?php echo $rightBotClass?>" width="100px">
 					<?php
 						if($listInfo['status']){
 							$statVal = "Inactivate";
@@ -47,11 +47,11 @@
 							$statLabel = $spText['common']["Activate"];
 						} 
 					?>
-					<select name="action" id="action<?=$listInfo['id']?>" onchange="doAction('user-types-manager.php', 'content', 'userTypeId=<?=$listInfo['id']?>', 'action<?=$listInfo['id']?>')">
-						<option value="select">-- <?=$spText['common']['Select']?> --</option>
-						<option value="<?=$statVal?>"><?=$statLabel?></option>
-						<option value="edit"><?=$spText['common']['Edit']?></option>
-						<option value="delete"><?=$spText['common']['Delete']?></option>
+					<select name="action" id="action<?php echo $listInfo['id']?>" onchange="doAction('user-types-manager.php', 'content', 'userTypeId=<?php echo $listInfo['id']?>', 'action<?php echo $listInfo['id']?>')">
+						<option value="select">-- <?php echo $spText['common']['Select']?> --</option>
+						<option value="<?php echo $statVal?>"><?php echo $statLabel?></option>
+						<option value="edit"><?php echo $spText['common']['Edit']?></option>
+						<option value="delete"><?php echo $spText['common']['Delete']?></option>
 					</select>
 				</td>
 			</tr>
@@ -62,7 +62,7 @@
 	} 
 	?>
 	<tr class="listBot">
-		<td class="left" colspan="<?=($colCount-1)?>"></td>
+		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
 		<td class="right"></td>
 	</tr>
 </table>
@@ -76,16 +76,16 @@ $delFun = "confirmSubmit('user-types-manager.php', 'listform', 'content', '&sec=
 	<tr>
     	<td style="padding-top: 6px;">
          	<a onclick="scriptDoLoad('user-types-manager.php', 'content', 'sec=new')" href="javascript:void(0);" class="actionbut">
-         		<?=$spTextPanel['New User Type']?>
+         		<?php echo $spTextPanel['New User Type']?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$actFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Activate"]?>
+         	<a onclick="<?php echo $actFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Activate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$inactFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']["Inactivate"]?>
+         	<a onclick="<?php echo $inactFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']["Inactivate"]?>
          	</a>&nbsp;&nbsp;
-         	<a onclick="<?=$delFun?>" href="javascript:void(0);" class="actionbut">
-         		<?=$spText['common']['Delete']?>
+         	<a onclick="<?php echo $delFun?>" href="javascript:void(0);" class="actionbut">
+         		<?php echo $spText['common']['Delete']?>
          	</a>
     	</td>
 	</tr>

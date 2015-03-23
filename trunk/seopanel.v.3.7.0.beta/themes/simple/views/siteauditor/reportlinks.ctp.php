@@ -1,9 +1,9 @@
 <table  width="98%" border="0" cellspacing="0px" cellpadding="0px" align="center" class="report_head">
 	<tr>
 		<td align="left" valign="bottom">
-			<div><b><?=$spTextSA['Project Url']?></b>: <?=$projectInfo['url']?></div>
-			<div style="margin-bottom: 0px;"><b><?=$spText['label']['Updated']?></b>: <?=$projectInfo['last_updated']?></div>
-			<div style="margin-bottom: 0px;margin-top: 10px;"><b><?=$spText['label']['Total Results']?></b>: <?=$totalResults?></div>
+			<div><b><?php echo $spTextSA['Project Url']?></b>: <?php echo $projectInfo['url']?></div>
+			<div style="margin-bottom: 0px;"><b><?php echo $spText['label']['Updated']?></b>: <?php echo $projectInfo['last_updated']?></div>
+			<div style="margin-bottom: 0px;margin-top: 10px;"><b><?php echo $spText['label']['Total Results']?></b>: <?php echo $totalResults?></div>
 		</td>
 
 <?php
@@ -36,10 +36,10 @@ if(!empty($pdfVersion) || !empty($printVersion)) {
 } else {    
     ?>	
 	<td align="right" valign="bottom">
-		<a href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=pdf"><img src="<?=SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
-		<a href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=export"><img src="<?=SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?=$mainLink?>&sec=showreport&report_type=rp_links&doc_type=print"><img src="<?=SP_IMGPATH?>/print_button.gif"></a>
-		<?=$pagingDiv?>
+		<a href="<?php echo $mainLink?>&sec=showreport&report_type=rp_links&doc_type=pdf"><img src="<?php echo SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
+		<a href="<?php echo $mainLink?>&sec=showreport&report_type=rp_links&doc_type=export"><img src="<?php echo SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
+		<a target="_blank" href="<?php echo $mainLink?>&sec=showreport&report_type=rp_links&doc_type=print"><img src="<?php echo SP_IMGPATH?>/print_button.gif"></a>
+		<?php echo $pagingDiv?>
 	</td>
 <?php }?>
 	</tr>
@@ -47,18 +47,18 @@ if(!empty($pdfVersion) || !empty($printVersion)) {
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list" style="<?php echo $borderCollapseVal; ?>">
 	<tr class="plainHead">
-		<td class="left" style="width: 30%;"><?=$page_urlLink?></td>
-		<td><?=$pagerankLink?></td>
-		<td><?=$google_backlinksLink?></td>
-		<td><?=$bing_backlinksLink?></td>
-		<td><?=$google_indexedLink?></td>
-		<td><?=$bing_indexedLink?></td>
-		<td><?=$external_linksLink?></td>
-		<td><?=$total_linksLink?></td>
-		<td><?=$scoreLink?></td>
-		<td><?=$brockenLink?></td>
+		<td class="left" style="width: 30%;"><?php echo $page_urlLink?></td>
+		<td><?php echo $pagerankLink?></td>
+		<td><?php echo $google_backlinksLink?></td>
+		<td><?php echo $bing_backlinksLink?></td>
+		<td><?php echo $google_indexedLink?></td>
+		<td><?php echo $bing_indexedLink?></td>
+		<td><?php echo $external_linksLink?></td>
+		<td><?php echo $total_linksLink?></td>
+		<td><?php echo $scoreLink?></td>
+		<td><?php echo $brockenLink?></td>
 		<?php if (empty($pdfVersion) && empty($printVersion)) {?>
-			<td class="right"><?=$spText['common']['Action']?></td>
+			<td class="right"><?php echo $spText['common']['Action']?></td>
 		<?php }?>
 	</tr>
 	<?php
@@ -75,15 +75,15 @@ if(!empty($pdfVersion) || !empty($printVersion)) {
             $pageLink = scriptAJAXLinkHref('siteauditor.php', 'subcontent', "sec=pagedetails&report_id={$listInfo['id']}&pageno=$pageNo&order_col=$orderCol&order_val=$orderVal", wordwrap($listInfo['page_url'], 100, "<br>", true));             
             $pageLink = !empty($pdfVersion) ? str_replace("href='javascript:void(0);'", "", $pageLink) : $pageLink;
             ?>
-			<tr class="<?=$class?>">
-				<td class="<?=$leftBotClass?> left"><?=$pageLink?></td>
-				<td class="td_br_right"><?=$listInfo['pagerank']?></td>
-				<td class="td_br_right"><?=$listInfo['google_backlinks']?></td>
-				<td class="td_br_right"><?=$listInfo['bing_backlinks']?></td>
-				<td class="td_br_right"><?=$listInfo['google_indexed']?></td>
-				<td class="td_br_right"><?=$listInfo['bing_indexed']?></td>
-				<td class="td_br_right"><?=$listInfo['external_links']?></td>
-				<td class="td_br_right"><?=$listInfo['total_links']?></td>
+			<tr class="<?php echo $class?>">
+				<td class="<?php echo $leftBotClass?> left"><?php echo $pageLink?></td>
+				<td class="td_br_right"><?php echo $listInfo['pagerank']?></td>
+				<td class="td_br_right"><?php echo $listInfo['google_backlinks']?></td>
+				<td class="td_br_right"><?php echo $listInfo['bing_backlinks']?></td>
+				<td class="td_br_right"><?php echo $listInfo['google_indexed']?></td>
+				<td class="td_br_right"><?php echo $listInfo['bing_indexed']?></td>
+				<td class="td_br_right"><?php echo $listInfo['external_links']?></td>
+				<td class="td_br_right"><?php echo $listInfo['total_links']?></td>
 				<td class="td_br_right" style="text-align: right;">
 				    <?php
 				    	if ($pdfVersion) {
@@ -108,12 +108,12 @@ if(!empty($pdfVersion) || !empty($printVersion)) {
 				    <?php echo $listInfo['brocken'] ? $spText['common']['Yes'] : $spText['common']['No']; ?>
 				</td>
 				<?php if (empty($pdfVersion) && empty($printVersion)) {?>
-					<td class="<?=$rightBotClass?>">
-					    <select style="width: 80px;" name="action" id="action<?=$listInfo['id']?>" onchange="doAction('siteauditor.php', 'subcontent', 'report_id=<?=$listInfo['id']?>&pageno=<?=$pageNo?>&order_col=<?=$orderCol?>&order_val=<?=$orderVal?>', 'action<?=$listInfo['id']?>')">
-							<option value="select">-- <?=$spText['common']['Select']?> --</option>
-							<option value="pagedetails"><?=$spTextSA['Page Details']?></option>
-							<option value="checkscore"><?=$spTextSA['Check Score']?></option>
-							<option value="deletepage"><?=$spText['common']['Delete']?></option>
+					<td class="<?php echo $rightBotClass?>">
+					    <select style="width: 80px;" name="action" id="action<?php echo $listInfo['id']?>" onchange="doAction('siteauditor.php', 'subcontent', 'report_id=<?php echo $listInfo['id']?>&pageno=<?php echo $pageNo?>&order_col=<?php echo $orderCol?>&order_val=<?php echo $orderVal?>', 'action<?php echo $listInfo['id']?>')">
+							<option value="select">-- <?php echo $spText['common']['Select']?> --</option>
+							<option value="pagedetails"><?php echo $spTextSA['Page Details']?></option>
+							<option value="checkscore"><?php echo $spTextSA['Check Score']?></option>
+							<option value="deletepage"><?php echo $spText['common']['Delete']?></option>
 						</select>
 					</td>
 				<?php }?>
@@ -125,7 +125,7 @@ if(!empty($pdfVersion) || !empty($printVersion)) {
 	} 
 	?>
 	<tr class="listBot">
-		<td class="left" colspan="<?=($colCount-1)?>"></td>
+		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
 		<td class="right"></td>
 	</tr>
 </table>
@@ -136,8 +136,8 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     <table width="100%" cellspacing="0" cellpadding="0" border="0" class="actionSec">
     	<tr>
         	<td style="padding-top: 6px;">
-             	<a onclick="scriptDoLoad('siteauditor.php?sec=importlinks&project_id=<?=$projectId?>', 'content')" href="javascript:void(0);" class="actionbut">
-             		<?=$spTextSA['Import Project Links']?>
+             	<a onclick="scriptDoLoad('siteauditor.php?sec=importlinks&project_id=<?php echo $projectId?>', 'content')" href="javascript:void(0);" class="actionbut">
+             		<?php echo $spTextSA['Import Project Links']?>
              	</a>
         	</td>
     	</tr>
