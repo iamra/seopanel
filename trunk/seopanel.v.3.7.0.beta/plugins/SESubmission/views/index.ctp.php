@@ -58,13 +58,13 @@ $(document).ready(function(){
 	<tr>				
 		<th>Website URL: </th>
 		<td>
-			<input type="text" id="url" name="url" value="<?=stripslashes($info['url'])?>" size="42">
+			<input type="text" id="url" name="url" value="<?php echo stripslashes($info['url'])?>" size="42">
 		</td>
 	</tr>
 	<tr>				
 		<th>E-mail: </th>
 		<td>
-			<input type="text" id="email" name="email" value="<?=stripslashes($info['email'])?>" size="42">
+			<input type="text" id="email" name="email" value="<?php echo stripslashes($info['email'])?>" size="42">
 		</td>
 	</tr>	
 	
@@ -118,7 +118,7 @@ while(list($key,$val)=each($engines_temp))
 	<tr>
 		<th></th>
 		<td align='center'>
-			<a onclick="showDiv('submitnote');<?php echo pluginPOSTMethod('seform', 'subcontent', 'action=submit'); ?>" href="javascript:void(0);"><img border="0" alt="" src="<?=SP_IMGPATH?>/submit.gif"/></a>
+			<a onclick="showDiv('submitnote');<?php echo pluginPOSTMethod('seform', 'subcontent', 'action=submit'); ?>" href="javascript:void(0);"><img border="0" alt="" src="<?php echo SP_IMGPATH?>/submit.gif"/></a>
          </td>
 	</tr>
 </table>
