@@ -33,7 +33,7 @@ class UserTypeController extends Controller {
 	 */
 	function listUserTypes($info = '') {
 		$info['pageno'] = intval($info['pageno']);
-		$sql = "SELECT * FROM usertypes";				
+		$sql = "SELECT * FROM usertypes where id!=1";				
 		
 		# pagination setup		
 		$this->db->query($sql, true);
@@ -80,6 +80,7 @@ class UserTypeController extends Controller {
 	 * @return : returns the data
 	 */
 	function __getUserTypeInfo($userTypeId) {
+		$userTypeId = intval($userTypeId);
 		$sql = "select * from usertypes where id=$userTypeId";
 		$listInfo = $this->db->select($sql, true);
 		return empty($listInfo['id']) ? false :  $listInfo;		
@@ -101,7 +102,7 @@ class UserTypeController extends Controller {
 		if (!$this->validate->flagErr){
 
 			if($listInfo['user_type'] != $listInfo['old_user_type']){
-				if ($this->__checkUserType($listInfo['user_type'])) {
+				if ($this->__checkUserType($listInfo['user_type'], $listInfo['id'])) {
 					$errMsg['user_type'] = formatErrorMsg($this->spTextWeb['User Type already exist']);
 					$this->validate->flagErr = true;
 				}
@@ -111,10 +112,10 @@ class UserTypeController extends Controller {
 				$sql = "update usertypes set
 						user_type = '".addslashes($listInfo['user_type'])."',
 						description = '".addslashes($listInfo['description'])."',
-						num_websites = '".addslashes($listInfo['num_websites'])."',
-						num_keywords = '".addslashes($listInfo['num_keywords'])."',
-						price = '".addslashes($listInfo['price'])."',
-						status = '".addslashes($listInfo['user_type_status'])."'
+						num_websites = '".intval($listInfo['num_websites'])."',
+						num_keywords = '".intval($listInfo['num_keywords'])."',
+						price = '".floatval($listInfo['price'])."',
+						status = '".intval($listInfo['user_type_status'])."'
 						where id={$listInfo['id']}";
 				
 				$this->db->query($sql);
@@ -131,9 +132,9 @@ class UserTypeController extends Controller {
 	 * @params : $userType
 	 * @return : boolean
 	 */
-	function __checkUserType($userType) {
-		
-		$sql = "select id from usertypes where user_type='".addslashes($userType);
+	function __checkUserType($userType, $userTypeId = false) {
+		$sql = "select id from usertypes where user_type='".addslashes($userType)."'";
+		$sql .= empty($userTypeId) ? "" : " and id!=" . intval($userTypeId);
 		$listInfo = $this->db->select($sql, true);
 		return empty($listInfo['id']) ? false :  $listInfo['id'];
 	}
@@ -153,7 +154,9 @@ class UserTypeController extends Controller {
 		if(!$this->validate->flagErr){
 			if (!$this->__checkUserType($listInfo['user_type'])) {
 					$sql = "insert into usertypes(user_type,description,num_websites,num_keywords,price,status)
-    							values('".addslashes($listInfo['user_type'])."','".addslashes($listInfo['description'])."','".addslashes($listInfo['num_websites'])."','".addslashes($listInfo['num_keywords'])."','".addslashes($listInfo['price'])."'," . $listInfo['user_type_status'] . ")";
+    				values('".addslashes($listInfo['user_type'])."','".addslashes($listInfo['description'])."',
+    				'".intval($listInfo['num_websites'])."','".intval($listInfo['num_keywords'])."',
+    				'".floatval($listInfo['price'])."'," . intval($listInfo['user_type_status']) . ")";
 					$this->db->query($sql);
 					$this->listUserTypes();
 					exit;
@@ -196,6 +199,16 @@ class UserTypeController extends Controller {
 		$userTypeId = intval($userTypeId);
 		$sql = "delete from usertypes where id=$userTypeId";
 		$this->db->query($sql);
+	}
+	
+	/**
+	 * function to get all user types
+	 */
+	function getAllUserTypes($includeAdmin = false) {
+		$sql = "select * from usertypes where status=1";
+		$sql .= empty($includeAdmin) ? " and id!=1" : "";
+		$userTypeList = $this->db->select($sql);
+		return $userTypeList;
 	}
 }
 ?>

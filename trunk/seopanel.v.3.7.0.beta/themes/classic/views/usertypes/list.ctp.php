@@ -26,12 +26,13 @@
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $websiteLink = scriptAJAXLinkHref('user-types-manager.php', 'content', "sec=edit&userTypeId={$listInfo['id']}", "{$listInfo['user_type']}")
+            
+            $userTypeLink = scriptAJAXLinkHref('user-types-manager.php', 'content', "sec=edit&userTypeId={$listInfo['id']}", "{$listInfo['user_type']}")
 			?>
 			<tr class="<?php echo $class?>">
 				<td class="<?php echo $leftBotClass?>"><input type="checkbox" name="ids[]" value="<?php echo $listInfo['id']?>"></td>
 				<td class="td_br_right"><?php echo $listInfo['id']?></td>								
-				<td class="td_br_right left"><?php echo $listInfo['user_type']?></td>		
+				<td class="td_br_right left"><?php echo $userTypeLink?></td>		
 				<td class="td_br_right left"><?php echo $listInfo['description']?></td>		
 				<td class="td_br_right left"><?php echo $listInfo['num_keywords']?></td>	
 				<td class="td_br_right left"><?php echo $listInfo['num_websites']?></td>
