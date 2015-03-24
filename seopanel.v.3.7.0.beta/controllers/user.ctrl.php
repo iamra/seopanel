@@ -90,7 +90,20 @@ class UserController extends Controller{
 	}
 	
 	# register function
-	function register(){		
+	function register(){
+		
+		$seopluginCtrler =  new SeoPluginsController();
+		$subscriptionActive = false;
+		
+		// check whetehr plugin installed or not
+		if ($seopluginCtrler->isPluginActive("Subscription")) {
+			$subscriptionActive = true;
+			$utypeCtrler = new UserTypeController();
+			$userTypeList = $utypeCtrler->getAllUserTypes();
+			$this->set('userTypeList', $userTypeList); 
+		}
+		
+		$this->set('subscriptionActive', $subscriptionActive);
 		$this->render('common/register');
 	}
 	

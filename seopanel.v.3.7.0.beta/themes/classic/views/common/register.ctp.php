@@ -10,6 +10,32 @@
                 		<td>&nbsp;</td>
                 		<th class="main_header"><?php echo $spText['login']['Create New Account']?></th>
                 	</tr>
+                	
+                	<?php
+                	// if subscription plugin is active
+                	if ($subscriptionActive & !empty($userTypeList)){
+						?>
+						<tr>
+							<th width="28%">Subscription:*</th>
+							<td>
+								<select name="utype_id">
+									<?php
+									// loop through the subscription types
+									foreach ($userTypeList as $userTypeInfo) {
+										$typeLabel = ucfirst($userTypeInfo['user_type']) . " - ";
+										$typeLabel .= ($userTypeInfo['price'] > 0) ? "$" . $userTypeInfo['price'] . "/Monthly" : "Free";
+										?>
+										<option value="<?php echo $userTypeInfo['id']?>"><?php echo $typeLabel?></option>
+										<?php
+									}
+									?>
+								</select>
+							</td>
+						</tr>
+						<?php
+					}
+                	?>
+                	
                 	<tr>
                 		<th width="28%"><?php echo $spText['login']['Username']?>:*</th>
                 		<td><input type="text" name="userName" value="<?php echo $post['userName']?>"><?php echo $errMsg['userName']?></td>

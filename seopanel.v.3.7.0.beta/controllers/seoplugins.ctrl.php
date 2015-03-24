@@ -383,5 +383,12 @@ class SeoPluginsController extends Controller{
 		}		
 	}
 	
+	# function to check whether a plugin is installed and active
+	function isPluginActive($value, $col = 'name') {
+		echo $sql = "select * from seoplugins where $col='".addslashes($value)."' and installed=1 and status=1";
+		$pluginInfo = $this->db->select($sql, true);
+		return empty($pluginInfo['id']) ? false : $pluginInfo;
+	}
+	
 }
 ?>
