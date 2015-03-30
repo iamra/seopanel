@@ -332,6 +332,15 @@ class Spider{
 				$ret = $this->getContent($url, $enableProxy);
 			}
 		}
+		
+		// check debug request is enabled
+		if (!empty($_GET['debug']) || !empty($_POST['debug'])) {
+			?>
+			<div style="width: 760px; margin-top: 30px; padding: 14px; height: 900px; overflow: auto; border: 1px solid #B0C2CC;">
+				<?php debugVar($ret, false); ?>
+			</div>
+			<?php
+		}
 
 		return $ret;
 	}

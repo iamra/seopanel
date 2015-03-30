@@ -41,7 +41,7 @@
 			<td class="tab_right_bot" colspan="2" style="text-align: left;"><?php echo $spText['common']['No Records Found']?>!</td>
 		</tr>
 		<?		
-	}	
+	} 
 	?>
 	<tr class="listBot">
 		<td class="left" colspan="<?php echo ($colCount-1)?>"></td>
@@ -51,15 +51,3 @@
 	</td>
 	</tr>
 </table>
-
-
-<?php 
-// check debug request is enabled
-if (!empty($requestContent)) {
-	?>
-	<div style="width: 760px; margin-top: 30px; padding: 14px; height: 900px; overflow: auto; border: 1px solid #B0C2CC;">
-		<?php debugVar($requestContent, false); ?>
-	</div>
-	<?php
-}
-?>
