@@ -48,6 +48,9 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'c
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Edit User Type', 'Edit User Type');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'website', 'User Type already exist', 'User Type already exist');
 
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Debug', 'Debug');
+
+
 ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
 
 ALTER TABLE `directories`  ADD `is_reciprocal` TINYINT(1) NOT NULL DEFAULT '0';
