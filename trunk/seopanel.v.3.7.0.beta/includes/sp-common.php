@@ -341,8 +341,14 @@ function showPrintFooter($spText) {
 }
 
 # func to debug the variables
-function debugVar($value) {
+function debugVar($value, $exitFlag = true) {
     echo "<pre>";print_r($value);echo "</pre>";
+    
+    // if exit flag set terminate execution
+    if ($exitFlag) {
+		exit;
+	}
+    
 }
 
 # func to send mail

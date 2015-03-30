@@ -37,9 +37,18 @@
 			<input type="checkbox" value="1" name="show_all"/>
 		</td>
 	</tr>
+	<?php
+	if (!empty($_GET['debug'])) {?>	
+		<tr>
+			<th><?php echo $spText['common']['Debug']?>: </th>		
+			<td>
+				<input type="checkbox" value="1" name="debug_request"/>
+			</td>
+		</tr>
+	<?php }?>
 	<tr>
 		<th>&nbsp;</th>
-		<td style="padding-left: 9px;">
+		<td style="padding-left: 9px; padding-top: 10px;">
 			<?php $actFun = SP_DEMO ? "alertDemoMsg()" : "scriptDoLoadPost('reports.php', 'search_form', 'subcontent', '&sec=kwchecker')"; ?>
 			<a href="javascript:void(0);" onclick="<?php echo $actFun?>" class="actionbut"><?php echo $spText['button']['Proceed']?></a>
 		</td>
