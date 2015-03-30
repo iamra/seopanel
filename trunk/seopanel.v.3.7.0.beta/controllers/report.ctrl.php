@@ -25,8 +25,6 @@ class ReportController extends Controller {
 	var $seLIst;
 	var $showAll = false;
 	var $proxyCheckCount = 1;
-	var $debugRequest = false;
-	var $requestContent = '';
 
 	# func to get keyword report summary
 	function __getKeywordSearchReport($keywordId, $fromTime, $toTime, $apiCall = false){
@@ -596,15 +594,7 @@ class ReportController extends Controller {
 				$this->spider->_CURLOPT_COOKIE = $this->seList[$seInfoId]['cookie_send'];				
 			}
 			
-			// get page content by curl request
 			$result = $this->spider->getContent($seUrl);
-
-			// check whthere debug request is set
-			if ($this->debugRequest) {
-				$this->requestContent = $result;
-			}
-			
-			// format page content
 			$pageContent = $this->formatPageContent($seInfoId, $result['page']);			
 
 			$crawlLogCtrl = new CrawlLogController();
@@ -782,7 +772,7 @@ class ReportController extends Controller {
 	}
 	
 	# func to show quick rank report
-	function showQuickRankChecker($keywordInfo = '') {
+	function showQuickRankChecker($keywordInfo='') {
 		
 		$keywordInfo['searchengines'] = $keywordInfo['se_id'];
 		$this->showAll = $keywordInfo['show_all'];
@@ -790,20 +780,13 @@ class ReportController extends Controller {
 		$seController = New SearchEngineController();
 		$this->seList = $seController->__getAllCrawlFormatedSearchEngines();
 		
-		// if debug request selected
-		if ($keywordInfo['debug_request']) {
-			$this->debugRequest = true;	
-		}
-		
 		$crawlResult = $this->crawlKeyword($keywordInfo);
 		
 		$resultList = array();
 		if(!empty($crawlResult[$keywordInfo['se_id']]['status'])){
 			$resultList = $crawlResult[$keywordInfo['se_id']]['matched'];
 		}
-		
 		$this->set('list', $resultList);
-		$this->set('requestContent', $this->requestContent);
 		
 		$this->render('report/showquickrankchecker');
 	}
