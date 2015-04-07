@@ -189,24 +189,5 @@ class IndexController extends Controller{
 		$this->render('support');
 	}
 	
-	# function to show news boxes
-	function showNews($secInfo='') {
-		switch($secInfo['sec_name']){
-			
-			default:
-				if(empty($_COOKIE['default_news'])){
-					$ret = $this->spider->getContent(SP_NEWS_PAGE . "?lang=". $_SESSION['lang_code'], true, false);
-					setcookie("default_news", $ret['page'], time()+ (60*60*24));
-				} else {
-					$ret['page'] = $_COOKIE['default_news'];
-				}
-				
-				if(!empty($ret['page'])){				
-					$this->set('newsContent', stripslashes($ret['page']));
-					$this->render('common/topnewsbox', 'ajax');
-				}
-		}
-		
-	}
 }
 ?>
