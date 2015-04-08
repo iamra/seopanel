@@ -63,3 +63,15 @@ WHERE url like '%yahoo%'
 INSERT INTO `seoplugins` (`label`, `name`, `author`, `description`, `version`, `website`, `status`, `installed`) VALUES
 ('Search Engine Submissions', 'SESubmission', 'Glenn Prialde', 'Search Engine Submissions', '1.0.0', 'http://submitia.com/', 1, 1);
 
+--
+-- Table structure for table `information_list`
+--
+
+CREATE TABLE IF NOT EXISTS `information_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `info_type` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'news',
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `update_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
