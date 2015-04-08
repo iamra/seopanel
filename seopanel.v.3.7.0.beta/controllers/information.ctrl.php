@@ -38,10 +38,10 @@ class InformationController extends Controller {
 			default:
 				
 				// get today's information
-				$ret['page'] = $this->__getTodayInformation();
+				$ret = $this->__getTodayInformation();
 				
 				// if empty fetch directly from website
-				if (empty($ret['page'])) {
+				if (!isset($ret['page'])) {
 					
 					// get content directly from website
 					$ret = $this->spider->getContent(SP_NEWS_PAGE . "?lang=". $_SESSION['lang_code'], true, false);
@@ -49,7 +49,7 @@ class InformationController extends Controller {
 					// update in db
 					$this->updateTodayInformation($ret['page']);
 					
-				}				
+				}
 	
 				// check whether it contains required data
 				if (!empty($ret['page']) && stristr($ret['page'], "id='news_info'")) {					
@@ -58,7 +58,36 @@ class InformationController extends Controller {
 				}
 		}
 	
-	}	
+	}
+
+	
+	/**
+	 * function to get sponsors
+	 */
+	function getSponsors() {
+		
+		// get today's information
+		$ret = $this->__getTodayInformation('sponsors');
+		
+		// if empty fetch directly from website
+		if (!isset($ret['page'])) {
+			
+			// get content directly from website
+			$ret = $this->spider->getContent(SP_SPONSOR_PAGE . "?lang=". $_SESSION['lang_code'], true, false);
+				
+			// update in db
+			$this->updateTodayInformation($ret['page'], 'sponsors');
+				
+		}
+		
+		// check whether it contains required data
+		if (!empty($ret['page']) && stristr($ret['page'], 'class="contentmid"')) {
+			return 	$ret['page'];
+		} else {
+			return false;
+		}
+		
+	}
 	
 	/**
 	 * function to update news in database
@@ -79,9 +108,10 @@ class InformationController extends Controller {
 	 * function to get todays information
 	 */
 	function __getTodayInformation($secName = 'news') {
-		$sql = "select info_type, content from information_list where info_type='" . addslashes($secName) . "' and update_date='" . date('Y-m-d') . "'";
+		$sql = "select info_type, content as page from information_list where info_type='" . addslashes($secName) . "'
+		and update_date='" . date('Y-m-d') . "'";
 		$info = $this->db->select($sql, true);
-		return empty($info['content']) ? '' : $info['content'];
+		return $info;
 	}
 	
 }
