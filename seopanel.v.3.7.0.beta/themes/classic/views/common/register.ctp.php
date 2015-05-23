@@ -16,7 +16,7 @@
                 	if ($subscriptionActive & !empty($userTypeList)){
 						?>
 						<tr>
-							<th width="28%">Subscription:*</th>
+							<th width="28%"><?php echo $spTextSubscription['Subscription']?>:*</th>
 							<td>
 								<select name="utype_id">
 									<?php
@@ -30,8 +30,29 @@
 									}
 									?>
 								</select>
+								<?php echo $errMsg['utype_id']?>
+							</td>
+						</tr><tr>
+							<th width="28%"><?php echo $spTextSubscription['Payment Method']?>:*</th>
+							<td>
+								<select name="pg_id">
+									<?php
+									// loop through the payment types
+									foreach ($pgList as $pgInfo) {
+										$checked = ($defaultPgId == $pgInfo['id']) ? "selected" : ""
+										?>
+										<option value="<?php echo $pgInfo['id']?>" <?php echo $checked; ?> ><?php echo $pgInfo['name']; ?></option>
+										<?php
+									}
+									?>
+								</select>
+								<?php echo $errMsg['pg_id']?>
 							</td>
 						</tr>
+						<?php
+					} else {
+						?>
+						<input type="hidden" name="utype_id" value="2">
 						<?php
 					}
                 	?>

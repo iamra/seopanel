@@ -143,6 +143,12 @@ class Controller extends Seopanel{
 		$this->view->data = $this->data;
 		$this->view->pluginRender($viewFile, $layout);
 	}
+	
+	# normal plugingetViewContent function
+	function getPluginViewContent($viewFile){
+		$this->view->data = $this->data;
+		return $this->view->getPluginViewContent($viewFile);
+	}
 		
 	# func to getting language texts
 	function getLanguageTexts($category, $langCode='en') {

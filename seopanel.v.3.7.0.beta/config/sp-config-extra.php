@@ -40,7 +40,7 @@ define('SP_PLUGINMENUFILE', 'menu.ctp.php');
 define('SP_DEMO', 0);
 
 # seo panel language testing mode
-define('SP_LANGTESTING', 0);
+define('SP_LANGTESTING', 1);
 
 # seo panel multiple cron execution possible same day
 define('SP_MULTIPLE_CRON_EXEC', 1);
@@ -107,5 +107,10 @@ define('SP_VERSION_PAGE', 'http://www.seopanel.in/getversion.php');
 
 # seo panel theme site url
 define('SP_THEMESITE', 'http://www.seopanel.in/themes/');
+
+# payment related variables
+define('SP_PAYMENT_CANCEL_LINK', SP_WEBPATH."/payment_cancel.php");
+define('SP_PAYMENT_RETURN_LINK', SP_WEBPATH."/payment_return.php");
+define('SP_PAYMENT_CURRENCY', "USD");
 
 ?>

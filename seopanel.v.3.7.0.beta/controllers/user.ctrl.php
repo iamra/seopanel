@@ -100,7 +100,16 @@ class UserController extends Controller{
 			$subscriptionActive = true;
 			$utypeCtrler = new UserTypeController();
 			$userTypeList = $utypeCtrler->getAllUserTypes();
-			$this->set('userTypeList', $userTypeList); 
+			$this->set('userTypeList', $userTypeList);
+			
+			// include available payment gateways
+			include SP_PLUGINPATH . "/Subscription/paymentgateway.ctrl.php";
+			$pgCtrler = new PaymentGateway();
+			$pgList = $pgCtrler->__getAllPaymentGateway();
+			$this->set('pgList', $pgList);
+			$this->set('defaultPgId', $pgCtrler->__getDefaultPaymentGateway());
+			$this->set('spTextSubscription', $this->getLanguageTexts('subscription', $_SESSION['lang_code']));
+			
 		}
 		
 		$this->set('subscriptionActive', $subscriptionActive);
@@ -112,25 +121,50 @@ class UserController extends Controller{
 	    $_POST = sanitizeData($_POST);
 		$this->set('post', $_POST);
 		$userInfo = $_POST;
+		$subscriptionActive = false;
 		$errMsg['userName'] = formatErrorMsg($this->validate->checkUname($userInfo['userName']));
 		$errMsg['password'] = formatErrorMsg($this->validate->checkPasswords($userInfo['password'], $userInfo['confirmPassword']));
 		$errMsg['firstName'] = formatErrorMsg($this->validate->checkBlank($userInfo['firstName']));
 		$errMsg['lastName'] = formatErrorMsg($this->validate->checkBlank($userInfo['lastName']));
 		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userInfo['email']));
 		$errMsg['code'] = formatErrorMsg($this->validate->checkCaptcha($userInfo['code']));
+		$errMsg['utype_id'] = formatErrorMsg($this->validate->checkNumber($userInfo['utype_id']));
+		
+		// if payment plugin installed check whether valid payment gateway found
+		$seopluginCtrler =  new SeoPluginsController();
+		if ($seopluginCtrler->isPluginActive("Subscription")) {
+			$subscriptionActive = true;
+			$errMsg['pg_id'] = formatErrorMsg($this->validate->checkNumber($userInfo['pg_id']));
+		}
+		
 		if(!$this->validate->flagErr){
 			if (!$this->__checkUserName($userInfo['userName'])) {
 				if (!$this->__checkEmail($userInfo['email'])) {
-										
-					# format values					
+					$utypeId = intval($userInfo['utype_id']);
 					$sql = "insert into users
-							(utype_id,username,password,first_name,last_name,email,created,status) 
-							values
-							(2,'".addslashes($userInfo['userName'])."','".md5($userInfo['password'])."',
-							'".addslashes($userInfo['firstName'])."','".addslashes($userInfo['lastName'])."','".addslashes($userInfo['email'])."',UNIX_TIMESTAMP(),1)";
-					$this->db->query($sql);					
+					(utype_id,username,password,first_name,last_name,email,created,status) 
+					values ($utypeId,'".addslashes($userInfo['userName'])."','".md5($userInfo['password'])."',
+					'".addslashes($userInfo['firstName'])."','".addslashes($userInfo['lastName'])."',
+					'".addslashes($userInfo['email'])."',UNIX_TIMESTAMP(),1)";
+					$this->db->query($sql);
+					
+					// check whether subscription is active
+					if ($subscriptionActive) {
+						$utypeCtrler = New UserTypeController();
+						$utypeInfo = $utypeCtrler->__getUserTypeInfo($utypeId);
+						
+						// if it is paid subscription, proceed with payment
+						if ($utypeInfo['price'] > 0) {
+							include SP_PLUGINPATH . "/Subscription/paymentgateway.ctrl.php";
+							$pgCtrler = new PaymentGateway();
+							$paymentForm = $pgCtrler->getPaymentForm(intval($userInfo['pg_id']));
+							$this->set('paymentForm', $paymentForm);
+						}						
+					}
+					
 					$this->render('common/registerconfirm');
-					exit;
+					return True;
+					
 				}else{
 					$errMsg['email'] = formatErrorMsg($_SESSION['text']['login']['emailexist']);
 				}

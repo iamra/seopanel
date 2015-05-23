@@ -50,6 +50,8 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 's
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'PP_BUSINESS_EMAIL', 'Paypal Business Email');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'PP_TOKEN', 'Paypal Token');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'SP_PAYMENT_PLUGIN', 'Default Payment Plugin');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'Subscription', 'Subscription'); 
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'Payment Method', 'Payment Method');
 
 
 ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
