@@ -148,8 +148,11 @@ class UserController extends Controller{
 					'".addslashes($userInfo['email'])."',UNIX_TIMESTAMP(),1)";
 					$this->db->query($sql);
 					
+					// get user id created
+					$userId = $this->db->getMaxId('users');
+					
 					// check whether subscription is active
-					if ($subscriptionActive) {
+					if ($subscriptionActive and $userId) {
 						$utypeCtrler = New UserTypeController();
 						$utypeInfo = $utypeCtrler->__getUserTypeInfo($utypeId);
 						
@@ -157,7 +160,7 @@ class UserController extends Controller{
 						if ($utypeInfo['price'] > 0) {
 							include SP_PLUGINPATH . "/Subscription/paymentgateway.ctrl.php";
 							$pgCtrler = new PaymentGateway();
-							$paymentForm = $pgCtrler->getPaymentForm(intval($userInfo['pg_id']));
+							$paymentForm = $pgCtrler->getPaymentForm(intval($userInfo['pg_id']), $userId, $utypeInfo);
 							$this->set('paymentForm', $paymentForm);
 						}						
 					}

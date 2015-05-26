@@ -11,6 +11,9 @@ VALUES ('Maximum number of proxies used in single execution', 'CHECK_MAX_PROXY_C
 INSERT INTO `settings` (`set_label`, `set_name`, `set_val`, `set_category`, `set_type`, `display`) 
 VALUES ('API Secret', 'API_SECRET', '', 'api', 'medium', '1');
 
+INSERT INTO `settings` (`set_label`, `set_name`, `set_val`, `set_category`, `set_type`, `display`) 
+VALUES ('Company Name', 'SP_COMPANY_NAME', 'Seo Panel', 'system', 'medium', '1');
+
 UPDATE `settings` SET `set_category` = 'proxy' WHERE set_name='SP_ENABLE_PROXY';
 UPDATE `settings` SET `set_category` = 'report' WHERE set_name='SP_CRAWL_DELAY';
 UPDATE `settings` SET `set_category` = 'report' WHERE set_name='SP_USER_GEN_REPORT';
@@ -23,6 +26,8 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES
 ('en', 'settings', 'CHECK_MAX_PROXY_COUNT_IF_FAILED', 'Maximum number of proxies used in single execution');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'settings', 'API_SECRET', 'API Secret');
+INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
+('en', 'settings', 'SP_COMPANY_NAME', 'Company Name');
 
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'panel', 'API Settings', 'API Settings');
@@ -60,11 +65,10 @@ ALTER TABLE `directories`  ADD `is_reciprocal` TINYINT(1) NOT NULL DEFAULT '0';
 
 UPDATE searchengines SET `cookie_send` = 'sB=v=1&n=100&sh=1&rw=new',
 `regex` = '<li.*?<h3.*?><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><\\/h3>.*?<p.*?>(.*?)<\\/p>'
-WHERE url like '%yahoo%'
+WHERE url like '%yahoo%';
 
+UPDATE `searchengines` SET url = CONCAT(url, "&gws_rd=cr") WHERE `url` LIKE '%google%';
 
-INSERT INTO `seoplugins` (`label`, `name`, `author`, `description`, `version`, `website`, `status`, `installed`) VALUES
-('Search Engine Submissions', 'SESubmission', 'Glenn Prialde', 'Search Engine Submissions', '1.0.0', 'http://submitia.com/', 1, 1);
 
 --
 -- Table structure for table `information_list`
