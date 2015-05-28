@@ -28,17 +28,14 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES
 ('en', 'settings', 'API_SECRET', 'API Secret');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'settings', 'SP_COMPANY_NAME', 'Company Name');
-
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'panel', 'API Settings', 'API Settings');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'panel', 'API Manager', 'API Manager');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'panel', 'API Connection', 'API Connection');
-
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES 
 ('en', 'api', 'API Url', 'API Url');
-
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'panel', 'User Type Manager', 'User Type Manager');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'panel', 'New User Type', 'New User Type');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'User Type', 'User Type');
@@ -49,7 +46,6 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'c
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Edit User Type', 'Edit User Type');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'website', 'User Type already exist', 'User Type already exist');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'common', 'Debug', 'Debug');
-
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'Edit Payment Gateway', 'Edit Payment Gateway');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'Sandbox', 'Sandbox');
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'PP_BUSINESS_EMAIL', 'Paypal Business Email');
@@ -59,7 +55,9 @@ INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 's
 INSERT INTO texts(`lang_code`, `category`, `label`, `content`) VALUES  ('en', 'subscription', 'Payment Method', 'Payment Method');
 
 
-ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
+-- commented for next version
+-- ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
+--
 
 ALTER TABLE `directories`  ADD `is_reciprocal` TINYINT(1) NOT NULL DEFAULT '0';
 
@@ -68,7 +66,6 @@ UPDATE searchengines SET `cookie_send` = 'sB=v=1&n=100&sh=1&rw=new',
 WHERE url like '%yahoo%';
 
 UPDATE `searchengines` SET url = CONCAT(url, "&gws_rd=cr") WHERE `url` LIKE '%google%';
-
 
 --
 -- Table structure for table `information_list`
@@ -81,4 +78,3 @@ CREATE TABLE IF NOT EXISTS `information_list` (
   `update_date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
