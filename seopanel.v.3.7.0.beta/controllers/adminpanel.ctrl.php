@@ -38,13 +38,15 @@ class AdminPanelController extends Controller{
             			'url_section' => 'users'						
 						);
 		}		
+		
+		/* disabled to release in next version
 		if (isAdmin()) {
 			$menuList[] = array(
 						'id' => 15,
             			'name' => $this->spTextPanel['User Type Manager'],
             			'url_section' => 'user-types-manager'						
 						);
-		}
+		}*/
 
 		if (isLoggedIn()) {
 			$menuList[] = array(
