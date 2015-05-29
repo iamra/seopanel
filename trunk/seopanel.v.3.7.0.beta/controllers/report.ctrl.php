@@ -565,7 +565,12 @@ class ReportController extends Controller {
 		$time = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
 		$seList = explode(':', $keywordInfo['searchengines']);
 		foreach($seList as $seInfoId){
+			
+			// function to execute only passed search engine
 			if(!empty($seId) && ($seInfoId != $seId)) continue;
+			
+			// if search engine not found continue
+			if (empty($this->seList[$seInfoId])) continue;
 			
 			$this->seFound = 1;
 			
