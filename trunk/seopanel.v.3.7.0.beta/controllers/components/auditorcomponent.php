@@ -246,11 +246,11 @@ class AuditorComponent extends Controller{
         
         // check google pagerank
         if ($reportInfo['pagerank'] >= SA_PR_CHECK_LEVEL_SECOND) {
-            $scoreInfo['pagerank'] = 3;
+            $scoreInfo['pagerank'] = $reportInfo['pagerank'] * 3;
             $msg = $spTextSA["The page is having exellent pagerank"];
             $this->commentInfo['pagerank'] = formatSuccessMsg($msg);
         } else if ($reportInfo['pagerank'] >= SA_PR_CHECK_LEVEL_FIRST) {
-            $scoreInfo['pagerank'] = 2;
+            $scoreInfo['pagerank'] = $reportInfo['pagerank'] * 2;
             $msg = $spTextSA["The page is having very good pagerank"];
             $this->commentInfo['pagerank'] = formatSuccessMsg($msg);
         } else if ($reportInfo['pagerank']) {
