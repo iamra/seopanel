@@ -19,19 +19,22 @@
             }else{
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
-            }            
+            }
+            
+            $debugVar = !empty($_POST['debug']) ? "&debug=1" : "";
+            $debugVar .= !empty($_POST['debug_format']) ? "&debug_format=" . $_POST['debug_format'] : ""
 			?>
 			<tr class="<?php echo $class?>">
 				<td class="<?php echo $leftBotClass?>"><?php echo ($i+1)?></td>
 				<td class="td_br_right" style="text-align: left;"><?php echo $url?></td>
 				<td width="150px" id='googlerank<?php echo $i?>' class='td_br_right rankarea'>
 					<script type="text/javascript">
-						scriptDoLoadPost('rank.php', 'tmp', 'googlerank<?php echo $i?>', 'sec=showpr&url=<? echo urlencode($url); ?>');
+						scriptDoLoadPost('rank.php', 'tmp', 'googlerank<?php echo $i?>', 'sec=showpr&url=<? echo urlencode($url); ?><?php echo $debugVar?>');
 					</script>
 				</td>
 				<td class="<?php echo $rightBotClass?>" width="150px" id='alexarank<?php echo $i?>' class='rankarea'>
 					<script type="text/javascript">
-						scriptDoLoadPost('rank.php', 'tmp', 'alexarank<?php echo $i?>', 'sec=showalexa&url=<? echo urlencode($url); ?>');
+						scriptDoLoadPost('rank.php', 'tmp', 'alexarank<?php echo $i?>', 'sec=showalexa&url=<? echo urlencode($url); ?><?php echo $debugVar?>');
 					</script>
 				</td>
 			</tr>

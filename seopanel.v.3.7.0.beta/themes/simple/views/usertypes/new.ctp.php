@@ -29,7 +29,7 @@
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col"><?php echo $spText['common']['Websites Count']?>:</td>
-		<td class="td_right_col"><input type="text" name="num_websites" id="websitecount" value"<?php echo $post['num_websites']?>"><?php echo $errMsg['num_websites']?></td>
+		<td class="td_right_col"><input type="text" name="num_websites" id="websitecount" value="<?php echo $post['num_websites']?>"><?php echo $errMsg['num_websites']?></td>
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?php echo $spText['common']['Price']?>:</td>

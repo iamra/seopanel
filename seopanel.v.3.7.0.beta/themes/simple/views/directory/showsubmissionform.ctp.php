@@ -11,9 +11,12 @@
 <input type="hidden" name="sec" value="submitsite"/>
 <input type="hidden" name="website_id" value="<?php echo $websiteId?>"/>
 <input type="hidden" name="dir_id" value="<?php echo $dirInfo['id']?>"/>
+<input type="hidden" name="add_params" value="<?php echo $addParams?>">
+
 <?php if(!empty($phpsessid)){?>
     <input type="hidden" name="phpsessid" value="<?php echo $phpsessid?>">
 <?php }?>
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
 	<tr class="listHead">
 		<td class="left" style="width: 30%"><?php echo $spTextTools['directory-submission']?></td>
@@ -31,7 +34,7 @@
 		<td class="td_left_col"><?php echo $spText['common']['Category']?>:</td>
 		<td class="td_right_col"><?php echo $categorySel?></td>
 	</tr>
-	<? if(!empty($reciprocalUrl)){ ?>
+	<? if (!empty($reciprocalDir)) { ?>
 		<tr class="blue_row">
 			<td class="td_left_col"><?php echo $spTextDir['Reciprocal Link']?>:</td>
 			<td class="td_right_col">

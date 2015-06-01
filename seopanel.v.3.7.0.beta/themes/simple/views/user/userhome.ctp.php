@@ -13,35 +13,44 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	</div>
 	<br />
 	<div style="float: left;width: 300px;margin: 0px 0px 6px 10px;">
-	<?php if(isAdmin()){ ?>
 		<form name="acc_form" method="post" action="<?php echo SP_WEBPATH?>/">
     	<table width="50%" border="0" cellspacing="0" cellpadding="0" class="actionForm">
     		<tr>
-    			<th><?php echo $spText['common']['User']?>: </th>
-    			<td>
-    				<select name="user_id" id="user_id" onchange="document.acc_form.submit()">
-    					<option value="">-- <?php echo $spText['common']['Select']?> --</option>
-    					<?php foreach($userList as $userInfo){?>
-    						<?php if($userInfo['id'] == $webUserId){?>
-    							<option value="<?php echo $userInfo['id']?>" selected><?php echo $userInfo['username']?></option>
-    						<?php }else{?>
-    							<option value="<?php echo $userInfo['id']?>"><?php echo $userInfo['username']?></option>
-    						<?php }?>
-    					<?php }?>
-    				</select>
-    			</td>
+				<th><?php echo $spText['common']['Name']?>: </th>
+				<td>
+					<input type="text" name="search_name" value="<?php echo htmlentities($searchInfo['search_name'], ENT_QUOTES)?>" onblur="document.acc_form.submit()">
+				</td>
+    		
+				<?php if(isAdmin()){ ?>
+	    			<th><?php echo $spText['common']['User']?>: </th>
+	    			<td>
+	    				<select name="user_id" id="user_id" onchange="document.acc_form.submit()">
+	    					<option value="">-- <?php echo $spText['common']['Select']?> --</option>
+	    					<?php foreach($userList as $userInfo){?>
+	    						<?php if($userInfo['id'] == $webUserId){?>
+	    							<option value="<?php echo $userInfo['id']?>" selected><?php echo $userInfo['username']?></option>
+	    						<?php }else{?>
+	    							<option value="<?php echo $userInfo['id']?>"><?php echo $userInfo['username']?></option>
+	    						<?php }?>
+	    					<?php }?>
+	    				</select>
+	    			</td>
+				<?php } ?>
+	    		
     			<td>
     				<input class="button" type="submit" name="login" value="<?php echo $spText['button']['Show Records']?>"/>
 				</td>
     		</tr>
     	</table>
     	</form>
-    <?php } ?>
 	</div>
 	<div style="float:right;margin-right: 10px;">
-		<a href="<?php echo SP_WEBPATH?>/index.php?doc_type=pdf&user_id=<?php echo $webUserId?>"><img src="<?php echo SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
-		<a href="<?php echo SP_WEBPATH?>/index.php?doc_type=export&user_id=<?php echo $webUserId?>"><img src="<?php echo SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
-		<a target="_blank" href="<?php echo SP_WEBPATH?>/index.php?doc_type=print&user_id=<?php echo $webUserId?>"><img src="<?php echo SP_IMGPATH?>/print_button.gif"></a>
+		<?php
+		$argStr = "&user_id=$webUserId&search_name=".$searchInfo['search_name'] 
+		?>
+		<a href="<?php echo SP_WEBPATH?>/index.php?doc_type=pdf<?php echo $argStr?>"><img src="<?php echo SP_IMGPATH?>/icon_pdf.png"></a> &nbsp;
+		<a href="<?php echo SP_WEBPATH?>/index.php?doc_type=export<?php echo $argStr?>"><img src="<?php echo SP_IMGPATH?>/icoExport.gif"></a> &nbsp;
+		<a target="_blank" href="<?php echo SP_WEBPATH?>/index.php?doc_type=print<?php echo $argStr?>"><img src="<?php echo SP_IMGPATH?>/print_button.gif"></a>
 	</div>
 <?php }?>
 

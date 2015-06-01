@@ -26,11 +26,16 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     echo showSectionHead($spTextTools['Keyword Position Summary']);
     ?>
 	<form id='search_form'>
+	<?php $submitLink = "scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')";?>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="search">
 		<tr>
+			<th><?php echo $spText['common']['Name']?>: </th>
+			<td>
+				<input type="text" name="search_name" value="<?php echo htmlentities($searchInfo['search_name'], ENT_QUOTES)?>" onblur="<?php echo $submitLink?>">
+			</td>
 			<th width="100px"><?php echo $spText['common']['Website']?>: </th>
 			<td width="160px">
-				<select name="website_id" id="website_id" style='width:160px;' onchange="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')">
+				<select name="website_id" id="website_id" style='width:100px;' onchange="<?php echo $submitLink?>">
 					<option value="">-- <?php echo $spText['common']['All']?> --</option>
 					<?php foreach($websiteList as $websiteInfo){?>
 						<?php if($websiteInfo['id'] == $websiteId){?>
@@ -48,7 +53,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
     			<input type="text" style="width: 80px;margin-right:0px;" value="<?php echo $toTime?>" name="to_time"/> 
     			<img align="bottom" onclick="displayDatePicker('to_time', false, 'ymd', '-');" src="<?php echo SP_IMGPATH?>/cal.gif"/>
     		</td>
-			<td><a href="javascript:void(0);" onclick="scriptDoLoadPost('reports.php', 'search_form', 'content', '&sec=reportsum')" class="actionbut"><?php echo $spText['button']['Search']?></a></td>
+			<td><a href="javascript:void(0);" onclick="<?php echo $submitLink?>" class="actionbut"><?php echo $spText['button']['Search']?></a></td>
 		</tr>
 	</table>
 	</form>
@@ -64,7 +69,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
 	}
 
 	// url parameters
-	$mainLink = SP_WEBPATH."/reports.php?sec=reportsum&website_id=$websiteId&from_time=$fromTime&to_time=$toTime";
+	$mainLink = SP_WEBPATH."/reports.php?sec=reportsum&website_id=$websiteId&from_time=$fromTime&to_time=$toTime&search_name=" . $searchInfo['search_name'];
 	$directLink = $mainLink . "&order_col=$orderCol&order_val=$orderVal";
 	?>
 	<div style="float:right;margin-right: 10px;">
@@ -141,7 +146,7 @@ if(!empty($printVersion) || !empty($pdfVersion)) {
                 $leftBotClass = "td_left_border td_br_right";
                 $rightBotClass = "td_br_right";
             }
-            $scriptLink = "website_id={$listInfo['website_id']}&keyword_id={$listInfo['id']}&rep=1";           
+            $scriptLink = "website_id={$listInfo['website_id']}&keyword_id={$listInfo['id']}&rep=1&from_time=$fromTime&to_time=$toTime";          
 			?>
 			<tr class="<?php echo $class?>">				
 				<?php if (empty($websiteId)) {?>
