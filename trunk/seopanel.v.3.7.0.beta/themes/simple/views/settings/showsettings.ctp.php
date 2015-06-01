@@ -4,7 +4,7 @@ echo showSectionHead($headLabel);
 
 // if saved successfully
 if (!empty($saved)) {
-    showSuccessMsg($spTextSettings['syssettingssaved'], false);
+    showSuccessMsg($spTextSettings['allsettingssaved'], false);
 }
 
 // save process failed
@@ -84,7 +84,8 @@ if (!empty($errorMsg)) {
 								?>
 							</select>
 						<?php } else {
-						    $type = ($listInfo['set_name'] == 'SP_SMTP_PASSWORD') ? "password" : "text";
+							$passTypeList = array('SP_SMTP_PASSWORD', 'API_SECRET');
+						    $type = in_array($listInfo['set_name'], $passTypeList) ? "password" : "text";
 						    ?>
 							<input type="<?php echo $type?>" name="<?php echo $listInfo['set_name']?>" value="<?php echo stripslashes($listInfo['set_val'])?>" style='width:<?php echo $width?>px'>
 						<?php }?>

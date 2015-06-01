@@ -134,6 +134,18 @@ foreach($menuList as $i => $menuInfo){
 			<?php
 			break;
 			
+		case "api-manager":
+			?>
+			<script type="text/javascript">scriptList[<?php echo $i?>] = 'apimanager.php';</script>			
+			<ul id='subui'>
+				<?php if (isAdmin()) {?>
+					<li><a href="javascript:void(0);" onclick="scriptDoLoad('apimanager.php?sec=showconnect', 'content')"><?php echo $spTextPanel['API Connection']?></a></li>
+    				<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=apisettings', 'content')"><?php echo $spTextPanel['API Settings']?></a></li>
+				<?php }?>
+			</ul>
+			<?php
+			break;
+			
 		case "settings":
 			?>
 			<script type="text/javascript">scriptList[<?php echo $i?>] = 'settings.php';</script>			
@@ -160,6 +172,16 @@ foreach($menuList as $i => $menuInfo){
 				<?php if (isAdmin()) {?>
 					<li><a href="javascript:void(0);" onclick="scriptDoLoad('settings.php?sec=version', 'content')"><?php echo $spText['label']['Version']?></a></li>
 				<?php }?>
+			</ul>
+			<?php
+			break;
+			
+		case "user-types-manager":
+			?>
+			<script type="text/javascript">scriptList[<?php echo $i?>] = 'user-types-manager.php';</script>			
+			<ul id='subui'>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('user-types-manager.php', 'content')"><?php echo $spTextPanel['User Type Manager']?></a></li>
+				<li><a href="javascript:void(0);" onclick="scriptDoLoad('user-types-manager.php', 'content', 'sec=new')"><?php echo $spTextPanel['New User Type']?></a></li>
 			</ul>
 			<?php
 			break;
