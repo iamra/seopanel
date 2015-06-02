@@ -233,8 +233,8 @@ class KeywordAPI extends Seopanel{
 	 * 		$info['name']				The name of the keyword	- Mandatory
 	 * 		$info['website_id']			The website id of keyword - Mandatory
 	 * 		$info['searchengines']		The search engine ids of the keyword	- Mandatory[id1:id2]
-	 * 		$info['lang_code']			The language code of the keyword	- Optional[de,fr]
-	 * 		$info['country_code']		The country code of the keyword - Optional[ar,in]
+	 * 		$info['lang_code']			The language code of the keyword	- Optional[de]
+	 * 		$info['country_code']		The country code of the keyword - Optional[ar]
 	 * 		$info['status']				The status of the keyword - default[1]	- Optional
 	 * @return Array $returnInfo  	Contains details about the operation succes or not
 	 */
