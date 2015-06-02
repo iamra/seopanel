@@ -152,5 +152,33 @@ class UserAPI extends Seopanel{
 		
 	}
 	
+	/**
+	 * function to delete user
+	 * @param Array $info				The input details to process the api
+	 * 		$info['id']					The id of the user	- Mandatory
+	 * @return Array $returnInfo  	Contains details about the operation success or not
+	 */
+	function deleteUser($info) {
+		
+		$userId = intval($info['id']);
+		
+		// if user exists
+		if ( ($userId != 1) && $userInfo = $this->ctrler->__getUserInfo($userId)) {
+			
+			// update user call as api call
+			$this->ctrler->__deleteUser($userId);
+			$returnInfo['response'] = 'success';
+			$returnInfo['result'] = "Successfully deleted user";
+			
+		} else {
+	
+			$returnInfo['response'] = 'Error';
+			$returnInfo['error_msg'] = "The invalid user id provided";
+		}
+	
+		return 	$returnInfo;
+		
+	}
+	
 }
 ?>
