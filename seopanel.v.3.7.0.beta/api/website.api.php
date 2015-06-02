@@ -244,6 +244,7 @@ class WebsiteAPI extends Seopanel{
 		if ($return[0] == 'success') {
 			$returnInfo['response'] = 'success';
 			$returnInfo['result'] = $return[1];
+			$returnInfo['website_id'] = $this->ctrler->db->getMaxId('websites');
 		} else {
 			$returnInfo['response'] = 'Error';
 			$returnInfo['error_msg'] = $return[1];

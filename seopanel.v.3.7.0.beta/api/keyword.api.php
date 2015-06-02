@@ -257,6 +257,7 @@ class KeywordAPI extends Seopanel{
 		if ($return[0] == 'success') {
 			$returnInfo['response'] = 'success';
 			$returnInfo['result'] = $return[1];
+			$returnInfo['keyword_id'] = $this->ctrler->db->getMaxId('keywords');
 		} else {
 			$returnInfo['response'] = 'Error';
 			$returnInfo['error_msg'] = $return[1];
