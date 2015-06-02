@@ -88,6 +88,7 @@ class UserAPI extends Seopanel{
 		if ($return[0] == 'success') {
 			$returnInfo['response'] = 'success';
 			$returnInfo['result'] = $return[1];
+			$returnInfo['user_id'] = $this->ctrler->db->getMaxId('users');
 		} else {
 			$returnInfo['response'] = 'Error';
 			$returnInfo['error_msg'] = $return[1];
