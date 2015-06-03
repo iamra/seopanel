@@ -965,12 +965,6 @@ UPDATE `settings` SET `set_category` = 'api' WHERE set_name='SP_API_KEY';
 UPDATE `settings` SET `set_val` = '0' WHERE set_name='SP_USER_REGISTRATION';
 UPDATE `settings` SET `set_val` = '1' WHERE set_name='SP_NUMBER_KEYWORDS_CRON';
 
--- commented for next version
--- ALTER TABLE usertypes ADD num_websites int(4), ADD num_keywords int(4), ADD price float, ADD status tinyint(4) DEFAULT 1;
---
-
-ALTER TABLE `directories`  ADD `is_reciprocal` TINYINT(1) NOT NULL DEFAULT '0';
-
 UPDATE searchengines SET `cookie_send` = 'sB=v=1&n=100&sh=1&rw=new',
 `regex` = '<li.*?<h3.*?><a.*?RU=(.*?)\\/.*?>(.*?)<\\/a><\\/h3>.*?<p.*?>(.*?)<\\/p>'
 WHERE url like '%yahoo%';
