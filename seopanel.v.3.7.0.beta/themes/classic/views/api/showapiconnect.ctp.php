@@ -12,12 +12,12 @@ echo showSectionHead($spTextPanel['API Connection']);
 	</tr>
 	<tr class="blue_row">
 		<td class="td_left_col"><?php echo $spTextSettings['SP_API_KEY']?>:</td>
-		<td class="td_right_col"><?php echo $apiInfo['SP_API_KEY']?></td>
+		<td class="td_right_col"><?php echo SP_DEMO? "*********" : $apiInfo['SP_API_KEY']?></td>
 	</tr>
 	<tr class="white_row">
 		<td class="td_left_col"><?php echo $spTextSettings['API_SECRET']?>:</td>
 		<td class="td_right_col">
-			<div id="api_secret" style="display: none;"><?php echo $apiInfo['API_SECRET']?></div>
+			<div id="api_secret" style="display: none;"><?php echo SP_DEMO? "*********" : $apiInfo['API_SECRET']?></div>
 			<a href="javascript:void(0);" onclick="showDiv('api_secret');hideDiv('secret_link');" id='secret_link'>Show</a>
 		</td>
 	</tr>
