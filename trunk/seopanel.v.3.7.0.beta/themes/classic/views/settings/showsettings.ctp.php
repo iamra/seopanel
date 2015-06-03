@@ -49,6 +49,13 @@ if (!empty($errorMsg)) {
 				$width = 500;
 				break;
 		}
+		
+		// sp demo settings
+		$demoCheckArr = array('SP_API_KEY', 'API_SECRET', 'SP_SMTP_PASSWORD');
+		if (SP_DEMO && in_array($listInfo['set_name'], $demoCheckArr)) {
+			$listInfo['set_val'] = "********";
+		}
+		
 		?>
 		<tr class="<?php echo $class?>">
 			<td class="td_left_col"><?php echo $spTextSettings[$listInfo['set_name']]?>:</td>

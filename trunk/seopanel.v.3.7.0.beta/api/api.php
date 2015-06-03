@@ -28,8 +28,11 @@ $controller = New APIController();
 
 $inputInfo = ($_SERVER['REQUEST_METHOD'] == 'POST') ? $_POST : $_GET;
 
-// verify api credentials
-if ($controller->verifyAPICredentials($inputInfo)) {
+// sp demo enabled
+if (SP_DEMO) {
+	$returnInfo['response'] = 'Error';
+	$returnInfo['error_msg'] = "API will not work in demo mode!";	
+} else if ($controller->verifyAPICredentials($inputInfo)) {
 	
 	$category = strtolower($inputInfo['category']);
 	$action = $inputInfo['action'];
