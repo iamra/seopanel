@@ -127,18 +127,6 @@ class UserController extends Controller{
 		$errMsg['firstName'] = formatErrorMsg($this->validate->checkBlank($userInfo['firstName']));
 		$errMsg['lastName'] = formatErrorMsg($this->validate->checkBlank($userInfo['lastName']));
 		$errMsg['email'] = formatErrorMsg($this->validate->checkEmail($userInfo['email']));
-		
-// 		$utypeId = intval($userInfo['utype_id']);
-// 		$utypeCtrler = New UserTypeController();
-// 		$utypeInfo = $utypeCtrler->__getUserTypeInfo($utypeId);
-// 		include_once(SP_CTRLPATH."/seoplugins.ctrl.php");
-// 		$controller = New SeoPluginsController();
-// 		$pluginCtrler = $controller->createPluginObject("Subscription");
-// 		print $paymentForm = $pluginCtrler->pgCtrler->getPaymentForm(intval($userInfo['pg_id']), 19, $utypeInfo);
-// 		highlight_string($paymentForm);
-// 		exit;
-		
-		
 		$errMsg['code'] = formatErrorMsg($this->validate->checkCaptcha($userInfo['code']));
 		$errMsg['utype_id'] = formatErrorMsg($this->validate->checkNumber($userInfo['utype_id']));
 		
@@ -170,11 +158,11 @@ class UserController extends Controller{
 						
 						// if it is paid subscription, proceed with payment
 						if ($utypeInfo['price'] > 0) {
-							
-							include_once(SP_CTRLPATH."/seoplugins.ctrl.php");
-							$controller = New SeoPluginsController();
-							$pluginCtrler = $controller->createPluginObject("Subscription");
-							$paymentForm = $pluginCtrler->pgCtrler->getPaymentForm(intval($userInfo['pg_id']), $userId, $utypeInfo);
+							$paymentPluginId = intval($userInfo['pg_id']);
+							@Session::setSession('payment_plugin_id', $paymentPluginId);
+							$quantity = intval($userInfo['quantity']);
+							$pluginCtrler = $seopluginCtrler->createPluginObject("Subscription");
+							$paymentForm = $pluginCtrler->pgCtrler->getPaymentForm($paymentPluginId, $userId, $utypeInfo, $quantity);
 							$this->set('paymentForm', $paymentForm);							
 						}						
 					}
