@@ -26,8 +26,15 @@ include_once(SP_CTRLPATH."/seoplugins.ctrl.php");
 $seopluginCtrler = New SeoPluginsController();
 
 if ($seopluginCtrler->isPluginActive("Subscription")) {
-	$pluginCtrler = $seopluginCtrler->createPluginObject("Subscription");
-	$pluginCtrler->pgCtrler->processTransaction($_SESSION['payment_plugin_id'], $_GET, $_POST);
+	
+	// verify the payment plugin id and invoice id in the session
+	if (!empty($_SESSION['payment_plugin_id']) && !empty($_SESSION['invoice_id'])) {
+		$pluginCtrler = $seopluginCtrler->createPluginObject("Subscription");
+		$pluginCtrler->pgCtrler->processTransaction($_SESSION['payment_plugin_id'], $_SESSION['invoice_id'], $_GET, $_POST);
+	} else {
+		echo "Valid invoice id not found!";
+	}
+	
 } else {
 	echo "Not authorized to access this page!";	
 }
